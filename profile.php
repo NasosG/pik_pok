@@ -2317,7 +2317,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 				<div class="container">
 					<ul>
 						<li><a href="help-center.html" title="">Help Center</a></li>
-						<li><a href="about.html" title="">About</a></li>
+						<li><a href="about.php" title="">About</a></li>
 						<li><a href="#" title="">Privacy Policy</a></li>
 						<li><a href="#" title="">Community Guidelines</a></li>
 						<li><a href="#" title="">Cookies Policy</a></li>

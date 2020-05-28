@@ -1,22 +1,22 @@
 <?php
 include("db/auth.php"); //include auth.php file on all secure pages 
-
 ?>
+
 
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Contact - Pik Pok</title>
+	<title>WorkWise Html Template</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<link rel="stylesheet" type="text/css" href="css/animate.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/flatpickr.min.css">
 	<link rel="stylesheet" type="text/css" href="css/line-awesome.css">
 	<link rel="stylesheet" type="text/css" href="css/line-awesome-font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css">
 	<link rel="stylesheet" type="text/css" href="lib/slick/slick.css">
 	<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -25,7 +25,6 @@ include("db/auth.php"); //include auth.php file on all secure pages
 
 
 <body oncontextmenu="return false;">	
-	<div class="wrapper">	
 		<header>
 			<div class="container">
 				<div class="header-data">
@@ -81,6 +80,8 @@ include("db/auth.php"); //include auth.php file on all secure pages
 					<div class="menu-btn">
 						<a href="#" title=""><i class="fa fa-bars"></i></a>
 					</div><!--menu-btn end-->
+
+
 				<?php 
 				if(isset($_SESSION['username'])){
 				echo "
@@ -142,16 +143,47 @@ include("db/auth.php"); //include auth.php file on all secure pages
 						</div>
 					";
 			?>
-
+					
+					
 				</div><!--header-data end-->
 			</div>
-		</header><!--header end-->	
+		</header><!--header end-->
+		<section class="banner">
+			<div class="bannerimage">
+			<img src="images/about.png" style="width:100%;min-height:300px;max-height:300px;margin-bottom:30px;" alt="image">
+		</div>
+			<div class="bennertext">
+			<div class="innertitle">
+				<h2>World's largest social network #NOT<br></h2>                
+                <p>More than 0.000002 million people globally connected from over 1 country!</p>
+            </div>
+            </div>
+           
+		</section>	
+		<section class="Company-overview" >
+			<div class="container" >
+			<div class="row">
+				<div class="col-md-6 col-sm-12" >
+					<h2>
+						What is Pik Pok
+					</h2>
+					<p>
+						Pik Pok is a social media platform for creating, sharing and discovering photos, think Tik-Tok but for photos. The app can be used by people as an outlet to express themselves and their stories through their photos and albums.
+					</p>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<img src="images/about3.png" alt="image">
+				</div>
+			</div>
+		</div>
+		</section>
+		<section class="services" style="margin-top:-100px;">
+			<div class="container">
+				<div class="video" style="border: 2px solid red; padding: 15px; border-radius: 25px;">
+					<iframe class="video-iframe"  src="../PikPok.mp4"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
 
-
-		<section class="contact">
-		<br><br><br><br>
-		<h2 style="text-align:center; font-size:100px;"> UNDER CONSTRUCTION</h2>
-		<br><br><br><br>
+			</div>
 		</section>
 		<footer>
 			<div class="footy-sec mn no-margin">
@@ -162,28 +194,24 @@ include("db/auth.php"); //include auth.php file on all secure pages
 						<li><a href="#" title="">Privacy Policy</a></li>
 						<li><a href="#" title="">Community Guidelines</a></li>
 						<li><a href="#" title="">Cookies Policy</a></li>
-						<li><a href="#" title="">Career</a></li>
-						<li><a href="forum.html" title="">Forum</a></li>
+						
+						<li><a href="forum.php" title="">Forum</a></li>
 						<li><a href="#" title="">Language</a></li>
 						<li><a href="#" title="">Copyright Policy</a></li>
 					</ul>
-					<p><img src="images/copy-icon2.png" alt="">Copyright <script type="text/javascript">document.write(new Date().getFullYear());</script></p>
+					<p><img src="images/copy-icon2.png" alt="">Copyright 2020</p>
 					<img class="fl-rgt" src="images/logo2.png" alt="">
 				</div>
 			</div>
-		</footer>
-
-	</div><!--theme-layout end-->
+		</footer><!--footer end-->
 
 
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/popper.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/jquery.mCustomScrollbar.js"></script>
+<script type="text/javascript" src="js/flatpickr.min.js"></script>
 <script type="text/javascript" src="lib/slick/slick.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
-
-
 </body>
 </html>

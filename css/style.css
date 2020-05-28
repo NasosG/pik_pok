@@ -2664,7 +2664,7 @@ footer {
 	width: 100%;
 	text-align: center;
 	margin-bottom: 28px;
-	margin-top: -95px;
+	margin-top: -20px;
 	position: relative;
 }
 .user-pro-img .add-dp {
@@ -2682,9 +2682,9 @@ footer {
     width: 40px;
     height: 40px;
     text-align: center;
-    background: #e44d3a;
+    background: white/*#e44d3a*/;
     padding: 12px;
-    color: #ffff;
+    color: black;
     left: 0;
     top: -5px;
 }
@@ -2693,6 +2693,7 @@ footer {
 	border: 2px solid #fff;
     background: #e44d3a;
 	padding: 11px;
+	color: white;
 }
 .add-dp {
     margin: -16px;

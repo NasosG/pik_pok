@@ -158,8 +158,14 @@ include("db/auth.php"); //include auth.php file on all secure pages
 									<div class="user-data full-width">
 										<div class="user-profile">
 											<div class="username-dt">
-												<div class="usr-pic">
-													<img src="images/user-pic.png" alt="">
+											<div class="user-pro-img">
+												<div class="usr-pic  ">
+											<img src="images/user-pic.png" alt="">
+											<div class="add-dp" id="OpenImgUpload">
+												<input type="file" id="file">
+												<label for="file"><i class="fa fa-camera" aria-hidden="true"></i></label>												
+											</div>
+										</div><!--user-pro-img end-->
 												</div>
 											</div><!--username-dt end-->
 											<div class="user-specs">
@@ -266,7 +272,10 @@ include("db/auth.php"); //include auth.php file on all secure pages
 										</div>
 										<div class="post-st">
 											<ul>
-												<li><a class="post-jb active" href="#" title="">Post Image</a></li>
+												<li><a class="post-jb active" href="#" title=""><i class="fa fa-plus"></i> Post Image</a></li>
+												<li>
+													<a class="active" href="profile-account-setting.php" title=""><i class="fa fa-cog"></i> Settings</a>
+												</li>
 											</ul>
 										</div><!--post-st end-->
 									</div><!--post-topbar end-->
@@ -319,13 +328,13 @@ include("db/auth.php"); //include auth.php file on all secure pages
 											<div class="job-status-bar">
 												<ul class="like-com">
 													<li>
-														<a href="#"><i class="fas fa-heart"></i> Like</a>
+														<a href="#"><i class="fa fa-heart"></i> Like</a>
 														<img src="images/liked-img.png" alt="">
 														<span>25</span>
 													</li> 
-													<li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comment 15</a></li>
+													<li><a href="#" class="com"><i class="fa fa-comment-alt"></i> Comment 15</a></li>
 												</ul>
-												<a href="#"><i class="fas fa-eye"></i>Views 50</a>
+												<a href="#"><i class="fa fa-eye"></i>Views 50</a>
 											</div>
 										</div><!--post-bar end-->
 										<div class="top-profiles">
@@ -451,13 +460,13 @@ include("db/auth.php"); //include auth.php file on all secure pages
 											<div class="job-status-bar">
 												<ul class="like-com">
 													<li>
-														<a href="#"><i class="fas fa-heart"></i> Like</a>
+														<a href="#"><i class="fa fa-heart"></i> Like</a>
 														<img src="images/liked-img.png" alt="">
 														<span>25</span>
 													</li> 
-													<li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comment 15</a></li>
+													<li><a href="#" class="com"><i class="fa fa-comment-alt"></i> Comment 15</a></li>
 												</ul>
-												<a href="#"><i class="fas fa-eye"></i>Views 50</a>
+												<a href="#"><i class="fa fa-eye"></i>Views 50</a>
 											</div>
 										</div><!--post-bar end-->
 										<div class="posty">
@@ -509,13 +518,13 @@ include("db/auth.php"); //include auth.php file on all secure pages
 												<div class="job-status-bar">
 													<ul class="like-com">
 														<li>
-															<a href="#"><i class="fas fa-heart"></i> Like</a>
+															<a href="#"><i class="fa fa-heart"></i> Like</a>
 															<img src="images/liked-img.png" alt="">
 															<span>25</span>
 														</li> 
-														<li><a href="#" class="com"><i class="fas fa-comment-alt"></i> Comment 15</a></li>
+														<li><a href="#" class="com"><i class="fa fa-comment-alt"></i> Comment 15</a></li>
 													</ul>
-													<a href="#"><i class="fas fa-eye"></i>Views 50</a>
+													<a href="#"><i class="fa fa-eye"></i>Views 50</a>
 												</div>
 											</div><!--post-bar end-->
 											<div class="comment-section">
@@ -590,167 +599,36 @@ include("db/auth.php"); //include auth.php file on all secure pages
 									</div><!--posts-section end-->
 								</div><!--main-ws-sec end-->
 							</div>
-							<div class="col-lg-3 pd-right-none no-pd">
+							<div class="col-lg-3">
 								<div class="right-sidebar">
-									<div class="widget widget-about">
-										<img src="images/wd-logo.png" alt="">
-										<h3>Track Time on Workwise</h3>
-										<span>Pay only for the Hours worked</span>
-										<div class="sign_link">
-											<h3><a href="sign-in.html" title="">Sign up</a></h3>
-											<a href="#" title="">Learn More</a>
-										</div>
-									</div><!--widget-about end-->
-									<div class="widget widget-jobs">
-										<div class="sd-title">
-											<h3>Top Jobs</h3>
-											<i class="fa fa-ellipsis-v"></i>
-										</div>
-										<div class="jobs-list">
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Senior Product Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Senior UI / UX Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Junior Seo Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Senior PHP Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Senior Developer Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-										</div><!--jobs-list end-->
-									</div><!--widget-jobs end-->
-									<div class="widget widget-jobs">
-										<div class="sd-title">
-											<h3>Most Viewed This Week</h3>
-											<i class="fa fa-ellipsis-v"></i>
-										</div>
-										<div class="jobs-list">
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Senior Product Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Senior UI / UX Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Junior Seo Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-										</div><!--jobs-list end-->
-									</div><!--widget-jobs end-->
-									<div class="widget suggestions full-width">
-										<div class="sd-title">
-											<h3>Most Viewed People</h3>
-											<i class="fa fa-ellipsis-v"></i>
-										</div><!--sd-title end-->
-										<div class="suggestions-list">
-											<div class="suggestion-usd">
-												<img src="images/s1.png" alt="">
-												<div class="sgt-text">
-													<h4>Jessica William</h4>
-													<span>Graphic Designer</span>
-												</div>
-												<span><i class="fa fa-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/s2.png" alt="">
-												<div class="sgt-text">
-													<h4>John Doe</h4>
-													<span>PHP Developer</span>
-												</div>
-												<span><i class="fa fa-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/s3.png" alt="">
-												<div class="sgt-text">
-													<h4>Poonam</h4>
-													<span>Wordpress Developer</span>
-												</div>
-												<span><i class="fa fa-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/s4.png" alt="">
-												<div class="sgt-text">
-													<h4>Bill Gates</h4>
-													<span>C &amp; C++ Developer</span>
-												</div>
-												<span><i class="fa fa-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/s5.png" alt="">
-												<div class="sgt-text">
-													<h4>Jessica William</h4>
-													<span>Graphic Designer</span>
-												</div>
-												<span><i class="fa fa-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/s6.png" alt="">
-												<div class="sgt-text">
-													<h4>John Doe</h4>
-													<span>PHP Developer</span>
-												</div>
-												<span><i class="fa fa-plus"></i></span>
-											</div>
-											<div class="view-more">
-												<a href="#" title="">View More</a>
-											</div>
-										</div><!--suggestions-list end-->
+									<div class="message-btn">
+										<a href="profile-account-setting.php" title=""><i class="fa fa-cog"></i> Account Settings</a>
 									</div>
+									<div class="widget widget-portfolio">
+										<div class="wd-heady">
+											<h3>My posts</h3>
+											<img src="images/photo-icon.png" alt="">
+										</div>
+										<div class="pf-gallery">
+											<ul>
+												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
+												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
+												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
+												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
+												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
+												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
+												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
+												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
+												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
+												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
+												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
+												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
+											</ul>
+										</div><!--pf-gallery end-->
+									</div><!--widget-portfolio end-->
 								</div><!--right-sidebar end-->
 							</div>
-						</div>
+							</div>
 					</div><!-- main-section-data end-->
 				</div> 
 			</div>
