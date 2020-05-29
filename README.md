@@ -5,8 +5,8 @@ Pik Pok is a social media platform for creating, sharing and discovering photos,
 
 ## Download and Installation
 
-You can download the files from https://github.com/NasosG/pik_pok
-We used xampp locally, so we installed it under xampp/htdocs folder and we made a mysql database(we named the database pik_pok).
+You can download the files from https://github.com/NasosG/pik_pok. 
+<br>We used xampp locally, so we installed it under xampp/htdocs folder and we made a mysql database(we named the database pik_pok).
 All the tables of the database are in pik_pok.sql folder
 
 1. Open PHPMyAdmin, create a Database & import `pik_pok.sql`. 
