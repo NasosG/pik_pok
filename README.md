@@ -14,7 +14,7 @@ All the tables of the database are in pik_pok.sql folder
 for example our variables are $dbhost = "localhost", $dbuser = "root", $dbpass = "", $db = "pik_pok";
 3. Enjoy!!
 
-# Requirements
+## Requirements
 
 1. Latest version of PHP.
 
@@ -28,7 +28,7 @@ Have a bug or an issue with this template? Send an email at blabla@blabla.gr
 Copyright 2020 licence not yet
 
 
-# Copyright claims
+## Copyright claims
 Many images used in the project belong to their respective creators/authors. No claim by me & those who use this project!!
 
 **Thanks for reading**
