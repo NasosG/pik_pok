@@ -226,57 +226,49 @@ $row2 = mysqli_fetch_array($result);
 												</ul>
 												<a href="#"><i class="fa fa-eye"></i>Views 50</a>                                             
                                             </div>
-                                            <!--
-											<div class="comment-area">
-                                                <i class="fa fa-plus-circle"></i>
-                                                <div class="post_topbar">
-                                                    <div class="usy-dt">
-                                                        <img src="images/bg-img1.png" alt="">
-                                                        <div class="usy-name">
-                                                            <h3>John Doe</h3>
-                                                            <span><img src="images/clock.png" alt="">3 min ago</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="reply-area">
-                                                    <p>Lorem ipsum dolor sit amet,</p>
-                                                    <span><i class="fa fa-mail-reply"></i>Reply</span>
-                                                    <div class="comment-area reply-rply1">
-                                                        <div class="post_topbar">
-                                                            <div class="usy-dt">
-                                                                <img src="images/bg-img2.png" alt="">
-                                                                <div class="usy-name">
-                                                                 <p>Hi John</p>
-                                                            <span><i class="fa fa-mail-reply"></i>Reply</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                                                                 <h3>John Doe</h3>
-                                                                    <span><img src="images/clock.png" alt="">3 min ago</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="reply-area">
-          </div>
-											-->
+                                           
+											<div class="comment-area"> 
+												<div class="reply-area">
+												   <p><br></p>
+												   <span><i class="fa fa-comments"></i>Comments<br></span>
+												   <br>
+												</div>
+											</div>
+                                                      
 											<?php
+											$query = "SELECT * FROM post_comments WHERE post_id = $photo_id"; 											
+											$result = mysqli_query($con, $query);	
+											
+										
+
+											while ($row = mysqli_fetch_array($result)) {
+
+											$query3 = "SELECT username FROM members, post_comments WHERE user_id = id"; 											
+											$result3 = mysqli_query($con, $query3);	
+											$row3 = mysqli_fetch_array($result3);
+											//$newDate = date("d-m-Y", strtotime($row['date_posted']));
+
 											echo '
                                             <div class="comment-area">
                                                 <div class="post_topbar">
                                                     <div class="usy-dt">
                                                         <img src="images/bg-img3.png" alt="">
                                                         <div class="usy-name">
-                                                            <h3>John Doe</h3>
-                                                            <span><img src="images/clock.png" alt="">3 min ago</span>
+                                                            <h3>'.$row3['username'].'</h3>
+                                                            <span><img src="images/clock.png" alt="">'.date("d-m-Y H:i:s", strtotime($row['time_commented'])).'</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="reply-area">
-                                                    <p class="myp">Hey, nice photo bro! Keep up the good work!</p>
+                                                    <p class="myp">'.$row['comment_text'];
+                                                    echo'</p>
                                                     <span><i class="fa fa-mail-reply"></i>Reply</span>
                                                 </div>
                                             </div>
 											';
+											}
+
+											mysqli_close($con);
 											?>
                                             <div class="postcomment">
                                                 <div class="row">
