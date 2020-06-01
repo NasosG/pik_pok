@@ -186,7 +186,7 @@ $result = mysqli_query($con, $query);
 									<ul>
 										<li>
 										<button style='border:none' >
-											<a style='color:white;' id='likeLink' class='follow'>Like <i class='fa fa-heart' aria-hidden='true'></i></a>
+											<a id='likeLink' class='follow text-white'>Like <i class='fa fa-heart' aria-hidden='true'></i></a>
 										</button>
 											
 										</li>

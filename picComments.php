@@ -272,7 +272,7 @@ $row2 = mysqli_fetch_array($result);
                                                     </div>
                                                 </div>
                                                 <div class="reply-area">
-                                                    <p>Hey, nice photo bro! Keep up the good work!</p>
+                                                    <p class="myp">Hey, nice photo bro! Keep up the good work!</p>
                                                     <span><i class="fa fa-mail-reply"></i>Reply</span>
                                                 </div>
                                             </div>
@@ -284,14 +284,14 @@ $row2 = mysqli_fetch_array($result);
                                                         <img src="images/bg-img4.png" alt="">
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <form>
+                                                        <form class='aform'>
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" id="inputPassword" placeholder="Post a comment">
+                                                                <input type="text" class="form-control" id="comment-text" name="comment-text"  placeholder="Post a comment">
                                                             </div>
                                                         </form>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <a href="#">Send</a>
+                                                        <a style="cursor:pointer;" id="send-comment"  class="send-comment text-white">Send</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -416,6 +416,29 @@ $row2 = mysqli_fetch_array($result);
     <script type="text/javascript" src="js/jquery.range-min.js"></script>
     <script type="text/javascript" src="lib/slick/slick.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+	<script>
+	var form = $('.aform');
+$('.aform').submit(function(e) {
+    
+    
+    
+    e.preventDefault(); 
+        $.ajax({
+           type: "POST",
+           url: 'db/comments.php',
+           data: form.serialize(), // serializes the form's elements.
+           success: function(data)
+           {  
+            console.log(data);
+            $('.reply-area').children('.myp').html(  data + "" );
+           }
+         });
+});
+
+document.getElementById("send-comment").addEventListener("click", function () {
+  form.submit();
+});
+	</script>
 </body>
 
 </html>

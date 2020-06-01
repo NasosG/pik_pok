@@ -1,15 +1,16 @@
 <?php
 require('db.php');
 include("auth.php"); //include auth.php file on all secure pages 
-$data=array();
-//variables
+// ajax data
+$data = array();
+// variables
 $uname = $_SESSION['username'];
 $photo_id = $_POST['photo_id'];
 
-//the time the image was posted
+// the time the image was posted
 $time_posted = date("Y-m-d H:i:s");
 
-//find user id from session name
+// find user id from session name
 $query = "SELECT id FROM members WHERE username = '$uname'";
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_array($result);
@@ -25,9 +26,10 @@ $photo_likes = $row['photo_likes'];
 
 // like +-1
 // check the photo_likes table to find whether a user has liked the post or not
-$query2 = "SELECT * FROM post_likes WHERE liked_by_user = '$user_id' AND posted_photo_id = '$photo_id'"; 
-$result2 = mysqli_query($con, $query2);
-if(!mysqli_num_rows($result2)){
+$query = "SELECT * FROM post_likes WHERE liked_by_user = '$user_id' AND posted_photo_id = '$photo_id'"; 
+$result = mysqli_query($con, $query);
+
+if(!mysqli_num_rows($result)) {
 	$photo_likes++;
 	
 	$query = "INSERT INTO post_likes(liked_by_user,posted_photo_id,time)
@@ -41,9 +43,9 @@ if(!mysqli_num_rows($result2)){
 else {
 	$photo_likes--;
 	
-	$query2 = "DELETE FROM post_likes WHERE liked_by_user = '$user_id' AND posted_photo_id = '$photo_id'";
-	$result2 = mysqli_query($con, $query2);
-	if(!$result2) 
+	$query = "DELETE FROM post_likes WHERE liked_by_user = '$user_id' AND posted_photo_id = '$photo_id'";
+	$result = mysqli_query($con, $query);
+	if(!$result) 
 		echo "error occurred";
 }
 
@@ -57,9 +59,9 @@ $result = mysqli_query($con, $query);
 mysqli_close($con);
 // return all our data to an AJAX call
 $data['success'] = true;
-		$data['message'] = $photo_likes;
-	echo $photo_likes;
+$data['message'] = $photo_likes;
+echo $photo_likes;
 	
 //if (!empty($_SERVER['HTTP_REFERER']))
-		//header("Location: ".$_SERVER['HTTP_REFERER']);
+	//header("Location: ".$_SERVER['HTTP_REFERER']);
 ?>
