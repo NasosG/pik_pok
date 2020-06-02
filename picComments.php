@@ -240,10 +240,10 @@ $row2 = mysqli_fetch_array($result);
 											$result = mysqli_query($con, $query);	
 											
 										
-
 											while ($row = mysqli_fetch_array($result)) {
 
-											$query3 = "SELECT username FROM members, post_comments WHERE user_id = id"; 											
+											$user_id = $row['user_id'];
+											$query3 = "SELECT username FROM members WHERE id = '$user_id'"; 											
 											$result3 = mysqli_query($con, $query3);	
 											$row3 = mysqli_fetch_array($result3);
 											//$newDate = date("d-m-Y", strtotime($row['date_posted']));
@@ -265,6 +265,7 @@ $row2 = mysqli_fetch_array($result);
                                                     <span><i class="fa fa-mail-reply"></i>Reply</span>
                                                 </div>
                                             </div>
+                                        	<br>
 											';
 											}
 
@@ -278,7 +279,8 @@ $row2 = mysqli_fetch_array($result);
                                                     <div class="col-md-8">
                                                         <form class='aform'>
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" id="comment-text" name="comment-text"  placeholder="Post a comment">
+                                                            	<input type='hidden' name='photo_id' id='photo_id' value='<?php echo $photo_id; ?> '/>
+                                                                <input type="text" class="form-control" id="comment-text" name="comment-text"  placeholder="Post a comment"/>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -421,8 +423,7 @@ $('.aform').submit(function(e) {
            data: form.serialize(), // serializes the form's elements.
            success: function(data)
            {  
-            console.log(data);
-            $('.reply-area').children('.myp').html(  data + "" );
+            location.reload();
            }
          });
 });

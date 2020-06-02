@@ -181,7 +181,6 @@ $result = mysqli_query($con, $query);
 									if(isset($_SESSION['username'])) 
 									{															
 									echo "
-									
 									<input type='hidden' name='photo_id' id='photo_id' value='".$row['photo_id']."' />
 									<ul>
 										<li>
@@ -208,7 +207,8 @@ $result = mysqli_query($con, $query);
 							</div><!--company_profile_info end-->
 							
 						</div>
-						";} ?>
+						";} 
+						?>
 					</div>
 				</div><!--companies-list end-->
 				<div class='process-comm'>
