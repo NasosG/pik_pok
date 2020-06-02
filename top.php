@@ -14,7 +14,7 @@ $result = mysqli_query($con, $query);
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Most Popular - Pik Pok</title>
+<title>Home - Pik Pok</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="" />
 <meta name="keywords" content="" />
@@ -89,11 +89,21 @@ $result = mysqli_query($con, $query);
 					</div><!--menu-btn end-->
 				
 			<?php 
-				if(isset($_SESSION['username'])){
+				if(isset($_SESSION['username'])) {
+				
+				$uname = $_SESSION['username'];
+				// find user id from session name
+				$query_picture = "SELECT picture_path, profile_pic FROM members WHERE username = '$uname'";
+				$result_picture = mysqli_query($con, $query_picture);
+				$row_picture = mysqli_fetch_array($result_picture);
+				$picture_path = $row_picture['picture_path'];
+				$picture_name = $row_picture['profile_pic'];
+
 				echo "
 					<div class='user-account'>
 						<div class='user-info'>
-							<img src='images/user.png' alt=''>
+							<img style=\"width:32px; height:32px;\" src=\"".$picture_path.$picture_name."\" alt=\"users photo\"/>
+							
 							<a href='profile3.php' title=''>";?>
 							<?php if(isset($_SESSION['username']))  echo $_SESSION['username'];
 							echo "</a>
@@ -130,7 +140,7 @@ $result = mysqli_query($con, $query);
 							</div><!--search_form end-->
 							<h3>Setting</h3>
 							<ul class='us-links'>
-								<li><a href='profile-account-setting.html' title=''>Account Setting</a></li>
+								<li><a href='profile-account-setting.php' title=''>Account Setting</a></li>
 								<li><a href='#' title=''>Privacy</a></li>
 								<li><a href='#' title=''>Faqs</a></li>
 								<li><a href='termsofuse.php' title=''>Terms & Conditions</a></li>
@@ -157,51 +167,59 @@ $result = mysqli_query($con, $query);
 			</div>
 		</header><!--header end-->		
 
-<section class="companies-info">
+		<section class="companies-info">
 			<div class="container">
 				<div class="company-title">
 					<h3>All Photos</h3>
 				</div><!--company-title end-->
 				<div class="companies-list">
 					<div class="row">
-	<?php 
-	while ($row = mysqli_fetch_array($result)) {
-	$newDate = date("d-m-Y", strtotime($row['date_posted']));
-	echo '
-		
+				<?php 
+				while ($row = mysqli_fetch_array($result)) {
+				$newDate = date("d-m-Y", strtotime($row['date_posted']));
+				echo '	
 						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-							<div class="company_profile_info">
+						
+							<div >
+							<form id="myform" class="company_profile_info" name="myform" method="post" action="picComments.php" >
 								<div class="company-up-info">
-									
-									<a href="user-profile.html"><h3>
-									';
+								
+									<a href="user-profile.html"><h3>';
 									echo "<h3>".$row['username']."</h3>";
 									echo "</a><h4>".$newDate."</h4>
-					
-									<img src=";
-									echo '"';
-									echo "".$row['photo_path'].$row['photo_name']."";
-									echo '"';
-									echo "alt='' >
+									<img src=\"".$row['photo_path'].$row['photo_name']."\" alt='user's photo' />";
+									
+									if(isset($_SESSION['username'])) 
+									{															
+									echo "
+									<input type='hidden' name='photo_id' id='photo_id' value='".$row['photo_id']."' />
 									<ul>
 										<li>
-											<a href='#' title='' class='follow'>Like <i class='fa fa-heart' aria-hidden='true'></i></a>
+										<button style='border:none' >
+											<a id='likeLink' class='follow text-white'>Like <i class='fa fa-heart' aria-hidden='true'></i></a>
+										</button>
 											
 										</li>
-										<li><a href='#' title='' class='hire-us'>Comment <i class='fa fa-comment' aria-hidden='true'></i></a></li>
+										<li>
+										<button onclick = '' class='btn2' style='border:none' >
+										<a class='hire-us text-white'>Comment <i class='fa fa-comment' aria-hidden='true'></i></a>
+										</button>
+										</li>
 									</ul>
-								</div>
-							
-								
-								<a href='companies.html' title='' class='view-more-pro'> Likes:
-									<img src='images/likes.png' alt='' height='18' width='18'>
 									";
-									echo $row['photo_likes']; 
-									echo "
+									}
+								echo "
+								</div>
+								<a id='likesNum' class='view-more-pro'> Likes:
+									<img src='images/likes.png' alt='' height='18' width='18'>
+									".$row['photo_likes']."
 								</a>
+								</form>
 							</div><!--company_profile_info end-->
+							
 						</div>
-						";} ?>
+						";} 
+						?>
 					</div>
 				</div><!--companies-list end-->
 				<div class='process-comm'>
@@ -245,5 +263,38 @@ $result = mysqli_query($con, $query);
 <script type="text/javascript" src="js/flatpickr.min.js"></script>
 <script type="text/javascript" src="lib/slick/slick.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> <!-- load jquery via CDN -->
+<script>
+var formSubmit = true;
+
+$('.btn2').on('click', function() {
+
+formSubmit = false;
+    $.ajax({
+        url : 'picComments.php',
+    });
+});
+
+$("form").submit(function(e) {
+	
+	if(!formSubmit) return;
+	
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+
+    var form = $(this);
+    var url = form.attr('action');
+
+    $.ajax({
+           type: "POST",
+           url: 'db/likes.php',
+           data: form.serialize(), // serializes the form's elements.
+           success: function(data)
+           {  
+			$(form).children("#likesNum").html( " Likes: <img src='images/likes.png' alt='' height='18' width='18'>" + data + "</img>" );
+           }
+         });
+
+});
+</script>
 </body>
 </html>

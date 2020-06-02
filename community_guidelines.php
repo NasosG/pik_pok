@@ -1,7 +1,7 @@
 <?php
 include("db/auth.php"); //include auth.php file on all secure pages 
-	 
-
+require('db/db.php');
+require('db/errorFuncts.php');
 ?>
 	
 <!DOCTYPE html>
@@ -99,11 +99,21 @@ h4{font-weight: bold;margin-bottom:10px;margin-top:10px;}
 					</div><!--menu-btn end-->
 				
 			<?php 
-				if(isset($_SESSION['username'])){
+				if(isset($_SESSION['username'])) {
+				
+				$uname = $_SESSION['username'];
+				// find user id from session name
+				$query_picture = "SELECT picture_path, profile_pic FROM members WHERE username = '$uname'";
+				$result_picture = mysqli_query($con, $query_picture);
+				$row_picture = mysqli_fetch_array($result_picture);
+				$picture_path = $row_picture['picture_path'];
+				$picture_name = $row_picture['profile_pic'];
+
 				echo "
 					<div class='user-account'>
 						<div class='user-info'>
-							<img src='images/user.png' alt=''>
+							<img style=\"width:32px; height:32px;\" src=\"".$picture_path.$picture_name."\" alt=\"users photo\"/>
+							
 							<a href='profile3.php' title=''>";?>
 							<?php if(isset($_SESSION['username']))  echo $_SESSION['username'];
 							echo "</a>
@@ -168,14 +178,14 @@ h4{font-weight: bold;margin-bottom:10px;margin-top:10px;}
 		</header><!--header end-->	
 	<div style="font-size: 16px; line-height: 1.5; padding: 0 8px; margin: auto; margin-top: 100px; margin-bottom: 100px; padding-left: 50px; padding-right: 50px; max-width: 1050px; background:white; border-radius:4px;  border: 2px solid lightgray;">
    <div class="_60fy" id="faq-page">
-      <h2 class="terms-h2">Community Guidelines</h2>
+      <h2 class="terms-h2 ">Community Guidelines</h2><hr>
 
       <h3 class="terms-h3">The Short</h3>
       <p class="_3p8">We want pik-pok to continue to be an authentic and safe place for inspiration and expression. Help us foster this community. Post only your own photos and videos and always follow the law. Respect everyone on pik-pok, don’t spam people or post nudity.</p>
-      <h3 class="terms-h3">The Long</h3>
+      <h3 class="terms-h3 pt-2">The Long</h3>
       <p class="_3p8">pik-pok is a reflection of our diverse community of cultures, ages, and beliefs. We’ve spent a lot of time thinking about the different points of view that create a safe and open environment for everyone.</p>
       <p class="_3p8">We created the Community Guidelines so you can help us foster and protect this amazing community. By using pik-pok, you agree to these guidelines and our <a class="_5dwo" href="https://www.pik-pok.com/legal/terms">Terms of Use</a>. We’re committed to these guidelines and we hope you are too. Overstepping these boundaries may result in deleted content, <a class="_5dwo" href="http://help.pik-pok.com/366993040048856?helpref=page_content">disabled accounts</a>, or other restrictions.</p>
-      <ul class="uiList _341 _3vz6 _4of _4kg">
+      <ul class="uiList">
          <li>
             <div class="fcb">
                <h4>Share only photos and videos that you’ve taken or have the right to share.</h4>
@@ -227,24 +237,26 @@ h4{font-weight: bold;margin-bottom:10px;margin-top:10px;}
             </div>
          </li>
       </ul>
-      <div class="mvm _60fz fsl fwb fcb">Help us keep the community strong:</div>
-      <ul class="uiList _341 _3vz6 _4of _4kg">
+      <div>
+      	<h3 class="terms-h3">Help us keep the community strong:</h3>
+      </div>
+      <ul>
          <li>
-            <div class="fcb">Each of us is an important part of the pik-pok community. If you see something that you think may violate our guidelines, please help us by using our <a class="_5dwo" href="http://help.pik-pok.com/165828726894770?helpref=page_content">built-in reporting option</a>. We have a global team that reviews these reports and works as quickly as possible to remove content that doesn’t meet our guidelines. Even if you or someone you know doesn’t have an pik-pok account, you can still <a class="_5dwo" href="http://help.pik-pok.com/contact/383679321740945?helpref=page_content">file a report</a>. When you complete the report, try to provide as much information as possible, such as links, usernames, and descriptions of the content, so we can find and review it quickly. We may remove entire posts if either the imagery or associated captions violate our guidelines. </div>
+            <p class="pt-1">Each of us is an important part of the pik-pok community. If you see something that you think may violate our guidelines, please help us by using our <a class="_5dwo" href="http://help.pik-pok.com/165828726894770?helpref=page_content">built-in reporting option</a>. We have a global team that reviews these reports and works as quickly as possible to remove content that doesn’t meet our guidelines. Even if you or someone you know doesn’t have an pik-pok account, you can still <a class="_5dwo" href="http://help.pik-pok.com/contact/383679321740945?helpref=page_content">file a report</a>. When you complete the report, try to provide as much information as possible, such as links, usernames, and descriptions of the content, so we can find and review it quickly. We may remove entire posts if either the imagery or associated captions violate our guidelines. </p>
          </li>
          <li>
-            <div class="fcb">You may find content you don’t like, but doesn’t violate the Community Guidelines. If that happens, you can <a class="_5dwo" href="http://help.pik-pok.com/286340048138725?helpref=page_content">unfollow</a> or <a class="_5dwo" href="http://help.pik-pok.com/426700567389543?helpref=page_content">block</a> the person who posted it. If there&#039;s something you don&#039;t like in a comment on one of your posts, you can <a class="_5dwo" href="http://help.pik-pok.com/289098941190483?helpref=page_content">delete that comment</a>.</div>
+            <p class="pt-1">You may find content you don’t like, but doesn’t violate the Community Guidelines. If that happens, you can <a class="_5dwo" href="http://help.pik-pok.com/286340048138725?helpref=page_content">unfollow</a> or <a class="_5dwo" href="http://help.pik-pok.com/426700567389543?helpref=page_content">block</a> the person who posted it. If there&#039;s something you don&#039;t like in a comment on one of your posts, you can <a class="_5dwo" href="http://help.pik-pok.com/289098941190483?helpref=page_content">delete that comment</a>.</p>
          </li>
          <li>
-            <div class="fcb">Many disputes and misunderstandings can be resolved directly between members of the community. If one of your photos or videos was posted by someone else, you could try commenting on the post and asking the person to take it down. If that doesn’t work, you can <a class="_5dwo" href="http://help.pik-pok.com/126382350847838?helpref=page_content">file a copyright report</a>. If you believe someone is violating your trademark, you can <a class="_5dwo" href="http://help.pik-pok.com/222826637847963?helpref=page_content">file a trademark report</a>. Don&#039;t target the person who posted it by posting screenshots and drawing attention to the situation because that may be classified as harassment.</div>
+            <p class="pt-1">Many disputes and misunderstandings can be resolved directly between members of the community. If one of your photos or videos was posted by someone else, you could try commenting on the post and asking the person to take it down. If that doesn’t work, you can <a class="_5dwo" href="http://help.pik-pok.com/126382350847838?helpref=page_content">file a copyright report</a>. If you believe someone is violating your trademark, you can <a class="_5dwo" href="http://help.pik-pok.com/222826637847963?helpref=page_content">file a trademark report</a>. Don&#039;t target the person who posted it by posting screenshots and drawing attention to the situation because that may be classified as harassment.</p>
          </li>
          <li>
-            <div class="fcb">We may work with law enforcement, including when we believe that there’s risk of physical harm or threat to public safety.</div>
+            <p class="fcb">We may work with law enforcement, including when we believe that there’s risk of physical harm or threat to public safety.</p>
          </li>
       </ul>
-      <p class="_3p8">For more information, check out our <a class="_5dwo" href="http://help.pik-pok.com/?helpref=page_content">Help Center</a> and <a class="_5dwo" href="http://pik-pok.com/legal/terms/#">Terms of Use</a>.</p>
-      <p class="_3p8">Thank you for helping us create one of the best communities in the world,</p>
-      <p class="_3p8">The pik-pok Team</p>
+      <p class="pt-3">For more information, check out our <a href="http://help.pik-pok.com/?helpref=page_content">Help Center</a> and <a href="http://pik-pok.com/legal/terms/#">Terms of Use</a>.</p>
+      <p class="">Thank you for helping us create one of the best communities in the world,</p>
+      <p class="pb-3">The pik-pok Team</p>
    </div>
 </div>
 </div></div>

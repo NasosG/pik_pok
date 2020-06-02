@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 29, 2020 at 08:36 PM
--- Server version: 10.1.33-MariaDB
--- PHP Version: 7.2.6
+-- Φιλοξενητής: 127.0.0.1
+-- Χρόνος δημιουργίας: 02 Ιουν 2020 στις 20:32:51
+-- Έκδοση διακομιστή: 10.4.11-MariaDB
+-- Έκδοση PHP: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pik_pok`
+-- Βάση δεδομένων: `pik_pok`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comment_likes`
+-- Δομή πίνακα για τον πίνακα `comment_likes`
 --
 
 CREATE TABLE `comment_likes` (
@@ -38,7 +37,7 @@ CREATE TABLE `comment_likes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hashtags`
+-- Δομή πίνακα για τον πίνακα `hashtags`
 --
 
 CREATE TABLE `hashtags` (
@@ -51,7 +50,7 @@ CREATE TABLE `hashtags` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `images`
+-- Δομή πίνακα για τον πίνακα `images`
 --
 
 CREATE TABLE `images` (
@@ -65,7 +64,7 @@ CREATE TABLE `images` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `images`
+-- Άδειασμα δεδομένων του πίνακα `images`
 --
 
 INSERT INTO `images` (`photo_id`, `photo_name`, `photo_likes`, `photo_path`, `username`, `photo_tag`, `date_posted`) VALUES
@@ -76,7 +75,7 @@ INSERT INTO `images` (`photo_id`, `photo_name`, `photo_likes`, `photo_path`, `us
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ip_addresses`
+-- Δομή πίνακα για τον πίνακα `ip_addresses`
 --
 
 CREATE TABLE `ip_addresses` (
@@ -87,7 +86,7 @@ CREATE TABLE `ip_addresses` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `members`
+-- Δομή πίνακα για τον πίνακα `members`
 --
 
 CREATE TABLE `members` (
@@ -100,38 +99,47 @@ CREATE TABLE `members` (
   `id` int(30) NOT NULL,
   `sex` tinyint(1) DEFAULT NULL,
   `date_of_birth` date DEFAULT NULL,
-  `profile_pic` varchar(50) DEFAULT NULL,
+  `profile_pic` varchar(100) DEFAULT NULL,
   `picture_path` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `members`
+-- Άδειασμα δεδομένων του πίνακα `members`
 --
 
 INSERT INTO `members` (`username`, `password`, `fname`, `lname`, `email`, `date_of_registration`, `id`, `sex`, `date_of_birth`, `profile_pic`, `picture_path`) VALUES
-('thn12', '202cb962ac59075b964b07152d234b70', 'Μιχαλάκης', 'Πανταζής', 'asd@er.gr', '2020-05-21', 40, 0, '1989-02-08', '011_101_anonymous_anonym_hacker_vendetta_user_huma', 'uploads/users/40/'),
-('qwr', '202cb962ac59075b964b07152d234b70', 'qwr', 'qwer', 'qwer@fff', '2020-05-21', 41, 0, '2020-04-29', '9f65d3bd25501cccc0238ae5301a330b.jpg', 'uploads/users/41/'),
-('asd', '7815696ecbf1c96e6894b779456d330e', 'adasas', 'asd', 'asd@er.gr', '2020-05-21', 43, 0, '2020-05-06', '135c7647c3be1c280ed29afadcd91deb_batman-face-clipa', 'uploads/users/43/'),
-('as', '0cc175b9c0f1b6a831c399e269772661', 'a', 'a', 'a@s', '2020-05-27', 44, 0, '2020-05-07', NULL, NULL);
+('thn12', '202cb962ac59075b964b07152d234b70', 'Μιχαλάκης', 'Πανταζής', 'asd@er.gr', '2020-05-21', 40, 0, '1989-02-08', '011_101_anonymous_anonym_hacker_vendetta_user_human_avatar-512.jpg', 'uploads/users/40/'),
+('mara10', '202cb962ac59075b964b07152d234b70', 'μαρια', 'αντεπαλοβ', 'mrt@iop.com', '2020-06-02', 45, 1, '1987-10-29', 'Screenshot_160.png', 'uploads/users/45/');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post_comments`
+-- Δομή πίνακα για τον πίνακα `post_comments`
 --
 
 CREATE TABLE `post_comments` (
   `post_comments_id` int(11) NOT NULL,
-  `post_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `comment_text` text CHARACTER SET utf8,
-  `time_commented` datetime NOT NULL
+  `post_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `comment_text` text CHARACTER SET utf8 DEFAULT NULL,
+  `time_commented` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Άδειασμα δεδομένων του πίνακα `post_comments`
+--
+
+INSERT INTO `post_comments` (`post_comments_id`, `post_id`, `user_id`, `comment_text`, `time_commented`) VALUES
+(1, 3, 40, 'GEIA XARA BRO EDO GIANIS', '2020-06-01 21:43:49'),
+(56, 3, 45, 'geia xara bro edo maria', '2020-06-02 16:54:25'),
+(61, 1, 45, 'Ωραία φωτογραφία', '2020-06-02 18:30:40'),
+(62, 2, 40, 'χαχα #php4ever', '2020-06-02 18:32:36'),
+(63, 3, 45, 'τέλεια φωτο γεα', '2020-06-02 20:11:46');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post_likes`
+-- Δομή πίνακα για τον πίνακα `post_likes`
 --
 
 CREATE TABLE `post_likes` (
@@ -142,42 +150,42 @@ CREATE TABLE `post_likes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Indexes for dumped tables
+-- Ευρετήρια για άχρηστους πίνακες
 --
 
 --
--- Indexes for table `comment_likes`
+-- Ευρετήρια για πίνακα `comment_likes`
 --
 ALTER TABLE `comment_likes`
   ADD PRIMARY KEY (`comment_like_id`);
 
 --
--- Indexes for table `hashtags`
+-- Ευρετήρια για πίνακα `hashtags`
 --
 ALTER TABLE `hashtags`
   ADD PRIMARY KEY (`hashtag_id`);
 
 --
--- Indexes for table `images`
+-- Ευρετήρια για πίνακα `images`
 --
 ALTER TABLE `images`
   ADD PRIMARY KEY (`photo_id`),
   ADD KEY `username` (`username`);
 
 --
--- Indexes for table `ip_addresses`
+-- Ευρετήρια για πίνακα `ip_addresses`
 --
 ALTER TABLE `ip_addresses`
   ADD PRIMARY KEY (`IP_id`);
 
 --
--- Indexes for table `members`
+-- Ευρετήρια για πίνακα `members`
 --
 ALTER TABLE `members`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `post_comments`
+-- Ευρετήρια για πίνακα `post_comments`
 --
 ALTER TABLE `post_comments`
   ADD PRIMARY KEY (`post_comments_id`),
@@ -185,63 +193,63 @@ ALTER TABLE `post_comments`
   ADD KEY `post_id` (`post_id`);
 
 --
--- Indexes for table `post_likes`
+-- Ευρετήρια για πίνακα `post_likes`
 --
 ALTER TABLE `post_likes`
   ADD PRIMARY KEY (`post_likes_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT για άχρηστους πίνακες
 --
 
 --
--- AUTO_INCREMENT for table `comment_likes`
+-- AUTO_INCREMENT για πίνακα `comment_likes`
 --
 ALTER TABLE `comment_likes`
   MODIFY `comment_like_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `hashtags`
+-- AUTO_INCREMENT για πίνακα `hashtags`
 --
 ALTER TABLE `hashtags`
   MODIFY `hashtag_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `images`
+-- AUTO_INCREMENT για πίνακα `images`
 --
 ALTER TABLE `images`
   MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `ip_addresses`
+-- AUTO_INCREMENT για πίνακα `ip_addresses`
 --
 ALTER TABLE `ip_addresses`
   MODIFY `IP_id` int(50) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `members`
+-- AUTO_INCREMENT για πίνακα `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
--- AUTO_INCREMENT for table `post_comments`
+-- AUTO_INCREMENT για πίνακα `post_comments`
 --
 ALTER TABLE `post_comments`
-  MODIFY `post_comments_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `post_comments_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
--- AUTO_INCREMENT for table `post_likes`
+-- AUTO_INCREMENT για πίνακα `post_likes`
 --
 ALTER TABLE `post_likes`
-  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Constraints for dumped tables
+-- Περιορισμοί για άχρηστους πίνακες
 --
 
 --
--- Constraints for table `post_comments`
+-- Περιορισμοί για πίνακα `post_comments`
 --
 ALTER TABLE `post_comments`
   ADD CONSTRAINT `post_comments_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `members` (`id`),

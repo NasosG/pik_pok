@@ -101,11 +101,21 @@ $row2 = mysqli_fetch_array($result);
 					</div><!--menu-btn end-->
 				
 			<?php 
-				if(isset($_SESSION['username'])){
+				if(isset($_SESSION['username'])) {
+				
+				$uname = $_SESSION['username'];
+				// find user id from session name
+				$query_picture = "SELECT picture_path, profile_pic FROM members WHERE username = '$uname'";
+				$result_picture = mysqli_query($con, $query_picture);
+				$row_picture = mysqli_fetch_array($result_picture);
+				$picture_path = $row_picture['picture_path'];
+				$picture_name = $row_picture['profile_pic'];
+
 				echo "
 					<div class='user-account'>
 						<div class='user-info'>
-							<img src='images/user.png' alt=''>
+							<img style=\"width:32px; height:32px;\" src=\"".$picture_path.$picture_name."\" alt=\"users photo\"/>
+							
 							<a href='profile3.php' title=''>";?>
 							<?php if(isset($_SESSION['username']))  echo $_SESSION['username'];
 							echo "</a>
@@ -179,7 +189,7 @@ $row2 = mysqli_fetch_array($result);
                                                 <div class="usy-dt">
                                                     <img src="images/bg-img2.png" alt="">
                                                     <div class="usy-name">
-                                                        <h3>mixalakis</h3>
+                                                        <h3><?php echo ''?></h3>
 														<span><i class="fa fa-clock-o" aria-hidden="true"> 3 min ago</i></span>
                                                     </div>
                                                 </div>
@@ -243,7 +253,7 @@ $row2 = mysqli_fetch_array($result);
 											while ($row = mysqli_fetch_array($result)) {
 
 											$user_id = $row['user_id'];
-											$query3 = "SELECT * FROM members WHERE id = '$user_id'"; 											
+											$query3 = "SELECT username, picture_path, profile_pic FROM members WHERE id = '$user_id'"; 			
 											$result3 = mysqli_query($con, $query3);	
 											$row3 = mysqli_fetch_array($result3);
 											//$newDate = date("d-m-Y", strtotime($row['date_posted']));

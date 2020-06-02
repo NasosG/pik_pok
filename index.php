@@ -2,7 +2,7 @@
 include("db/auth.php"); //include auth.php file on all secure pages 
 require('db/db.php');
 require('db/errorFuncts.php');
- 
+
 mysqli_set_charset($con,"utf8");
 $query = "SELECT * FROM images ORDER BY photo_id DESC"; //mporoume na kanoume order by date alla kai to id petuxainei ton skopo kai den xreiazetai na kratame kai thn wra sthn bash alla mono hmeromhnia
 		
@@ -88,11 +88,21 @@ $result = mysqli_query($con, $query);
 					</div><!--menu-btn end-->
 				
 			<?php 
-				if(isset($_SESSION['username'])){
+				if(isset($_SESSION['username'])) {
+				
+				$uname = $_SESSION['username'];
+				// find user id from session name
+				$query_picture = "SELECT picture_path, profile_pic FROM members WHERE username = '$uname'";
+				$result_picture = mysqli_query($con, $query_picture);
+				$row_picture = mysqli_fetch_array($result_picture);
+				$picture_path = $row_picture['picture_path'];
+				$picture_name = $row_picture['profile_pic'];
+
 				echo "
 					<div class='user-account'>
 						<div class='user-info'>
-							<img src='images/user.png' alt=''>
+							<img style=\"width:32px; height:32px;\" src=\"".$picture_path.$picture_name."\" alt=\"users photo\"/>
+							
 							<a href='profile3.php' title=''>";?>
 							<?php if(isset($_SESSION['username']))  echo $_SESSION['username'];
 							echo "</a>
