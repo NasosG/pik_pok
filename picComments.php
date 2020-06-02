@@ -243,7 +243,7 @@ $row2 = mysqli_fetch_array($result);
 											while ($row = mysqli_fetch_array($result)) {
 
 											$user_id = $row['user_id'];
-											$query3 = "SELECT username FROM members WHERE id = '$user_id'"; 											
+											$query3 = "SELECT * FROM members WHERE id = '$user_id'"; 											
 											$result3 = mysqli_query($con, $query3);	
 											$row3 = mysqli_fetch_array($result3);
 											//$newDate = date("d-m-Y", strtotime($row['date_posted']));
@@ -252,7 +252,7 @@ $row2 = mysqli_fetch_array($result);
                                             <div class="comment-area">
                                                 <div class="post_topbar">
                                                     <div class="usy-dt">
-                                                        <img src="images/bg-img3.png" alt="">
+                                                        <img style="width:40px; height:40px;" src="'.$row3['picture_path'].$row3['profile_pic'].'" alt="users photo"/>
                                                         <div class="usy-name">
                                                             <h3>'.$row3['username'].'</h3>
                                                             <span><img src="images/clock.png" alt="">'.date("d-m-Y H:i:s", strtotime($row['time_commented'])).'</span>

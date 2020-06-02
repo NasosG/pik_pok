@@ -176,7 +176,7 @@ $result = mysqli_query($con, $query);
 									<a href="user-profile.html"><h3>';
 									echo "<h3>".$row['username']."</h3>";
 									echo "</a><h4>".$newDate."</h4>
-									<img src=\"".$row['photo_path'].$row['photo_name']."\" alt='user's photo' >";
+									<img src=\"".$row['photo_path'].$row['photo_name']."\" alt='user's photo' />";
 									
 									if(isset($_SESSION['username'])) 
 									{															
