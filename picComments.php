@@ -1,13 +1,13 @@
 <?php
-include("db/auth.php"); //include auth.php file on all secure pages 
+include("db/auth.php"); //include auth.php file on all secure pages
 require('db/db.php');
 require('db/errorFuncts.php');
 
-$photo_id = $_POST['photo_id']; 
+$photo_id = $_POST['photo_id'];
 
 mysqli_set_charset($con,"utf8");
-$query = "SELECT * FROM post_comments WHERE post_id = $photo_id"; 
-		
+$query = "SELECT * FROM post_comments WHERE post_id = $photo_id";
+
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_array($result);
 
@@ -16,9 +16,9 @@ $result = mysqli_query($con, $query2);
 
 $row2 = mysqli_fetch_array($result);
 //echo $row2['photo_path'].$row2['photo_name'];
- 
+
 ?>
-	
+
 <!DOCTYPE html>
 <html>
 
@@ -82,7 +82,7 @@ $row2 = mysqli_fetch_array($result);
 									Contact
 								</a>
 							</li>
-							<?php 
+							<?php
 							if(isset($_SESSION['username']))
 							echo '
 							<li>
@@ -99,10 +99,10 @@ $row2 = mysqli_fetch_array($result);
 					<div class="menu-btn">
 						<a href="#" title=""><i class="fa fa-bars"></i></a>
 					</div><!--menu-btn end-->
-				
-			<?php 
+
+			<?php
 				if(isset($_SESSION['username'])) {
-				
+
 				$uname = $_SESSION['username'];
 				// find user id from session name
 				$query_picture = "SELECT picture_path, profile_pic FROM members WHERE username = '$uname'";
@@ -115,7 +115,7 @@ $row2 = mysqli_fetch_array($result);
 					<div class='user-account'>
 						<div class='user-info'>
 							<img style=\"width:32px; height:32px;\" src=\"".$picture_path.$picture_name."\" alt=\"users photo\"/>
-							
+
 							<a href='profile3.php' title=''>";?>
 							<?php if(isset($_SESSION['username']))  echo $_SESSION['username'];
 							echo "</a>
@@ -162,35 +162,49 @@ $row2 = mysqli_fetch_array($result);
 					</div>
 					";
 				}
-					else 
+					else
 						echo "<div class='user-account'>
 						<div class='user-info' style='margin-left:auto; margin-right:auto;'>
-							
+
 							<a href='signin.php' title=''> <i class='fa fa-sign-in fa-lg'></i> Sign In</a>
-							
+
 						</div>
 					";
 			?>
 				</div><!--header-data end-->
 			</div>
 		</header><!--header end-->
-		
+
         <main>
             <div class="main-section">
                 <div class="container">
                     <div class="main-section-data">
                         <div class="row">
                             <div class="col-xl-9 col-lg-9 col-md-12">
-                               
+
                                 <div class="main-ws-sec">
                                     <div class="posts-section">
                                         <div class="post-bar">
                                             <div class="post_topbar">
                                                 <div class="usy-dt">
-                                                    <img src="images/bg-img2.png" alt="">
+																										<?php
+																									echo "
+                                                  	<img style=\"width:32px; height:32px;\" src=\"".$picture_path.$picture_name."\" alt=\"users photo\"/> ";?>
                                                     <div class="usy-name">
-                                                        <h3><?php echo ''?></h3>
-														<span><i class="fa fa-clock-o" aria-hidden="true"> 3 min ago</i></span>
+																											<?php
+																											// user id username
+																											$query = "SELECT * FROM post_comments WHERE post_id = $photo_id";
+																											$result= mysqli_query($con,$query);
+																											$row = mysqli_fetch_array($result);
+																											$user_id = $row['user_id'];
+																											$query3 = "SELECT username, picture_path, profile_pic FROM members WHERE id = '$user_id'";
+																											$result3 = mysqli_query($con, $query3);
+																											$row3 = mysqli_fetch_array($result3);
+																											$user_of_post= $row3['username'];
+																											?>
+                                                        <h3><?php echo $user_of_post.'</h3>
+																												<span><i class="fa fa-clock-o" aria-hidden="true"> '.date("d-m-Y H:i:s", strtotime($row['time_commented'])).'</i></span>
+																												'; ?>
                                                     </div>
                                                 </div>
                                                 <div class="ed-opts">
@@ -225,7 +239,7 @@ $row2 = mysqli_fetch_array($result);
                                                     <li><a href="#" title="">Wordpress</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="job-status-bar btm-line">                                               
+                                            <div class="job-status-bar btm-line">
                                                <ul class="like-com">
 													<li>
 														<a href="#" class="active"><i class="fa fa-heart"></i> Like</a>
@@ -234,28 +248,29 @@ $row2 = mysqli_fetch_array($result);
 													</li>
 													<li><a href="#" class="com"><i class="fa fa-comment"></i> Comments 15</a></li>
 												</ul>
-												<a href="#"><i class="fa fa-eye"></i>Views 50</a>                                             
+												<a href="#"><i class="fa fa-eye"></i>Views 50</a>
                                             </div>
-                                           
-											<div class="comment-area"> 
+
+											<div class="comment-area">
 												<div class="reply-area">
 												   <p><br></p>
 												   <span><i class="fa fa-comments"></i>Comments<br></span>
 												   <br>
 												</div>
 											</div>
-                                                      
+
 											<?php
-											$query = "SELECT * FROM post_comments WHERE post_id = $photo_id"; 											
-											$result = mysqli_query($con, $query);	
-											
-										
+											$query = "SELECT * FROM post_comments WHERE post_id = $photo_id";
+											$result = mysqli_query($con, $query);
+
+
 											while ($row = mysqli_fetch_array($result)) {
 
 											$user_id = $row['user_id'];
-											$query3 = "SELECT username, picture_path, profile_pic FROM members WHERE id = '$user_id'"; 			
-											$result3 = mysqli_query($con, $query3);	
+											$query3 = "SELECT username, picture_path, profile_pic FROM members WHERE id = '$user_id'";
+											$result3 = mysqli_query($con, $query3);
 											$row3 = mysqli_fetch_array($result3);
+											$user_of_post= $row3['username'];
 											//$newDate = date("d-m-Y", strtotime($row['date_posted']));
 
 											echo '
@@ -323,7 +338,7 @@ $row2 = mysqli_fetch_array($result);
                                             <i class="fa fa-ellipsis-v"></i>
                                         </div>
                                         <div class="sd-title paymethd">
-                                            <h4>Payment Method</h4>                                            
+                                            <h4>Payment Method</h4>
                                             <p>Verified</p>
                                             <ul class="star">
                                                 <li><i class="fa fa-star"></i></li>
@@ -343,7 +358,7 @@ $row2 = mysqli_fetch_array($result);
                                             <p>85% Hire Rate, 15% Open Jobs</p>
                                         </div>
                                         <div class="sd-title">
-                                            <h4>Member Since</h4>                                          
+                                            <h4>Member Since</h4>
                                             <p>August 24, 2017</p>
                                         </div>
                                     </div>
@@ -382,7 +397,7 @@ $row2 = mysqli_fetch_array($result);
                                 <!--right-sidebar end-->
                             </div>
                         </div>
-                       
+
 
                     </div><!-- main-section-data end-->
                 </div>
@@ -407,9 +422,9 @@ $row2 = mysqli_fetch_array($result);
                 </div>
             </div>
         </footer>
-        <!--footer end-->       
-        
-              
+        <!--footer end-->
+
+
         </div>
         <!--post-project-popup end-->
     </div>
@@ -423,16 +438,16 @@ $row2 = mysqli_fetch_array($result);
 	<script>
 	var form = $('.aform');
 $('.aform').submit(function(e) {
-    
-    
-    
-    e.preventDefault(); 
+
+
+
+    e.preventDefault();
         $.ajax({
            type: "POST",
            url: 'db/comments.php',
            data: form.serialize(), // serializes the form's elements.
            success: function(data)
-           {  
+           {
             location.reload();
            }
          });
