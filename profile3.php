@@ -2,6 +2,12 @@
 include("db/auth.php"); //include auth.php file on all secure pages 
 require('db/db.php');
 require('db/errorFuncts.php');
+
+$uname = $_SESSION['username'];
+$query = "SELECT * FROM images WHERE username = '$uname' ORDER BY photo_id DESC";
+$result = mysqli_query($con, $query);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -86,14 +92,17 @@ require('db/errorFuncts.php');
 				<?php 
 				if(isset($_SESSION['username'])) {
 				
-				$uname = $_SESSION['username'];
+				
 				// find user id from session name
-				$query_picture = "SELECT picture_path, profile_pic FROM members WHERE username = '$uname'";
+				$query_picture = "SELECT email, fname, lname, picture_path, profile_pic FROM members WHERE username = '$uname'";
 				$result_picture = mysqli_query($con, $query_picture);
 				$row_picture = mysqli_fetch_array($result_picture);
 				$picture_path = $row_picture['picture_path'];
 				$picture_name = $row_picture['profile_pic'];
-
+				$fname = $row_picture['fname'];
+				$lname = $row_picture['lname'];
+				$email = $row_picture['email'];
+				//mysqli_close($con);
 				echo "
 					<div class='user-account'>
 						<div class='user-info'>
@@ -172,7 +181,7 @@ require('db/errorFuncts.php');
 											<div class="username-dt">
 											<div class="user-pro-img">
 												<div class="usr-pic  ">
-											<img src="images/user-pic.png" alt="">
+											<img src= <?php echo '"'.$picture_path.$picture_name.'"'; ?> alt="">
 											<div class="add-dp" id="OpenImgUpload">
 												<input type="file" id="file">
 												<label for="file"><i class="fa fa-camera" aria-hidden="true"></i></label>												
@@ -182,7 +191,8 @@ require('db/errorFuncts.php');
 											</div><!--username-dt end-->
 											<div class="user-specs">
 												<h3><?php echo $_SESSION['username'];?></h3>
-												<span><?php echo 'firstname lastname';?></span>
+												<span><?php echo $fname.' '.$lname;?></span>
+												<span><br><?php echo 'email: '.$email;?></span>
 											</div>
 										</div><!--user-profile end-->
 										<ul class="user-fw-status">
@@ -206,56 +216,10 @@ require('db/errorFuncts.php');
 										</div><!--sd-title end-->
 										<div class="suggestions-list">
 											<div class="suggestion-usd">
-												<img src="images/s1.png" alt="">
-												<div class="sgt-text">
-													<h4>Jessica William</h4>
-													<span>Graphic Designer</span>
-												</div>
-												<span><i class="fa fa-plus"></i></span>
+												
 											</div>
-											<div class="suggestion-usd">
-												<img src="images/s2.png" alt="">
-												<div class="sgt-text">
-													<h4>John Doe</h4>
-													<span>PHP Developer</span>
-												</div>
-												<span><i class="fa fa-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/s3.png" alt="">
-												<div class="sgt-text">
-													<h4>Poonam</h4>
-													<span>Wordpress Developer</span>
-												</div>
-												<span><i class="fa fa-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/s4.png" alt="">
-												<div class="sgt-text">
-													<h4>Bill Gates</h4>
-													<span>C & C++ Developer</span>
-												</div>
-												<span><i class="fa fa-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/s5.png" alt="">
-												<div class="sgt-text">
-													<h4>Jessica William</h4>
-													<span>Graphic Designer</span>
-												</div>
-												<span><i class="fa fa-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img src="images/s6.png" alt="">
-												<div class="sgt-text">
-													<h4>John Doe</h4>
-													<span>PHP Developer</span>
-												</div>
-												<span><i class="fa fa-plus"></i></span>
-											</div>
-											<div class="view-more">
-												<a href="#" title="">View More</a>
-											</div>
+											
+											
 										</div><!--suggestions-list end-->
 									</div><!--suggestions end-->
 									<div class="tags-sec full-width">
@@ -280,7 +244,7 @@ require('db/errorFuncts.php');
 								<div class="main-ws-sec">
 									<div class="post-topbar">
 										<div class="user-picy">
-											<img src="images/user-pic.png" alt="">
+											<img src= <?php echo '"'.$picture_path.$picture_name.'"'; ?> alt="">
 										</div>
 										<div class="post-st">
 											<ul>
@@ -292,13 +256,18 @@ require('db/errorFuncts.php');
 										</div><!--post-st end-->
 									</div><!--post-topbar end-->
 									<div class="posts-section">
+									<?php 
+									while ($row = mysqli_fetch_array($result)) {
+										$photo = $row['photo_path'].$row['photo_name'];
+										$date_posted = date("d-m-Y", strtotime($row['date_posted']));
+										echo '	
 										<div class="post-bar">
 											<div class="post_topbar">
 												<div class="usy-dt">
 													<img src="images/us-pic.png" alt="">
 													<div class="usy-name">
-														<h3>John Doe</h3>
-														<span><img src="images/clock.png" alt="">3 min ago</span>
+														<h3>Posted by Me</h3>
+														<span><img src="images/clock.png" alt="">'.$date_posted.'</span>
 													</div>
 												</div>
 												<div class="ed-opts">
@@ -312,310 +281,45 @@ require('db/errorFuncts.php');
 													</ul>
 												</div>
 											</div>
-											<div class="epi-sec">
-												<ul class="descp">
-													<li><img src="images/icon8.png" alt=""><span>Epic Coder</span></li>
-													<li><img src="images/icon9.png" alt=""><span>India</span></li>
-												</ul>
-												<ul class="bk-links">
-													<li><a href="#" title=""><i class="fa fa-bookmark"></i></a></li>
-													<li><a href="#" title=""><i class="fa fa-envelope"></i></a></li>
-												</ul>
+											<div class="epi-sec pb-3">
+												
 											</div>
-											<div class="job_descp">
-												<h3>Senior Wordpress Developer</h3>
-												<ul class="job-dt">
-													<li><a href="#" title="">Full Time</a></li>
-													<li><span>$30 / hr</span></li>
-												</ul>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-												<ul class="skill-tags">
-													<li><a href="#" title="">HTML</a></li>
-													<li><a href="#" title="">PHP</a></li>
-													<li><a href="#" title="">CSS</a></li>
-													<li><a href="#" title="">Javascript</a></li>
-													<li><a href="#" title="">Wordpress</a></li> 	
-												</ul>
+											<div class="job_descp pb-1">
+												<img src="'.$photo.'"/>
 											</div>
+											<form name="delete-form" class="form-delete" id="delete-form" method="post" action="db/delete_photo.php">
+												<input type="hidden" name="photo_id" id="photo_id" value="'.$row['photo_id'].'" />
+												<ul class="bk-links pb-2">
+													<li><button id="trash-button" class="trash-button"><a   title=""><i class="fa fa-trash"></i></a></button></li>
+												</ul>
+											</form>
 											<div class="job-status-bar">
-												<ul class="like-com">
+                                               <ul class="like-com">
 													<li>
-														<a href="#"><i class="fa fa-heart"></i> Like</a>
-														<img src="images/liked-img.png" alt="">
-														<span>25</span>
-													</li> 
-													<li><a href="#" class="com"><i class="fa fa-comment-alt"></i> Comment 15</a></li>
+														<a href="#" class="active"><i class="fa fa-heart"></i> Like</a> </li>
+														<!--<img src="images/liked-img.png" alt="">
+														
+													</li>
+													<li><a href="#" class="com"><i class="fa fa-comment"></i> Comments 15</a></li>-->
 												</ul>
-												<a href="#"><i class="fa fa-eye"></i>Views 50</a>
+												<ul style= "float:right;" class="like-com">
+													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-thumbs-up"></i> Likes 15</a></li>
+													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-comment"></i> Comments 15</a></li>
+												</ul>
 											</div>
 										</div><!--post-bar end-->
-										<div class="top-profiles">
-											<div class="pf-hd">
-												<h3>Top Profiles</h3>
-												<i class="fa fa-ellipsis-v"></i>
-											</div>
-											<div class="profiles-slider">
-												<div class="user-profy">
-													<img src="images/user1.png" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
-													</ul>
-													<a href="#" title="">View Profile</a>
-												</div><!--user-profy end-->
-												<div class="user-profy">
-													<img src="images/user2.png" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
-													</ul>
-													<a href="#" title="">View Profile</a>
-												</div><!--user-profy end-->
-												<div class="user-profy">
-													<img src="images/user3.png" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
-													</ul>
-													<a href="#" title="">View Profile</a>
-												</div><!--user-profy end-->
-												<div class="user-profy">
-													<img src="images/user1.png" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
-													</ul>
-													<a href="#" title="">View Profile</a>
-												</div><!--user-profy end-->
-												<div class="user-profy">
-													<img src="images/user2.png" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
-													</ul>
-													<a href="#" title="">View Profile</a>
-												</div><!--user-profy end-->
-												<div class="user-profy">
-													<img src="images/user3.png" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="#" title="" class="followw">Follow</a></li>
-														<li><a href="#" title="" class="envlp"><img src="images/envelop.png" alt=""></a></li>
-														<li><a href="#" title="" class="hire">hire</a></li>
-													</ul>
-													<a href="#" title="">View Profile</a>
-												</div><!--user-profy end-->
-											</div><!--profiles-slider end-->
-										</div><!--top-profiles end-->
-										<div class="post-bar">
-											<div class="post_topbar">
-												<div class="usy-dt">
-													<img src="images/us-pic.png" alt="">
-													<div class="usy-name">
-														<h3>John Doe</h3>
-														<span><img src="images/clock.png" alt="">3 min ago</span>
-													</div>
-												</div>
-												<div class="ed-opts">
-													<a href="#" title="" class="ed-opts-open"><i class="fa fa-ellipsis-v"></i></a>
-													<ul class="ed-options">
-														<li><a href="#" title="">Edit Post</a></li>
-														<li><a href="#" title="">Unsaved</a></li>
-														<li><a href="#" title="">Unbid</a></li>
-														<li><a href="#" title="">Close</a></li>
-														<li><a href="#" title="">Hide</a></li>
-													</ul>
-												</div>
-											</div>
-											<div class="epi-sec">
-												<ul class="descp">
-													<li><img src="images/icon8.png" alt=""><span>Epic Coder</span></li>
-													<li><img src="images/icon9.png" alt=""><span>India</span></li>
-												</ul>
-												<ul class="bk-links">
-													<li><a href="#" title=""><i class="fa fa-bookmark"></i></a></li>
-													<li><a href="#" title=""><i class="fa fa-envelope"></i></a></li>
-													<li><a href="#" title="" class="bid_now">Bid Now</a></li>
-												</ul>
-											</div>
-											<div class="job_descp">
-												<h3>Senior Wordpress Developer</h3>
-												<ul class="job-dt">
-													<li><a href="#" title="">Full Time</a></li>
-													<li><span>$30 / hr</span></li>
-												</ul>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-												<ul class="skill-tags">
-													<li><a href="#" title="">HTML</a></li>
-													<li><a href="#" title="">PHP</a></li>
-													<li><a href="#" title="">CSS</a></li>
-													<li><a href="#" title="">Javascript</a></li>
-													<li><a href="#" title="">Wordpress</a></li> 	
-												</ul>
-											</div>
-											<div class="job-status-bar">
-												<ul class="like-com">
-													<li>
-														<a href="#"><i class="fa fa-heart"></i> Like</a>
-														<img src="images/liked-img.png" alt="">
-														<span>25</span>
-													</li> 
-													<li><a href="#" class="com"><i class="fa fa-comment-alt"></i> Comment 15</a></li>
-												</ul>
-												<a href="#"><i class="fa fa-eye"></i>Views 50</a>
-											</div>
-										</div><!--post-bar end-->
-										<div class="posty">
-											<div class="post-bar no-margin">
-												<div class="post_topbar">
-													<div class="usy-dt">
-														<img src="images/us-pc2.png" alt="">
-														<div class="usy-name">
-															<h3>John Doe</h3>
-															<span><img src="images/clock.png" alt="">3 min ago</span>
-														</div>
-													</div>
-													<div class="ed-opts">
-														<a href="#" title="" class="ed-opts-open"><i class="fa fa-ellipsis-v"></i></a>
-														<ul class="ed-options">
-															<li><a href="#" title="">Edit Post</a></li>
-															<li><a href="#" title="">Unsaved</a></li>
-															<li><a href="#" title="">Unbid</a></li>
-															<li><a href="#" title="">Close</a></li>
-															<li><a href="#" title="">Hide</a></li>
-														</ul>
-													</div>
-												</div>
-												<div class="epi-sec">
-													<ul class="descp">
-														<li><img src="images/icon8.png" alt=""><span>Epic Coder</span></li>
-														<li><img src="images/icon9.png" alt=""><span>India</span></li>
-													</ul>
-													<ul class="bk-links">
-														<li><a href="#" title=""><i class="fa fa-bookmark"></i></a></li>
-														<li><a href="#" title=""><i class="fa fa-envelope"></i></a></li>
-													</ul>
-												</div>
-												<div class="job_descp">
-													<h3>Senior Wordpress Developer</h3>
-													<ul class="job-dt">
-														<li><a href="#" title="">Full Time</a></li>
-														<li><span>$30 / hr</span></li>
-													</ul>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="#" title="">view more</a></p>
-													<ul class="skill-tags">
-														<li><a href="#" title="">HTML</a></li>
-														<li><a href="#" title="">PHP</a></li>
-														<li><a href="#" title="">CSS</a></li>
-														<li><a href="#" title="">Javascript</a></li>
-														<li><a href="#" title="">Wordpress</a></li> 	
-													</ul>
-												</div>
-												<div class="job-status-bar">
-													<ul class="like-com">
-														<li>
-															<a href="#"><i class="fa fa-heart"></i> Like</a>
-															<img src="images/liked-img.png" alt="">
-															<span>25</span>
-														</li> 
-														<li><a href="#" class="com"><i class="fa fa-comment-alt"></i> Comment 15</a></li>
-													</ul>
-													<a href="#"><i class="fa fa-eye"></i>Views 50</a>
-												</div>
-											</div><!--post-bar end-->
-											<div class="comment-section">
-												<a href="#" class="plus-ic">
-													<i class="fa fa-plus"></i>
-												</a>
-												<div class="comment-sec">
-													<ul>
-														<li>
-															<div class="comment-list">
-																<div class="bg-img">
-																	<img src="images/bg-img1.png" alt="">
-																</div>
-																<div class="comment">
-																	<h3>John Doe</h3>
-																	<span><img src="images/clock.png" alt=""> 3 min ago</span>
-																	<p>Lorem ipsum dolor sit amet, </p>
-																	<a href="#" title="" class="active"><i class="fa fa-reply-all"></i>Reply</a>
-																</div>
-															</div><!--comment-list end-->
-															<ul>
-																<li>
-																	<div class="comment-list">
-																		<div class="bg-img">
-																			<img src="images/bg-img2.png" alt="">
-																		</div>
-																		<div class="comment">
-																			<h3>John Doe</h3>
-																			<span><img src="images/clock.png" alt=""> 3 min ago</span>
-																			<p>Hi John </p>
-																			<a href="#" title=""><i class="fa fa-reply-all"></i>Reply</a>
-																		</div>
-																	</div><!--comment-list end-->
-																</li>
-															</ul>
-														</li>
-														<li>
-															<div class="comment-list">
-																<div class="bg-img">
-																	<img src="images/bg-img3.png" alt="">
-																</div>
-																<div class="comment">
-																	<h3>John Doe</h3>
-																	<span><img src="images/clock.png" alt=""> 3 min ago</span>
-																	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at.</p>
-																	<a href="#" title=""><i class="fa fa-reply-all"></i>Reply</a>
-																</div>
-															</div><!--comment-list end-->
-														</li>
-													</ul>
-												</div><!--comment-sec end-->
-												<div class="post-comment">
-													<div class="cm_img">
-														<img src="images/bg-img4.png" alt="">
-													</div>
-													<div class="comment_box">
-														<form>
-															<input type="text" placeholder="Post a comment">
-															<button type="submit">Send</button>
-														</form>
-													</div>
-												</div><!--post-comment end-->
-											</div><!--comment-section end-->
-										</div><!--posty end-->
-										<div class="process-comm">
-											<div class="spinner">
-												<div class="bounce1"></div>
-												<div class="bounce2"></div>
-												<div class="bounce3"></div>
-											</div>
-										</div><!--process-comm end-->
+										';
+										} 
+									?>
+										
 									</div><!--posts-section end-->
 								</div><!--main-ws-sec end-->
 							</div>
 							<div class="col-lg-3">
 								<div class="right-sidebar">
-									<div class="message-btn">
+									<!--<div class="message-btn">
 										<a href="profile-account-setting.php" title=""><i class="fa fa-cog"></i> Account Settings</a>
-									</div>
+									</div>-->
 									<div class="widget widget-portfolio">
 										<div class="wd-heady">
 											<h3>My posts</h3>
@@ -744,153 +448,7 @@ require('db/errorFuncts.php');
 	
 
 
-		<div class="chatbox-list">
-			<div class="chatbox">
-				<div class="chat-mg">
-					<a href="#" title=""><img src="images/usr-img1.png" alt=""></a>
-					<span>2</span>
-				</div>
-				<div class="conversation-box">
-					<div class="con-title mg-3">
-						<div class="chat-user-info">
-							<img src="images/us-img1.png" alt="">
-							<h3>John Doe <span class="status-info"></span></h3>
-						</div>
-						<div class="st-icons">
-							<a href="#" title=""><i class="fa fa-cog"></i></a>
-							<a href="#" title="" class="close-chat"><i class="fa fa-minus-square"></i></a>
-							<a href="#" title="" class="close-chat"><i class="fa fa-close"></i></a>
-						</div>
-					</div>
-					<div class="chat-hist mCustomScrollbar" data-mcs-theme="dark">
-						<div class="chat-msg">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.</p>
-							<span>Sat, Aug 23, 1:10 PM</span>
-						</div>
-						<div class="date-nd">
-							<span>Sunday, August 24</span>
-						</div>
-						<div class="chat-msg st2">
-							<p>Cras ultricies ligula.</p>
-							<span>5 minutes ago</span>
-						</div>
-						<div class="chat-msg">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.</p>
-							<span>Sat, Aug 23, 1:10 PM</span>
-						</div>
-					</div><!--chat-list end-->
-					<div class="typing-msg">
-						<form>
-							<textarea placeholder="Type a message here"></textarea>
-							<button type="submit"><i class="fa fa-send"></i></button>
-						</form>
-						<ul class="ft-options">
-							<li><a href="#" title=""><i class="fa fa-smile-o"></i></a></li>
-							<li><a href="#" title=""><i class="fa fa-camera"></i></a></li>
-							<li><a href="#" title=""><i class="fa fa-paperclip"></i></a></li>
-						</ul>
-					</div><!--typing-msg end-->
-				</div><!--chat-history end-->
-			</div>
-			<div class="chatbox">
-				<div class="chat-mg">
-					<a href="#" title=""><img src="images/usr-img2.png" alt=""></a>
-				</div>
-				<div class="conversation-box">
-					<div class="con-title mg-3">
-						<div class="chat-user-info">
-							<img src="images/us-img1.png" alt="">
-							<h3>John Doe <span class="status-info"></span></h3>
-						</div>
-						<div class="st-icons">
-							<a href="#" title=""><i class="fa fa-cog"></i></a>
-							<a href="#" title="" class="close-chat"><i class="fa fa-minus-square"></i></a>
-							<a href="#" title="" class="close-chat"><i class="fa fa-close"></i></a>
-						</div>
-					</div>
-					<div class="chat-hist mCustomScrollbar" data-mcs-theme="dark">
-						<div class="chat-msg">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.</p>
-							<span>Sat, Aug 23, 1:10 PM</span>
-						</div>
-						<div class="date-nd">
-							<span>Sunday, August 24</span>
-						</div>
-						<div class="chat-msg st2">
-							<p>Cras ultricies ligula.</p>
-							<span>5 minutes ago</span>
-						</div>
-						<div class="chat-msg">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.</p>
-							<span>Sat, Aug 23, 1:10 PM</span>
-						</div>
-					</div><!--chat-list end-->
-					<div class="typing-msg">
-						<form>
-							<textarea placeholder="Type a message here"></textarea>
-							<button type="submit"><i class="fa fa-send"></i></button>
-						</form>
-						<ul class="ft-options">
-							<li><a href="#" title=""><i class="fa fa-smile-o"></i></a></li>
-							<li><a href="#" title=""><i class="fa fa-camera"></i></a></li>
-							<li><a href="#" title=""><i class="fa fa-paperclip"></i></a></li>
-						</ul>
-					</div><!--typing-msg end-->
-				</div><!--chat-history end-->
-			</div>
-			<div class="chatbox">
-				<div class="chat-mg bx">
-					<a href="#" title=""><img src="images/chat.png" alt=""></a>
-					<span>2</span>
-				</div>
-				<div class="conversation-box">
-					<div class="con-title">
-						<h3>Messages</h3>
-						<a href="#" title="" class="close-chat"><i class="fa fa-minus-square"></i></a>
-					</div>
-					<div class="chat-list">
-						<div class="conv-list active">
-							<div class="usrr-pic">
-								<img src="images/usy1.png" alt="">
-								<span class="active-status activee"></span>
-							</div>
-							<div class="usy-info">
-								<h3>John Doe</h3>
-								<span>Lorem ipsum dolor <img src="images/smley.png" alt=""></span>
-							</div>
-							<div class="ct-time">
-								<span>1:55 PM</span>
-							</div>
-							<span class="msg-numbers">2</span>
-						</div>
-						<div class="conv-list">
-							<div class="usrr-pic">
-								<img src="images/usy2.png" alt="">
-							</div>
-							<div class="usy-info">
-								<h3>John Doe</h3>
-								<span>Lorem ipsum dolor <img src="images/smley.png" alt=""></span>
-							</div>
-							<div class="ct-time">
-								<span>11:39 PM</span>
-							</div>
-						</div>
-						<div class="conv-list">
-							<div class="usrr-pic">
-								<img src="images/usy3.png" alt="">
-							</div>
-							<div class="usy-info">
-								<h3>John Doe</h3>
-								<span>Lorem ipsum dolor <img src="images/smley.png" alt=""></span>
-							</div>
-							<div class="ct-time">
-								<span>0.28 AM</span>
-							</div>
-						</div>
-					</div><!--chat-list end-->
-				</div><!--conversation-box end-->
-			</div>
-		</div><!--chatbox-list end-->
+		
 
 	</div><!--theme-layout end-->
 
@@ -903,6 +461,11 @@ require('db/errorFuncts.php');
 <script type="text/javascript" src="lib/slick/slick.min.js"></script>
 <script type="text/javascript" src="js/scrollbar.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+<script>
+document.getElementsByClassName("trash-button").onclick = function() {
+    	document.getElementsByClassName("form-delete").submit();
+}
+</script>
 
 </body>
 </html>

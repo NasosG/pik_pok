@@ -187,24 +187,23 @@ $row2 = mysqli_fetch_array($result);
                                         <div class="post-bar">
                                             <div class="post_topbar">
                                                 <div class="usy-dt">
-																										<?php
-																									echo "
+													<?php
+													echo "
                                                   	<img style=\"width:32px; height:32px;\" src=\"".$picture_path.$picture_name."\" alt=\"users photo\"/> ";?>
                                                     <div class="usy-name">
-																											<?php
-																											// user id username
-																											$query = "SELECT * FROM post_comments WHERE post_id = $photo_id";
-																											$result= mysqli_query($con,$query);
-																											$row = mysqli_fetch_array($result);
-																											$user_id = $row['user_id'];
-																											$query3 = "SELECT username, picture_path, profile_pic FROM members WHERE id = '$user_id'";
-																											$result3 = mysqli_query($con, $query3);
-																											$row3 = mysqli_fetch_array($result3);
-																											$user_of_post= $row3['username'];
-																											?>
+													<?php
+													// user id username
+													$query = "SELECT * FROM post_comments WHERE post_id = $photo_id";
+													$result = mysqli_query($con, $query);
+													$row = mysqli_fetch_array($result);
+													$user_id = $row['user_id'];
+													$query3 = "SELECT username, picture_path, profile_pic FROM members WHERE id = '$user_id'";
+													$result3 = mysqli_query($con, $query3);
+													$row3 = mysqli_fetch_array($result3);
+													$user_of_post = $row3['username'];
+													?>
                                                         <h3><?php echo $user_of_post.'</h3>
-																												<span><i class="fa fa-clock-o" aria-hidden="true"> '.date("d-m-Y H:i:s", strtotime($row['time_commented'])).'</i></span>
-																												'; ?>
+														<span><i class="fa fa-clock-o" aria-hidden="true"> '.date("d-m-Y H:i:s", strtotime($row['time_commented'])).'</i></span>'; ?>
                                                     </div>
                                                 </div>
                                                 <div class="ed-opts">
@@ -218,18 +217,8 @@ $row2 = mysqli_fetch_array($result);
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <div class="epi-sec">
-                                                <ul class="descp">
-                                                    <li><img src="images/icon8.png" alt=""><span>Front End Developer</span></li>
-                                                    <li><img src="images/icon9.png" alt=""><span>India</span></li>
-                                                </ul>
-                                                <ul class="bk-links">
-                                                    <li><a href="#" title=""><i class="fa fa-bookmark"></i></a></li>
-                                                    <li><a href="#" title=""><i class="fa fa-envelope"></i></a></li>
-                                                    <li><a href="#" title="" class="bid_now">Bid Now</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="job_descp accountnone">
+
+                                            <div class="pt-3 job_descp accountnone">
                                                 <img src="<?php echo $row2['photo_path'].$row2['photo_name'];?>" class="job-dt"></img>
                                                 <ul class="skill-tags">
                                                     <li><a href="#" title="">HTML</a></li>
@@ -242,19 +231,22 @@ $row2 = mysqli_fetch_array($result);
                                             <div class="job-status-bar btm-line">
                                                <ul class="like-com">
 													<li>
-														<a href="#" class="active"><i class="fa fa-heart"></i> Like</a>
-														<img src="images/liked-img.png" alt="">
-														<span>25</span>
+														<a href="#" class="active"><i class="fa fa-heart"></i> Like</a> </li>
+														<!--<img src="images/liked-img.png" alt="">
+														
 													</li>
-													<li><a href="#" class="com"><i class="fa fa-comment"></i> Comments 15</a></li>
+													<li><a href="#" class="com"><i class="fa fa-comment"></i> Comments 15</a></li>-->
 												</ul>
-												<a href="#"><i class="fa fa-eye"></i>Views 50</a>
+												<ul style= "float:right;" class="like-com">
+													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-thumbs-up"></i> Likes 15</a></li>
+													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-comment"></i> Comments 15</a></li>
+												</ul>
                                             </div>
 
 											<div class="comment-area">
 												<div class="reply-area">
 												   <p><br></p>
-												   <span><i class="fa fa-comments"></i>Comments<br></span>
+												   <span style="cursor:default;" >-- Comments --<br></span>
 												   <br>
 												</div>
 											</div>
