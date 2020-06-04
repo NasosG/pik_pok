@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Φιλοξενητής: 127.0.0.1
--- Χρόνος δημιουργίας: 02 Ιουν 2020 στις 20:32:51
+-- Χρόνος δημιουργίας: 04 Ιουν 2020 στις 20:27:11
 -- Έκδοση διακομιστή: 10.4.11-MariaDB
 -- Έκδοση PHP: 7.4.6
 
@@ -134,7 +134,8 @@ INSERT INTO `post_comments` (`post_comments_id`, `post_id`, `user_id`, `comment_
 (56, 3, 45, 'geia xara bro edo maria', '2020-06-02 16:54:25'),
 (61, 1, 45, 'Ωραία φωτογραφία', '2020-06-02 18:30:40'),
 (62, 2, 40, 'χαχα #php4ever', '2020-06-02 18:32:36'),
-(63, 3, 45, 'τέλεια φωτο γεα', '2020-06-02 20:11:46');
+(63, 3, 45, 'τέλεια φωτο γεα', '2020-06-02 20:11:46'),
+(64, 1, 40, 'ti einai auto? :P', '2020-06-04 19:56:06');
 
 -- --------------------------------------------------------
 
@@ -218,7 +219,7 @@ ALTER TABLE `hashtags`
 -- AUTO_INCREMENT για πίνακα `images`
 --
 ALTER TABLE `images`
-  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT για πίνακα `ip_addresses`
@@ -236,13 +237,13 @@ ALTER TABLE `members`
 -- AUTO_INCREMENT για πίνακα `post_comments`
 --
 ALTER TABLE `post_comments`
-  MODIFY `post_comments_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `post_comments_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT για πίνακα `post_likes`
 --
 ALTER TABLE `post_likes`
-  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Περιορισμοί για άχρηστους πίνακες
