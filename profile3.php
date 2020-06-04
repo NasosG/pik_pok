@@ -290,7 +290,7 @@ $result = mysqli_query($con, $query);
 											<form name="delete-form" class="form-delete" id="delete-form" method="post" action="db/delete_photo.php">
 												<input type="hidden" name="photo_id" id="photo_id" value="'.$row['photo_id'].'" />
 												<ul class="bk-links pb-2">
-													<li><button id="trash-button" class="trash-button"><a   title=""><i class="fa fa-trash"></i></a></button></li>
+													<li><button style="border:none" id="trash-button" class="trash-button"><a title=""><i class="fa fa-trash"></i></a></button></li>
 												</ul>
 											</form>
 											<div class="job-status-bar">

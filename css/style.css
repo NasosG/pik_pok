@@ -1196,7 +1196,7 @@ main {
 	width: 33px;
 	height: 30px;
 	padding-left: 0px;
-	background-color: #53d690;
+	background-color: #e44d3a;/*#53d690; -> green*/
 	text-align: center;
 	line-height: 30px;
 }
