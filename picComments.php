@@ -188,10 +188,6 @@ $row2 = mysqli_fetch_array($result);
                                             <div class="post_topbar">
                                                 <div class="usy-dt">
 													<?php
-													echo "
-                                                  	<img style=\"width:32px; height:32px;\" src=\"".$picture_path.$picture_name."\" alt=\"users photo\"/> ";?>
-                                                    <div class="usy-name">
-													<?php
 													// user id username
 													$query = "SELECT * FROM images WHERE photo_id = $photo_id";
 													$result = mysqli_query($con, $query);
@@ -201,6 +197,13 @@ $row2 = mysqli_fetch_array($result);
 													$result3 = mysqli_query($con, $query3);
 													$row3 = mysqli_fetch_array($result3);
 													$user_of_post = $row['username'];
+													$post_user_picture_path = $row3['picture_path'];
+													$post_user_picture_name = $row3['profile_pic'];
+													echo "
+                                                  	<img style=\"width:32px; height:32px;\" src=\"".$post_user_picture_path.$post_user_picture_name."\" alt=\"users photo\"/> ";?>
+                                                    <div class="usy-name">
+													<?php
+													
 													?>
                                                         <h3><?php echo $user_of_post.'</h3>
 														<span><i class="fa fa-clock-o" aria-hidden="true"> '.date("d-m-Y H:i:s", strtotime($row['date_posted'])).'</i></span>'; ?>
@@ -291,7 +294,8 @@ $row2 = mysqli_fetch_array($result);
                                             <div class="postcomment">
                                                 <div class="row">
                                                     <div class="col-md-2">
-                                                        <img src="images/bg-img4.png" alt="">
+                                                    	<?php echo "<img style=\"width:40px; height:40px;border-radius: 50%;\" src=\"".$picture_path.$picture_name."\" alt=\"users photo\"/>"; ?>                                                    	
+                                                       <!-- <img src="images/bg-img4.png" alt=""> -->
                                                     </div>
                                                     <div class="col-md-8">
                                                         <form class='aform'>
