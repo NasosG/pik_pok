@@ -12,7 +12,16 @@
 	{
 		echo "<br><h1 align = \"center\">";
 		echo " <font color=\"red\"> Sorry, that username already exists </font> <br> ";
-		echo " - Click <a href='../signUp.php'>here</a> to Sign Up<br>";
+		echo " - Click <a href='../signin.php'>here</a> to Sign Up<br>";
+		echo " - Click <a href='../index.php'>here</a> to return to Home";
+		echo "</h1>";
+	}
+	
+	function ChangeEmail()
+	{
+		echo "<br><h1 align = \"center\">";
+		echo " <font color=\"red\"> Sorry, that email already exists </font> <br> ";
+		echo " - Click <a href='../signin.php'>here</a> to Sign Up<br>";
 		echo " - Click <a href='../index.php'>here</a> to return to Home";
 		echo "</h1>";
 	}

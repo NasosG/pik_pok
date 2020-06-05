@@ -193,17 +193,17 @@ $row2 = mysqli_fetch_array($result);
                                                     <div class="usy-name">
 													<?php
 													// user id username
-													$query = "SELECT * FROM post_comments WHERE post_id = $photo_id";
+													$query = "SELECT * FROM images WHERE photo_id = $photo_id";
 													$result = mysqli_query($con, $query);
 													$row = mysqli_fetch_array($result);
-													$user_id = $row['user_id'];
-													$query3 = "SELECT username, picture_path, profile_pic FROM members WHERE id = '$user_id'";
+													$username = $row['username'];
+													$query3 = "SELECT username, picture_path, profile_pic FROM members WHERE username = '$username'";
 													$result3 = mysqli_query($con, $query3);
 													$row3 = mysqli_fetch_array($result3);
-													$user_of_post = $row3['username'];
+													$user_of_post = $row['username'];
 													?>
                                                         <h3><?php echo $user_of_post.'</h3>
-														<span><i class="fa fa-clock-o" aria-hidden="true"> '.date("d-m-Y H:i:s", strtotime($row['time_commented'])).'</i></span>'; ?>
+														<span><i class="fa fa-clock-o" aria-hidden="true"> '.date("d-m-Y H:i:s", strtotime($row['date_posted'])).'</i></span>'; ?>
                                                     </div>
                                                 </div>
                                                 <div class="ed-opts">

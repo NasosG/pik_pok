@@ -69,7 +69,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 														</label>
 														<small>Remember me</small>
 													</div><!--fgt-sec end-->
-													<a href="forgot_psw.php" title="">Forgot Password?</a>
+													<a href="forgot_password.php" title="">Forgot Password?</a>
 												</div>
 											</div>
 											<div class="col-lg-12 no-pdd">

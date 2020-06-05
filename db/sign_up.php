@@ -7,13 +7,33 @@
 		$username = stripslashes($_REQUEST['username']); // removes backslashes
 		$username = mysqli_real_escape_string($con, $username); //escapes special characters in a string
 		
+		$email = stripslashes($_REQUEST['email']);
+		$email = mysqli_real_escape_string($con, $email);
+		
+		///////////////////////////////////////////////////////
+
 		$query = "SELECT * FROM members WHERE username ='$username'";
         $result = mysqli_query($con, $query);
         if (!$result) {
             echo ' Database Error Occured ';
         }
-		//if username exists
+		
+        //////////////////////////////////////////////////////
+
+        $query = "SELECT * FROM members WHERE email ='$email'";
+        $result2 = mysqli_query($con, $query);
+        if (!$result2) {
+            echo ' Database Error Occured ';
+        }
+
+        /////////////////////////////////////////////////////
+
+        //if username exists
         if (mysqli_num_rows($result) > 0)  ChangeUsername();
+		
+		//if email exists
+        else if (mysqli_num_rows($result2) > 0)  ChangeEmail();
+
 		else {
 			$password = stripslashes($_REQUEST['psw']);
 			$password = mysqli_real_escape_string($con, $password);
@@ -23,9 +43,6 @@
 			
 			$surname = stripslashes($_REQUEST['lname']);
 			$surname = mysqli_real_escape_string($con, $surname);
-			
-			$email = stripslashes($_REQUEST['email']);
-			$email = mysqli_real_escape_string($con, $email);
 			
 			$sex = stripslashes($_REQUEST['sex']);
 			$sex = mysqli_real_escape_string($con, $sex);

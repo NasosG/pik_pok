@@ -39,7 +39,7 @@ require('db/errorFuncts.php');
                            <br>
                         </div>
                         <div class="forgot_main">
-                           <form class="forgot_form" action="mail/contact_me.php" method="post">
+                           <form class="forgot_form" action="mail/send_new_password.php" method="post">
                               <span>Please enter the email you registered with</span>
                               <input type="text" name="forgot_text" value="" placeholder="Your email.." required spellcheck="false" autofocus class="forget_text" id="forgot_text">
                               <input type="submit" name="forgot_submit" value="Recover" class="f_p_submit">

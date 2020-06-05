@@ -4,7 +4,7 @@ require('db.php');
 require('errorFuncts.php');
 session_start();
 
-$date = date("Y/m/d");
+$date = date("Y-m-d H:i:s");
 $username = $_SESSION['username'];
 $target_dir = "../uploads/pik_pok_pics/";
 $general_dir = "uploads/pik_pok_pics/";

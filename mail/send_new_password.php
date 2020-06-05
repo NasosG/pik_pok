@@ -42,7 +42,7 @@ function password_generate($chars)
 	return substr(str_shuffle($data), 0, $chars);
 }
 
-$pass = password_generate(7);
+$pass = password_generate(8);
 //edo tha prepei na chekaroume an uparxei o xrhsths sth bash
 //.....
 
@@ -51,7 +51,7 @@ $pass = password_generate(7);
 $mail->Body = "<span>Hello, You're receiving this email because you requested a password reset for your Pik-Pok Account.</span><br><br>
 <span>Your new password is $pass</span><br><br>
 <span>Click on the button below to login with your new password</span><br><br>		
-<a href='localhost/tselikas/signin.php' style='border: 1px solid #1b9be9; font-weight: 600; color: #fff; border-radius: 3px; cursor: pointer; outline: none; background: #1b9be9; padding: 4px 15px; display: inline-block; text-decoration: none;'>Login</a>";
+<a href='localhost/pik_pok/signin.php' style='border: 1px solid #1b9be9; font-weight: 600; color: #fff; border-radius: 3px; cursor: pointer; outline: none; background: #1b9be9; padding: 4px 15px; display: inline-block; text-decoration: none;'>Login</a>";
 
 if($mail->send()) echo "A new password has been sent to your email. Check your inbox"; 
 else echo "an error has occurred during the procedure"; 
