@@ -2,6 +2,23 @@
 include("db/auth.php"); //include auth.php file on all secure pages include("db/auth.php"); //include auth.php file on all secure pages 
 require('db/db.php');
 require('db/errorFuncts.php');
+
+$username = $_SESSION['username'];
+
+$query = "SELECT * FROM members WHERE username='$username'";
+$result = mysqli_query($con, $query);
+$row = mysqli_fetch_array($result);
+
+////////////////////////////////////
+
+$password = $row['password'];
+$fname = $row['fname'];
+$lname = $row['lname'];
+$email = $row['email'];
+$date_of_registration = $row['date_of_registration'];
+$date_of_birth = $row['date_of_birth'];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +39,9 @@ require('db/errorFuncts.php');
 	<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/responsive.css">
+	<style>
+
+	</style>
 </head>
 
 
@@ -166,15 +186,16 @@ require('db/errorFuncts.php');
 						<div class="col-lg-3">
 							<div class="acc-leftbar">
 								<div class="nav nav-tabs" id="nav-tab" role="tablist">
-								    <a class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" href="#nav-acc" role="tab" aria-controls="nav-acc" aria-selected="true"><i class="fa fa-cogs"></i>Account Setting</a>
+
+								    <a class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" href="#nav-acc" role="tab" aria-controls="nav-acc" aria-selected="false"><i class="fa fa-cog"></i>General</a>
+								    <a class="nav-item nav-link" id="nav-blockking-tab" data-toggle="tab" href="#general" role="tab" aria-controls="nav-general-tab" aria-selected="true"><i class="fa fa-cogs"></i>Account Setting</a>
 								    <a class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false"><i class="fa fa-line-chart"></i>Status</a>
 								    <a class="nav-item nav-link" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false"><i class="fa fa-lock"></i>Change Password</a>
 								    <a class="nav-item nav-link" id="nav-notification-tab" data-toggle="tab" href="#nav-notification" role="tab" aria-controls="nav-notification" aria-selected="false"><i class="fa fa-flash"></i>Notifications</a>
 								    <a class="nav-item nav-link" id="nav-privcy-tab" data-toggle="tab" href="#privcy" role="tab" aria-controls="privacy" aria-selected="false"><i class="fa fa-group"></i>Requests</a>
 								    <a class="nav-item nav-link" id="security" data-toggle="tab" href="#security-login" role="tab" aria-controls="security-login" aria-selected="false"><i class="fa fa-user-secret"></i>Security and Login</a>
 								    <a class="nav-item nav-link" id="nav-privacy-tab" data-toggle="tab" href="#privacy" role="tab" aria-controls="privacy" aria-selected="false"><i class="fa fa-paw"></i>Privacy</a>
-								    <a class="nav-item nav-link" id="nav-blockking-tab" data-toggle="tab" href="#blockking" role="tab" aria-controls="blockking" aria-selected="false"><i class="fa fa-cc-diners-club"></i>Blocking</a>
-								    <a class="nav-item nav-link" id="nav-deactivate-tab" data-toggle="tab" href="#nav-deactivate" role="tab" aria-controls="nav-deactivate" aria-selected="false"><i class="fa fa-random"></i>Deactivate Account</a>
+								    <a class="nav-item nav-link" id="nav-deactivate-tab" data-toggle="tab" href="#nav-deactivate" role="tab" aria-controls="nav-deactivate" aria-selected="false"><i class="fa fa-random"></i>Delete Account</a>
 								  </div>
 							</div><!--acc-leftbar end-->
 						</div>
@@ -182,44 +203,91 @@ require('db/errorFuncts.php');
 							<div class="tab-content" id="nav-tabContent">
 								<div class="tab-pane fade show active" id="nav-acc" role="tabpanel" aria-labelledby="nav-acc-tab">
 									<div class="acc-setting">
-										<h3>Account Setting</h3>
-										<form>
-											<div class="notbar">
-												<h4>Notification Sound</h4>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id</p>
-												<div class="toggle-btn">
-													<div class="custom-control custom-switch">
-														<input type="checkbox" class="custom-control-input" id="customSwitch1">
-														<label class="custom-control-label" for="customSwitch1"></label>
-													</div>
+										<h3>General Account Settings</h3>
+										<form id="settings-form" name="settings-form" method="post" action="db/change_settings.php" >
+											<div class="cp-field">
+												<h5>First Name</h5>
+												<div class="cpp-fiel">
+													<table>	
+														<th style="width:100%;">
+															<input type="text" name="fname" placeholder="<?php echo $fname; ?>"/>
+														</th>
+														<th style="">
+															<button class="btn" type="submit">Change</button>
+														</th>
+													</table>	
+													<i class="fa fa-user"></i>
 												</div>
-											</div><!--notbar end-->
-											<div class="notbar">
-												<h4>Notification Email</h4>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id</p>
-												<div class="toggle-btn">
-													<div class="custom-control custom-switch">
-														<input type="checkbox" class="custom-control-input" id="customSwitch2">
-														<label class="custom-control-label" for="customSwitch2"></label>
-													</div>
+											</div>
+											<div class="cp-field">
+												<h5>Last Name</h5>
+												<div class="cpp-fiel">
+
+													<table>	
+														<th style="width:100%;">
+															<input type="text" name="lname" placeholder="<?php echo $lname; ?>"/>
+														</th>
+														<th style="">
+															<button class="btn penciled" type="submit">Change</button>
+														</th>
+													</table>
+
+													
+													<i class="fa fa-user"></i>
 												</div>
-											</div><!--notbar end-->
-											<div class="notbar">
-												<h4>Chat Message Sound</h4>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id</p>
-												<div class="toggle-btn">
-													<div class="custom-control custom-switch">
-														<input type="checkbox" class="custom-control-input" id="customSwitch3">
-														<label class="custom-control-label" for="customSwitch3"></label>
-													</div>
+											</div>
+											<div class="cp-field">
+												<h5>Contact</h5>
+												<div class="cpp-fiel">
+
+													<table>	
+														<th style="width:100%;">
+															<input type="text" name="email" placeholder="<?php echo $email; ?>"/>
+														</th>
+														<th style="">
+															<button class="btn" type="submit">Change</button>
+														</th>
+													</table>
+
+													
+													<i class="fa fa-user"></i>
 												</div>
-											</div><!--notbar end-->
-											<div class="save-stngs">
-												<ul>
-													<li><button type="submit">Save Setting</button></li>
-													<li><button type="submit">Restore Setting</button></li>
-												</ul>
-											</div><!--save-stngs end-->
+											</div>
+											<div class="cp-field">
+												<h5>Username</h5>
+												<div class="cpp-fiel">
+
+													<table>	
+														<th style="width:100%;">
+															<input type="text" name="username" placeholder="<?php echo $username; ?>"/>
+														</th>
+														<th style="">
+															<button class="btn" type="submit">Change</button>
+														</th>
+													</table>
+
+													
+													<i class="fa fa-user"></i>
+												</div>
+											</div>
+											<div class="cp-field">
+												<h5>Birth Date</h5>
+												<div class="cpp-fiel">
+
+													<table>	
+														<th style="width:100%;">
+															<input type="date" name="bdate" placeholder="<?php echo $date_of_birth; ?>"/>
+														</th>
+														<th style="">
+															<button class="btn" type="submit">Change</button>
+														</th>
+													</table>
+
+													
+													<i class="fa fa-birthday-cake"></i>
+												</div>
+											</div>
+											<div class="save-stngs pd3"></div>
 										</form>
 									</div><!--acc-setting end-->
 								</div>
@@ -556,26 +624,50 @@ require('db/errorFuncts.php');
 			                     </div>
 								</div> 
 							  	</div>
-							  	<div class="tab-pane fade" id="blockking" role="tabpanel" aria-labelledby="nav-blockking-tab">
-							  		<div class="helpforum">
-			                     <div class="row">
-			                     	<div class="col-12 security">
-			                     		<h3>Blocking</h3>
-			                     		<hr>
-			                     	</div>
-			                     	<div class="row">
-			                     		<div class="col-12">
-			                     	<h4>Blocking</h4>
-			                     	<p>See your list,and make changes if you'd like</p>
-			                     	<div class="bloktext">
-			                     		<p>You are not bloking anyone</p>
-			                     		<p>Need to blok or report someone? Go to the profile of the person you want to blok and select "Blok or Report" from the drowp-down menu at the top of the profile summery</p>
-			                     		<p>Note: After you have blocked the person, Any previous profile views of yours and of the other person will disappear from each of your "Who's viewed your profile" sections. </p>
-			                     	</div>
-			                     </div>
-			                     </div>
-			                     </div>
-								</div> 
+							  	<div class="tab-pane fade" id="general" role="tabpanel" aria-labelledby="nav-general-tab">
+							  		<div class="acc-setting">
+										<h3>Account Setting</h3>
+										<form>
+											<div class="notbar">
+												<h4>Notification Sound</h4>
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id</p>
+												<div class="toggle-btn">
+													<div class="custom-control custom-switch">
+														<input type="checkbox" class="custom-control-input" id="customSwitch1">
+														<label class="custom-control-label" for="customSwitch1"></label>
+													</div>
+												</div>
+											</div><!--notbar end-->
+											<div class="notbar">
+												<h4>Notification Email</h4>
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id</p>
+												<div class="toggle-btn">
+													<div class="custom-control custom-switch">
+														<input type="checkbox" class="custom-control-input" id="customSwitch2">
+														<label class="custom-control-label" for="customSwitch2"></label>
+													</div>
+												</div>
+											</div><!--notbar end-->
+											<div class="notbar">
+												<h4>Chat Message Sound</h4>
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id</p>
+												<div class="toggle-btn">
+													<div class="custom-control custom-switch">
+														<input type="checkbox" class="custom-control-input" id="customSwitch3">
+														<label class="custom-control-label" for="customSwitch3"></label>
+													</div>
+												</div>
+											</div><!--notbar end-->
+											<div class="save-stngs">
+												<ul>
+													<li><button type="submit">Save Setting</button></li>
+													<li><button type="submit">Restore Setting</button></li>
+												</ul>
+											</div><!--save-stngs end-->
+										</form>
+									</div><!--acc-setting end-->
+
+
 							  	</div>	
 							  	<div class="tab-pane fade" id="privciy" role="tabpanel" aria-labelledby="nav-privcy-tab">
 							  		<div class="acc-setting">
@@ -842,13 +934,13 @@ require('db/errorFuncts.php');
 							  	</div>
 							  	<div class="tab-pane fade" id="nav-deactivate" role="tabpanel" aria-labelledby="nav-deactivate-tab">
 							  		<div class="acc-setting">
-										<h3>Deactivate Account</h3>
+										<h3>Delete Account</h3>
 										<form>
 											<div class="cp-field">
-												<h5>Email</h5>
+												<h5>Username</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="email" placeholder="Email">
-													<i class="fa fa-envelope"></i>
+													<input type="text" name="username" placeholder="Username">
+													<i class="fa fa-user"></i>
 												</div>
 											</div>
 											<div class="cp-field">

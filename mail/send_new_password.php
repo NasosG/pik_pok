@@ -2,14 +2,35 @@
  
 date_default_timezone_set('Etc/UTC');
 
+require('../db/db.php');
+
 // Edit this path if PHPMailer is in a different location.
 require 'PHPMailer/PHPMailerAutoload.php';
+
+$email = $_POST['forgot_text'];
 
 // Check for empty fields
 if(empty($_POST['forgot_text']) || !filter_var($_POST['forgot_text'],FILTER_VALIDATE_EMAIL)) {
 	header("Location: ../formError.html"); 
 }
 
+//edo tha prepei na chekaroume an uparxei o xrhsths sth bash
+$query = "SELECT * FROM members WHERE email = '$email'";
+$result = mysqli_query($con, $query);
+
+if (!$result) {
+    echo ' Database Error Occured ';
+}
+
+/////////////////////////////////////////////////////
+
+//if email exists
+else if (mysqli_num_rows($result) == 0)  {
+	echo "den uparxei o mlakas/ismenh"; 
+	echo "<br> se parapempoume sth selida eggrafhs";
+	echo "<br> Click <a href='../signin.php'>here</a> to Sign Up<br>";
+	return;
+}
 /*
  * Server Configuration
  */
@@ -43,10 +64,19 @@ function password_generate($chars)
 }
 
 $pass = password_generate(8);
-//edo tha prepei na chekaroume an uparxei o xrhsths sth bash
-//.....
+$md5_password = md5($pass);
 
-//an uparxei tha tou allazoume ton kodiko tou sth bash
+// an uparxei tha tou allazoume ton kodiko tou sth bash
+$query = "UPDATE members
+		SET password = '$md5_password'
+		WHERE email = '$email'";
+
+$result = mysqli_query($con, $query);
+
+if (!$result) {
+    echo ' Database Error Occured ';
+}
+
 // kai tha tou stelnoume to parakato email
 $mail->Body = "<span>Hello, You're receiving this email because you requested a password reset for your Pik-Pok Account.</span><br><br>
 <span>Your new password is $pass</span><br><br>
@@ -57,5 +87,6 @@ if($mail->send()) echo "A new password has been sent to your email. Check your i
 else echo "an error has occurred during the procedure"; 
 
 //an den uparxei to email stous xrhstes tha ton parapempoume sth selida tou signup
+
 
 ?>

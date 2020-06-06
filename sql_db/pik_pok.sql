@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Φιλοξενητής: 127.0.0.1
--- Χρόνος δημιουργίας: 04 Ιουν 2020 στις 20:27:11
+-- Χρόνος δημιουργίας: 06 Ιουν 2020 στις 21:18:31
 -- Έκδοση διακομιστή: 10.4.11-MariaDB
 -- Έκδοση PHP: 7.4.6
 
@@ -55,12 +55,12 @@ CREATE TABLE `hashtags` (
 
 CREATE TABLE `images` (
   `photo_id` int(11) NOT NULL,
-  `photo_name` varchar(50) DEFAULT NULL,
+  `photo_name` varchar(100) DEFAULT NULL,
   `photo_likes` bigint(20) DEFAULT NULL,
-  `photo_path` varchar(80) DEFAULT NULL,
-  `username` varchar(80) DEFAULT NULL,
-  `photo_tag` varchar(50) DEFAULT NULL,
-  `date_posted` date DEFAULT NULL
+  `photo_path` varchar(100) DEFAULT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `photo_tag` varchar(100) DEFAULT NULL,
+  `date_posted` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -68,9 +68,8 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`photo_id`, `photo_name`, `photo_likes`, `photo_path`, `username`, `photo_tag`, `date_posted`) VALUES
-(1, '9f65d3bd25501cccc0238ae5301a330b.jpg', 28, 'uploads/pik_pok_pics/', 'thn12', NULL, '2020-05-20'),
-(2, 'Screenshot_6.png', 31, 'uploads/pik_pok_pics/', 'thn12', NULL, '2020-05-20'),
-(3, 'WheelsVar_unity.png', 0, 'uploads/pik_pok_pics/', 'as', NULL, '2020-05-27');
+(7, 'mod-wasd_2.png', 0, 'uploads/pik_pok_pics/', 'thn12', NULL, '2020-06-05 15:29:12'),
+(10, 'kisspng-computer-keyboard-arrow-keys-clip-art-5adca3132730b7.8563640315244091071605.png', 0, 'uploads/pik_pok_pics/', 'thn12', NULL, '2020-06-05 18:35:25');
 
 -- --------------------------------------------------------
 
@@ -90,11 +89,11 @@ CREATE TABLE `ip_addresses` (
 --
 
 CREATE TABLE `members` (
-  `username` varchar(50) NOT NULL,
+  `username` varchar(100) NOT NULL,
   `password` mediumtext NOT NULL,
-  `fname` varchar(50) NOT NULL,
-  `lname` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `fname` varchar(100) NOT NULL,
+  `lname` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `date_of_registration` date NOT NULL,
   `id` int(30) NOT NULL,
   `sex` tinyint(1) DEFAULT NULL,
@@ -108,8 +107,11 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`username`, `password`, `fname`, `lname`, `email`, `date_of_registration`, `id`, `sex`, `date_of_birth`, `profile_pic`, `picture_path`) VALUES
-('thn12', '202cb962ac59075b964b07152d234b70', 'Μιχαλάκης', 'Πανταζής', 'asd@er.gr', '2020-05-21', 40, 0, '1989-02-08', '011_101_anonymous_anonym_hacker_vendetta_user_human_avatar-512.jpg', 'uploads/users/40/'),
-('mara10', '202cb962ac59075b964b07152d234b70', 'μαρια', 'αντεπαλοβ', 'mrt@iop.com', '2020-06-02', 45, 1, '1987-10-29', 'Screenshot_160.png', 'uploads/users/45/');
+('thn12', '202cb962ac59075b964b07152d234b70', 'Μιχάλης', 'Πανταζής', 'asd@uop.gr', '2020-05-21', 40, 0, '1987-06-18', '011_101_anonymous_anonym_hacker_vendetta_user_human_avatar-512.jpg', 'uploads/users/40/'),
+('mara10', '202cb962ac59075b964b07152d234b70', 'μαρια', 'αντεπαλοβ', 'mrt@iop.com', '2020-06-02', 45, 1, '1987-10-29', 'Screenshot_160.png', 'uploads/users/45/'),
+('opl', 'ccb7f83478864d7642e34b0a56481321', 'mlo', 'klo', 'gnasos219@gmail.com', '2020-06-06', 47, 0, '2020-06-02', 'ekthema.png', 'uploads/users/47/'),
+('makis', '827ccb0eea8a706c4c34a16891f84e7b', 'makis', 'makis', 'makis@makis.gr', '2020-06-06', 48, 0, '2020-06-30', 'ekthema.png', 'uploads/users/48/'),
+('marigeorgitsa', '202cb962ac59075b964b07152d234b70', 'Γιωργίτσα', 'Μακριγεώργου', 'maritsa@maritso.uiop', '2020-06-06', 49, 1, '2020-06-18', 'tupisa.png', 'uploads/users/49/');
 
 -- --------------------------------------------------------
 
@@ -130,12 +132,9 @@ CREATE TABLE `post_comments` (
 --
 
 INSERT INTO `post_comments` (`post_comments_id`, `post_id`, `user_id`, `comment_text`, `time_commented`) VALUES
-(1, 3, 40, 'GEIA XARA BRO EDO GIANIS', '2020-06-01 21:43:49'),
-(56, 3, 45, 'geia xara bro edo maria', '2020-06-02 16:54:25'),
-(61, 1, 45, 'Ωραία φωτογραφία', '2020-06-02 18:30:40'),
-(62, 2, 40, 'χαχα #php4ever', '2020-06-02 18:32:36'),
-(63, 3, 45, 'τέλεια φωτο γεα', '2020-06-02 20:11:46'),
-(64, 1, 40, 'ti einai auto? :P', '2020-06-04 19:56:06');
+(65, 7, 40, 'ti einai auto? :P', '2020-06-05 17:09:17'),
+(67, 7, 45, 'asd', '2020-06-05 18:37:32'),
+(68, 7, 40, 'u 4got w', '2020-06-06 21:03:50');
 
 -- --------------------------------------------------------
 
@@ -219,7 +218,7 @@ ALTER TABLE `hashtags`
 -- AUTO_INCREMENT για πίνακα `images`
 --
 ALTER TABLE `images`
-  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT για πίνακα `ip_addresses`
@@ -231,19 +230,19 @@ ALTER TABLE `ip_addresses`
 -- AUTO_INCREMENT για πίνακα `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT για πίνακα `post_comments`
 --
 ALTER TABLE `post_comments`
-  MODIFY `post_comments_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `post_comments_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT για πίνακα `post_likes`
 --
 ALTER TABLE `post_likes`
-  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Περιορισμοί για άχρηστους πίνακες
@@ -253,8 +252,8 @@ ALTER TABLE `post_likes`
 -- Περιορισμοί για πίνακα `post_comments`
 --
 ALTER TABLE `post_comments`
-  ADD CONSTRAINT `post_comments_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `members` (`id`),
-  ADD CONSTRAINT `post_comments_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `images` (`photo_id`);
+  ADD CONSTRAINT `post_comments_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `members` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `post_comments_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `images` (`photo_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
