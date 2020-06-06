@@ -28,6 +28,10 @@ else if (isset($_REQUEST['username']) && (trim($_REQUEST['username']) != '')) {
     $uname = stripslashes($_REQUEST['username']); // removes backslashes
     $uname = mysqli_real_escape_string($con, $uname); //escapes special characters in a string
 
+    // TODO
+    // edo tha prepei na chekaroume an uparxei xrhsths me to idio onoma sth bash
+    // ......
+
     $query = "UPDATE members
 			  SET username = '$uname'
               WHERE username = '$username'";
@@ -39,6 +43,10 @@ else if (isset($_REQUEST['username']) && (trim($_REQUEST['username']) != '')) {
 else if (isset($_REQUEST['email']) && (trim($_REQUEST['email']) != '')) {
     $email = stripslashes($_REQUEST['email']); // removes backslashes
     $email = mysqli_real_escape_string($con, $email); //escapes special characters in a string
+
+    // TODO
+    // edo tha prepei na chekaroume an uparxei xrhsths me to idio email sth bash
+    // ......
 
     $query = "UPDATE members
 			  SET email = '$email'

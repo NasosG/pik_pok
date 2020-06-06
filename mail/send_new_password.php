@@ -4,7 +4,7 @@ date_default_timezone_set('Etc/UTC');
 
 require('../db/db.php');
 
-// Edit this path if PHPMailer is in a different location.
+// the location of PHPMailer, where we placed its files.
 require 'PHPMailer/PHPMailerAutoload.php';
 
 $email = $_POST['forgot_text'];
@@ -14,7 +14,7 @@ if(empty($_POST['forgot_text']) || !filter_var($_POST['forgot_text'],FILTER_VALI
 	header("Location: ../formError.html"); 
 }
 
-//edo tha prepei na chekaroume an uparxei o xrhsths sth bash
+// we check if user exists in the database
 $query = "SELECT * FROM members WHERE email = '$email'";
 $result = mysqli_query($con, $query);
 
@@ -24,13 +24,14 @@ if (!$result) {
 
 /////////////////////////////////////////////////////
 
-//if email exists
+//if email doesn't exist
 else if (mysqli_num_rows($result) == 0)  {
 	echo "den uparxei o mlakas/ismenh"; 
 	echo "<br> se parapempoume sth selida eggrafhs";
 	echo "<br> Click <a href='../signin.php'>here</a> to Sign Up<br>";
 	return;
 }
+
 /*
  * Server Configuration
  */
@@ -54,19 +55,24 @@ $mail->isHTML(true);                                  // Set email format to HTM
 $mail->Subject = 'Activate your Pik-Pok account';
 
 /*
- * Message Configuration
+ * New Password Generation And Database Update
  */
  
+ // generate a pseudorandom password
 function password_generate($chars) 
 {
 	$data = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
 	return substr(str_shuffle($data), 0, $chars);
 }
 
+// the pseudorandom password we want, has 8 characters.
 $pass = password_generate(8);
+
+// md5 hashing because in our db user password get saved on md5 format
+// even if md5 is not really secure :)
 $md5_password = md5($pass);
 
-// an uparxei tha tou allazoume ton kodiko tou sth bash
+// if user exists, change the password he/she has in the database
 $query = "UPDATE members
 		SET password = '$md5_password'
 		WHERE email = '$email'";
@@ -77,7 +83,11 @@ if (!$result) {
     echo ' Database Error Occured ';
 }
 
-// kai tha tou stelnoume to parakato email
+/*
+ * Message Configuration
+ */
+
+// and finaly send the email to the user to let him know that password has been changed
 $mail->Body = "<span>Hello, You're receiving this email because you requested a password reset for your Pik-Pok Account.</span><br><br>
 <span>Your new password is $pass</span><br><br>
 <span>Click on the button below to login with your new password</span><br><br>		
@@ -85,8 +95,6 @@ $mail->Body = "<span>Hello, You're receiving this email because you requested a 
 
 if($mail->send()) echo "A new password has been sent to your email. Check your inbox"; 
 else echo "an error has occurred during the procedure"; 
-
-//an den uparxei to email stous xrhstes tha ton parapempoume sth selida tou signup
 
 
 ?>
