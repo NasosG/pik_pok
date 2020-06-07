@@ -11,7 +11,8 @@ $username = $_SESSION['username'];
 		$old_password = stripslashes($_REQUEST['old_password']);// removes backslashes de doulevei na to dw argotera
 		$old_password = mysqli_real_escape_string($con, $old_password);//escapes special characters in a string de doulevei na to dw argotera
 		$new_password = ($_REQUEST['new_password']); 
-
+		$repeat_password = ($_REQUEST['repeat_password']);
+		
 		if ($repeat_password != $new_password){
 			echo 'wrong password';
 			exit;
@@ -19,7 +20,7 @@ $username = $_SESSION['username'];
 
 		$new_password = md5($new_password);
 		$old_password = md5($old_password);
-		$repeat_password = ($_REQUEST['repeat_password']);
+		
 
 
 
