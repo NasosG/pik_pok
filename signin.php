@@ -88,7 +88,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 								<div class="sign_in_sec" id="tab-2">	
 									<h3>Sign Up</h3>	
 									<div class="dff-tab current" id="tab-3">
-										<form id="sign_up" name="sign_up" method = "post" action="db/sign_up.php" enctype= "multipart/form-data">
+										<form id="sign_up" name="sign_up" method = "post" action="db/sign_up.php" enctype= "multipart/form-data" onsubmit="validatePass();">
 											<div class="row">
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
@@ -132,15 +132,16 @@ include("db/auth.php"); //include auth.php file on all secure pages
 												</div>
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
-														<input type="password" id ="psw" name="psw" placeholder="Password" required>
+														<input type="password" id ="password" name="psw" placeholder="Password" onkeyup='check();' required>
 														<i class="fa fa-lock"></i>
 													</div>
 												</div>
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
-														<input type="password" name="repeat-password" placeholder="Repeat Password" required>
+														<input type="password" id="repeat_password" name="repeat-password" placeholder="Repeat Password" onkeyup='check();' required>
 														<i class="fa fa-lock"></i>
 													</div>
+													<span id='message'></span>
 												</div>
 												
 												<div class="col-lg-12 no-pdd">
@@ -195,5 +196,28 @@ include("db/auth.php"); //include auth.php file on all secure pages
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="lib/slick/slick.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+<script>
+	/* Passwords do not match functionality */
+	  var check = function() { //check passwords if are the same
+
+	  if (document.getElementById('password').value ==
+		document.getElementById('repeat_password').value) {
+		document.getElementById('message').innerHTML = null;
+
+	  } 
+	  else {
+		document.getElementById('message').style.color = 'red';
+		document.getElementById('message').innerHTML = 'Passwords do not match';
+	  }
+	}
+	
+	function validatePass()
+	{
+	  if(document.getElementById('message').innerHTML == 'Passwords do not match') { 
+		alert("Passwords do not match");
+		event.preventDefault();
+	  }
+	}
+</script>
 </body>
 </html>

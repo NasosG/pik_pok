@@ -24,6 +24,7 @@ $date_of_birth = $row['date_of_birth'];
 <!DOCTYPE html>
 <html>
 <head>
+
 	<meta charset="UTF-8">
 	<title>Settings - Pik Pok</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,9 +40,7 @@ $date_of_birth = $row['date_of_birth'];
 	<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/responsive.css">
-	<style>
 
-	</style>
 </head>
 
 
@@ -276,7 +275,7 @@ $date_of_birth = $row['date_of_birth'];
 
 													<table>	
 														<th style="width:100%;">
-															<input type="date" name="bdate" placeholder="<?php echo $date_of_birth; ?>"/>
+															<input type="date" name="bdate" placeholder="<?php echo $date_of_birth; ?>" value="<?php echo $date_of_birth; ?>"/>
 														</th>
 														<th style="">
 															<button class="btn" type="submit">Change</button>
@@ -353,7 +352,7 @@ $date_of_birth = $row['date_of_birth'];
 							  	</div>
 							  	<div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">
 							  		<div class="acc-setting">
-										<h3>Account Setting</h3>
+										<h3>Change Password</h3>
 										<form id="change_password-form" name="change_password-form" method="post" action="db/change_password.php" onsubmit="validatePass();" >
 											<div class="cp-field">
 												<h5>Old Password</h5>
@@ -365,14 +364,15 @@ $date_of_birth = $row['date_of_birth'];
 											<div class="cp-field">
 												<h5>New Password</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="new_password" placeholder="New Password" required>
+													<input type="password" id="new_password" name="new_password" placeholder="New Password" onkeyup='check();' required>
 													<i class="fa fa-lock"></i>
 												</div>
 											</div>
 											<div class="cp-field">
 												<h5>Repeat Password</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="repeat_password" placeholder="Repeat Password" onkeyup="check();" required>
+													<input type="password" id="repeat_password" name="repeat_password" placeholder="Repeat Password" onkeyup='check();' required>
+													<span id='message'></span>
 													<i class="fa fa-lock"></i>
 												</div>
 											</div>
@@ -381,11 +381,12 @@ $date_of_birth = $row['date_of_birth'];
 											</div>   -->
 											<div class="save-stngs pd2">
 												<ul>
-													<li><button type="submit">Save Setting</button></li>
+													<li><button type="submit">Change Password</button></li>
 													<li><button type="clear" id="clear">Clear Form</button></li>
-													<span id='message'></span>
+													
 												</ul>
 											</div><!--save-stngs end-->
+
 										</form>
 									</div><!--acc-setting end-->
 							  	</div>
@@ -1011,31 +1012,38 @@ $date_of_birth = $row['date_of_birth'];
 <script type="text/javascript" src="lib/slick/slick.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script>
+  /* make clear button onclick to clear and not submit the form */
+
   $("#clear").click(function(event)
   {
     event.preventDefault(); //prevent submiting the form
 	document.getElementById('change_password-form').reset(); //clear form
   });
 
-  var check = function() { //check passwords if are the same
-	  if (document.getElementById('password').value ==
-		document.getElementById('confirm_password').value) {
+</script>
+
+<script>
+	/* Passwords do not match functionality */
+	  var check = function() { //check passwords if are the same
+
+	  if (document.getElementById('new_password').value ==
+		document.getElementById('repeat_password').value) {
 		document.getElementById('message').innerHTML = null;
-	  } else {
+
+	  } 
+	  else {
 		document.getElementById('message').style.color = 'red';
-		document.getElementById('message').innerHTML = 'not matching';
+		document.getElementById('message').innerHTML = 'Passwords do not match';
 	  }
 	}
 	
 	function validatePass()
 	{
-	  if(document.getElementById('message').innerHTML == 'not matching')
-	  { 
+	  if(document.getElementById('message').innerHTML == 'Passwords do not match') { 
 		alert("Passwords do not match");
 		event.preventDefault();
 	  }
 	}
-
 </script>
 </body>
 </html>
