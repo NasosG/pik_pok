@@ -365,14 +365,14 @@ $date_of_birth = $row['date_of_birth'];
 											<div class="cp-field">
 												<h5>New Password</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="new-password" placeholder="New Password" required>
+													<input type="text" name="new_password" placeholder="New Password" required>
 													<i class="fa fa-lock"></i>
 												</div>
 											</div>
 											<div class="cp-field">
 												<h5>Repeat Password</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="repeat-password" placeholder="Repeat Password" required>
+													<input type="text" name="repeat_password" placeholder="Repeat Password" required>
 													<i class="fa fa-lock"></i>
 												</div>
 											</div>
