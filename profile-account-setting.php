@@ -632,7 +632,7 @@ $date_of_birth = $row['date_of_birth'];
 										<form>
 											<div class="notbar">
 												<h4>Notification Sound</h4>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id</p>
+												<p>A "ding" sound. Something wild may have happened. Chances are it's a new notification from Pik Pok. Enable this feature to be the first to know about everything!</p>
 												<div class="toggle-btn">
 													<div class="custom-control custom-switch">
 														<input type="checkbox" class="custom-control-input" id="customSwitch1">
@@ -642,7 +642,7 @@ $date_of_birth = $row['date_of_birth'];
 											</div><!--notbar end-->
 											<div class="notbar">
 												<h4>Notification Email</h4>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id</p>
+												<p>Emails are so fun!! ok in the 80s maybe. But of course we can send an email to let you know when something important has come up</p>
 												<div class="toggle-btn">
 													<div class="custom-control custom-switch">
 														<input type="checkbox" class="custom-control-input" id="customSwitch2">
@@ -652,7 +652,7 @@ $date_of_birth = $row['date_of_birth'];
 											</div><!--notbar end-->
 											<div class="notbar">
 												<h4>Chat Message Sound</h4>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id</p>
+												<p>Don't let your friends (or the love of your life) waiting. Receive a special 'tout tout' sound to know when it's time to answer, or not. It's your life as Bon Jovi says :-)</p>
 												<div class="toggle-btn">
 													<div class="custom-control custom-switch">
 														<input type="checkbox" class="custom-control-input" id="customSwitch3">
