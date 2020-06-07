@@ -354,25 +354,25 @@ $date_of_birth = $row['date_of_birth'];
 							  	<div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">
 							  		<div class="acc-setting">
 										<h3>Account Setting</h3>
-										<form>
+										<form id="change_password-form" name="change_password-form" method="post" action="db/change_password.php" >
 											<div class="cp-field">
 												<h5>Old Password</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="old-password" placeholder="Old Password">
+													<input type="text" name="old_password" placeholder="Old Password" required>
 													<i class="fa fa-lock"></i>
 												</div>
 											</div>
 											<div class="cp-field">
 												<h5>New Password</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="new-password" placeholder="New Password">
+													<input type="text" name="new-password" placeholder="New Password" required>
 													<i class="fa fa-lock"></i>
 												</div>
 											</div>
 											<div class="cp-field">
 												<h5>Repeat Password</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="repeat-password" placeholder="Repeat Password">
+													<input type="text" name="repeat-password" placeholder="Repeat Password" required>
 													<i class="fa fa-lock"></i>
 												</div>
 											</div>
