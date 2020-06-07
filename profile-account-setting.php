@@ -354,7 +354,7 @@ $date_of_birth = $row['date_of_birth'];
 							  	<div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">
 							  		<div class="acc-setting">
 										<h3>Account Setting</h3>
-										<form id="change_password-form" name="change_password-form" method="post" action="db/change_password.php" >
+										<form id="change_password-form" name="change_password-form" method="post" action="db/change_password.php" onsubmit="validatePass();" >
 											<div class="cp-field">
 												<h5>Old Password</h5>
 												<div class="cpp-fiel">
@@ -372,17 +372,18 @@ $date_of_birth = $row['date_of_birth'];
 											<div class="cp-field">
 												<h5>Repeat Password</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="repeat_password" placeholder="Repeat Password" required>
+													<input type="text" name="repeat_password" placeholder="Repeat Password" onkeyup="check();" required>
 													<i class="fa fa-lock"></i>
 												</div>
 											</div>
-											<div class="cp-field">
-												<h5><a href="#" title="">Forgot Password?</a></h5>
-											</div>
+											<!--   <div class="cp-field">
+												   <h5><a href="#" title="">Forgot Password?</a></h5>
+											</div>   -->
 											<div class="save-stngs pd2">
 												<ul>
 													<li><button type="submit">Save Setting</button></li>
-													<li><button type="submit">Restore Setting</button></li>
+													<li><button type="clear" id="clear">Clear Form</button></li>
+													<span id='message'></span>
 												</ul>
 											</div><!--save-stngs end-->
 										</form>
@@ -1009,7 +1010,32 @@ $date_of_birth = $row['date_of_birth'];
 <script type="text/javascript" src="js/jquery.mCustomScrollbar.js"></script>
 <script type="text/javascript" src="lib/slick/slick.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+<script>
+  $("#clear").click(function(event)
+  {
+    event.preventDefault(); //prevent submiting the form
+	document.getElementById('change_password-form').reset(); //clear form
+  });
 
+  var check = function() { //check passwords if are the same
+	  if (document.getElementById('password').value ==
+		document.getElementById('confirm_password').value) {
+		document.getElementById('message').innerHTML = null;
+	  } else {
+		document.getElementById('message').style.color = 'red';
+		document.getElementById('message').innerHTML = 'not matching';
+	  }
+	}
+	
+	function validatePass()
+	{
+	  if(document.getElementById('message').innerHTML == 'not matching')
+	  { 
+		alert("Passwords do not match");
+		event.preventDefault();
+	  }
+	}
 
+</script>
 </body>
 </html>
