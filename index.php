@@ -236,7 +236,7 @@ $result = mysqli_query($con, $query);
 			<div class="footy-sec mn no-margin">
 				<div class="container">
 					<ul>
-						<li><a href="help-center.html" title="">Help Center</a></li>
+						<li><a href="help_center.php" title="">Help Center</a></li>
 						<li><a href="about.php" title="">About</a></li>
 						<li><a href="#" title="">Privacy Policy</a></li>
 						<li><a href="community_guidelines.php" title="">Community Guidelines</a></li>
