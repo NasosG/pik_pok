@@ -28,7 +28,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 			<div class="container">
 				<div class="header-data">
 					<div class="logo">
-						<a href="index.html" title=""><img src="images/logo.png" alt=""></a>
+						<a href="index.php" title=""><img src="images/logo.png" alt=""></a>
 					</div><!--logo end-->
 					<div class="search-bar">
 						<form>
@@ -2312,7 +2312,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 			</div>
 		</main>
 
-		<footer>
+		<footer class="fixed-bottom">
 			<div class="footy-sec mn no-margin">
 				<div class="container">
 					<ul>

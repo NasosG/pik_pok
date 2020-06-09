@@ -31,7 +31,7 @@ require('db/errorFuncts.php');
 			<div class="container">
 				<div class="header-data">
 					<div class="logo">
-						<a href="index.html" title=""><img src="images/logo.png" alt=""></a>
+						<a href="index.php" title=""><img src="images/logo.png" alt=""></a>
 					</div><!--logo end-->
 					<div class="search-bar">
 						<form>
@@ -164,7 +164,7 @@ require('db/errorFuncts.php');
 		<h2 style="text-align:center; font-size:100px;"> UNDER CONSTRUCTION</h2>
 		<br><br><br><br>
 		</section>
-		<footer>
+		<footer class="fixed-bottom">
 			<div class="footy-sec mn no-margin">
 				<div class="container">
 					<ul>

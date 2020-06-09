@@ -28,9 +28,20 @@ else if (isset($_REQUEST['username']) && (trim($_REQUEST['username']) != '')) {
     $uname = stripslashes($_REQUEST['username']); // removes backslashes
     $uname = mysqli_real_escape_string($con, $uname); //escapes special characters in a string
 
-    // TODO
-    // edo tha prepei na chekaroume an uparxei xrhsths me to idio onoma sth bash
-    // ......
+    
+    // check if this username already exists in the database
+    $query = "SELECT * FROM members WHERE username ='$uname'";
+    $result = mysqli_query($con, $query);
+
+    if (!$result) {
+        echo ' Database Error Occured '; 
+        exit();
+    }
+
+    if (mysqli_num_rows($result) > 0)  {
+        ChangeUsernameSettings(); 
+        exit();
+    }
 
     $query = "UPDATE members
 			  SET username = '$uname'
@@ -44,9 +55,20 @@ else if (isset($_REQUEST['email']) && (trim($_REQUEST['email']) != '')) {
     $email = stripslashes($_REQUEST['email']); // removes backslashes
     $email = mysqli_real_escape_string($con, $email); //escapes special characters in a string
 
-    // TODO
-    // edo tha prepei na chekaroume an uparxei xrhsths me to idio email sth bash
-    // ......
+    // check if this email already exists in the database
+    
+    $query = "SELECT * FROM members WHERE email ='$email'";
+    $result = mysqli_query($con, $query);
+
+    if (!$result) {
+        echo ' Database Error Occured '; 
+        exit();
+    }
+
+    if (mysqli_num_rows($result) > 0)  {
+        ChangeEmailSettings(); 
+        exit();
+    }
 
     $query = "UPDATE members
 			  SET email = '$email'

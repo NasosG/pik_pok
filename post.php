@@ -31,7 +31,7 @@ require('db/errorFuncts.php');
 			<div class="container">
 				<div class="header-data">
 					<div class="logo">
-						<a href="index.html" title=""><img src="images/logo.png" alt=""></a>
+						<a href="index.php" title=""><img src="images/logo.png" alt=""></a>
 					</div><!--logo end-->
 					<div class="search-bar">
 						<form>
@@ -200,6 +200,25 @@ require('db/errorFuncts.php');
 			</div><!--post-project end-->
 		</div><!--post-project-popup end-->
 
+		<footer class="fixed-bottom">
+			<div class="footy-sec mn no-margin">
+				<div class="container">
+					<ul>
+						<li><a href="help_center.php" title="">Help Center</a></li>
+						<li><a href="about.html" title="">About</a></li>
+						<li><a href="#" title="">Privacy Policy</a></li>
+						<li><a href="#" title="">Community Guidelines</a></li>
+						<li><a href="#" title="">Cookies Policy</a></li>
+						<li><a href="#" title="">Career</a></li>
+						<li><a href="forum.html" title="">Forum</a></li>
+						<li><a href="#" title="">Language</a></li>
+						<li><a href="#" title="">Copyright Policy</a></li>
+					</ul>
+					<p><img src="images/copy-icon2.png" alt="">Copyright 2019</p>
+					<img class="fl-rgt" src="images/logo2.png" alt="">
+				</div>
+			</div>
+		</footer><!--footer end-->
 
 	</div><!--theme-layout end-->
 

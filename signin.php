@@ -31,7 +31,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 						<div class="col-lg-6">
 							<div class="cmp-info">
 								<div class="cm-logo">
-									<img src="images/pp.png" alt="">
+									<a href="index.php"><img src="images/pp.png" alt=""></a>
 									<p>Pik Pok, is the destination for short-form pictures. Our mission is to capture and present the world's creativity, knowledge, and precious life moments.</p>
 								</div><!--cm-logo end-->	
 								<img src="images/main.png" alt="">			

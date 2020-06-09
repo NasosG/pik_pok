@@ -35,7 +35,7 @@ $result = mysqli_query($con, $query);
 			<div class="container">
 				<div class="header-data">
 					<div class="logo">
-						<a href="index.html" title=""><img src="images/logo.png" alt=""></a>
+						<a href="index.php" title=""><img src="images/logo.png" alt=""></a>
 					</div><!--logo end-->
 					<div class="search-bar">
 						<form>
@@ -194,7 +194,7 @@ $result = mysqli_query($con, $query);
 									<input type='hidden' name='photo_id' id='photo_id' value='".$row['photo_id']."' />
 									<ul>
 										<li>
-										<button style='border:none' >
+										<button style='border:none'>
 											<a id='likeLink' class='follow text-white'>Like <i class='fa fa-heart' aria-hidden='true'></i></a>
 										</button>
 											
