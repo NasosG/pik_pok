@@ -55,7 +55,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
-footer {
+.footer {
    position: fixed;
    left: 0;
    bottom: 0;
