@@ -232,7 +232,9 @@ $result = mysqli_query($con, $query);
 		</section>
 		
 		
-		<footer>
+		<footer style="position: fixed;
+   left: 0;
+   bottom: 0;" >
 			<div class="footy-sec mn no-margin">
 				<div class="container">
 					<ul>
