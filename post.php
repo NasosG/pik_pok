@@ -7,6 +7,7 @@ require('db/errorFuncts.php');
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel='shortcut icon' type='image/x-icon' href='images/logo.png'/>
 	<meta charset="UTF-8">
 	<title>Post - Pik Pok</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
