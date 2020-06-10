@@ -7,12 +7,19 @@ mysqli_set_charset($con,"utf8");
 $query = "SELECT * FROM images ORDER BY photo_id DESC"; //mporoume na kanoume order by date alla kai to id petuxainei ton skopo kai den xreiazetai na kratame kai thn wra sthn bash alla mono hmeromhnia
 		
 $result = mysqli_query($con, $query);
+$uname = $_SESSION['username'];
+// find user id from session name
+$query2 = "SELECT id FROM members WHERE username = '$uname'";
+$result2 = mysqli_query($con, $query2);
+$row = mysqli_fetch_array($result2);
+$user_id = $row['id'];
+
+
 ?>
 	
 <!DOCTYPE html>
 <html>
 <head>
-<link rel='shortcut icon' type='image/x-icon' href='images/logo.png'/>
 <meta charset="UTF-8">
 <title>Home - Pik Pok</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -190,13 +197,22 @@ $result = mysqli_query($con, $query);
 									<img src=\"".$row['photo_path'].$row['photo_name']."\" alt='user's photo' />";
 									
 									if(isset($_SESSION['username'])) 
-									{															
+									{	
+										$photo_id = $row['photo_id'];
+										$query3 = "SELECT * FROM post_likes WHERE liked_by_user = '$user_id' AND posted_photo_id = '$photo_id'"; 
+										$result3 = mysqli_query($con, $query3);									
 									echo "
 									<input type='hidden' name='photo_id' id='photo_id' value='".$row['photo_id']."' />
 									<ul>
 										<li>
-										<button style='border:none'>
-											<a id='likeLink' class='follow text-white'>Like <i class='fa fa-heart' aria-hidden='true'></i></a>
+										<button class='likeBut' onclick='changeLikeState(this)' style='border:none'>";
+										 if (mysqli_num_rows($result3) == 0 )  
+										echo "
+											<a id='likeLink' class='likeLink follow text-white'>Like <i class='fa fa-heart' aria-hidden='true'></i></a>";
+											else
+												echo "
+											<a id='likeLink' class='likeLink follow text-white'>Unlike <i class='fa fa-heart' aria-hidden='true'></i></a>";
+											echo "
 										</button>
 											
 										</li>
@@ -278,6 +294,7 @@ $("form").submit(function(e) {
 	
 	if(!formSubmit) return;
 	
+	
     e.preventDefault(); // avoid to execute the actual submit of the form.
 
     var form = $(this);
@@ -294,6 +311,18 @@ $("form").submit(function(e) {
          });
 
 });
+
+function changeLikeState(x1){
+	
+	var x = x1.children;
+	//alert (x[0].textContent );
+	if(x[0].textContent.includes("Unlike")) {
+		x[0].innerHTML = "Like <i class='fa fa-heart' aria-hidden='true'></i>";
+	}
+	else {
+		x[0].innerHTML = "Unlike <i class='fa fa-heart' aria-hidden='true'></i>";
+	}
+}
 </script>
 </body>
 </html>
