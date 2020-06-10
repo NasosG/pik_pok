@@ -1576,6 +1576,12 @@ main {
 }
 
 
+.fa-bolt {
+    top:-5%;
+    left:2%;
+    font-size:70%;
+}
+
 /* =============== comment-section ============== */
 
 .comment-section {
@@ -6356,13 +6362,21 @@ a:hover {
 	padding: 7px 0 8px 10px;
 }
 .copylink a{
+	cursor:pointer;
 	background-color: #e44d3a;
-	color: #fff;
+	color: #FFFFFF!important;
     padding: 10px 15px 10px 15px;
     border-radius: 4px;
 }
 .copylink span{
 	padding:30px 0 20px;
+}
+.copylink input{
+	border-width: 1px;
+	border-color: #F8F8F8;
+	padding: 4px;
+	border-radius: 4px;
+	background-color: #eeeeee;
 }
 .copylink i{
 	float: unset;

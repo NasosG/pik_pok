@@ -14,16 +14,15 @@ require('db/errorFuncts.php');
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<link rel="stylesheet" type="text/css" href="css/animate.css">
-	<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/line-awesome.css">
-	<link rel="stylesheet" type="text/css" href="css/line-awesome-font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" type="text/css" href="css/flatpickr.min.css">
 	<link rel="stylesheet" type="text/css" href="lib/slick/slick.css">
 	<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/responsive.css">
+	<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+	<!-- font awesome icons kit -->
+	<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
 </head>
 
 <body oncontextmenu="return false;">	
@@ -45,7 +44,7 @@ require('db/errorFuncts.php');
 							<li>
 								<a href="index.php" title="">
 									<span>
-									<i class="fa fa-home fa-lg"></i>
+									<i style="font-size:1.2em;" class="fa fa-home"></i>
 									</span>
 									Home
 								</a>
@@ -183,7 +182,7 @@ require('db/errorFuncts.php');
 									</div>
 							</div>
 							<div class="col-lg-12 col-md-12 col-12">
-								<img src="images/SocialMediaPost.png" id="add-prof-pic"></img>
+								<img style="max-height:420px;" src="images/SocialMediaPost.png" id="add-prof-pic"></img>
 								
 							</div>
 							
@@ -201,7 +200,7 @@ require('db/errorFuncts.php');
 			</div><!--post-project end-->
 		</div><!--post-project-popup end-->
 
-		<footer class="fixed-bottom">
+		<footer class="">
 			<div class="footy-sec mn no-margin">
 				<div class="container">
 					<ul>

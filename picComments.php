@@ -3,7 +3,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 require('db/db.php');
 require('db/errorFuncts.php');
 
-$photo_id = $_POST['photo_id'];
+$photo_id = $_GET['photo_id'];
 
 mysqli_set_charset($con,"utf8");
 $query = "SELECT * FROM post_comments WHERE post_id = $photo_id";
@@ -26,21 +26,18 @@ $row2 = mysqli_fetch_array($result);
 	<link rel='shortcut icon' type='image/x-icon' href='images/logo.png'/>
     <meta charset="UTF-8">
     <title>Comments - Pik Pok</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <link rel="stylesheet" type="text/css" href="css/animate.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/jquery.range.css">
-    <link rel="stylesheet" type="text/css" href="css/line-awesome.css">
-    <link rel="stylesheet" type="text/css" href="css/line-awesome-font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="lib/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/flatpickr.min.css">
+	<link rel="stylesheet" type="text/css" href="lib/slick/slick.css">
+	<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/responsive.css">
+	<!-- font awesome icons kit -->
+	<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
 </head>
 
 <body oncontextmenu="return false;">
@@ -62,7 +59,7 @@ $row2 = mysqli_fetch_array($result);
 							<li>
 								<a href="index.php" title="">
 									<span>
-									<i class="fa fa-home fa-lg"></i>
+									<i style="font-size:1.2em;" class="fa fa-home"></i>
 									</span>
 									Home
 								</a>
@@ -225,11 +222,11 @@ $row2 = mysqli_fetch_array($result);
                                             <div class="pt-3 job_descp accountnone">
                                                 <img src="<?php echo $row2['photo_path'].$row2['photo_name'];?>" class="job-dt"></img>
                                                 <ul class="skill-tags">
-                                                    <li><a href="#" title="">HTML</a></li>
-                                                    <li><a href="#" title="">PHP</a></li>
-                                                    <li><a href="#" title="">CSS</a></li>
-                                                    <li><a href="#" title="">Javascript</a></li>
-                                                    <li><a href="#" title="">Wordpress</a></li>
+                                                    <li><a href="#" title="">Summer</a></li>
+                                                    <li><a href="#" title="">Beach</a></li>
+                                                    <li><a href="#" title="">Corona</a></li>
+                                                    <li><a href="#" title="">Shark</a></li>
+                                                    <li><a href="#" title="">Surf</a></li>
                                                 </ul>
                                             </div>
                                             <div class="job-status-bar btm-line">
@@ -323,13 +320,8 @@ $row2 = mysqli_fetch_array($result);
                                      <div class="widget widget-about bid-place">
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#applyjob" data-whatever="@mdo">Like</button>
                                     </div>
-                                    <!--widget-about end-->
-                                    <div class="widget widget-projectid">
-                                        <h3>Picture : <?php echo $row2['photo_name']?></h3>
-                                        <p>Report Post</p>
-                                    </div>
-                                    <!--widget-about end-->
-                                    <div class="widget widget-jobs">
+
+                                    <!--<div class="widget widget-jobs">
                                         <div class="sd-title">
                                             <h3>About the Client</h3>
                                             <i class="fa fa-ellipsis-v"></i>
@@ -358,19 +350,18 @@ $row2 = mysqli_fetch_array($result);
                                             <h4>Member Since</h4>
                                             <p>August 24, 2017</p>
                                         </div>
-                                    </div>
-                                    <!--widget-jobs end-->
+                                    </div>-->
+
                                     <div class="widget widget-jobs">
                                         <div class="sd-title">
-                                            <h3>Project Link</h3>
-                                            <i class="fa fa-ellipsis-v"></i>
+                                            <h3>Post Link</h3>
                                         </div>
                                         <div class="sd-title copylink">
-                                            <P>Http://www.workwise.com/pro...</P>
-                                            <span><a href="#">Copy Link</a></span>
+                                            <input type="text" id="postLink" value="http://localhost/pik_pok/picComments.php?photo_id=<?php echo $photo_id;?>" readonly></input>
+                                            <span><a onclick="CopyText()">Copy Link</a></span>
                                         </div>
                                     </div>
-                                    <!--widget-jobs end-->
+
                                     <div class="widget widget-jobs">
                                         <div class="sd-title">
                                             <h3>Share</h3>
@@ -389,7 +380,11 @@ $row2 = mysqli_fetch_array($result);
                                             </ul>
                                         </div>
                                     </div>
-                                    <!--widget-jobs end-->
+                                     
+                                     <div class="widget widget-projectid">
+                                        <p>Report Post</p>
+                                    </div>
+
                                 </div>
                                 <!--right-sidebar end-->
                             </div>
@@ -433,7 +428,7 @@ $row2 = mysqli_fetch_array($result);
     <script type="text/javascript" src="lib/slick/slick.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
 	<script>
-	var form = $('.aform');
+var form = $('.aform');
 $('.aform').submit(function(e) {
 
 
@@ -453,6 +448,15 @@ $('.aform').submit(function(e) {
 document.getElementById("send-comment").addEventListener("click", function () {
   form.submit();
 });
+
+function CopyText() {
+  var copyText = document.getElementById("postLink");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+  alert("Copied: " + copyText.value);
+}
+
 	</script>
 </body>
 

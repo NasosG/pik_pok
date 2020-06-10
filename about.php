@@ -8,6 +8,7 @@ require('db/errorFuncts.php');
 <!DOCTYPE html>
 <html>
 <head>
+	
 	<link rel='shortcut icon' type='image/x-icon' href='images/logo.png'/>
 	<meta charset="UTF-8">
 	<title>WorkWise Html Template</title>
@@ -17,13 +18,12 @@ require('db/errorFuncts.php');
 	<link rel="stylesheet" type="text/css" href="css/animate.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/flatpickr.min.css">
-	<link rel="stylesheet" type="text/css" href="css/line-awesome.css">
-	<link rel="stylesheet" type="text/css" href="css/line-awesome-font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="lib/slick/slick.css">
 	<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/responsive.css">
+	<!-- font awesome icons kit -->
+	<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
 </head>
 
 
@@ -45,7 +45,7 @@ require('db/errorFuncts.php');
 							<li>
 								<a href="index.php" title="">
 									<span>
-									<i class="fa fa-home fa-lg"></i>
+									<i style="font-size:1.2em;" class="fa fa-home"></i>
 									</span>
 									Home
 								</a>

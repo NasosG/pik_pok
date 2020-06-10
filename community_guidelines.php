@@ -10,19 +10,18 @@ require('db/errorFuncts.php');
 <link rel='shortcut icon' type='image/x-icon' href='images/logo.png'/>
 <meta charset="UTF-8">
 <title>Terms Of Use - Pik Pok</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<link rel="stylesheet" type="text/css" href="css/animate.css">
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/flatpickr.min.css">
-<link rel="stylesheet" type="text/css" href="css/line-awesome.css">
-<link rel="stylesheet" type="text/css" href="css/line-awesome-font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="lib/slick/slick.css">
-<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/responsive.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/flatpickr.min.css">
+	<link rel="stylesheet" type="text/css" href="lib/slick/slick.css">
+	<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/responsive.css">
+	<!-- font awesome icons kit -->
+	<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
 <style>
 .terms-h3{font-size: 30px; font-weight: 600; margin-bottom:10px;}
 .terms-h2{font-size:40px;padding-top:20px;font-weight: 600;}
@@ -60,7 +59,7 @@ h4{font-weight: bold;margin-bottom:10px;margin-top:10px;}
 							<li>
 								<a href="index.php" title="">
 									<span>
-									<i class="fa fa-home fa-lg"></i>
+									<i style="font-size:1.2em;" class="fa fa-home"></i>
 									</span>
 									Home
 								</a>

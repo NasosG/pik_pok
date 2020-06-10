@@ -30,13 +30,12 @@ $user_id = $row['id'];
 <link rel="stylesheet" type="text/css" href="css/animate.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/flatpickr.min.css">
-<link rel="stylesheet" type="text/css" href="css/line-awesome.css">
-<link rel="stylesheet" type="text/css" href="css/line-awesome-font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="lib/slick/slick.css">
 <link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/responsive.css">
+<!-- font awesome icons kit -->
+<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
 </head>
 
 <body oncontextmenu="return false;">
@@ -58,7 +57,7 @@ $user_id = $row['id'];
 							<li>
 								<a href="index.php" title="">
 									<span>
-									<i class="fa fa-home fa-lg"></i>
+									<i style="font-size:1.2em;" class="fa fa-home"></i>
 									</span>
 									Home
 								</a>
@@ -190,7 +189,7 @@ $user_id = $row['id'];
 						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 						
 							<div >
-							<form id="myform" class="company_profile_info" name="myform" method="post" action="picComments.php" >
+							<form id="myform" class="company_profile_info" name="myform" method="get" action="picComments.php" >
 								<div class="company-up-info">
 								
 									<a href="user-profile.html"><h3>';
@@ -213,7 +212,7 @@ $user_id = $row['id'];
 											<a id='likeLink' class='likeLink follow text-white'>Like <i class='fa fa-heart' aria-hidden='true'></i></a>";
 											else
 												echo "
-											<a id='likeLink' class='likeLink follow text-white'>Unlike <i class='fa fa-heart' aria-hidden='true'></i></a>";
+											<a id='likeLink' class='likeLink follow text-white'>Unlike <i class='fa fa-heart-broken' aria-hidden='true'></i></a>";
 											echo "
 										</button>
 											
@@ -288,6 +287,7 @@ $('.btn2').on('click', function() {
 
 formSubmit = false;
     $.ajax({
+    	//type: "GET",
         url : 'picComments.php',
     });
 });
@@ -322,7 +322,7 @@ function changeLikeState(x1){
 		x[0].innerHTML = "Like <i class='fa fa-heart' aria-hidden='true'></i>";
 	}
 	else {
-		x[0].innerHTML = "Unlike <i class='fa fa-heart' aria-hidden='true'></i>";
+		x[0].innerHTML = "Unlike <i class='fas fa-heart-broken'></i>";
 	}
 }
 </script>

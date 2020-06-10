@@ -8,6 +8,14 @@ $query = "SELECT * FROM images ORDER BY photo_likes DESC";
 		
 $result = mysqli_query($con, $query);		 
 
+if (isset ($_SESSION['username'])) {
+	$uname = $_SESSION['username'];	
+	// find user id from session name
+	$query2 = "SELECT id FROM members WHERE username = '$uname'";
+	$result2 = mysqli_query($con, $query2);
+	$row = mysqli_fetch_array($result2);
+	$user_id = $row['id'];
+}
 ?>
 	
 <!DOCTYPE html>
@@ -15,20 +23,19 @@ $result = mysqli_query($con, $query);
 <head>
 <link rel='shortcut icon' type='image/x-icon' href='images/logo.png'/>
 <meta charset="UTF-8">
-<title>Home - Pik Pok</title>
+<title>Trending - Pik Pok</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <link rel="stylesheet" type="text/css" href="css/animate.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/flatpickr.min.css">
-<link rel="stylesheet" type="text/css" href="css/line-awesome.css">
-<link rel="stylesheet" type="text/css" href="css/line-awesome-font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="lib/slick/slick.css">
 <link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/responsive.css">
+<!-- font awesome icons kit -->
+<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
 </head>
 
 <body oncontextmenu="return false;">
@@ -50,7 +57,7 @@ $result = mysqli_query($con, $query);
 							<li>
 								<a href="index.php" title="">
 									<span>
-									<i class="fa fa-home fa-lg"></i>
+									<i style="font-size:1.2em;" class="fa fa-home"></i>
 									</span>
 									Home
 								</a>
@@ -182,7 +189,7 @@ $result = mysqli_query($con, $query);
 						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 						
 							<div >
-							<form id="myform" class="company_profile_info" name="myform" method="post" action="picComments.php" >
+							<form id="myform" class="company_profile_info" name="myform" method="get" action="picComments.php" >
 								<div class="company-up-info">
 								
 									<a href="user-profile.html"><h3>';
@@ -191,13 +198,22 @@ $result = mysqli_query($con, $query);
 									<img src=\"".$row['photo_path'].$row['photo_name']."\" alt='user's photo' />";
 									
 									if(isset($_SESSION['username'])) 
-									{															
+									{	
+										$photo_id = $row['photo_id'];
+										$query3 = "SELECT * FROM post_likes WHERE liked_by_user = '$user_id' AND posted_photo_id = '$photo_id'"; 
+										$result3 = mysqli_query($con, $query3);									
 									echo "
 									<input type='hidden' name='photo_id' id='photo_id' value='".$row['photo_id']."' />
 									<ul>
 										<li>
-										<button style='border:none' >
-											<a id='likeLink' class='follow text-white'>Like <i class='fa fa-heart' aria-hidden='true'></i></a>
+										<button class='likeBut' onclick='changeLikeState(this)' style='border:none'>";
+										 if (mysqli_num_rows($result3) == 0 )  
+										echo "
+											<a id='likeLink' class='likeLink follow text-white'>Like <i class='fa fa-heart' aria-hidden='true'></i></a>";
+											else
+												echo "
+											<a id='likeLink' class='likeLink follow text-white'>Unlike <i class='fa fa-heart-broken' aria-hidden='true'></i></a>";
+											echo "
 										</button>
 											
 										</li>
@@ -238,13 +254,12 @@ $result = mysqli_query($con, $query);
 			<div class="footy-sec mn no-margin">
 				<div class="container">
 					<ul>
-						<li><a href="help-center.html" title="">Help Center</a></li>
+						<li><a href="help_center.php" title="">Help Center</a></li>
 						<li><a href="about.php" title="">About</a></li>
 						<li><a href="#" title="">Privacy Policy</a></li>
-						<li><a href="#" title="">Community Guidelines</a></li>
+						<li><a href="community_guidelines.php" title="">Community Guidelines</a></li>
 						<li><a href="#" title="">Cookies Policy</a></li>
-						<li><a href="#" title="">Career</a></li>
-						<li><a href="forum.html" title="">Forum</a></li>
+						<li><a href="termsofuse.php" title="">Terms of Use</a></li>
 						<li><a href="#" title="">Language</a></li>
 						<li><a href="#" title="">Copyright Policy</a></li>
 					</ul>
@@ -272,6 +287,7 @@ $('.btn2').on('click', function() {
 
 formSubmit = false;
     $.ajax({
+    	//type: "GET",
         url : 'picComments.php',
     });
 });
@@ -279,6 +295,7 @@ formSubmit = false;
 $("form").submit(function(e) {
 	
 	if(!formSubmit) return;
+	
 	
     e.preventDefault(); // avoid to execute the actual submit of the form.
 
@@ -296,6 +313,18 @@ $("form").submit(function(e) {
          });
 
 });
+
+function changeLikeState(x1){
+	
+	var x = x1.children;
+	//alert (x[0].textContent );
+	if(x[0].textContent.includes("Unlike")) {
+		x[0].innerHTML = "Like <i class='fa fa-heart' aria-hidden='true'></i>";
+	}
+	else {
+		x[0].innerHTML = "Unlike <i class='fas fa-heart-broken'></i>";
+	}
+}
 </script>
 </body>
 </html>
