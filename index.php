@@ -7,14 +7,15 @@ mysqli_set_charset($con,"utf8");
 $query = "SELECT * FROM images ORDER BY photo_id DESC"; //mporoume na kanoume order by date alla kai to id petuxainei ton skopo kai den xreiazetai na kratame kai thn wra sthn bash alla mono hmeromhnia
 		
 $result = mysqli_query($con, $query);
-$uname = $_SESSION['username'];
+if (isset ($_SESSION['username'])){
+	$uname = $_SESSION['username'];	
 // find user id from session name
 $query2 = "SELECT id FROM members WHERE username = '$uname'";
 $result2 = mysqli_query($con, $query2);
 $row = mysqli_fetch_array($result2);
 $user_id = $row['id'];
 
-
+}
 ?>
 	
 <!DOCTYPE html>
