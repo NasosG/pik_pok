@@ -20,6 +20,7 @@ $user_id = $row['id'];
 <!DOCTYPE html>
 <html>
 <head>
+<link rel='shortcut icon' type='image/x-icon' href='images/logo.png'/>
 <meta charset="UTF-8">
 <title>Home - Pik Pok</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
