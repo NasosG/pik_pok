@@ -4,6 +4,8 @@ require('db.php');
 require('errorFuncts.php');
 session_start();
 
+$tags = $_POST['tags'];
+
 $date = date("Y-m-d H:i:s");
 $username = $_SESSION['username'];
 $target_dir = "../uploads/pik_pok_pics/";
@@ -61,9 +63,9 @@ else
   
 	mysqli_set_charset($con,"utf8");
 	$query = "INSERT INTO images(photo_name, photo_likes, photo_path, username, photo_tag, date_posted) 
-	VALUES ('$file_up', 0, '$general_dir' ,'$username', null, '$date')";
+	VALUES ('$file_up', 0, '$general_dir' ,'$username', '$tags', '$date')";
 
-	$result = mysqli_query($con, $query) or die("Not able to execute the query");
+	$result = mysqli_query($con, $query) or die("Not able to execute the query"); 
 }
 
 //close the connection

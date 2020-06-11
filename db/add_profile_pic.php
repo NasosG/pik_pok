@@ -24,6 +24,21 @@ if($result) {
 else {
 	exit("database error occurred");
 }
+$query_old_pic = "SELECT profile_pic, picture_path FROM members WHERE username = '$uname'";
+		
+$result = mysqli_query($con,$query_old_pic);
+		
+if($result && mysqli_num_rows($result)>0) {
+	$row = mysqli_fetch_array($result);
+	unlink('../'.$row["picture_path"].$row["profile_pic"]);
+}
+
+
+$query = "UPDATE members
+SET profile_pic = '$file_up', picture_path='$general_dir'
+WHERE username = '$uname'";
+		
+$result = mysqli_query($con,$query);
 
 $file_up = mysqli_real_escape_string($con, $_FILES["fileToUpload"]["name"]);
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -85,7 +100,7 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 		$result = mysqli_query($con,$query);
 		
 		if($result) {
-				header("Location: ../index.php");
+				header("Location: ../profile3.php");
 		}
 		else {
 			echo "error occurred";

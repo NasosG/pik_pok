@@ -181,10 +181,12 @@ $result = mysqli_query($con, $query);
 											<div class="user-pro-img">
 												<div class="usr-pic  ">
 											<img src= <?php echo '"'.$picture_path.$picture_name.'"'; ?> alt="">
-											<div class="add-dp" id="OpenImgUpload">
-												<input type="file" id="file">
-												<label for="file"><i class="fa fa-camera" aria-hidden="true"></i></label>												
-											</div>
+											<form id="changeAvatar" name="changeAvatar" method="post" action = "db/add_profile_pic.php" enctype= "multipart/form-data">
+												<div class="add-dp" id="OpenImgUpload">
+													<input type="file" id="file" name="fileToUpload">
+													<label for="file"><i class="fa fa-camera" aria-hidden="true"></i></label>												
+												</div>
+											</form>
 										</div><!--user-pro-img end-->
 												</div>
 											</div><!--username-dt end-->
@@ -412,7 +414,7 @@ $result = mysqli_query($con, $query);
 					<form id="post_form" name="post_form" method="post" action = "db/addnew.php" enctype= "multipart/form-data">
 						<div class="row">
 							<div class="col-lg-12">
-								<input type="text" name="tag" placeholder="Insert Tag">
+								<input type="text" name="tags" placeholder="Insert Tags">
 							</div>
 							<!--
 							<div class="col-lg-12">
@@ -464,6 +466,11 @@ $result = mysqli_query($con, $query);
 document.getElementsByClassName("trash-button").onclick = function() {
     	document.getElementsByClassName("form-delete").submit();
 }
+
+document.getElementById("file").onchange = function() {
+    document.getElementById("changeAvatar").submit();
+};
+
 </script>
 
 </body>

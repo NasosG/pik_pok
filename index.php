@@ -4,18 +4,27 @@ require('db/db.php');
 require('db/errorFuncts.php');
 
 mysqli_set_charset($con,"utf8");
+
+/*
+	$search=get ['search'];
+	1. tha kanoume get/post na pairnoume to keimeno tou input
+  1. na kanoume query opou tha tou dinoume to keimeno tou search bar apo to input
+  2. 
+*/
+
 $query = "SELECT * FROM images ORDER BY photo_id DESC"; //mporoume na kanoume order by date alla kai to id petuxainei ton skopo kai den xreiazetai na kratame kai thn wra sthn bash alla mono hmeromhnia
 		
 $result = mysqli_query($con, $query);
-if (isset ($_SESSION['username'])){
-	$uname = $_SESSION['username'];	
-// find user id from session name
-$query2 = "SELECT id FROM members WHERE username = '$uname'";
-$result2 = mysqli_query($con, $query2);
-$row = mysqli_fetch_array($result2);
-$user_id = $row['id'];
 
+if (isset ($_SESSION['username'])) {
+	$uname = $_SESSION['username'];	
+	// find user id from session name
+	$query2 = "SELECT id FROM members WHERE username = '$uname'";
+	$result2 = mysqli_query($con, $query2);
+	$row = mysqli_fetch_array($result2);
+	$user_id = $row['id'];
 }
+
 ?>
 	
 <!DOCTYPE html>
@@ -48,7 +57,7 @@ $user_id = $row['id'];
 					</div><!--logo end-->
 					<div class="search-bar">
 						<form>
-							<input type="text" name="search" placeholder="Search...">
+							<input type="text" name="search" id="search" placeholder="Search...">
 							<button type="submit"><i class="fa fa-search"></i></button>
 						</form>
 					</div><!--search-bar end-->
@@ -189,7 +198,7 @@ $user_id = $row['id'];
 						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 						
 							<div >
-							<form id="myform" class="company_profile_info" name="myform" method="get" action="picComments.php" >
+							<form id="myform" class="likes-comments-form company_profile_info" name="myform" method="get" action="picComments.php" >
 								<div class="company-up-info">
 								
 									<a href="user-profile.html"><h3>';
@@ -292,7 +301,7 @@ formSubmit = false;
     });
 });
 
-$("form").submit(function(e) {
+$(".likes-comments-form").submit(function(e) {
 	
 	if(!formSubmit) return;
 	
@@ -325,6 +334,31 @@ function changeLikeState(x1){
 		x[0].innerHTML = "Unlike <i class='fas fa-heart-broken'></i>";
 	}
 }
+
+/*
+function myFunction() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('search');
+  filter = input.value.toUpperCase();
+
+
+ // ul = document.getElementById("myUL");
+  //li = ul.getElementsByTagName('li');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+*/
 </script>
 </body>
 </html>

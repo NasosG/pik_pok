@@ -173,7 +173,7 @@ require('db/errorFuncts.php');
 					<form id="post_form" name="post_form" method="post" action = "db/addnew.php" enctype= "multipart/form-data">
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-12">
-								<input type="text" name="tag" placeholder="Insert Tags">
+								<input type="text" name="tags" placeholder="Insert Tags, f.e. #summer2020#i<3beach">
 							</div>
 							<div class="col-lg-12 col-md-12 col-12">
 									<div class="upload-btn-wrapper">
@@ -195,8 +195,8 @@ require('db/errorFuncts.php');
 							</div>
 						</div>
 					</form>
+
 				</div><!--post-project-fields end-->
-				
 			</div><!--post-project end-->
 		</div><!--post-project-popup end-->
 
