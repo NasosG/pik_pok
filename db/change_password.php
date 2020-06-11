@@ -6,7 +6,7 @@ require ('errorFuncts.php');
 $username = $_SESSION['username'];
 //echo isset($_REQUEST['fname']) . ' isset value ';
 
-// If form submitted, insert values into the database.
+	// If form submitted, get the old/new password 
     if (isset($_POST['old_password'])) {
 		$old_password = stripslashes($_REQUEST['old_password']);// removes backslashes de doulevei na to dw argotera
 		$old_password = mysqli_real_escape_string($con, $old_password);//escapes special characters in a string de doulevei na to dw argotera
@@ -20,12 +20,9 @@ $username = $_SESSION['username'];
 
 		$new_password = md5($new_password);
 		$old_password = md5($old_password);
-		
 
 
-
-
-	//Checking if user exists in the database or not
+		//Checking if user exists in the database or not
 
         $query = "SELECT * FROM members WHERE username= '$username' AND password='$old_password'";
 		$result = mysqli_query($con,$query) or die("Not able to execute the query");
@@ -39,7 +36,6 @@ $username = $_SESSION['username'];
 			
 			$result = mysqli_query($con,$query);
 
-			
 
 			if (!empty($_SERVER['HTTP_REFERER']))
 	    		header("Location: ".$_SERVER['HTTP_REFERER']);

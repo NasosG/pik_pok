@@ -4,7 +4,7 @@
 	session_start();
 	
 	
-    // If form submitted, insert values into the database.
+    // If form submitted, get the values by post/get
     if (isset($_POST['username'])) {
 		$username = stripslashes($_REQUEST['username']); // removes backslashes
 		$username = mysqli_real_escape_string($con, $username); //escapes special characters in a string
