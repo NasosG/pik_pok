@@ -817,6 +817,41 @@ main {
 	font-size: 14px;
 	font-weight: 600;	
 }
+/* ============= user-bio ============= */
+.user-bio {
+	float: left;
+	width: 100%;
+}
+.user-bio li {
+	float: left;
+	text-align: center;
+	width: 100%;
+	border-bottom: 1px solid #e5e5e5;
+	border-top: 1px solid #e5e5e5;
+	padding: 10px 0px 0px 0px;
+	max-height: 10px;
+}
+.user-bio li:last-child {
+	border-bottom: 0;
+}
+.user-bio li:nth-child(1),
+.user-bio li:nth-child(2) {
+	border-bottom: 0;
+}
+.user-bio li h4 {
+	color: #686868;
+	font-size: 20px;
+	
+}
+.user-bio span {
+	color: #000000;
+	font-size: 20px;
+}
+.user-bio li a {
+	color: #e44d3a;
+	font-size: 14px;
+	font-weight: 600;	
+}
 
 /* ============= Suggestions ============ */
 

@@ -33,7 +33,7 @@ require('db/errorFuncts.php');
 </head>
 
 
-<body oncontextmenu="return false;">S
+<body oncontextmenu="return false;">
 	<div class="wrapper">
 		<header>
 			<div class="container">

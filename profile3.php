@@ -206,20 +206,25 @@ $result = mysqli_query($con, $query);
 												<span>155</span>
 											</li>
 											<li>
-												<a href="my-profile.html" title="">Change Avatar</a>
+												<a href="profile-account-setting.php" title="">More stats</a>
 											</li>
 										</ul>
 									</div><!--user-data end-->
 									<div class="suggestions full-width">
 										<div class="sd-title">
-											<h3>Suggestions</h3>
-											<i class="fa fa-ellipsis-v"></i>
+											<h3>Short Bio (not yet)</h3>
+											<!--<i class="fa fa-ellipsis-v"></i>-->
 										</div><!--sd-title end-->
 										<div class="suggestions-list">
 											<div class="suggestion-usd">
-												
+												<!--  empty area  -->
 											</div>
-											
+											<ul class="user-bio">
+
+											<li>
+												<a href="profile3.php" title="">Change Bio</a>
+											</li>
+										</ul>
 											
 										</div><!--suggestions-list end-->
 									</div><!--suggestions end-->
@@ -258,9 +263,22 @@ $result = mysqli_query($con, $query);
 									</div><!--post-topbar end-->
 									<div class="posts-section">
 									<?php 
+									$i=0;
+									$photos_table = array();
 									while ($row = mysqli_fetch_array($result)) {
 										$photo = $row['photo_path'].$row['photo_name'];
 										$date_posted = date("d-m-Y", strtotime($row['date_posted']));
+
+										$photo_id = $row['photo_id'];
+										$count_comments = "SELECT COUNT(post_id) FROM post_comments WHERE post_id = '$photo_id'";
+										$result_of_count = mysqli_query($con, $count_comments);
+
+										$row_after_count = mysqli_fetch_row($result_of_count);
+
+										// store all the photos in an array to use them later
+										
+										$photos_table[$i++] =  $photo;
+
 										echo '	
 										<div class="post-bar">
 											<div class="post_topbar">
@@ -304,8 +322,8 @@ $result = mysqli_query($con, $query);
 													<li><a href="#" class="com"><i class="fa fa-comment"></i> Comments 15</a></li>-->
 												</ul>
 												<ul style= "float:right;" class="like-com">
-													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-thumbs-up"></i> Likes 15</a></li>
-													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-comment"></i> Comments 15</a></li>
+													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-thumbs-up"></i> Likes '.$row['photo_likes'].'</a></li>
+													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-comment"></i> Comments '.$row_after_count[0].'</a></li>
 												</ul>
 											</div>
 										</div><!--post-bar end-->
@@ -328,18 +346,15 @@ $result = mysqli_query($con, $query);
 										</div>
 										<div class="pf-gallery">
 											<ul>
-												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
-												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
-												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
-												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
-												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
-												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
-												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
-												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
-												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
-												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
-												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
-												<li><a href="#" title=""><img src="images/pf-gallery.png" alt=""></a></li>
+												<?php 
+												$len = count($photos_table);
+												for($i=0;$i<$len;$i++){
+												    echo '<li><a href="#" title=""><img src="'.$photos_table[$i].'" alt=""></a></li>';
+												}
+												
+												?>
+												
+											
 											</ul>
 										</div><!--pf-gallery end-->
 									</div><!--widget-portfolio end-->
