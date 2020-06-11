@@ -11,9 +11,17 @@ mysqli_set_charset($con,"utf8");
   1. na kanoume query opou tha tou dinoume to keimeno tou search bar apo to input
   2. 
 */
+if (isset($_GET['search']) && !empty($_GET['search']))	{		
+	$search = $_GET['search'];
+	$query = "SELECT *
+				  FROM images 
+				  WHERE photo_tag LIKE '%{$search}%'
+				  ORDER BY photo_id DESC";
+}
+else {
+	$query = "SELECT * FROM images ORDER BY photo_id DESC"; //mporoume na kanoume order by date alla kai to id petuxainei ton skopo kai den xreiazetai na kratame kai thn wra sthn bash alla mono hmeromhnia
+}	
 
-$query = "SELECT * FROM images ORDER BY photo_id DESC"; //mporoume na kanoume order by date alla kai to id petuxainei ton skopo kai den xreiazetai na kratame kai thn wra sthn bash alla mono hmeromhnia
-		
 $result = mysqli_query($con, $query);
 
 if (isset ($_SESSION['username'])) {
