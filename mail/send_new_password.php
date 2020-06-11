@@ -26,8 +26,6 @@ if (!$result) {
 
 //if email doesn't exist
 else if (mysqli_num_rows($result) == 0)  {
-	echo "den uparxei o mlakas/ismenh"; 
-	echo "<br> se parapempoume sth selida eggrafhs";
 	echo "<br> Click <a href='../signin.php'>here</a> to Sign Up<br>";
 	return;
 }

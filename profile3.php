@@ -202,18 +202,18 @@ $result = mysqli_query($con, $query);
 												<span><?php echo mysqli_num_rows($result);?></span>
 											</li>
 											<li>
-												<h4>whatever</h4>
+												<h4>Likes</h4>
 												<span>155</span>
 											</li>
 											<li>
-												<a href="profile-account-setting.php" title="">More stats</a>
+												<a href="profile-account-setting.php" title="">More Settings</a>
 											</li>
 										</ul>
 									</div><!--user-data end-->
 									<div class="suggestions full-width">
 										<div class="sd-title">
-											<h3>Short Bio (not yet)</h3>
-											<!--<i class="fa fa-ellipsis-v"></i>-->
+											<h3>Short Bio</h3>
+											<i class="fa fa-ellipsis-v"></i>
 										</div><!--sd-title end-->
 										<div class="suggestions-list">
 											<div class="suggestion-usd">
@@ -221,9 +221,9 @@ $result = mysqli_query($con, $query);
 											</div>
 											<ul class="user-bio">
 
-											<li>
+											<!--<li>
 												<a href="profile3.php" title="">Change Bio</a>
-											</li>
+											</li>-->
 										</ul>
 											
 										</div><!--suggestions-list end-->

@@ -393,7 +393,7 @@ require('db/db.php');
 
 
 	</div><!--theme-layout end-->
-	<footer>
+	<footer class="fixed-bottom">
 			<div class="footy-sec mn no-margin">
 				<div class="container">
 					<ul>
