@@ -4,7 +4,7 @@ require('db/db.php');
 require('db/errorFuncts.php');
 
 $username = $_SESSION['username'];
-
+mysqli_set_charset($con,"utf8");
 $query = "SELECT * FROM members WHERE username='$username'";
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_array($result);

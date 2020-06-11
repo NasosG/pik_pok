@@ -13,7 +13,7 @@
 	$row = mysqli_fetch_array($result);
 	$user_id = $row['id'];
 	$photo_id = $_POST['photo_id'];
-
+	mysqli_set_charset($con,"utf8");
 	$query = "INSERT INTO post_comments (post_id , user_id, comment_text, time_commented) VALUES ('$photo_id', '$user_id', '$comment_text', '$comment_date') "; 													
 	$result = mysqli_query($con, $query);	
 
