@@ -20,6 +20,8 @@ require('db/errorFuncts.php');
 	<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/responsive.css">
+	<link rel="stylesheet" type="text/css" href="css/contact.css">
+	<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
 	<!-- font awesome icons kit -->
 	<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
 </head>
@@ -159,11 +161,38 @@ require('db/errorFuncts.php');
 		</header><!--header end-->	
 
 
-		<section class="contact">
-		<br><br><br><br>
-		<h2 style="text-align:center; font-size:100px;"> UNDER CONSTRUCTION</h2>
-		<br><br><br><br>
-		</section>
+<!-- Contact Section -->
+	<section id="contact" class="py-5 p-y-contact">
+		<h2 class="text-uppercase text-center pt-5">Contact Us</h2>
+		<h3 class="text-muted text-center pb-3">Feel free to send us your comments!</h3>
+		<div class="contact-container">
+			<form name="contactForm" id="contactForm" action="mail/contact_us.php" method = "post">
+				<div class="row">
+					
+					<div class="col-12 pb-3">
+						<input type="text" id="name" name="name" placeholder="Your name.." required>
+					</div>
+				</div>
+				<div class="row">
+					
+					<div class="col-12 pb-3">
+						<input type="email" id="email" name="email" placeholder="Your e-mail.." minlength="5" required>
+					</div>
+				</div>
+				<div class="row">
+					
+					<div class="col-12 pb-3">
+						<textarea id="message" name="message" placeholder="Write your message.."  required></textarea>
+					</div>
+				</div>
+				<br>
+				<div class="text-center">
+					<input type="submit"  value="Send">
+					<input type="reset" value="Clear">
+				</div>
+			</form>
+		</div>
+	</section>
 		<footer class="fixed-bottom">
 			<div class="footy-sec mn no-margin">
 				<div class="container">

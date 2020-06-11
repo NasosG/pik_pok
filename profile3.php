@@ -199,7 +199,7 @@ $result = mysqli_query($con, $query);
 										<ul class="user-fw-status">
 											<li>
 												<h4>Posts</h4>
-												<span>20</span>
+												<span><?php echo mysqli_num_rows($result);?></span>
 											</li>
 											<li>
 												<h4>whatever</h4>
@@ -348,13 +348,14 @@ $result = mysqli_query($con, $query);
 											<ul>
 												<?php 
 												$len = count($photos_table);
-												for($i=0;$i<$len;$i++){
-												    echo '<li><a href="#" title=""><img src="'.$photos_table[$i].'" alt=""></a></li>';
-												}
+												if ($len === 0)  echo 'No posts yet';
+
+												else
+													for($i=0;$i<$len;$i++) {
+													    echo '<li><a href="#" title="" ><img style=" border-radius:12%;height:40px;width:60px;" src="'.$photos_table[$i].'" alt=""></a></li>';
+													}
 												
 												?>
-												
-											
 											</ul>
 										</div><!--pf-gallery end-->
 									</div><!--widget-portfolio end-->
@@ -365,8 +366,6 @@ $result = mysqli_query($con, $query);
 				</div> 
 			</div>
 		</main>
-
-
 
 
 		<div class="post-popup pst-pj">

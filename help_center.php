@@ -1,4 +1,7 @@
-
+<?php
+include("db/auth.php"); //include auth.php file on all secure pages 
+require('db/db.php');
+?>
 
 <!DOCTYPE html>
 <html>
@@ -233,17 +236,6 @@
 								</div><!--filter-secs end-->
 							</div>
 							<div class="col-lg-9 col-md-12">
-								<div class="helpforum">
-			                     <div class="row">
-			                     	<div class="col-lg-9 col-md-12">
-			                     		<h3>Visit Our Help Forum</h3>
-			                     		<p>View, ask, or answer questions about using LinkedIn. Our moderators and community can help!</p>
-			                     	</div>
-			                     	<div class="col-lg-3 col-md-12">
-			                     		<a href="#">Visit Help Forum</a>
-			                     	</div>
-			                     </div>
-								</div> 
 								  <!-- end-helpforum -->
 								  <div class="actions">
 								  	<div class="actionstitle">
@@ -285,13 +277,7 @@
 								  	</div>
 								  	</div>
 								  </div>
-								  <!-- endactione -->
-								  <div class="helpform">
-								  			<img src="images/formicon.png" alt="image">
-								  			<h3>Help Forum</h3>
-								  			<p>Have questions? LinkedIn knowledge you want<br> to share? Head over to the </p>
-								  			<a href="#">Pik-Pok Help Forum</a>
-								  </div>
+
 							</div>
 						</div>
 					</div><!-- main-section-data end-->
@@ -407,7 +393,7 @@
 
 
 	</div><!--theme-layout end-->
-	<footer class="fixed-bottom">
+	<footer>
 			<div class="footy-sec mn no-margin">
 				<div class="container">
 					<ul>
