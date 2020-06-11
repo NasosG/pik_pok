@@ -351,8 +351,12 @@ $result = mysqli_query($con, $query);
 												if ($len === 0)  echo 'No posts yet';
 
 												else
-													for($i=0;$i<$len;$i++) {
-													    echo '<li><a href="#" title="" ><img style=" border-radius:12%;height:40px;width:60px;" src="'.$photos_table[$i].'" alt=""></a></li>';
+													for ($i=0; $i<$len; $i++) {
+														/* width height may change
+															45/60 possible
+															45/72-73 golden ratio
+														*/
+													    echo '<li><a href="#" title="" ><img style=" border-radius:12%;height:54px;width:70px;" src="'.$photos_table[$i].'" alt=""></a></li>';
 													}
 												
 												?>
