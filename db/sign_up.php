@@ -51,13 +51,13 @@
 			$date_of_birth = stripslashes($_REQUEST['date_of_birth']);
 			$date_of_birth = mysqli_real_escape_string($con, $date_of_birth);
 			
-			//$profile_pic = stripslashes($_REQUEST['fileToUpload']);
-			//$profile_pic = mysqli_real_escape_string($con, $profile_pic);
+			$profile_picture = 'default-avatar.jpg';
+			$picture_path = 'images/';
 			
 			$RegDate = date("Y-m-d H:i:s");
 			mysqli_set_charset($con,"utf8");
 			$query = "INSERT INTO members(username, password, fname, lname, email, date_of_registration,sex, date_of_birth, profile_pic, picture_path) 
-			VALUES ('$username','".md5($password)."','$fname','$surname','$email','$RegDate', '$sex', '$date_of_birth', null, null)";
+			VALUES ('$username','".md5($password)."','$fname','$surname','$email','$RegDate', '$sex', '$date_of_birth', '$profile_picture', '$picture_path')";
 
 			$result = mysqli_query($con,$query);
 			if($result) {

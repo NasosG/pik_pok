@@ -11,7 +11,7 @@ require('db/errorFuncts.php');
 	
 	<link rel='shortcut icon' type='image/x-icon' href='images/logo.png'/>
 	<meta charset="UTF-8">
-	<title>WorkWise Html Template</title>
+	<title>About - Pik Pok</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
@@ -35,7 +35,7 @@ require('db/errorFuncts.php');
 						<a href="index.php" title=""><img src="images/logo.png" alt=""></a>
 					</div><!--logo end-->
 					<div class="search-bar">
-						<form>
+						<form method="get" action="index.php">
 							<input type="text" name="search" placeholder="Search...">
 							<button type="submit"><i class="fa fa-search"></i></button>
 						</form>

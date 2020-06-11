@@ -33,13 +33,8 @@ require('db/errorFuncts.php');
 </head>
 
 
-<body oncontextmenu="return false;">
-	
-
+<body oncontextmenu="return false;">S
 	<div class="wrapper">
-		
-
-
 		<header>
 			<div class="container">
 				<div class="header-data">
@@ -47,7 +42,7 @@ require('db/errorFuncts.php');
 						<a href="index.html" title=""><img src="images/logo2.png" alt=""></a>
 					</div><!--logo end-->
 					<div class="search-bar">
-						<form>
+						<form method="get" action="index.php">
 							<input type="text" name="search" placeholder="Search...">
 							<button type="submit"><i class="fa fa-search"></i></button>
 						</form>

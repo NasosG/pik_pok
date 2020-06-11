@@ -36,12 +36,7 @@ h4{font-weight: bold;margin-bottom:10px;margin-top:10px;}
 
 
 <body oncontextmenu="return false;">
-	
-
 	<div class="wrapper">
-		
-
-
 		<header>
 			<div class="container">
 				<div class="header-data">
@@ -49,7 +44,7 @@ h4{font-weight: bold;margin-bottom:10px;margin-top:10px;}
 						<a href="index.html" title=""><img src="images/logo2.png" alt=""></a>
 					</div><!--logo end-->
 					<div class="search-bar">
-						<form>
+						<form method="get" action="index.php">
 							<input type="text" name="search" placeholder="Search...">
 							<button type="submit"><i class="fa fa-search"></i></button>
 						</form>

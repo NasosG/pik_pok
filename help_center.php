@@ -31,7 +31,7 @@
 						<a href="index.php" title=""><img src="images/logo.png" alt=""></a>
 					</div><!--logo end-->
 					<div class="search-bar">
-						<form>
+						<form method="get" action="index.php">
 							<input type="text" name="search" placeholder="Search...">
 							<button type="submit"><i class="fa fa-search"></i></button>
 						</form>

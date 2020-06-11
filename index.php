@@ -5,13 +5,7 @@ require('db/errorFuncts.php');
 
 mysqli_set_charset($con,"utf8");
 
-/*
-	$search=get ['search'];
-	1. tha kanoume get/post na pairnoume to keimeno tou input
-  1. na kanoume query opou tha tou dinoume to keimeno tou search bar apo to input
-  2. 
-*/
-if (isset($_GET['search']) && !empty($_GET['search']))	{		
+if (isset($_GET['search']) && !empty($_GET['search'])) {		
 	$search = $_GET['search'];
 	$query = "SELECT *
 				  FROM images 

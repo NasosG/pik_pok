@@ -30,6 +30,9 @@ $result = mysqli_query($con,$query_old_pic);
 		
 if($result && mysqli_num_rows($result)>0) {
 	$row = mysqli_fetch_array($result);
+	if($row["picture_path"] === 'images/') /* this means that user wants to continue with the default avatar and he/she didn't update his/her profile photo*/
+		header("Location: ../profile3.php"); /* so just redirect the user to his 'new' profile page */
+	
 	unlink('../'.$row["picture_path"].$row["profile_pic"]);
 }
 

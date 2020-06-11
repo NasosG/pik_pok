@@ -31,7 +31,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 						<a href="index.php" title=""><img src="images/logo.png" alt=""></a>
 					</div><!--logo end-->
 					<div class="search-bar">
-						<form>
+						<form method="get" action="index.php">
 							<input type="text" name="search" placeholder="Search...">
 							<button type="submit"><i class="la la-search"></i></button>
 						</form>
