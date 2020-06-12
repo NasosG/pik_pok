@@ -7,6 +7,15 @@ $uname = $_SESSION['username'];
 mysqli_set_charset($con,"utf8");
 $query = "SELECT * FROM images WHERE username = '$uname' ORDER BY photo_id DESC";
 $result = mysqli_query($con, $query);
+
+// a new result, because if we fetched the array at this point, counter would then be equal to 0
+// and this would be a problem when we'd want to fetch the posts later
+// may a better way exists though
+$result_likes = mysqli_query($con, $query);
+// a sum of the likes => total likes
+for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
+	$sum_likes += $likes['photo_likes'];
+
 ?>
 
 <!DOCTYPE html>
@@ -202,8 +211,8 @@ $result = mysqli_query($con, $query);
 												<span><?php echo mysqli_num_rows($result);?></span>
 											</li>
 											<li>
-												<h4>Likes</h4>
-												<span>155</span>
+												<h4>Total Likes</h4>
+												<span><?php echo $sum_likes; ?></span>
 											</li>
 											<li>
 												<a href="profile-account-setting.php" title="">More Settings</a>
