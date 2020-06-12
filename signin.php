@@ -171,15 +171,14 @@ include("db/auth.php"); //include auth.php file on all secure pages
 			<div class="footy-sec">
 				<div class="container">
 					<ul>
-						<li><a href="help-center.html" title="">Help Center</a></li>
+						<li><a href="help_center.php" title="">Help Center</a></li>
 						<li><a href="about.php" title="">About</a></li>
-						<li><a href="#" title="">Privacy Policy</a></li>
-						<li><a href="#" title="">Community Guidelines</a></li>
-						<li><a href="#" title="">Cookies Policy</a></li>
-						<li><a href="#" title="">Career</a></li>
-						<li><a href="forum.html" title="">Forum</a></li>
-						<li><a href="#" title="">Language</a></li>
-						<li><a href="#" title="">Copyright Policy</a></li>
+						<!--<li><a href="#" title="">Privacy Policy</a></li>-->
+						<li><a href="community_guidelines.php" title="">Community Guidelines</a></li>
+						<!--<li><a href="#" title="">Cookies Policy</a></li>-->
+						<li><a href="termsofuse.php" title="">Terms of Use</a></li>
+						<li><a href="#" title="">Language: English</a></li>
+						<!--<li><a href="#" title="">Copyright Policy</a></li>-->
 					</ul>
 					<p><img src="images/copy-icon.png" alt="">Copyright <script type="text/javascript">document.write(new Date().getFullYear());</script></p>
 				</div>
