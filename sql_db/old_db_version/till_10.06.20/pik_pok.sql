@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Φιλοξενητής: 127.0.0.1
--- Χρόνος δημιουργίας: 12 Ιουν 2020 στις 13:10:56
+-- Χρόνος δημιουργίας: 11 Ιουν 2020 στις 17:55:54
 -- Έκδοση διακομιστή: 10.4.11-MariaDB
 -- Έκδοση PHP: 7.4.6
 
@@ -70,12 +70,8 @@ CREATE TABLE `images` (
 INSERT INTO `images` (`photo_id`, `photo_name`, `photo_likes`, `photo_path`, `username`, `photo_tag`, `date_posted`) VALUES
 (7, 'mod-wasd_2.png', 2, 'uploads/pik_pok_pics/', 'thn12', NULL, '2020-06-05 15:29:12'),
 (10, 'kisspng-computer-keyboard-arrow-keys-clip-art-5adca3132730b7.8563640315244091071605.png', 0, 'uploads/pik_pok_pics/', 'thn12', NULL, '2020-06-05 18:35:25'),
-(11, 'castaway0.png', 0, 'uploads/pik_pok_pics/', 'thn12', '#summer#beach', '2020-06-10 13:12:38'),
-(12, 'corona-summer.jpg', 1, 'uploads/pik_pok_pics/', 'thn12', '#summer#corona', '2020-06-11 17:16:18'),
-(13, 'sky2.jpg', 0, 'uploads/pik_pok_pics/', 'mara10', '#sky#summer#bright', '2020-06-12 01:49:13'),
-(15, 'filter-sql.png', 0, 'uploads/pik_pok_pics/', 'opl', '#littleBobyTables#SQLjokes', '2020-06-12 02:02:59'),
-(16, 'mlk.webp', 1, 'uploads/pik_pok_pics/', 'marigeorgitsa', '#funny#darkhumor', '2020-06-12 02:16:18'),
-(17, 'ekthema.png', 0, 'uploads/pik_pok_pics/', 'opl', '#art#spartan#warrior', '2020-06-12 13:10:05');
+(11, 'castaway0.png', 0, 'uploads/pik_pok_pics/', 'thn12', NULL, '2020-06-10 13:12:38'),
+(12, 'corona-summer.jpg', 0, 'uploads/pik_pok_pics/', 'thn12', '#summer#corona', '2020-06-11 17:16:18');
 
 -- --------------------------------------------------------
 
@@ -115,12 +111,10 @@ CREATE TABLE `members` (
 INSERT INTO `members` (`username`, `password`, `fname`, `lname`, `email`, `date_of_registration`, `id`, `sex`, `date_of_birth`, `profile_pic`, `picture_path`) VALUES
 ('thn12', '202cb962ac59075b964b07152d234b70', 'Μιχάλης', 'Πανταζής', 'asd@uop.gr', '2020-05-21', 40, 0, '1987-06-18', 'anonymous_hacker.jpg', 'uploads/users/40/'),
 ('mara10', '202cb962ac59075b964b07152d234b70', 'μαρια', 'αντεπαλοβ', 'mrt@iop.com', '2020-06-02', 45, 1, '1987-10-29', 'Screenshot_160.png', 'uploads/users/45/'),
-('opl', '202cb962ac59075b964b07152d234b70', 'mlo', 'klo', 'gnasos219@gmail.com', '2020-06-06', 47, 0, '2020-06-02', 'ekthema.png', 'uploads/users/47/'),
+('opl', 'ccb7f83478864d7642e34b0a56481321', 'mlo', 'klo', 'gnasos219@gmail.com', '2020-06-06', 47, 0, '2020-06-02', 'ekthema.png', 'uploads/users/47/'),
 ('makis', '827ccb0eea8a706c4c34a16891f84e7b', 'makis', 'makis', 'makis@makis.gr', '2020-06-06', 48, 0, '2020-06-30', 'ekthema.png', 'uploads/users/48/'),
 ('marigeorgitsa', '202cb962ac59075b964b07152d234b70', 'Γιωργίτσα', 'Μακριγεώργου', 'maritsa@maritso.uiop', '2020-06-06', 49, 1, '2020-06-18', 'tupisa.png', 'uploads/users/49/'),
-('kostas1234', '81dc9bdb52d04dc20036dbd8313ed055', 'jkfhg', 'fgh', 'sitetest23456@gmail.com', '2020-06-11', 50, 0, '2020-06-17', 'lias.jpg', 'uploads/users/50/'),
-('omar', '202cb962ac59075b964b07152d234b70', 'asd', 'asd', 'asda@dfg.gt', '2020-06-11', 51, 0, '2020-06-08', 'wolf2.jpg', 'uploads/users/51/'),
-('john2', '12ae8bc20db709fb98c365d1bcc7d7c4', 'john', 'johnson', 'klo@we.ht', '2020-06-11', 52, 0, '1995-02-11', 'default-avatar.jpg', 'images/');
+('kostas1234', '81dc9bdb52d04dc20036dbd8313ed055', 'jkfhg', 'fgh', 'sitetest23456@gmail.com', '2020-06-11', 50, 0, '2020-06-17', 'lias.jpg', 'uploads/users/50/');
 
 -- --------------------------------------------------------
 
@@ -147,8 +141,7 @@ INSERT INTO `post_comments` (`post_comments_id`, `post_id`, `user_id`, `comment_
 (69, 10, 40, 'buttons', '2020-06-10 22:56:28'),
 (70, 10, 50, 'βελάκια', '2020-06-11 16:31:38'),
 (71, 7, 50, 'ποσο gamer?', '2020-06-11 16:31:57'),
-(72, 10, 50, 'jaja', '2020-06-11 16:32:19'),
-(73, 13, 45, 'look at the sky :->', '2020-06-12 01:50:23');
+(72, 10, 50, 'jaja', '2020-06-11 16:32:19');
 
 -- --------------------------------------------------------
 
@@ -169,9 +162,7 @@ CREATE TABLE `post_likes` (
 
 INSERT INTO `post_likes` (`post_likes_id`, `liked_by_user`, `posted_photo_id`, `time`) VALUES
 (187, 50, 7, '2020-06-11 16:32:50'),
-(199, 51, 12, '2020-06-11 19:42:38'),
-(200, 40, 7, '2020-06-12 00:01:06'),
-(201, 40, 16, '2020-06-12 02:28:04');
+(197, 40, 7, '2020-06-11 17:33:15');
 
 --
 -- Ευρετήρια για άχρηστους πίνακες
@@ -242,7 +233,7 @@ ALTER TABLE `hashtags`
 -- AUTO_INCREMENT για πίνακα `images`
 --
 ALTER TABLE `images`
-  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT για πίνακα `ip_addresses`
@@ -254,19 +245,19 @@ ALTER TABLE `ip_addresses`
 -- AUTO_INCREMENT για πίνακα `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT για πίνακα `post_comments`
 --
 ALTER TABLE `post_comments`
-  MODIFY `post_comments_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `post_comments_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT για πίνακα `post_likes`
 --
 ALTER TABLE `post_likes`
-  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
+  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
 
 --
 -- Περιορισμοί για άχρηστους πίνακες
