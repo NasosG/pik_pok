@@ -352,11 +352,11 @@ $result = mysqli_query($con, $query);
 
 												else
 													for ($i=0; $i<$len; $i++) {
-														/* width height may change
+														/*	width height may change
 															45/60 possible
 															45/72-73 golden ratio
 														*/
-													    echo '<li><a href="#" title="" ><img style=" border-radius:12%;height:54px;width:70px;" src="'.$photos_table[$i].'" alt=""></a></li>';
+													    echo '<li><a href="#" title="" ><img style=" border-radius:10%;height:53px;width:70px;" src="'.$photos_table[$i].'" alt=""></a></li>';
 													}
 												
 												?>
