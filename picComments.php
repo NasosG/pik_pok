@@ -16,6 +16,10 @@ $result = mysqli_query($con, $query2);
 
 $row2 = mysqli_fetch_array($result);
 //echo $row2['photo_path'].$row2['photo_name'];
+										$count_comments = "SELECT COUNT(post_id) FROM post_comments WHERE post_id = '$photo_id'";
+										$result_of_count = mysqli_query($con, $count_comments);
+										$row_after_count = mysqli_fetch_row($result_of_count);
+
 
 ?>
 
@@ -29,6 +33,7 @@ $row2 = mysqli_fetch_array($result);
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
+
 	<link rel="stylesheet" type="text/css" href="css/animate.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/flatpickr.min.css">
@@ -36,6 +41,7 @@ $row2 = mysqli_fetch_array($result);
 	<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/responsive.css">
+	<link rel="stylesheet" type="text/css" href="css/other-styles.css">
 	<!-- font awesome icons kit -->
 	<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
 </head>
@@ -229,20 +235,24 @@ $row2 = mysqli_fetch_array($result);
                                                     <li><a href="#" title="">Surf</a></li>
                                                 </ul>
                                             </div>
+
+                                            <form id="likes-form" class="likes-form" name="likes-form" >
                                             <div class="job-status-bar btm-line">
+                                            	<?php echo "<input type='hidden' name='photo_id' id='photo_id' value='".$row['photo_id']."' />";?>
                                                <ul class="like-com">
 													<li>
-														<a href="#" class="active"><i class="fa fa-heart"></i> Like</a> </li>
+														<button class="like-submit-btn"><a id="like-submit" class="com-page-likes"><i class="fa fa-heart"></i> Like</a> </li></button>
 														<!--<img src="images/liked-img.png" alt="">
 														
 													</li>
 													<li><a href="#" class="com"><i class="fa fa-comment"></i> Comments 15</a></li>-->
 												</ul>
 												<ul style= "float:right;" class="like-com">
-													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-thumbs-up"></i> Likes 15</a></li>
-													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-comment"></i> Comments 15</a></li>
+													<li><a id="likes-link-red" style="color:#b2b2b2;" class="likes-link-red"><i class="fa fa-thumbs-up"></i> Likes <?php echo $row['photo_likes']; ?></a></li>
+													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-comment"></i> Comments <?php echo $row_after_count[0]; ?></a></li>
 												</ul>
                                             </div>
+                                        	</form>
 
 											<div class="comment-area">
 												<div class="reply-area">
@@ -429,9 +439,6 @@ $row2 = mysqli_fetch_array($result);
 	<script>
 var form = $('.aform');
 $('.aform').submit(function(e) {
-
-
-
     e.preventDefault();
         $.ajax({
            type: "POST",
@@ -455,6 +462,31 @@ function CopyText() {
   document.execCommand("copy");
   alert("Copied: " + copyText.value);
 }
+
+document.getElementById("like-submit").addEventListener("click", function () {
+
+
+$(".likes-form").submit(function(e) {
+	
+	
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+
+    var form = $(this);
+    var url = form.attr('action');
+
+    $.ajax({
+           type: "POST",
+           url: 'db/likes.php',
+           data: form.serialize(), // serializes the form's elements.
+           success: function(data)
+           { 
+
+			location.reload();
+           }
+         });
+
+});
+});
 
 	</script>
 </body>

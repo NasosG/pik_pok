@@ -200,7 +200,7 @@ require('db/errorFuncts.php');
 			</div><!--post-project end-->
 		</div><!--post-project-popup end-->
 
-		<footer class="">
+		<footer>
 			<div class="footy-sec mn no-margin">
 				<div class="container">
 					<ul>
@@ -248,6 +248,6 @@ require('db/errorFuncts.php');
     $("#fileToUpload").change(function(){
         readURL(this);
     });
-	</script>
+</script>
 </body>
 </html>

@@ -326,6 +326,7 @@ $(".likes-comments-form").submit(function(e) {
            success: function(data)
            {  
 			$(form).children("#likesNum").html( " Likes: <img src='images/likes.png' alt='' height='18' width='18'>" + data + "</img>" );
+			location.reload();
            }
          });
 

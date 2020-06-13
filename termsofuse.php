@@ -22,14 +22,9 @@ require('db/errorFuncts.php');
 <link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/responsive.css">
+<link rel="stylesheet" type="text/css" href="css/other-styles.css">
 <!-- font awesome icons kit -->
 <script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
-<style>
-.terms-h3{font-size: 30px; font-weight: 600; margin-bottom:10px;}
-.terms-h2{font-size:40px;padding-top:20px;font-weight: 600;}
-.revision, b{font-weight: bold;}
-.terms_section{color:black;}
-</style>
 </head>
 
 

@@ -440,27 +440,21 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 				
 					<form id="post_form" name="post_form" method="post" action = "db/addnew.php" enctype= "multipart/form-data">
 						<div class="row">
-							<div class="col-lg-12">
-								<input type="text" name="tags" placeholder="Insert Tags">
+							<div class="col-lg-12 col-md-12 col-12">
+								<input type="text" name="tags" placeholder="Insert Tags, f.e. #summer2020#i<3beach">
 							</div>
-							<!--
-							<div class="col-lg-12">
-								<div class="inp-field">
-									<select>
-										<option>Category</option>
-										<option>Category 1</option>
-										<option>Category 2</option>
-										<option>Category 3</option>
-									</select>
-								</div>
+							<div class="col-lg-12 col-md-12 col-12">
+									<div class="upload-btn-wrapper">
+										<button class="btn-up">Upload an Image</button>
+										<input type="file" id="fileToUpload" name="fileToUpload" class="input-file"></input>
+									</div>
 							</div>
-							-->
-							<div class="col-lg-12">
-								<input type="file" id="fileToUpload" name="fileToUpload" >
-							</div>
-							<div class="col-lg-12">
-								<textarea name="description" placeholder="Description"></textarea>
-							</div>
+							
+								<img style="max-height:32vh;margin-left:auto;margin-right:auto" src="images/SocialMediaPost.png" id="add-prof-pic"></img>
+								
+						
+							
+							
 							<div class="col-lg-12">
 								<ul>
 									<li><button class="active" type="submit" value="post">Post</button></li>
@@ -497,6 +491,22 @@ document.getElementsByClassName("trash-button").onclick = function() {
 document.getElementById("file").onchange = function() {
     document.getElementById("changeAvatar").submit();
 };
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#add-prof-pic').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#fileToUpload").change(function(){
+        readURL(this);
+    });
 
 </script>
 

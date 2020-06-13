@@ -66,7 +66,7 @@ require('db/errorFuncts.php');
                   <li><a href="#" title="">Language: English</a></li>
                   <!--<li><a href="#" title="">Copyright Policy</a></li>-->
                </ul>
-            <p><img src="images/copy-icon.png" alt="">Copyright 2019</p>
+            <p><img src="images/copy-icon.png" alt="">Copyright <script type="text/javascript">document.write(new Date().getFullYear());</script></p>
          </div>
       </div>
       <!--footy-sec end-->
