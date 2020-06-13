@@ -448,13 +448,8 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 										<button class="btn-up">Upload an Image</button>
 										<input type="file" id="fileToUpload" name="fileToUpload" class="input-file"></input>
 									</div>
-							</div>
-							
-								<img style="max-height:32vh;margin-left:auto;margin-right:auto" src="images/SocialMediaPost.png" id="add-prof-pic"></img>
-								
-						
-							
-							
+							</div>							
+							<img style="max-height:32vh;margin-left:auto;margin-right:auto" src="images/SocialMediaPost.png" id="add-prof-pic"></img>
 							<div class="col-lg-12">
 								<ul>
 									<li><button class="active" type="submit" value="post">Post</button></li>
@@ -467,13 +462,8 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 				<a href="#" title=""><i class="fa fa-times-circle-o"></i></a>
 			</div><!--post-project end-->
 		</div><!--post-project-popup end-->
-	
-
-
-		
 
 	</div><!--theme-layout end-->
-
 
 
 <script type="text/javascript" src="js/jquery.min.js"></script>

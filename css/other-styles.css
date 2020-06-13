@@ -1,5 +1,5 @@
-.com-page-likes{
-color:#e44d3a!important;
+.com-page-likes {
+	color:#e44d3a!important;
 }
 
 .like-submit-btn {
@@ -15,20 +15,56 @@ color:#e44d3a!important;
 
 /* ----------   community guidelines custom style      ---------------*/
 
-.terms-h3{font-size: 30px; font-weight: 600; margin-bottom:10px;}
-.terms-h2{font-size:40px;padding-top:20px;font-weight: 600;}
-.revision, b{font-weight: bold;}
-h4:before {
-    content:"• ";
+.terms-h3 {
+	font-size: 30px;
+	font-weight: 600;
+	margin-bottom: 10px;
 }
-h4{font-weight: bold;margin-bottom:10px;margin-top:10px;}
-.terms_section{color:black;}
 
+.terms-h2 {
+	font-size: 40px;
+	padding-top: 20px;
+	font-weight: 600;
+}
+
+.revision, b {
+	font-weight: bold;
+}
+
+h4:before {
+	content: "• ";
+}
+
+h4 {
+	font-weight: bold;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.terms_section {
+	color: black;
+}
 
 
 /* ----------   terms of use custom style      ---------------*/
 
-.terms-h3{font-size: 30px; font-weight: 600; margin-bottom:10px;}
-.terms-h2{font-size:40px;padding-top:20px;font-weight: 600;}
-.revision, b{font-weight: bold;}
-.terms_section{color:black;}
+.terms-h3 {
+	font-size: 30px;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+.terms-h2 {
+	font-size: 40px;
+	padding-top: 20px;
+	font-weight: 600;
+}
+
+.revision,
+b {
+	font-weight: bold;
+}
+
+.terms_section {
+	color: black;
+}

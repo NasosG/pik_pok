@@ -16,10 +16,9 @@ $result = mysqli_query($con, $query2);
 
 $row2 = mysqli_fetch_array($result);
 //echo $row2['photo_path'].$row2['photo_name'];
-										$count_comments = "SELECT COUNT(post_id) FROM post_comments WHERE post_id = '$photo_id'";
-										$result_of_count = mysqli_query($con, $count_comments);
-										$row_after_count = mysqli_fetch_row($result_of_count);
-
+$count_comments = "SELECT COUNT(post_id) FROM post_comments WHERE post_id = '$photo_id'";
+$result_of_count = mysqli_query($con, $count_comments);
+$row_after_count = mysqli_fetch_row($result_of_count);
 
 ?>
 
