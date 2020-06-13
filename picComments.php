@@ -326,9 +326,11 @@ $row_after_count = mysqli_fetch_row($result_of_count);
                             <!--main-ws-sec end-->
                             <div class="col-xl-3 col-lg-3 col-md-12">
                                 <div class="right-sidebar">
-                                     <div class="widget widget-about bid-place">
+                                    <!-- 
+                                    <div class="widget widget-about bid-place">
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#applyjob" data-whatever="@mdo">Like</button>
                                     </div>
+                                	-->
 
                                     <!--<div class="widget widget-jobs">
                                         <div class="sd-title">
