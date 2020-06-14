@@ -310,7 +310,6 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 													<ul class="ed-options">
 														<li><a href="#" title="">Edit Post</a></li>
 														<li><a href="#" title="">Unsaved</a></li>
-														<li><a href="#" title="">Unbid</a></li>
 														<li><a href="#" title="">Close</a></li>
 														<li><a href="#" title="">Hide</a></li>
 													</ul>
@@ -327,10 +326,12 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 												<ul class="bk-links pb-2">
 													<li><button style="border:none" id="trash-button" class="trash-button"><a title=""><i class="fa fa-trash"></i></a></button></li>
 												</ul>
-											</form>
+											</form>';
+											?>
+
 											<form id="likes-form" class="likes-form" name="likes-form" method="post" action="db/likes.php">
 											<div class="job-status-bar">
-											 <input type="hidden" name="photo_id" id="photo_id" value="'.$row['photo_id'].'" />
+											 <?php echo '<input type="hidden" name="photo_id" id="photo_id" value="'.$row['photo_id'].'" />';?>
                                                <ul class="like-com">
 													<li>
 														<button style="background:white; border:none;" onclick="topathsa()" class="like-submit-btn"><a id="like-submit" style="color:#e44d3a;" class="com-page-likes"><i class="fa fa-heart"></i> Like</a></button>
@@ -338,13 +339,13 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 														
 												</ul>
 												<ul style= "float:right;" class="like-com">
-													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-thumbs-up"></i> Likes '.$row['photo_likes'].'</a></li>
-													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-comment"></i> Comments '.$row_after_count[0].'</a></li>
+													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-thumbs-up"></i> <?php echo 'Likes '.$row['photo_likes'];?></a></li>
+													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-comment"></i> <?php echo 'Comments '.$row_after_count[0];?></a></li>
 												</ul>
 											</div>
 											</form>
 										</div><!--post-bar end-->
-										';
+										<?php
 										} 
 									?>
 										
@@ -511,23 +512,24 @@ document.getElementsByClassName("like-submit-btn").onclick = function() {
 }
 
 $(".likes-form").submit(function(e) {
-	    e.preventDefault(); // avoid to execute the actual submit of the form.
+	
+    e.preventDefault(); // avoid to execute the actual submit of the form.
 
-	    var form = $(this);
-	    var url = form.attr('action');
+    var form = $(this);
+    var url = form.attr('action');
 
-	    $.ajax({
-	    	alert("emp1");
-	           type: "POST",
-	           url: 'db/likes.php',
-	           data: form.serialize(), // serializes the form's elements.
-	           success: function(data)
-	           { 
-				location.reload();
-	           }
-	         });
+    $.ajax({
+           type: "POST",
+           url: 'db/likes.php',
+           data: form.serialize(), // serializes the form's elements.
+           success: function(data)
+           { 
+			location.reload();
+           }
+         });
 
-	});
+});
+
 
 </script>
 

@@ -11,7 +11,7 @@ $query = "SELECT * FROM post_comments WHERE post_id = $photo_id";
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_array($result);
 
-$query2 = "SELECT photo_name,photo_path FROM images WHERE photo_id = $photo_id";
+$query2 = "SELECT photo_name,photo_path,photo_tag FROM images WHERE photo_id = $photo_id";
 $result = mysqli_query($con, $query2);
 
 $row2 = mysqli_fetch_array($result);
@@ -19,6 +19,9 @@ $row2 = mysqli_fetch_array($result);
 $count_comments = "SELECT COUNT(post_id) FROM post_comments WHERE post_id = '$photo_id'";
 $result_of_count = mysqli_query($con, $count_comments);
 $row_after_count = mysqli_fetch_row($result_of_count);
+
+$string_array  = $row2['photo_tag'];
+$photo_tag = explode("#", $string_array);
 
 ?>
 
@@ -217,7 +220,6 @@ $row_after_count = mysqli_fetch_row($result_of_count);
                                                     <ul class="ed-options">
                                                         <li><a href="#" title="">Edit Post</a></li>
                                                         <li><a href="#" title="">Unsaved</a></li>
-                                                        <li><a href="#" title="">Unbid</a></li>
                                                         <li><a href="#" title="">Close</a></li>
                                                         <li><a href="#" title="">Hide</a></li>
                                                     </ul>
@@ -227,11 +229,27 @@ $row_after_count = mysqli_fetch_row($result_of_count);
                                             <div class="pt-3 job_descp accountnone">
                                                 <img src="<?php echo $row2['photo_path'].$row2['photo_name'];?>" class="job-dt"></img>
                                                 <ul class="skill-tags">
-                                                    <li><a href="#" title="">Summer</a></li>
-                                                    <li><a href="#" title="">Beach</a></li>
-                                                    <li><a href="#" title="">Corona</a></li>
-                                                    <li><a href="#" title="">Shark</a></li>
-                                                    <li><a href="#" title="">Surf</a></li>
+                                                	<?php 
+                                                	$i;
+												$len = count($photo_tag);
+												/*
+												could do something is photo has no tags
+												if ($len === 0)  echo 'No tags for this post';
+												*/
+
+												if ($len > 0)
+													for ($i=1; $i<$len; $i++) { ?>
+													     <li><a href="#" title=""><?php echo '#'.$photo_tag[$i];?></a></li>
+													<?php }
+
+
+													/*
+														not working for some reason
+														for ($i=1; $i<$len; $i++) {
+													    echo '<li><a href="#" title=""><'. $photo_tag[$i] .'</a></li>';
+													}*/
+												
+												?>
                                                 </ul>
                                             </div>
 
@@ -381,20 +399,20 @@ $row_after_count = mysqli_fetch_row($result_of_count);
                                         <div class="sd-title copylink">
                                             <ul>
                                             	<li>
-                                                <img src="images/social3.svg" alt="image"></li>
+                                                <img style="cursor:pointer;" src="images/social3.svg" alt="image" onclick="window.open('https://www.facebook.com/')"></li>
                                                 <li>
-                                                <img src="images/social5.svg" alt="image"></li>
+                                                <img style="cursor:pointer;" src="images/social5.svg" alt="image"  onclick="window.open('https://www.pinterest.com/')"></li>
                                                 <li>
-                                                <img src="images/social1.svg" alt="image"></li>
+                                                <img style="cursor:pointer;" src="images/social1.svg" alt="image"  onclick="window.open('https://www.twitter.com/')"></li>
                                                 <li>
-                                                <img src="images/social2.svg" alt="image">
+                                                <img style="cursor:pointer;" src="images/social2.svg" alt="image"  onclick="CopyText()">
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                      
                                      <div class="widget widget-projectid">
-                                        <p>Report Post</p>
+                                        <a style="color:black; font-size:16px;" href="contact.php"><i style="color:#e44d3a;" class="fa fa-exclamation-circle" aria-hidden="true"></i> Report Post</a>
                                     </div>
 
                                 </div>
