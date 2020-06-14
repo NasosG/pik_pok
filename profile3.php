@@ -36,6 +36,11 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 	<link rel="stylesheet" type="text/css" href="css/responsive.css">
 	<!-- font awesome icons kit -->
 	<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
+	<style>	
+	.like-submit-btn:hover {
+		outline:none!important;
+	}		
+	</style>
 </head>
 
 <body oncontextmenu="return false;">	
@@ -274,7 +279,9 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 									<?php 
 									$i=0;
 									$photos_table = array();
+									$photos_ids = array();
 									while ($row = mysqli_fetch_array($result)) {
+
 										$photo = $row['photo_path'].$row['photo_name'];
 										$date_posted = date("d-m-Y", strtotime($row['date_posted']));
 
@@ -285,7 +292,7 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 										$row_after_count = mysqli_fetch_row($result_of_count);
 
 										// store all the photos in an array to use them later
-										
+										$photos_ids[$i] = $photo_id;
 										$photos_table[$i++] =  $photo;
 
 										echo '	
@@ -321,20 +328,21 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 													<li><button style="border:none" id="trash-button" class="trash-button"><a title=""><i class="fa fa-trash"></i></a></button></li>
 												</ul>
 											</form>
+											<form id="likes-form" class="likes-form" name="likes-form" method="post" action="db/likes.php">
 											<div class="job-status-bar">
+											 <input type="hidden" name="photo_id" id="photo_id" value="'.$row['photo_id'].'" />
                                                <ul class="like-com">
 													<li>
-														<a href="#" class="active"><i class="fa fa-heart"></i> Like</a> </li>
-														<!--<img src="images/liked-img.png" alt="">
-														
+														<button style="background:white; border:none;" onclick="topathsa()" class="like-submit-btn"><a id="like-submit" style="color:#e44d3a;" class="com-page-likes"><i class="fa fa-heart"></i> Like</a></button>
 													</li>
-													<li><a href="#" class="com"><i class="fa fa-comment"></i> Comments 15</a></li>-->
+														
 												</ul>
 												<ul style= "float:right;" class="like-com">
 													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-thumbs-up"></i> Likes '.$row['photo_likes'].'</a></li>
 													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-comment"></i> Comments '.$row_after_count[0].'</a></li>
 												</ul>
 											</div>
+											</form>
 										</div><!--post-bar end-->
 										';
 										} 
@@ -365,7 +373,7 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 															45/60 possible
 															45/72-73 golden ratio
 														*/
-													    echo '<li><a href="#" title="" ><img style=" border-radius:10%;height:53px;width:70px;" src="'.$photos_table[$i].'" alt=""></a></li>';
+													    echo '<li><a href="picComments.php?photo_id='.$photos_ids[$i].'" title="" ><img style=" border-radius:10%;height:53px;width:70px;" src="'.$photos_table[$i].'" alt=""></a></li>';
 													}
 												
 												?>
@@ -497,6 +505,29 @@ document.getElementById("file").onchange = function() {
     $("#fileToUpload").change(function(){
         readURL(this);
     });
+
+document.getElementsByClassName("like-submit-btn").onclick = function() {
+    	document.getElementsByClassName("likes-form").submit();
+}
+
+$(".likes-form").submit(function(e) {
+	    e.preventDefault(); // avoid to execute the actual submit of the form.
+
+	    var form = $(this);
+	    var url = form.attr('action');
+
+	    $.ajax({
+	    	alert("emp1");
+	           type: "POST",
+	           url: 'db/likes.php',
+	           data: form.serialize(), // serializes the form's elements.
+	           success: function(data)
+	           { 
+				location.reload();
+	           }
+	         });
+
+	});
 
 </script>
 

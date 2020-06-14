@@ -240,7 +240,8 @@ $row_after_count = mysqli_fetch_row($result_of_count);
                                             	<?php echo "<input type='hidden' name='photo_id' id='photo_id' value='".$row['photo_id']."' />";?>
                                                <ul class="like-com">
 													<li>
-														<button class="like-submit-btn"><a id="like-submit" class="com-page-likes"><i class="fa fa-heart"></i> Like</a> </li></button>
+														<button class="like-submit-btn"><a id="like-submit" class="com-page-likes"><i class="fa fa-heart"></i> Like</a></button>
+													</li>
 														<!--<img src="images/liked-img.png" alt="">
 														
 													</li>
@@ -466,9 +467,7 @@ function CopyText() {
 
 document.getElementById("like-submit").addEventListener("click", function () {
 
-
 $(".likes-form").submit(function(e) {
-	
 	
     e.preventDefault(); // avoid to execute the actual submit of the form.
 
@@ -481,7 +480,6 @@ $(".likes-form").submit(function(e) {
            data: form.serialize(), // serializes the form's elements.
            success: function(data)
            { 
-
 			location.reload();
            }
          });
