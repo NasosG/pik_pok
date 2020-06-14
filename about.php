@@ -193,7 +193,7 @@ require('db/errorFuncts.php');
 		<section class="services" style="margin-top:-100px;">
 			<div class="container">
 				<div class="video" style="border: 2px solid red; padding: 15px; border-radius: 25px;">
-					<iframe class="video-iframe"  src="../PikPok.mp4"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe class="video-iframe"  src="videos/about/PikPok.mp4"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 
 			</div>
