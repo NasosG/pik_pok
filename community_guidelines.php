@@ -163,7 +163,7 @@ require('db/errorFuncts.php');
 			</div>
 		</header><!--header end-->	
 	<div style="font-size: 16px; line-height: 1.5; padding: 0 8px; margin: auto; margin-top: 100px; margin-bottom: 100px; padding-left: 50px; padding-right: 50px; max-width: 1050px; background:white; border-radius:4px;  border: 2px solid lightgray;">
-   <div class="_60fy" id="faq-page">
+   <div id="faq-page">
       <h2 class="terms-h2 ">Community Guidelines</h2><hr>
 
       <h3 class="terms-h3">The Short</h3>

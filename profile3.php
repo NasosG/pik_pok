@@ -334,7 +334,7 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 											 <?php echo '<input type="hidden" name="photo_id" id="photo_id" value="'.$row['photo_id'].'" />';?>
                                                <ul class="like-com">
 													<li>
-														<button style="background:white; border:none;" onclick="topathsa()" class="like-submit-btn"><a id="like-submit" style="color:#e44d3a;" class="com-page-likes"><i class="fa fa-heart"></i> Like</a></button>
+														<button style="background:white; border:none;" class="like-submit-btn"><a id="like-submit" style="color:#e44d3a;" class="com-page-likes"><i class="fa fa-heart"></i> Like</a></button>
 													</li>
 														
 												</ul>

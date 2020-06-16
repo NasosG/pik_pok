@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Φιλοξενητής: 127.0.0.1
--- Χρόνος δημιουργίας: 16 Ιουν 2020 στις 16:54:39
+-- Χρόνος δημιουργίας: 12 Ιουν 2020 στις 13:10:56
 -- Έκδοση διακομιστή: 10.4.11-MariaDB
 -- Έκδοση PHP: 7.4.6
 
@@ -68,14 +68,14 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`photo_id`, `photo_name`, `photo_likes`, `photo_path`, `username`, `photo_tag`, `date_posted`) VALUES
-(7, 'mod-wasd_2.png', 1, 'uploads/pik_pok_pics/', 'thn12', NULL, '2020-06-05 15:29:12'),
-(10, 'kisspng-computer-keyboard-arrow-keys-clip-art-5adca3132730b7.8563640315244091071605.png', 1, 'uploads/pik_pok_pics/', 'thn12', NULL, '2020-06-05 18:35:25'),
+(7, 'mod-wasd_2.png', 2, 'uploads/pik_pok_pics/', 'thn12', NULL, '2020-06-05 15:29:12'),
+(10, 'kisspng-computer-keyboard-arrow-keys-clip-art-5adca3132730b7.8563640315244091071605.png', 0, 'uploads/pik_pok_pics/', 'thn12', NULL, '2020-06-05 18:35:25'),
 (11, 'castaway0.png', 0, 'uploads/pik_pok_pics/', 'thn12', '#summer#beach', '2020-06-10 13:12:38'),
-(12, 'corona-summer.jpg', 2, 'uploads/pik_pok_pics/', 'thn12', '#summer#corona', '2020-06-11 17:16:18'),
-(13, 'sky2.jpg', 1, 'uploads/pik_pok_pics/', 'mara10', '#sky#summer#bright', '2020-06-12 01:49:13'),
+(12, 'corona-summer.jpg', 1, 'uploads/pik_pok_pics/', 'thn12', '#summer#corona', '2020-06-11 17:16:18'),
+(13, 'sky2.jpg', 0, 'uploads/pik_pok_pics/', 'mara10', '#sky#summer#bright', '2020-06-12 01:49:13'),
 (15, 'filter-sql.png', 0, 'uploads/pik_pok_pics/', 'opl', '#littleBobyTables#SQLjokes', '2020-06-12 02:02:59'),
-(16, 'mlk.webp', 2, 'uploads/pik_pok_pics/', 'marigeorgitsa', '#funny#darkhumor', '2020-06-12 02:16:18'),
-(17, 'ekthema.png', 2, 'uploads/pik_pok_pics/', 'opl', '#art#spartan#warrior', '2020-06-12 13:10:05');
+(16, 'mlk.webp', 1, 'uploads/pik_pok_pics/', 'marigeorgitsa', '#funny#darkhumor', '2020-06-12 02:16:18'),
+(17, 'ekthema.png', 0, 'uploads/pik_pok_pics/', 'opl', '#art#spartan#warrior', '2020-06-12 13:10:05');
 
 -- --------------------------------------------------------
 
@@ -148,8 +148,7 @@ INSERT INTO `post_comments` (`post_comments_id`, `post_id`, `user_id`, `comment_
 (70, 10, 50, 'βελάκια', '2020-06-11 16:31:38'),
 (71, 7, 50, 'ποσο gamer?', '2020-06-11 16:31:57'),
 (72, 10, 50, 'jaja', '2020-06-11 16:32:19'),
-(73, 13, 45, 'look at the sky :->', '2020-06-12 01:50:23'),
-(80, 17, 40, 'true art!! Is it Van Gogh or Picasso?', '2020-06-14 01:15:42');
+(73, 13, 45, 'look at the sky :->', '2020-06-12 01:50:23');
 
 -- --------------------------------------------------------
 
@@ -171,12 +170,8 @@ CREATE TABLE `post_likes` (
 INSERT INTO `post_likes` (`post_likes_id`, `liked_by_user`, `posted_photo_id`, `time`) VALUES
 (187, 50, 7, '2020-06-11 16:32:50'),
 (199, 51, 12, '2020-06-11 19:42:38'),
-(673, 40, 10, '2020-06-14 00:22:01'),
-(676, 45, 16, '2020-06-14 00:23:00'),
-(677, 40, 13, '2020-06-14 00:23:33'),
-(685, 40, 16, '2020-06-14 14:54:37'),
-(729, 40, 12, '2020-06-14 22:19:20'),
-(740, 40, 17, '2020-06-16 17:31:13');
+(200, 40, 7, '2020-06-12 00:01:06'),
+(201, 40, 16, '2020-06-12 02:28:04');
 
 --
 -- Ευρετήρια για άχρηστους πίνακες
@@ -225,8 +220,7 @@ ALTER TABLE `post_comments`
 -- Ευρετήρια για πίνακα `post_likes`
 --
 ALTER TABLE `post_likes`
-  ADD PRIMARY KEY (`post_likes_id`),
-  ADD KEY `posted_photo_id` (`posted_photo_id`);
+  ADD PRIMARY KEY (`post_likes_id`);
 
 --
 -- AUTO_INCREMENT για άχρηστους πίνακες
@@ -248,7 +242,7 @@ ALTER TABLE `hashtags`
 -- AUTO_INCREMENT για πίνακα `images`
 --
 ALTER TABLE `images`
-  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT για πίνακα `ip_addresses`
@@ -266,13 +260,13 @@ ALTER TABLE `members`
 -- AUTO_INCREMENT για πίνακα `post_comments`
 --
 ALTER TABLE `post_comments`
-  MODIFY `post_comments_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `post_comments_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT για πίνακα `post_likes`
 --
 ALTER TABLE `post_likes`
-  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=741;
+  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
 
 --
 -- Περιορισμοί για άχρηστους πίνακες
@@ -284,12 +278,6 @@ ALTER TABLE `post_likes`
 ALTER TABLE `post_comments`
   ADD CONSTRAINT `post_comments_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `members` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `post_comments_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `images` (`photo_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Περιορισμοί για πίνακα `post_likes`
---
-ALTER TABLE `post_likes`
-  ADD CONSTRAINT `post_likes_ibfk_1` FOREIGN KEY (`posted_photo_id`) REFERENCES `images` (`photo_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
