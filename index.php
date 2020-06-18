@@ -203,8 +203,8 @@ if (isset ($_SESSION['username'])) {
 							<form id="myform" class="likes-comments-form company_profile_info" name="myform" method="get" action="picComments.php" >
 								<div class="company-up-info">
 								
-									<a href="other_users_profile.php?photo_username='.$row['username'].'"><h3>';
-									echo "<h3>".$row['username']."</h3>";
+									<a href="other_users_profile.php?photo_username='.$row['username'].'">';
+									echo "<h3 class='pt-2'>".$row['username']."</h3>";
 									echo "</a><h4>".$newDate."</h4>
 									<img src=\"".$row['photo_path'].$row['photo_name']."\" alt='user's photo' />";
 									

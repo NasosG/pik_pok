@@ -26,6 +26,7 @@ if (!$result) {
 
 //if email doesn't exist
 else if (mysqli_num_rows($result) == 0)  {
+	echo "<br> We didn't find any users with that email <br>";
 	echo "<br> Click <a href='../signin.php'>here</a> to Sign Up<br>";
 	return;
 }
