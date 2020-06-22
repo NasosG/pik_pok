@@ -157,9 +157,9 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 							</div><!--search_form end-->
 							<h3>Setting</h3>
 							<ul class='us-links'>
+								<li><a href='profile3.php' title=''>My Profile</a></li>
 								<li><a href='profile-account-setting.php' title=''>Account Setting</a></li>
-								<li><a href='#' title=''>Privacy</a></li>
-								<li><a href='#' title=''>Faqs</a></li>
+								<li><a href='privacy_policy.php' title=''>Privacy</a></li>
 								<li><a href='termsofuse.php' title=''>Terms & Conditions</a></li>
 							</ul>
 							<h3 class='tc'><a href='db/logout.php' title=''>Logout</a></h3>

@@ -25,7 +25,10 @@ require('db/errorFuncts.php');
 	<link rel="stylesheet" type="text/css" href="css/other-styles.css">
 	<!-- font awesome icons kit -->
 	<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
-	<style>p{padding-bottom:30px;}h3{font-weight: 600;}</style>
+	<style>
+		p{padding-bottom:30px;}
+		h3{font-weight: 600;}
+	</style>
 </head>
 
 
@@ -139,9 +142,9 @@ require('db/errorFuncts.php');
 							</div><!--search_form end-->
 							<h3>Setting</h3>
 							<ul class='us-links'>
+								<li><a href='profile3.php' title=''>My Profile</a></li>
 								<li><a href='profile-account-setting.php' title=''>Account Setting</a></li>
-								<li><a href='#' title=''>Privacy</a></li>
-								<li><a href='#' title=''>Faqs</a></li>
+								<li><a href='privacy_policy.php' title=''>Privacy</a></li>
 								<li><a href='termsofuse.php' title=''>Terms & Conditions</a></li>
 							</ul>
 							<h3 class='tc'><a href='db/logout.php' title=''>Logout</a></h3>
@@ -164,9 +167,10 @@ require('db/errorFuncts.php');
 			</div>
 		</header><!--header end-->
 
-<div style="font-size: 16px; line-height: 1.5; padding: 0 8px; margin: auto;  margin-bottom: 100px; padding-left: 50px; padding-right: 50px; max-width: 1050px; background:white; border-radius:4px;  border: 2px solid lightgray;">
+<div style="margin: auto;  margin-bottom: 100px; padding-top:100px; max-width: 1050px; ">
+<div style= "font-size: 16px; line-height: 1.5; padding: 0 8px; margin: auto;  margin-bottom: 100px; padding:0px 50px 0px 50px; background:white; border-radius:4px;  border: 2px solid lightgray;">
 
-<h2 class="terms-h2 pt-5">Privacy Policy</h2>
+<h2 class="terms-h2">Privacy Policy</h2>
 <h3 style="color:grey;" class="terms-h3">(If you are a user having your usual residence in Europe or USA)</h3><hr>
 
 <p>Last update: June 14, 2020.</p>
@@ -266,6 +270,8 @@ require('db/errorFuncts.php');
 
 <p>How will we notify you of any changes to this Privacy Policy? We will generally notify all users of any material changes to this policy through a notice on our Platform. However, you should look at this policy regularly to check for any changes. We will also update the &ldquo;Last Updated&rdquo; date at the top of this policy, which reflects the effective date of such policy. By accessing or using the Platform, you acknowledge that you have read this policy and that you understand your rights in relation to your personal data and how we will collect, use and process it.</p>
 </div>
+</div>
+
 <footer>
 			<div class="footy-sec mn no-margin">
 				<div class="container">

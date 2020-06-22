@@ -159,9 +159,9 @@ if (isset ($_SESSION['username'])) {
 							</div><!--search_form end-->
 							<h3>Setting</h3>
 							<ul class='us-links'>
+								<li><a href='profile3.php' title=''>My Profile</a></li>
 								<li><a href='profile-account-setting.php' title=''>Account Setting</a></li>
-								<li><a href='#' title=''>Privacy</a></li>
-								<li><a href='#' title=''>Faqs</a></li>
+								<li><a href='privacy_policy.php' title=''>Privacy</a></li>
 								<li><a href='termsofuse.php' title=''>Terms & Conditions</a></li>
 							</ul>
 							<h3 class='tc'><a href='db/logout.php' title=''>Logout</a></h3>
@@ -202,8 +202,13 @@ if (isset ($_SESSION['username'])) {
 							<div >
 							<form id="myform" class="likes-comments-form company_profile_info" name="myform" method="get" action="picComments.php" >
 								<div class="company-up-info">
-								
-									<a href="other_users_profile.php?photo_username='.$row['username'].'">';
+									';
+
+									if (!isset ($_SESSION['username']) || $row['username'] != $_SESSION['username'])
+										echo '<a href="other_users_profile.php?photo_username='.$row['username'].'">';
+									else
+										echo '<a href="profile3.php">';
+
 									echo "<h3 class='pt-2'>".$row['username']."</h3>";
 									echo "</a><h4>".$newDate."</h4>
 									<img src=\"".$row['photo_path'].$row['photo_name']."\" alt='user's photo' />";
