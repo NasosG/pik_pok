@@ -37,12 +37,6 @@ if($result && mysqli_num_rows($result)>0) {
 }
 
 
-$query = "UPDATE members
-SET profile_pic = '$file_up', picture_path='$general_dir'
-WHERE username = '$uname'";
-		
-$result = mysqli_query($con,$query);
-
 $file_up = mysqli_real_escape_string($con, $_FILES["fileToUpload"]["name"]);
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
