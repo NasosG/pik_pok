@@ -72,8 +72,10 @@ include("db/auth.php"); //include auth.php file on all secure pages
 													<a href="forgot_password.php" title="">Forgot Password?</a>
 												</div>
 											</div>
+											<div class="g-recaptcha mt-3" id="signin_robot" data-sitekey="6LfmCc0ZAAAAAMnp0Sxs59aUCInXiUSw1r6tn1EY" required></div>
+											
 											<div class="col-lg-12 no-pdd">
-												<button type="submit" value="submit">Sign in</button>
+												<button type="submit" id = "submit_but" value="submit">Sign in</button>
 											</div>
 										</div>
 									</form>
@@ -144,6 +146,9 @@ include("db/auth.php"); //include auth.php file on all secure pages
 													<span id='message'></span>
 												</div>
 												
+												
+												<div class="g-recaptcha mt-1" id="signup_robot" data-sitekey="6LfmCc0ZAAAAAMnp0Sxs59aUCInXiUSw1r6tn1EY" required></div>
+
 												<div class="col-lg-12 no-pdd">
 													<div class="checky-sec st2">
 														<div class="fgt-sec">
@@ -156,7 +161,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 													</div>
 												</div>
 												<div class="col-lg-12 no-pdd">
-													<button type="submit" value="submit">Get Started</button>
+													<button type="submit" id="submit_signup" value="submit">Get Started</button>
 												</div>
 											</div>
 										</form>
@@ -188,8 +193,50 @@ include("db/auth.php"); //include auth.php file on all secure pages
 
 	</div><!--theme-layout end-->
 
+<script>
+	
+		window.onload = function() {
+    	var $recaptcha = document.querySelector('#g-recaptcha-response');
+
+    		if($recaptcha) {
+        		$recaptcha.setAttribute("required", "required");
+    		}
+
+		};
 
 
+		var form = document.getElementById("sign_in");
+		//var form_signup = document.getElementById("sign_in_sec");
+
+		document.getElementById("submit_but").addEventListener("click", function () {
+			if(grecaptcha && grecaptcha.getResponse().length > 0) {
+			     form.submit();
+			}
+			else {
+			    //The recaptcha is not cheched
+			    //You can display an error message here
+			    alert('Oops, you have to check the recaptcha !');
+			}
+
+		});
+	
+		/*document.getElementById("submit_signup").addEventListener("click", function () {
+			
+          $('#signin_robot').addAttr('disabled');
+
+			if(grecaptcha && grecaptcha.getResponse().length > 0) {
+			     form_signup.submit();
+			}
+			else {
+			    //The recaptcha is not cheched
+			    //You can display an error message here
+			    alert('Oops, you have to check the recaptcha !');
+			}
+
+		});
+        */
+</script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/popper.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>

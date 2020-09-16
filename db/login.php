@@ -2,8 +2,12 @@
 	require('db.php');
 	require('errorFuncts.php');
 	session_start();
+	$public_key = "6LfmCc0ZAAAAAMnp0Sxs59aUCInXiUSw1r6tn1EY";
+	$private_key = "6LfmCc0ZAAAAANAT6_nLc8Icy0SY5Tgg9vTFHrQu";
 	
-	
+	// pio sosta prepei na ginei check kai edo gia to i'm not a robot 
+	// na checkarouem to videaki https://www.youtube.com/watch?v=2NfaBfu_ndc
+
     // If form submitted, get the values by post/get
     if (isset($_POST['username'])) {
 		$username = stripslashes($_REQUEST['username']); // removes backslashes
