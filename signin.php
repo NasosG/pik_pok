@@ -72,10 +72,9 @@ include("db/auth.php"); //include auth.php file on all secure pages
 													<a href="forgot_password.php" title="">Forgot Password?</a>
 												</div>
 											</div>
-											<div class="g-recaptcha mt-3" id="signin_robot" data-sitekey="6LfmCc0ZAAAAAMnp0Sxs59aUCInXiUSw1r6tn1EY" required></div>
 											
 											<div class="col-lg-12 no-pdd">
-												<button type="submit" id = "submit_but" value="submit">Sign in</button>
+												<button type="submit" id = "submit_signin" value="submit">Sign in</button>
 											</div>
 										</div>
 									</form>
@@ -205,36 +204,21 @@ include("db/auth.php"); //include auth.php file on all secure pages
 		};
 
 
-		var form = document.getElementById("sign_in");
-		//var form_signup = document.getElementById("sign_in_sec");
+		//var form = document.getElementById("sign_in");
+		var form_signup = document.getElementById("sign_in_sec");
 
-		document.getElementById("submit_but").addEventListener("click", function () {
-			if(grecaptcha && grecaptcha.getResponse().length > 0) {
-			     form.submit();
-			}
-			else {
-			    //The recaptcha is not cheched
-			    //You can display an error message here
-			    alert('Oops, you have to check the recaptcha !');
-			}
-
-		});
-	
-		/*document.getElementById("submit_signup").addEventListener("click", function () {
-			
-          $('#signin_robot').addAttr('disabled');
-
+		document.getElementById("submit_signup").addEventListener("click", function () {
 			if(grecaptcha && grecaptcha.getResponse().length > 0) {
 			     form_signup.submit();
 			}
 			else {
-			    //The recaptcha is not cheched
-			    //You can display an error message here
-			    alert('Oops, you have to check the recaptcha !');
+			    // The recaptcha is not cheched
+			    // we display an error message here
+			    alert('Oops, you have to check the I\'m not a robot box !');
 			}
 
 		});
-        */
+	
 </script>
 <script src="https://www.google.com/recaptcha/api.js"></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
