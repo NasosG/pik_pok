@@ -1,5 +1,9 @@
 <?php
  
+ /*
+   * na kanoume epipleon elegxous gia to i'm not a robot
+ */
+
 date_default_timezone_set('Etc/UTC');
 
 // the location of PHPMailer, where we placed its files.

@@ -180,6 +180,10 @@ require('db/errorFuncts.php');
 										<button class="btn-up">Upload an Image</button>
 										<input type="file" id="fileToUpload" name="fileToUpload" class="input-file"></input>
 									</div>
+									<div class="upload-btn-wrapper">
+										<button id = "upload_camera" class="btn-up">Upload from camera</button>
+										<input type="file" id="fileToUpload" name="fileToUpload" class="input-file"></input>
+									</div>
 							</div>
 							<div class="col-lg-12 col-md-12 col-12">
 								<img style="max-height:420px;" src="images/SocialMediaPost.png" id="add-prof-pic"></img>
