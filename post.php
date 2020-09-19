@@ -3,12 +3,14 @@ include("db/auth.php"); //include auth.php file on all secure pages
 require('db/db.php');
 require('db/errorFuncts.php');
 
+$photo_taken = false;
+
 if(isset($_POST['met'])) {
+	$photo_taken = true;
 	$met = $_POST['met'];
 
-	echo "geia xaraaa " . $met;
+	//echo "geia xaraaa " . $met." kai tora";
 } 
-else echo "paapriaaa ". $met;
 ?>
 
 <!DOCTYPE html>
@@ -194,7 +196,10 @@ else echo "paapriaaa ". $met;
 							
 							</div>
 							<div class="pt-2 col-lg-12 col-md-12 col-12">
-								<img style="max-height:420px;" src="images/SocialMediaPost.png" id="add-prof-pic"></img>
+								<?php 
+								if ($photo_taken) 
+									echo '<img style="max-height:420px;" src="'.$met.'" id="add-prof-pic"></img>';
+								else echo '<img style="max-height:420px;" src="images/SocialMediaPost.png" id="add-prof-pic"></img>';?>
 								
 							</div>
 							

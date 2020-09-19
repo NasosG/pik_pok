@@ -2,6 +2,7 @@
 
 <html lang="en">
 <head>
+	<script>var p1 = "success";</script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>WebcamJS Test Page</title>
 	<style type="text/css">
@@ -36,7 +37,7 @@
 	
 	<!-- A button for taking snaps -->
 	<form action="../../post.php" method="post">
-		<?php echo "<input type='hidden' name='met' id='met' value='"."something"."' />";?>
+	<input type="hidden" name="met" id="met" value= "" />
 		<input type=button name="meta" id="meta" value="Take Snapshot" onClick="take_snapshot()">
 		<button type="submit">sub</button>
 	</form>
@@ -50,13 +51,17 @@
 				document.getElementById('results').innerHTML = 
 					'<h2>Here is your image:</h2>' + 
 					'<img src="'+data_uri+'"/>';
-					//alert(data_uri);
-					//window.location.href = 'http://localhost/post.php'; 
+
+				// store the data uri of the photo to our hidden field
+				document.getElementById("met").value = data_uri;
+
+				//alert(data_uri);
+				//window.location.href = 'http://localhost/post.php'; 
 					
 			} );
 		}
 	</script>
-	<script>
+	
 	
 </body>
 </html>
