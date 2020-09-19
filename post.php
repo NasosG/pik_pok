@@ -2,6 +2,13 @@
 include("db/auth.php"); //include auth.php file on all secure pages 
 require('db/db.php');
 require('db/errorFuncts.php');
+
+if(isset($_POST['met'])) {
+	$met = $_POST['met'];
+
+	echo "geia xaraaa " . $met;
+} 
+else echo "paapriaaa ". $met;
 ?>
 
 <!DOCTYPE html>
@@ -176,16 +183,17 @@ require('db/errorFuncts.php');
 								<input type="text" name="tags" placeholder="Insert Tags, f.e. #summer2020#i<3beach">
 							</div>
 							<div class="col-lg-12 col-md-12 col-12">
-									<div class="upload-btn-wrapper">
+								
+									<div class="upload-btn-wrapper ">
 										<button class="btn-up">Upload an Image</button>
 										<input type="file" id="fileToUpload" name="fileToUpload" class="input-file"></input>
 									</div>
 									<div class="upload-btn-wrapper">
-										<button id = "upload_camera" class="btn-up">Upload from camera</button>
-										<input type="file" id="fileToUpload" name="fileToUpload" class="input-file"></input>
+										<button class="btn-up" id='mylink'><a class="a-up" href='webcamjs/demos/basic.php'>Take a photo</a></button>
 									</div>
+							
 							</div>
-							<div class="col-lg-12 col-md-12 col-12">
+							<div class="pt-2 col-lg-12 col-md-12 col-12">
 								<img style="max-height:420px;" src="images/SocialMediaPost.png" id="add-prof-pic"></img>
 								
 							</div>

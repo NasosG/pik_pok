@@ -2386,6 +2386,10 @@ select {
   cursor: pointer;
 }
 
+.a-up {
+  color: gray;
+}
+
 .upload-btn-wrapper input[type=file] {
   font-size: 100px;
   position: absolute;
