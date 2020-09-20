@@ -10,14 +10,6 @@ if(isset($_POST['imgData'])) {
 	$imgData = $_POST['imgData'];
 	
 	//echo "post value " . $imgData . " end";
-
-	//$imgData = str_replace('data:image/png;base64,', '', $imgData);
-
-	/*
-	$imgData = str_replace(' ','+',$imgData);
-	$imgData =  substr($imgData,strpos($imgData,",")+1);
-	$imgData = base64_decode($imgData);
-	*/
 	
 } 
 ?>
@@ -206,8 +198,11 @@ if(isset($_POST['imgData'])) {
 							</div>
 							<div class="pt-2 col-lg-12 col-md-12 col-12">
 								<?php 
-								if ($photo_taken) 
+
+								if ($photo_taken) {
+									echo '<input type="hidden" name="imgData" id="imgData" value= "'.$imgData.'" />';
 									echo '<img style="max-height:420px;" src="'.$imgData.'" id="add-prof-pic"></img>';
+								}
 								else echo '<img style="max-height:420px;" src="images/SocialMediaPost.png" id="add-prof-pic"></img>';?>
 								
 							</div>

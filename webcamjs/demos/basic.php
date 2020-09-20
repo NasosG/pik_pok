@@ -2,7 +2,6 @@
 
 <html lang="en">
 <head>
-	<script>var p1 = "success";</script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>WebcamJS Test Page</title>
 	<style type="text/css">
@@ -17,7 +16,7 @@
 	<div id="results">Your captured image will appear here...</div>
 	
 	<h1>Take a photo</h1>
-	<h3>just do it &amp; !!</h3>
+	<h3>Press Take Snapshot &amp; then submit it</h3>
 	
 	<div id="my_camera"></div>
 	
@@ -37,7 +36,7 @@
 	
 	<!-- A button for taking snaps -->
 	<form action="../../post.php" method="post">
-	<input type="hidden" name="imgData" id="imgData" value= "" />
+		<input type="hidden" name="imgData" id="imgData" value= "" />
 		<input type=button name="snapshot" id="snapshot" value="Take Snapshot" onClick="take_snapshot()">
 		<button type="submit">Submit Photo</button>
 	</form>
@@ -54,8 +53,8 @@
 
 				// store the data uri of the photo to our hidden field
 				document.getElementById("imgData").value = data_uri;
+				//console.log(data_uri);
 
-				//alert(data_uri);
 				//window.location.href = 'http://localhost/post.php'; 
 					
 			} );
