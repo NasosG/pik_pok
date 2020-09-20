@@ -37,9 +37,9 @@
 	
 	<!-- A button for taking snaps -->
 	<form action="../../post.php" method="post">
-	<input type="hidden" name="met" id="met" value= "" />
-		<input type=button name="meta" id="meta" value="Take Snapshot" onClick="take_snapshot()">
-		<button type="submit">sub</button>
+	<input type="hidden" name="imgData" id="imgData" value= "" />
+		<input type=button name="snapshot" id="snapshot" value="Take Snapshot" onClick="take_snapshot()">
+		<button type="submit">Submit Photo</button>
 	</form>
 	
 	<!-- Code to handle taking the snapshot and displaying it locally -->
@@ -53,7 +53,7 @@
 					'<img src="'+data_uri+'"/>';
 
 				// store the data uri of the photo to our hidden field
-				document.getElementById("met").value = data_uri;
+				document.getElementById("imgData").value = data_uri;
 
 				//alert(data_uri);
 				//window.location.href = 'http://localhost/post.php'; 

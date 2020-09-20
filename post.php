@@ -5,11 +5,20 @@ require('db/errorFuncts.php');
 
 $photo_taken = false;
 
-if(isset($_POST['met'])) {
+if(isset($_POST['imgData'])) {
 	$photo_taken = true;
-	$met = $_POST['met'];
+	$imgData = $_POST['imgData'];
+	
+	//echo "post value " . $imgData . " end";
 
-	//echo "geia xaraaa " . $met." kai tora";
+	//$imgData = str_replace('data:image/png;base64,', '', $imgData);
+
+	/*
+	$imgData = str_replace(' ','+',$imgData);
+	$imgData =  substr($imgData,strpos($imgData,",")+1);
+	$imgData = base64_decode($imgData);
+	*/
+	
 } 
 ?>
 
@@ -191,14 +200,14 @@ if(isset($_POST['met'])) {
 										<input type="file" id="fileToUpload" name="fileToUpload" class="input-file"></input>
 									</div>
 									<div class="upload-btn-wrapper">
-										<button class="btn-up" id='mylink'><a class="a-up" href='webcamjs/demos/basic.php'>Take a photo</a></button>
+										<button disabled class="btn-up" id='mylink'><a class="a-up" href='webcamjs/demos/basic.php'>Take a photo</a></button>
 									</div>
 							
 							</div>
 							<div class="pt-2 col-lg-12 col-md-12 col-12">
 								<?php 
 								if ($photo_taken) 
-									echo '<img style="max-height:420px;" src="'.$met.'" id="add-prof-pic"></img>';
+									echo '<img style="max-height:420px;" src="'.$imgData.'" id="add-prof-pic"></img>';
 								else echo '<img style="max-height:420px;" src="images/SocialMediaPost.png" id="add-prof-pic"></img>';?>
 								
 							</div>
