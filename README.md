@@ -19,7 +19,7 @@ for example our variables are $dbhost = "localhost", $dbuser = "root", $dbpass =
 
 ## Bugs and Issues
 
-Have a bug or an issue with this template? Send an email at blabla@blabla.gr
+Have a bug or an issue with this project? Send an email at blabla@blabla.gr
 
 
 ## Copyright and License
