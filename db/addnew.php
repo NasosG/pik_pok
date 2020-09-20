@@ -101,6 +101,6 @@ else {
 //close the connection
 mysqli_close($con);
 // Redirect user to index.php
-//header("Location: ../index.php");
+header("Location: ../index.php");
 ?>
 
