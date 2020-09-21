@@ -49,52 +49,57 @@
 			color: white;
 		}
 
-		.grid-container {
-			display: grid;
-			grid-template-columns: 30% 30%;
-			max-width: 600px;
-			padding: 0px;
-		}
-
-		.grid-item {
-			padding: 0px;
-
-			text-align: center;
-		}
-
-@media only screen and (max-width: 600px) { 
-body {
- 
-}			
-#results { display:none;} 
-}
-		@media only screen and (min-width: 600px) and (max-width: 1250px){ 
+		@media only screen and (max-width: 600px) {
 			body {
-  margin-left:auto;margin-right:auto; max-width:600px;
-}
-			#results { display:none;} 
-	}
-		@media only screen and (min-width: 1251px) { 
-			#results { float:right; margin:20px; padding:20px; border:1px solid; background:#ccc;} 
-	}
+				margin-left: 0px;
+			}
+			h1, h2, h3, form, form>input {
+				margin-left: 10px;
+			}
+			#results {
+				display: none;
+			}
+		}
+
+		@media only screen and (min-width: 600px) and (max-width: 1250px) {
+			body {
+				margin-left: auto;
+				margin-right: auto;
+				max-width: 600px;
+			}
+			#results {
+				display: none;
+			}
+		}
+
+		@media only screen and (min-width: 1251px) {
+			#results {
+				float: right;
+				margin: 20px;
+				padding: 20px;
+				border: 1px solid;
+				background: #ccc;
+			}
+		}
 	</style>
 </head>
 <body>
 	
 	<div id="results">Your captured image will appear here...</div>
-	<h1>Take a photo</h1>
-	<h3>Press Take Snapshot &amp; then submit it</h3>
+	<h1>Take a photo <i class="fa fa-picture-o" aria-hidden="true"></i></h1>
+	<h3><span style="color:#e44d3a;">Press</span> Take Snapshot &amp; then submit it</h3>
 	
 	<div id="my_camera"></div>
 	
-	<!-- First, include the Webcam.js JavaScript Library -->
+	<!-- First, include the Webcam.js JavaScripts Library -->
 	<script type="text/javascript" src="../webcam.min.js"></script>
 	
 	<!-- Configure a few settings and attach camera -->
 	<script language="JavaScript">
+		 var mobile_width = window.innerWidth>600 ? 560 : window.innerWidth;
 			Webcam.set({
 			// live preview size
-			width: 560,
+			width: mobile_width,
 			height: 420,
 			
 			// device capture size
