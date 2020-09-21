@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Photo</title>
+	<title>Take Photo</title>
 
 	<link rel='shortcut icon' type='image/x-icon' href='../../images/logo.png'/>
 	
@@ -11,10 +11,8 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 
-
 	<!-- font awesome icons kit -->
 	<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
-	<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
 
 
 	<style type="text/css">
@@ -25,8 +23,10 @@
 
 		input[type=button],
 		button[type=submit] {
+			font-family: Helvetica, sans-serif; 
 			background-color: #F0F0F0;
-			font-size:1em;
+			font-size:1.05em;
+
 			color: black;
 			border: 1px solid black;
 			padding: 14px 20px;
@@ -63,10 +63,22 @@
 
 		@media only screen and (min-width: 600px) and (max-width: 1250px) {
 			body {
+				position: relative;
+				width: 100%;
+				display: block;
+			}
+
+			body>* {
 				margin-left: auto;
 				margin-right: auto;
-				max-width: 600px;
+				width: 570px;
+				display: block;
 			}
+
+			body>script {
+				display: none
+			}
+
 			#results {
 				display: none;
 			}
@@ -96,7 +108,9 @@
 	
 	<!-- Configure a few settings and attach camera -->
 	<script language="JavaScript">
-		 var mobile_width = window.innerWidth>600 ? 560 : window.innerWidth;
+		
+		function set_camera(){
+		 	var mobile_width = window.innerWidth>600 ? 560 : window.innerWidth;
 			Webcam.set({
 			// live preview size
 			width: mobile_width,
@@ -112,9 +126,19 @@
 		});
 		
 		Webcam.attach( '#my_camera' );
+	}
 
+	set_camera();
+	
+	function updateCanvas() {
+		if(!freezed && window.innerWidth<600)
+			set_camera();
+  
+	}
+	
+	//make canvas fluid meaning change camera properties (mostly width) every time the user resizes the window
+	window.addEventListener("resize", updateCanvas);
 
-		
 	</script>
 	
 	<!-- A button for taking snaps -->
@@ -162,11 +186,13 @@
 		}
 
 */
+		var freezed = false;
+
 		function preview_snapshot() {
 			shutter.play();
 			// freeze camera so user can preview pic
 			Webcam.freeze();
-			
+			freezed = true;
 			// swap button sets
 			document.getElementById('pre_take_buttons').style.display = 'none';
 			document.getElementById('post_take_buttons').style.display = '';
@@ -176,7 +202,7 @@
 			save_photo();
 			// cancel preview freeze and return to live camera feed
 			Webcam.unfreeze();
-			
+			freezed =! freezed;
 			// swap buttons back
 			document.getElementById('pre_take_buttons').style.display = '';
 			document.getElementById('post_take_buttons').style.display = 'none';
