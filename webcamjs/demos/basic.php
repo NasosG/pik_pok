@@ -26,24 +26,26 @@
 			font-family: Helvetica, sans-serif; 
 			background-color: #F0F0F0;
 			font-size:1.05em;
-
+			letter-spacing: 1.5px;
 			color: black;
 			border: 1px solid black;
 			padding: 14px 20px;
 			margin: 8px 0;
 			transition-duration: 0.4s;
-			//border-radius: 4px;
+			border-radius: 4px;
 			cursor: pointer;
 			margin:5px;
 		}
 
 		input[type=button]:hover {
+			opacity:0.8;
 			background-color: #555555;
 			border: 1px solid #555555;
 			color: white;
 		}
 
 		button[type=submit]:hover {
+			opacity:0.8;
 			background-color: green;
 			border: 1px solid green;
 			color: white;
@@ -99,7 +101,7 @@
 	
 	<div id="results">Your captured image will appear here...</div>
 	<h1>Take a photo <i class="fa fa-picture-o" aria-hidden="true"></i></h1>
-	<h3><span style="color:#e44d3a;">Press</span> Take Snapshot &amp; then submit it</h3>
+	<h3><span style="color:#e44d3a;">Press</span> Take a photo &amp; then submit it</h3>
 	
 	<div id="my_camera"></div>
 	
@@ -131,7 +133,7 @@
 	set_camera();
 	
 	function updateCanvas() {
-		if(!freezed && window.innerWidth<600)
+		if(!freezed && window.innerWidth < 600)
 			set_camera();
   
 	}
@@ -147,11 +149,11 @@
 		<input type="hidden" name="imgData" id="imgData" value= "" />
 
 		<div id="pre_take_buttons">
-			<input type=button name="snapshot" id="snapshot" value="Take Snapshot" onClick="preview_snapshot()">
+			<input type=button name="snapshot" id="snapshot" value="Take a photo" onClick="preview_snapshot()">
 		</div>
 		<div id="post_take_buttons" style="display:none">
-			<input type=button value="&lt; Take Another" onClick="cancel_preview()">
-			<button type="submit" onClick="save_photo()">Submit Photo &gt;</button>
+			<input type=button value="&lt; Take another" onClick="cancel_preview()">
+			<button type="submit" onClick="save_photo()">Submit photo &gt;</button>
 		</div>
 		
 	</form>

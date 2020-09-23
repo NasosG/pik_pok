@@ -232,7 +232,8 @@ require('db/errorFuncts.php');
 
 		document.getElementById("submit_form").addEventListener("click", function () {
 			if(grecaptcha && grecaptcha.getResponse().length > 0) {
-			     form_contact.submit();
+				//form_contact.submit();
+			    sendContactForm();
 			}
 			else {
 			    // The recaptcha is not cheched
@@ -244,13 +245,13 @@ require('db/errorFuncts.php');
 	
 </script>
 <script src="https://www.google.com/recaptcha/api.js"></script>
+<script type="text/javascript" src="js/contact.js"></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/popper.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery.mCustomScrollbar.js"></script>
 <script type="text/javascript" src="lib/slick/slick.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
-
 
 </body>
 </html>

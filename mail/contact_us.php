@@ -44,8 +44,10 @@ $mail->Subject = "Website Contact Form:  $name";
 // and finaly send the email to the user to let him know that password has been changed
 $mail->Body = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\nEmail: $email_address\n\nMessage: $message";
 
-if($mail->send()) echo "Email sent thank you for your input"; 
-else echo "an error has occurred during the procedure"; 
+/*if($mail->send()) echo "Email sent thank you for your input"; 
+else echo "an error has occurred during the procedure"; */
 
+if(!($mail->send())) 
+	http_response_code(500);
 
 ?>
