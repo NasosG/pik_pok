@@ -1,6 +1,7 @@
 <?php
 	require('db.php');
 	require('errorFuncts.php');
+	require('IPMAC_addresses.php');
 	
     // If form submitted, insert values into the database.
     if (isset($_REQUEST['username'])) {
@@ -63,7 +64,13 @@
 			if($result) {
 				session_start();
 				$_SESSION['username'] = $username;
-				header("Location: ../addAvatar.php");
+
+				$query_ip_mac = "INSERT INTO ip_mac_addresses(IP_address, mac_address, user_name, login_date) 
+			VALUES ('$IP','$MAC','$username','$RegDate')";
+				$result = mysqli_query($con,$query_ip_mac);
+
+				if($result) 
+					header("Location: ../addAvatar.php");
 				//echo "<div class='form'><h3>You are registered successfully.</h3><br/>Click here to return to <a //href='../index.php'>Home</a></div>";
 			}
 			else {

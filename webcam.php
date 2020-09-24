@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Take Photo</title>
 
-	<link rel='shortcut icon' type='image/x-icon' href='../../images/logo.png'/>
+	<link rel='shortcut icon' type='image/x-icon' href='images/logo.png'/>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="" />
@@ -106,7 +106,7 @@
 	<div id="my_camera"></div>
 	
 	<!-- First, include the Webcam.js JavaScripts Library -->
-	<script type="text/javascript" src="../webcam.min.js"></script>
+	<script type="text/javascript" src="webcamjs/webcam.min.js"></script>
 	
 	<!-- Configure a few settings and attach camera -->
 	<script language="JavaScript">
@@ -144,7 +144,7 @@
 	</script>
 	
 	<!-- A button for taking snaps -->
-	<form action="../../post.php" method="post">
+	<form action="post.php" method="post">
 
 		<input type="hidden" name="imgData" id="imgData" value= "" />
 
@@ -164,7 +164,7 @@
 		// preload shutter audio clip
 		var shutter = new Audio();
 		shutter.autoplay = false;
-		shutter.src = navigator.userAgent.match(/Firefox/) ? 'shutter.ogg' : 'shutter.mp3';
+		shutter.src = navigator.userAgent.match(/Firefox/) ? 'webcamjs/shutter.ogg' : 'webcamjs/shutter.mp3';
 
 /*		function take_snapshot() {
 

@@ -11,7 +11,8 @@ if(isset($_POST['imgData'])) {
 	
 	//echo "post value " . $imgData . " end";
 	
-} 
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -191,9 +192,22 @@ if(isset($_POST['imgData'])) {
 										<button class="btn-up">Upload an Image</button>
 										<input type="file" id="fileToUpload" name="fileToUpload" class="input-file"></input>
 									</div>
-									<div class="upload-btn-wrapper">
-										<button disabled class="btn-up" id='mylink'><a class="a-up" href='webcamjs/demos/basic.php'>Take a photo</a></button>
-									</div>
+									<?php
+									
+									function isMobileDevice() { 
+									    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo 
+									|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i" 
+									, $_SERVER["HTTP_USER_AGENT"]); 
+									} 
+									
+									if(!isMobileDevice()){
+										echo '<div class="upload-btn-wrapper">
+											  <button disabled class="btn-up" id="mylink"><a class="a-up" href="webcam.php">Take a photo</a></button>
+											</div> ';
+									}
+
+									?>
+
 							
 							</div>
 							<div class="pt-2 col-lg-12 col-md-12 col-12">

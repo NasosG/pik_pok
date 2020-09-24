@@ -457,7 +457,23 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 										<button class="btn-up">Upload an Image</button>
 										<input type="file" id="fileToUpload" name="fileToUpload" class="input-file"></input>
 									</div>
-							</div>							
+								
+									<?php
+									
+									function isMobileDevice() { 
+									    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo 
+									|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i" 
+									, $_SERVER["HTTP_USER_AGENT"]); 
+									} 
+									
+									if(!isMobileDevice()){
+										echo '<div class="upload-btn-wrapper">
+											  <button disabled class="btn-up" id="mylink"><a class="a-up" href="webcam.php">Take a photo</a></button>
+											</div> ';
+									}
+
+									?>	
+									</div>					
 							<img style="max-height:32vh;margin-left:auto;margin-right:auto" src="images/SocialMediaPost.png" id="add-prof-pic"></img>
 							<div class="col-lg-12">
 								<ul>
