@@ -2390,6 +2390,10 @@ select {
   color: gray;
 }
 
+.a-up:hover {
+  color: gray;
+ 
+}
 .upload-btn-wrapper input[type=file] {
   font-size: 100px;
   position: absolute;

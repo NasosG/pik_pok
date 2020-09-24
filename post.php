@@ -203,7 +203,7 @@ if(isset($_POST['imgData'])) {
 									echo '<input type="hidden" name="imgData" id="imgData" value= "'.$imgData.'" />';
 									echo '<img style="max-height:420px;" src="'.$imgData.'" id="add-prof-pic"></img>';
 								}
-								else echo '<img style="max-height:420px;" src="images/SocialMediaPost.png" id="add-prof-pic"></img>';?>
+								else echo '<img style="min-height:380px;max-height:420px;" src="images/SocialMediaPost.png" id="add-prof-pic"></img>';?>
 								
 							</div>
 							
@@ -221,7 +221,7 @@ if(isset($_POST['imgData'])) {
 			</div><!--post-project end-->
 		</div><!--post-project-popup end-->
 
-		<footer>
+		<footer style="margin-top:30px;">
 			<div class="footy-sec mn no-margin">
 				<div class="container">
 					<ul>
