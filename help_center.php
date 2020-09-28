@@ -245,14 +245,14 @@ require('db/db.php');
 								  		<div class="actionstext">
 								  	<div class="row">
 								  		<div class="col-md-6 col-sm-12">
+								  			<a href="#">Create a Pik Pok account</a>
 								  			<a href="#">Change or add email address</a>
 								  			<a href="#">Reset your password</a>
-								  			<a href="#">Close your account</a>
 								  		</div>
 								  		<div class="col-md-6 col-sm-12">
 								  			<a href="#">Manage emails you get from Pik-Pok</a>
-								  			<a href="#">Get Paid</a>
-								  			<a href="#">Build Your Profiles</a>
+								  			<a href="#">Make your password strong</a>
+								  			<a href="#">Close your account</a>
 								  		</div>
 								  	</div>
 								  	</div>

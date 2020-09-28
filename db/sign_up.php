@@ -6,9 +6,13 @@
     // If form submitted, insert values into the database.
     if (isset($_REQUEST['username'])) {
 		$username = stripslashes($_REQUEST['username']); // removes backslashes
+		// sanitize username data
+		$username = filter_var($username, FILTER_SANITIZE_STRING);
 		$username = mysqli_real_escape_string($con, $username); //escapes special characters in a string
 		
 		$email = stripslashes($_REQUEST['email']);
+		// sanitize email
+		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
 		$email = mysqli_real_escape_string($con, $email);
 		
 		///////////////////////////////////////////////////////
@@ -37,12 +41,18 @@
 
 		else {
 			$password = stripslashes($_REQUEST['psw']);
+			// sanitize password
+			$password = filter_var($password, FILTER_SANITIZE_STRING);
 			$password = mysqli_real_escape_string($con, $password);
 			
 			$fname = stripslashes($_REQUEST['fname']);
+			// sanitize fname
+			$fname = filter_var($fname, FILTER_SANITIZE_STRING);
 			$fname = mysqli_real_escape_string($con, $fname);
 			
 			$surname = stripslashes($_REQUEST['lname']);
+			// sanitize surname
+			$surname = filter_var($surname, FILTER_SANITIZE_STRING);
 			$surname = mysqli_real_escape_string($con, $surname);
 			
 			$sex = stripslashes($_REQUEST['sex']);
