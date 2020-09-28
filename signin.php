@@ -192,8 +192,14 @@ include("db/auth.php"); //include auth.php file on all secure pages
 
 	</div><!--theme-layout end-->
 
+
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/popper.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="lib/slick/slick.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 <script>
-	
 		window.onload = function() {
     	var $recaptcha = document.querySelector('#g-recaptcha-response');
 
@@ -220,12 +226,6 @@ include("db/auth.php"); //include auth.php file on all secure pages
 		});
 	
 </script>
-<script src="https://www.google.com/recaptcha/api.js"></script>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/popper.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="lib/slick/slick.min.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
 <script>
 	/* Passwords do not match functionality */
 	  var check = function() { //check passwords if are the same

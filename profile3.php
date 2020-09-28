@@ -23,7 +23,7 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 <head>
 	<link rel='shortcut icon' type='image/x-icon' href='images/logo.png'/>
 	<meta charset="UTF-8">
-	<title>Profile - Pik Pok</title>
+	<title>My Profile - Pik Pok</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
@@ -244,14 +244,14 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 									</div><!--suggestions end-->
 									<div class="tags-sec full-width">
 										<ul>
-											<li><a href="#" title="">Help Center</a></li>
-											<li><a href="#" title="">About</a></li>
-											<li><a href="#" title="">Privacy Policy</a></li>
-											<li><a href="#" title="">Community Guidelines</a></li>
-											<li><a href="#" title="">Cookies Policy</a></li>
+											<li><a href="help_center.php" title="">Help Center</a></li>
+											<li><a href="about.php" title="">About</a></li>
+											<li><a href="termsofuse.php" title="">Privacy Policy</a></li>
+											<li><a href="community_guidelines.php" title="">Community Guidelines</a></li>
+											<li><a href="cookies_policy.php" title="">Cookies Policy</a></li>
 											<li><a href="#" title="">Career</a></li>
 											<li><a href="#" title="">Language</a></li>
-											<li><a href="#" title="">Copyright Policy</a></li>
+											<li><a href="community_guidelines.php" title="">Copyright Policy</a></li>
 										</ul>
 										<div class="cp-sec">
 											<img src="images/logo2.png" alt="">

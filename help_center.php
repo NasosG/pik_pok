@@ -209,17 +209,12 @@ require('db/db.php');
 										</div>
 										<div class="filter-dd">
 											<div class="filter-ttl filter--tt2">
-												<a href="#">Work with Clients</a>
+												<a href="#">Pik Pok Security</a>
 											</div>
 										</div>
 										<div class="filter-dd">
 											<div class="filter-ttl filter--tt2">
-												<a href="#">Get Paid</a>
-											</div>
-										</div>
-										<div class="filter-dd">
-											<div class="filter-ttl filter--tt2">
-												<a href="#">Discovering Peoples</a>
+												<a href="#">Discovering People</a>
 											</div>
 										</div>
 										<div class="filter-dd">
@@ -271,8 +266,7 @@ require('db/db.php');
 								  			<hr>
 								  			<a href="#">Editing Your Profile</a>
 								  			<hr>
-								  			<a href="#">Merging or Closing Duplicate Accounts on LinkedIn</a>
-								  			<hr>
+								  			
 								  		</div>
 								  	</div>
 								  	</div>

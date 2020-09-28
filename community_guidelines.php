@@ -9,7 +9,7 @@ require('db/errorFuncts.php');
 <head>
 <link rel='shortcut icon' type='image/x-icon' href='images/logo.png'/>
 <meta charset="UTF-8">
-<title>Terms Of Use - Pik Pok</title>
+<title>Guidelines - Pik Pok</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />

@@ -42,7 +42,7 @@
 		else {
 			$password = stripslashes($_REQUEST['psw']);
 			// sanitize password
-			$password = filter_var($password, FILTER_SANITIZE_STRING);
+			//$password = filter_var($password, FILTER_SANITIZE_STRING);
 			$password = mysqli_real_escape_string($con, $password);
 			
 			$fname = stripslashes($_REQUEST['fname']);

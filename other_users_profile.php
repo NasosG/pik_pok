@@ -10,7 +10,7 @@ $result = mysqli_query($con, $query);
 
 // a new result, because if we fetched the array at this point, counter would then be equal to 0
 // and this would be a problem when we'd want to fetch the posts later
-// may a better way exists though
+// a better way may exists though
 $result_likes = mysqli_query($con, $query);
 // a sum of the likes => total likes
 for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
@@ -248,14 +248,14 @@ $email = $row_picture['email'];
 									</div><!--suggestions end-->
 									<div class="tags-sec full-width">
 										<ul>
-											<li><a href="#" title="">Help Center</a></li>
-											<li><a href="#" title="">About</a></li>
-											<li><a href="#" title="">Privacy Policy</a></li>
-											<li><a href="#" title="">Community Guidelines</a></li>
-											<li><a href="#" title="">Cookies Policy</a></li>
+											<li><a href="help_center.php" title="">Help Center</a></li>
+											<li><a href="about.php" title="">About</a></li>
+											<li><a href="termsofuse.php" title="">Privacy Policy</a></li>
+											<li><a href="community_guidelines.php" title="">Community Guidelines</a></li>
+											<li><a href="cookies_policy.php" title="">Cookies Policy</a></li>
 											<li><a href="#" title="">Career</a></li>
 											<li><a href="#" title="">Language</a></li>
-											<li><a href="#" title="">Copyright Policy</a></li>
+											<li><a href="community_guidelines.php" title="">Copyright Policy</a></li>
 										</ul>
 										<div class="cp-sec">
 											<img src="images/logo2.png" alt="">
@@ -333,7 +333,13 @@ $email = $row_picture['email'];
 											 <?php echo '<input type="hidden" name="photo_id" id="photo_id" value="'.$row['photo_id'].'" />';?>
                                                <ul class="like-com">
 													<li>
-														<button style="background:white; border:none;" class="like-submit-btn"><a id="like-submit" style="color:#e44d3a;" class="com-page-likes"><i class="fa fa-heart"></i> Like</a></button>
+														<?php 
+														if(isset($_SESSION['username'])) {
+															echo '
+															<button style="background:white; border:none;" class="like-submit-btn"><a id="like-submit" style="color:#e44d3a;" class="com-page-likes"><i class="fa fa-heart"></i> Like</a></button>';
+															}
+														/*else do nothing*/
+													?>
 													</li>
 														
 												</ul>
@@ -482,30 +488,6 @@ $email = $row_picture['email'];
 <script type="text/javascript" src="js/scrollbar.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script>
-document.getElementsByClassName("trash-button").onclick = function() {
-    	document.getElementsByClassName("form-delete").submit();
-}
-
-document.getElementById("file").onchange = function() {
-    document.getElementById("changeAvatar").submit();
-};
-
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            
-            reader.onload = function (e) {
-                $('#add-prof-pic').attr('src', e.target.result);
-            }
-            
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    
-    $("#fileToUpload").change(function(){
-        readURL(this);
-    });
-
 document.getElementsByClassName("like-submit-btn").onclick = function() {
     	document.getElementsByClassName("likes-form").submit();
 }

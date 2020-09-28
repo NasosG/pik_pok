@@ -8,7 +8,7 @@
 	$private_key = "6LfmCc0ZAAAAANAT6_nLc8Icy0SY5Tgg9vTFHrQu";
 	
 	// pio sosta prepei na ginei check kai edo gia to i'm not a robot 
-	// na checkarouem to videaki https://www.youtube.com/watch?v=2NfaBfu_ndc
+	// na checkaroume to videaki https://www.youtube.com/watch?v=2NfaBfu_ndc
 	$login_date = date("Y-m-d H:i:s");	
     // If form submitted, get the values by post/get
     if (isset($_POST['username'])) {
@@ -23,7 +23,7 @@
 		$password = strip_tags($password);
 
 		// sanitize password
-		$password = filter_var($password, FILTER_SANITIZE_STRING);
+		//$password = filter_var($password, FILTER_SANITIZE_STRING);
 		$password = mysqli_real_escape_string($con, $password);
 
 	//Checking if user exists in the database or not
@@ -31,14 +31,12 @@
         $query = "SELECT * FROM members WHERE username='$username' AND password='".md5($password)."'";
 		$result = mysqli_query($con,$query) or die("Not able to execute the query");
 		$rows = mysqli_num_rows($result);
-        if($rows==1) {
+        if($rows == 1) {
 			$_SESSION['username'] = $username;
 			
 			$get_mac = "SELECT MAC_address, IP_address FROM ip_mac_addresses WHERE user_name='$username'";
 			$result1 = mysqli_query($con,$get_mac) or die("Not able to execute the query");
 			$values_db = mysqli_fetch_array ( $result1 );
-			
-			//echo $values_db[0]."    --     ".$values_db[1] ;
 			
 			if($values_db[0] != $MAC && $values_db[1] != $IP) {
 				send_security_alert();
