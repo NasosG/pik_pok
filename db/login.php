@@ -23,7 +23,7 @@
 		$password = strip_tags($password);
 
 		// sanitize password
-		//$password = filter_var($password, FILTER_SANITIZE_STRING);
+		// $password = filter_var($password, FILTER_SANITIZE_STRING);
 		$password = mysqli_real_escape_string($con, $password);
 
 	//Checking if user exists in the database or not
@@ -46,8 +46,14 @@
 			$search_addresses = "DELETE FROM ip_mac_addresses WHERE user_name='$username' AND IP_address='$IP' AND MAC_address='$MAC'";
 			$result = mysqli_query($con,$search_addresses) or die("Not able to execute the query");
 
-			$query_ip_mac = "INSERT INTO ip_mac_addresses(IP_address, mac_address, user_name, login_date) 
-			VALUES ('$IP','$MAC','$username','$login_date')";
+			$ua = getBrowser();
+			$ua_browser = $ua['name'] ;
+			//$ua_version = $ua['version'] ;
+			$ua_OS = $ua['platform'];
+			$is_mobile = $ua['is_mobile'];
+
+			$query_ip_mac = "INSERT INTO ip_mac_addresses(IP_address, mac_address, user_name, login_date, mobile, OS, browser) 
+			VALUES ('$IP','$MAC','$username','$login_date', '$is_mobile', '$ua_OS', '$ua_browser')";
 			$result = mysqli_query($con,$query_ip_mac);
 
 			if($result) {

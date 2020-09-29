@@ -74,9 +74,15 @@
 			if($result) {
 				session_start();
 				$_SESSION['username'] = $username;
-
-				$query_ip_mac = "INSERT INTO ip_mac_addresses(IP_address, mac_address, user_name, login_date) 
-			VALUES ('$IP','$MAC','$username','$RegDate')";
+				
+				$ua = getBrowser();
+				$ua_browser = $ua['name'] ;
+				//$ua_version = $ua['version'] ;
+				$ua_OS = $ua['platform'];
+				$is_mobile = $ua['is_mobile'];
+				
+				$query_ip_mac = "INSERT INTO ip_mac_addresses(IP_address, mac_address, user_name, login_date, mobile, OS, browser) 
+			VALUES ('$IP','$MAC','$username','$RegDate', '$is_mobile', '$ua_OS', '$ua_browser')";
 				$result = mysqli_query($con,$query_ip_mac);
 
 				if($result) 

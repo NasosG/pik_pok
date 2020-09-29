@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2020 at 09:50 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Generation Time: Sep 24, 2020 at 06:39 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -77,7 +77,7 @@ INSERT INTO `images` (`photo_id`, `photo_name`, `photo_likes`, `photo_path`, `us
 (13, 'sky2.jpg', 1, 'uploads/pik_pok_pics/', 'mara10', '#sky#summer#bright', '2020-06-12 01:49:13'),
 (15, 'filter-sql.png', 0, 'uploads/pik_pok_pics/', 'opl', '#littleBobyTables#SQLjokes', '2020-06-12 02:02:59'),
 (16, 'mlk.webp', 2, 'uploads/pik_pok_pics/', 'marigeorgitsa', '#funny#darkhumor', '2020-06-12 02:16:18'),
-(17, 'ekthema.png', 2, 'uploads/pik_pok_pics/', 'opl', '#art#spartan#warrior', '2020-06-12 13:10:05');
+(17, 'ekthema.png', 3, 'uploads/pik_pok_pics/', 'opl', '#art#spartan#warrior', '2020-06-12 13:10:05');
 
 -- --------------------------------------------------------
 
@@ -90,25 +90,15 @@ CREATE TABLE `ip_mac_addresses` (
   `IP_address` varchar(50) NOT NULL,
   `mac_address` varchar(255) NOT NULL,
   `user_name` varchar(255) NOT NULL,
-  `login_date` datetime NOT NULL,
-  `mobile` tinyint(1) NOT NULL,
-  `OS` varchar(255) NOT NULL,
-  `browser` varchar(255) NOT NULL
+  `login_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `ip_mac_addresses`
 --
 
-INSERT INTO `ip_mac_addresses` (`im_id`, `IP_address`, `mac_address`, `user_name`, `login_date`, `mobile`, `OS`, `browser`) VALUES
-(12, '::1', '3C-A0-67-C1-E3-B2', 'thn12', '2020-09-24 19:29:19', 0, '', ''),
-(40, '::1', 'B0-6E-BF-D1-26-0A', 'kostas1234', '2020-09-28 18:58:58', 0, '', ''),
-(44, '::1', 'B0-6E-BF-D1-26-0A', 'mara10', '2020-09-28 19:00:37', 0, '', ''),
-(47, '::1', 'B0-6E-BF-D1-26-0A', 'opl', '2020-09-28 19:29:11', 0, '', ''),
-(53, '::1', 'B0-6E-BF-D1-26-0A', 'asd123', '2020-09-28 20:30:14', 0, '', ''),
-(59, '::1', 'B0-6E-BF-D1-26-0A', 'gkal2', '2020-09-28 22:47:57', 0, '', ''),
-(66, '192.168.2.2', 'B0-6E-BF-D1-26-0A', 'thn12', '2020-09-29 22:45:33', 1, 'android', 'Google Chrome'),
-(67, '::1', 'B0-6E-BF-D1-26-0A', 'thn12', '2020-09-29 22:46:03', 0, 'windows', 'Google Chrome');
+INSERT INTO `ip_mac_addresses` (`im_id`, `IP_address`, `mac_address`, `user_name`, `login_date`) VALUES
+(12, '::1', '3C-A0-67-C1-E3-B2', 'thn12', '2020-09-24 19:29:19');
 
 -- --------------------------------------------------------
 
@@ -135,7 +125,7 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`username`, `password`, `fname`, `lname`, `email`, `date_of_registration`, `id`, `sex`, `date_of_birth`, `profile_pic`, `picture_path`) VALUES
-('thn12', '202cb962ac59075b964b07152d234b70', 'Μιχάλης', 'Πανταζής', 'asd@uop.gr', '2020-05-21', 40, 0, '1989-06-11', 'anonymous_hacker.jpg', 'uploads/users/40/'),
+('thn12', '202cb962ac59075b964b07152d234b70', 'Μιχάλης', 'Πανταζής', 'asd@uop.gr', '2020-05-21', 40, 0, '1987-06-18', 'anonymous_hacker.jpg', 'uploads/users/40/'),
 ('mara10', '202cb962ac59075b964b07152d234b70', 'μαρια', 'αντεπαλοβ', 'mrt@iop.com', '2020-06-02', 45, 1, '1987-10-29', 'Screenshot_160.png', 'uploads/users/45/'),
 ('opl', '202cb962ac59075b964b07152d234b70', 'mlo', 'klo', 'gnasos219@gmail.com', '2020-06-06', 47, 0, '2020-06-02', 'ekthema.png', 'uploads/users/47/'),
 ('makis', '827ccb0eea8a706c4c34a16891f84e7b', 'makis', 'makis', 'makis@makis.gr', '2020-06-06', 48, 0, '2020-06-30', 'ekthema.png', 'uploads/users/48/'),
@@ -194,11 +184,12 @@ INSERT INTO `post_likes` (`post_likes_id`, `liked_by_user`, `posted_photo_id`, `
 (187, 50, 7, '2020-06-11 16:32:50'),
 (199, 51, 12, '2020-06-11 19:42:38'),
 (676, 45, 16, '2020-06-14 00:23:00'),
+(677, 40, 13, '2020-06-14 00:23:33'),
+(685, 40, 16, '2020-06-14 14:54:37'),
+(742, 0, 17, '2020-09-17 22:17:24'),
+(744, 40, 12, '2020-09-20 22:39:41'),
 (745, 40, 10, '2020-09-20 22:39:48'),
-(755, 40, 13, '2020-09-28 22:02:10'),
-(757, 40, 16, '2020-09-28 22:02:28'),
-(758, 40, 12, '2020-09-28 22:05:05'),
-(766, 40, 17, '2020-09-28 22:09:59');
+(746, 40, 17, '2020-09-24 14:56:06');
 
 --
 -- Indexes for dumped tables
@@ -276,13 +267,13 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `ip_mac_addresses`
 --
 ALTER TABLE `ip_mac_addresses`
-  MODIFY `im_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `im_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `post_comments`
@@ -294,7 +285,7 @@ ALTER TABLE `post_comments`
 -- AUTO_INCREMENT for table `post_likes`
 --
 ALTER TABLE `post_likes`
-  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=768;
+  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=748;
 
 --
 -- Constraints for dumped tables
