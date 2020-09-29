@@ -8,7 +8,8 @@ $username = $_SESSION['username'];
 
 if (isset($_REQUEST['fname']) && (trim($_REQUEST['fname']) != '')) {
     $fname = stripslashes($_REQUEST['fname']); // removes backslashes
-    $fname = mysqli_real_escape_string($con, $fname); //escapes special characters in a string
+    $fname = filter_var($fname, FILTER_SANITIZE_STRING);  // sanitize data
+    $fname = mysqli_real_escape_string($con, $fname); // escapes special characters in a string
 
     $query = "UPDATE members
 			  SET fname = '$fname'
@@ -17,7 +18,8 @@ if (isset($_REQUEST['fname']) && (trim($_REQUEST['fname']) != '')) {
 }
 else if (isset($_REQUEST['lname']) && (trim($_REQUEST['lname']) != '')) {
     $lname = stripslashes($_REQUEST['lname']); // removes backslashes
-    $lname = mysqli_real_escape_string($con, $lname); //escapes special characters in a string
+    $lname = filter_var($lname, FILTER_SANITIZE_STRING);  // sanitize data
+    $lname = mysqli_real_escape_string($con, $lname); // escapes special characters in a string
 
     $query = "UPDATE members
 			  SET lname = '$lname'
@@ -26,7 +28,8 @@ else if (isset($_REQUEST['lname']) && (trim($_REQUEST['lname']) != '')) {
 }
 else if (isset($_REQUEST['username']) && (trim($_REQUEST['username']) != '')) {
     $uname = stripslashes($_REQUEST['username']); // removes backslashes
-    $uname = mysqli_real_escape_string($con, $uname); //escapes special characters in a string
+    $uname = filter_var($uname, FILTER_SANITIZE_STRING);  // sanitize data
+    $uname = mysqli_real_escape_string($con, $uname); // escapes special characters in a string
 
     
     // check if this username already exists in the database
@@ -53,6 +56,7 @@ else if (isset($_REQUEST['username']) && (trim($_REQUEST['username']) != '')) {
 }
 else if (isset($_REQUEST['email']) && (trim($_REQUEST['email']) != '')) {
     $email = stripslashes($_REQUEST['email']); // removes backslashes
+    $email = filter_var($email, FILTER_SANITIZE_EMAIL);  // sanitize email
     $email = mysqli_real_escape_string($con, $email); //escapes special characters in a string
 
     // check if this email already exists in the database
@@ -78,7 +82,8 @@ else if (isset($_REQUEST['email']) && (trim($_REQUEST['email']) != '')) {
 else if (isset($_REQUEST['bdate']) && (trim($_REQUEST['bdate']) != '')) {
     $date_of_birth = $_REQUEST['bdate'];
     $date_of_birth = stripslashes($date_of_birth); // removes backslashes
-    //echo "adasdas : ".$date_of_birth;
+    $date_of_birth = preg_replace("([^0-9/])", "", $date_of_birth); // removes everything except digits (0-9) and forward slash (/).
+    //echo "bday : ".$date_of_birth;
     //$date_of_birth = mysqli_real_escape_string($con, $date_of_birth); //escapes special characters in a string
 
     $query = "UPDATE members

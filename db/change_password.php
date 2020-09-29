@@ -8,8 +8,8 @@ $username = $_SESSION['username'];
 
 	// If form submitted, get the old/new password 
     if (isset($_POST['old_password'])) {
-		$old_password = stripslashes($_REQUEST['old_password']);// removes backslashes de doulevei na to dw argotera
-		$old_password = mysqli_real_escape_string($con, $old_password);//escapes special characters in a string de doulevei na to dw argotera
+		$old_password = stripslashes($_REQUEST['old_password']);// removes backslashes 
+		$old_password = mysqli_real_escape_string($con, $old_password);//escapes special characters in a string 
 		$new_password = ($_REQUEST['new_password']); 
 		$repeat_password = ($_REQUEST['repeat_password']);
 		
