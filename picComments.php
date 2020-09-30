@@ -327,7 +327,7 @@ $photo_tag = explode("#", $string_array);
                                                         <form class='aform'>
                                                             <div class="form-group">
                                                             	<input type='hidden' name='photo_id' id='photo_id' value='<?php echo $photo_id; ?> '/>
-                                                                <input type="text" class="form-control" id="comment-text" name="comment-text"  placeholder="Post a comment"/>
+                                                                <input type="text" class="form-control" id="comment-text" name="comment-text"  placeholder="Add a comment"/>
                                                             </div>
                                                         </form>
                                                     </div>
