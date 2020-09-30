@@ -1,6 +1,6 @@
 # [pik-pok](https://pik-pok.gr)
 
-Pik-Pok Social Network started as an educational project. The main idea was to demonstrate how one can build a large scalable but most of all really safe social network mostly with php and javascript. Pik Pok is a social media platform for creating, sharing and discovering photos, think Tik-Tok but for photos. The app can be used by people as an outlet to express themselves and their stories through their photos and albums.
+Pik-Pok Social Network started as an educational project. The main idea was to demonstrate how one can build from scratch a large scalable but most of all really safe social network mostly with php. Pik Pok is a social media platform for creating, sharing and discovering photos, think Tik-Tok but for photos. The app can be used by people as an outlet to express themselves and their stories through their photos and albums.
 
 ## Download and Installation
 
