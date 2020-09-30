@@ -176,9 +176,9 @@ if(isset($_POST['imgData'])) {
 
 	
 		<div class="responsive-box-2">
-		<h2 style="text-align:center;margin-top:110px;margin-bottom:50px; font-size:48px;font-family: 'Sofia';">Post Photo</h2>
+		
 			<div class="post-project">
-				
+				<h2 style="text-align:center;margin-top:50px;margin-bottom:50px; font-size:48px;font-family: 'Sofia';">Post Photo</h2>
 				<div class="post-project-fields">
 				
 					<form id="post_form" name="post_form" method="post" action = "db/addnew.php" enctype= "multipart/form-data">

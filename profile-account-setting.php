@@ -18,6 +18,16 @@ $email = $row['email'];
 $date_of_registration = $row['date_of_registration'];
 $date_of_birth = $row['date_of_birth'];
 
+$datetime1 = new DateTime('NOW');
+$datetime2 = new DateTime($date_of_registration);
+
+// the difference between today and date of registration is the days since registration 
+$member_for = $datetime1->diff($datetime2)->days;
+//print_r($difference);
+$query = "SELECT COUNT(*), SUM(photo_likes) FROM images WHERE username = '$username'";
+$result1 = mysqli_query($con, $query);
+$num = mysqli_fetch_array($result1);
+
 
 ?>
 
@@ -298,7 +308,7 @@ $date_of_birth = $row['date_of_birth'];
 							  							<div class="pro-bx">
 							  								<img src="images/pro-icon1.png" alt="">
 							  								<div class="bx-info">
-							  									<h3>> 5,000</h3>
+							  									<h3>> <?php echo $num[0]."";?></h3>
 							  									<h5>Total Posts</h5>
 							  								</div><!--bx-info end-->
 							  							</div><!--pro-bx end-->
@@ -310,7 +320,7 @@ $date_of_birth = $row['date_of_birth'];
 							  							<div class="pro-bx">
 							  								<img src="images/pro-icon2.png" alt="">
 							  								<div class="bx-info">
-							  									<h3>> 6,000</h3>
+							  									<h3>> <?php echo $num[1].""; ?></h3>
 							  									<h5>Likes</h5>
 							  								</div><!--bx-info end-->
 							  							</div><!--pro-bx end-->
@@ -322,11 +332,11 @@ $date_of_birth = $row['date_of_birth'];
 							  							<div class="pro-bx">
 							  								<img src="images/pro-icon3.png" alt="">
 							  								<div class="bx-info">
-							  									<h3>> 500</h3>
+							  									<h3>= <?php echo $member_for.""; ?></h3>
 							  									<h5>Days Since Register</h5>
 							  								</div><!--bx-info end-->
 							  							</div><!--pro-bx end-->
-							  							<p>Pink-Pok thanks you for your support. It means a lot!!</p>
+							  							<p>Pik-Pok thanks you for your support. It means a lot!!</p>
 							  						</div><!--profile-bx-info end-->
 							  					</div>
 							  					<div class="col-lg-3 col-md-6 col-sm-12">
@@ -336,10 +346,10 @@ $date_of_birth = $row['date_of_birth'];
 							  								<div class="bx-info">
 							  									<h3>2</h3>
 							  									<h5>Deleted Posts</h5>
-							  								</div><!--bx-info end-->
-							  							</div><!--pro-bx end-->
+							  								</div>
+							  							</div>
 							  							<p>You didn't like them very much. Yeah we know the feeling.</p>
-							  						</div><!--profile-bx-info end-->
+							  						</div>
 							  					</div>
 							  				</div>
 							  			</div><!--profile-bx-details end-->

@@ -25,7 +25,7 @@
 		button[type=submit] {
 			font-family: Helvetica, sans-serif; 
 			background-color: #F0F0F0;
-			font-size:1.05em;
+			font-size:1.1em;
 			letter-spacing: 1.5px;
 			color: black;
 			border: 1px solid black;
@@ -152,8 +152,8 @@
 			<input type=button name="snapshot" id="snapshot" value="Take a photo" onClick="preview_snapshot()">
 		</div>
 		<div id="post_take_buttons" style="display:none">
-			<input type=button value="&lt; Take another" onClick="cancel_preview()">
-			<button type="submit" onClick="save_photo()">Submit photo &gt;</button>
+			<input type=button value="&#171; Take another" onClick="cancel_preview()">
+			<button type="submit" onClick="save_photo()">Submit photo &#187;</button>
 		</div>
 		
 	</form>
@@ -166,28 +166,6 @@
 		shutter.autoplay = false;
 		shutter.src = navigator.userAgent.match(/Firefox/) ? 'webcamjs/shutter.ogg' : 'webcamjs/shutter.mp3';
 
-/*		function take_snapshot() {
-
-			// play sound effect
-			shutter.play();
-
-			// take snapshot and get image data
-			Webcam.snap( function(data_uri) {
-				// display results in page
-				document.getElementById('results').innerHTML = 
-					'<h2>Here is your image:</h2>' + 
-					'<img src="'+data_uri+'"/>';
-
-				// store the data uri of the photo to our hidden field
-				document.getElementById("imgData").value = data_uri;
-				//console.log(data_uri);
-
-				//window.location.href = 'http://localhost/post.php'; 
-					
-			} );
-		}
-
-*/
 		var freezed = false;
 
 		function preview_snapshot() {
