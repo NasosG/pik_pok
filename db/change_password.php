@@ -18,8 +18,8 @@ $username = $_SESSION['username'];
 			exit;
 		}
 
-		$new_password = md5($new_password);
-		$old_password = md5($old_password);
+		$new_password = hash('sha256', $new_password);
+		$old_password = hash('sha256', $old_password);
 
 
 		//Checking if user exists in the database or not

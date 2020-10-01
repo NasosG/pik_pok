@@ -12,17 +12,20 @@ function is_base64($str)
 
 $tags = $_POST['tags'];
 
+$newname = md5(rand() * time());
+
 $date = date("Y-m-d H:i:s");
 $username = $_SESSION['username'];
 $target_dir = "../uploads/pik_pok_pics/";
 $general_dir = "uploads/pik_pok_pics/";
+
 $file_up = mysqli_real_escape_string($con, $_FILES["fileToUpload"]["name"]);
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+
 $uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 
-if(is_base64($_POST['imgData']) && empty($file_up)) {
+if(isset($_POST['imgData']) &&  is_base64($_POST['imgData']) && empty($file_up)) {
 	// it requires php5
     define('UPLOAD_DIR', '../uploads/pik_pok_pics/');
     $img = $_POST['imgData'];
@@ -41,10 +44,15 @@ if(is_base64($_POST['imgData']) && empty($file_up)) {
 		VALUES ('$filename', 0, '$general_dir' ,'$username', '$tags', '$date')";
 
 		$result = mysqli_query($con, $query) or die("Not able to execute the query"); 
-    
 }
 
 else {
+
+    /* code below needs optimization */
+	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+	$target_file = $target_dir . $newname . "." . $imageFileType ;
+	$file_up = $newname . "." . $imageFileType;
+
 	// Check if image file is a actual image or fake image
 	if(isset($_POST["submit"])) {
 		$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -85,7 +93,7 @@ else {
 	else 
 	{
 		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-			echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+			echo "The file ". /*basename( $_FILES["fileToUpload"]["name"])*/$file_up. " has been uploaded.";
 		} 
 		else {
 			echo "Sorry, there was an error uploading your file.";

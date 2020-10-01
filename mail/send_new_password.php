@@ -67,13 +67,12 @@ function password_generate($chars)
 // the pseudorandom password we want, has 8 characters.
 $pass = password_generate(8);
 
-// md5 hashing because in our db user password get saved on md5 format
-// even if md5 is not really secure :)
-$md5_password = md5($pass);
+// sha256 hashing because in our db user password get saved on sha256 format
+$password_hash = hash('sha256', $pass);
 
 // if user exists, change the password he/she has in the database
 $query = "UPDATE members
-		SET password = '$md5_password'
+		SET password = '$password_hash'
 		WHERE email = '$email'";
 
 $result = mysqli_query($con, $query);

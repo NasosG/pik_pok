@@ -68,7 +68,7 @@
 			$RegDate = date("Y-m-d H:i:s");
 			mysqli_set_charset($con,"utf8");
 			$query = "INSERT INTO members(username, password, fname, lname, email, date_of_registration,sex, date_of_birth, profile_pic, picture_path) 
-			VALUES ('$username','".md5($password)."','$fname','$surname','$email','$RegDate', '$sex', '$date_of_birth', '$profile_picture', '$picture_path')";
+			VALUES ('$username','".hash('sha256', $password)."','$fname','$surname','$email','$RegDate', '$sex', '$date_of_birth', '$profile_picture', '$picture_path')";
 
 			$result = mysqli_query($con,$query);
 			if($result) {
