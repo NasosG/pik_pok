@@ -8,9 +8,9 @@ You can download the files from https://github.com/NasosG/pik_pok.
 <br>We used XAMPP locally, so we installed it under xampp/htdocs folder and we made a mysql database (we named the database pik_pok).
 All the tables of the database are in sql_db folder. `pik_pok_whole_db.sql` contains the whole database where `pik_pok.sql`contains only the tables of the database.
 
-1. Open PHPMyAdmin & import `pik_pok_whole_db.sql`. 
-or
-1. Open PHPMyAdmin, create your own database & import `pik_pok.sql`. 
+1. Open PHPMyAdmin & import `pik_pok_whole_db.sql` 
+<br><b>or</b>
+<br>open PHPMyAdmin, create your own database & import `pik_pok.sql`. 
 
 2. Open `db/db.php` & fill up your host, username, password and database name 
 for example our variables are $dbhost = "localhost", $dbuser = "root", $dbpass = "", $db = "pik_pok"; but we'll change them in the future for security reasons
