@@ -1,16 +1,19 @@
 # [pik-pok](https://pik-pok.gr)
 
-Pik-Pok Social Network started as an educational project. The main idea was to demonstrate how one can build from scratch a large scalable but most of all really safe social network mostly with php. Pik Pok is a social media platform for creating, sharing and discovering photos, think Tik-Tok but for photos. The app can be used by people as an outlet to express themselves and their stories through their photos and albums.
+Pik-Pok started as an educational project. The main idea was to demonstrate how one can build from scratch a large scalable but most of all really safe social network mostly with php. Pik Pok is a social media platform for creating, sharing and discovering photos, think Tik-Tok but for photos. The app can be used by people as an outlet to express themselves and their stories through their photos and albums.
 
 ## Download and Installation
 
 You can download the files from https://github.com/NasosG/pik_pok. 
-<br>We used xampp locally, so we installed it under xampp/htdocs folder and we made a mysql database(we named the database pik_pok).
-All the tables of the database are in pik_pok.sql folder
+<br>We used XAMPP locally, so we installed it under xampp/htdocs folder and we made a mysql database (we named the database pik_pok).
+All the tables of the database are in sql_db folder. `pik_pok_whole_db.sql` contains the whole database where `pik_pok.sql`contains only the tables of the database.
 
-1. Open PHPMyAdmin, create a Database & import `pik_pok.sql`. 
+1. Open PHPMyAdmin & import `pik_pok_whole_db.sql`. 
+or
+1. Open PHPMyAdmin, create your own database & import `pik_pok.sql`. 
+
 2. Open `db/db.php` & fill up your host, username, password and database name 
-for example our variables are $dbhost = "localhost", $dbuser = "root", $dbpass = "", $db = "pik_pok";
+for example our variables are $dbhost = "localhost", $dbuser = "root", $dbpass = "", $db = "pik_pok"; but we'll change them in the future for security reasons
 3. Enjoy!!
 
 ## Requirements
@@ -19,7 +22,7 @@ for example our variables are $dbhost = "localhost", $dbuser = "root", $dbpass =
 
 ## Bugs and Issues
 
-Have a bug or an issue with this project? Send an email at blabla@blabla.gr
+Have a bug or an issue with this project? Send an email at gnasos219@gmail.com
 
 
 ## Copyright and License
