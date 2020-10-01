@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2020 at 05:47 PM
+-- Generation Time: Sep 29, 2020 at 09:53 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `pik_pok`
 --
-CREATE DATABASE IF NOT EXISTS `pik_pok` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `pik_pok`;
 
 -- --------------------------------------------------------
 
@@ -77,8 +75,7 @@ INSERT INTO `images` (`photo_id`, `photo_name`, `photo_likes`, `photo_path`, `us
 (13, 'sky2.jpg', 1, 'uploads/pik_pok_pics/', 'mara10', '#sky#summer#bright', '2020-06-12 01:49:13'),
 (15, 'filter-sql.png', 0, 'uploads/pik_pok_pics/', 'opl', '#littleBobyTables#SQLjokes', '2020-06-12 02:02:59'),
 (16, 'mlk.webp', 2, 'uploads/pik_pok_pics/', 'marigeorgitsa', '#funny#darkhumor', '2020-06-12 02:16:18'),
-(17, 'ekthema.png', 2, 'uploads/pik_pok_pics/', 'opl', '#art#spartan#warrior', '2020-06-12 13:10:05'),
-(35, '8512e2cf098b4f2daa4b5480353091f2.png', 0, 'uploads/pik_pok_pics/', 'thn12', '', '2020-10-01 18:42:29');
+(17, 'ekthema.png', 2, 'uploads/pik_pok_pics/', 'opl', '#art#spartan#warrior', '2020-06-12 13:10:05');
 
 -- --------------------------------------------------------
 
@@ -102,16 +99,14 @@ CREATE TABLE `ip_mac_addresses` (
 --
 
 INSERT INTO `ip_mac_addresses` (`im_id`, `IP_address`, `mac_address`, `user_name`, `login_date`, `mobile`, `OS`, `browser`) VALUES
-(12, '::1', '3C-A0-67-C1-E3-B2', 'thn12', '2020-09-24 19:29:19', 0, 'windows', 'Google Chrome'),
-(40, '::1', 'B0-6E-BF-D1-26-0A', 'kostas1234', '2020-09-28 18:58:58', 0, 'windows', 'Google Chrome'),
-(44, '::1', 'B0-6E-BF-D1-26-0A', 'mara10', '2020-09-28 19:00:37', 0, 'windows', 'Google Chrome'),
-(53, '::1', 'B0-6E-BF-D1-26-0A', 'asd123', '2020-09-28 20:30:14', 0, 'windows', 'Google Chrome'),
-(59, '::1', 'B0-6E-BF-D1-26-0A', 'gkal2', '2020-09-28 22:47:57', 0, 'windows', 'Google Chrome'),
+(12, '::1', '3C-A0-67-C1-E3-B2', 'thn12', '2020-09-24 19:29:19', 0, '', ''),
+(40, '::1', 'B0-6E-BF-D1-26-0A', 'kostas1234', '2020-09-28 18:58:58', 0, '', ''),
+(44, '::1', 'B0-6E-BF-D1-26-0A', 'mara10', '2020-09-28 19:00:37', 0, '', ''),
+(47, '::1', 'B0-6E-BF-D1-26-0A', 'opl', '2020-09-28 19:29:11', 0, '', ''),
+(53, '::1', 'B0-6E-BF-D1-26-0A', 'asd123', '2020-09-28 20:30:14', 0, '', ''),
+(59, '::1', 'B0-6E-BF-D1-26-0A', 'gkal2', '2020-09-28 22:47:57', 0, '', ''),
 (66, '192.168.2.2', 'B0-6E-BF-D1-26-0A', 'thn12', '2020-09-29 22:45:33', 1, 'android', 'Google Chrome'),
-(68, '127.0.0.1', 'B0-6E-BF-D1-26-0A', 'thn12', '2020-10-01 16:12:22', 0, 'windows', 'Google Chrome'),
-(71, '::1', 'B0-6E-BF-D1-26-0A', 'abcd123', '2020-10-01 17:12:55', 0, 'windows', 'Google Chrome'),
-(74, '::1', 'B0-6E-BF-D1-26-0A', 'opl', '2020-10-01 17:28:06', 0, 'windows', 'Google Chrome'),
-(75, '::1', 'B0-6E-BF-D1-26-0A', 'thn12', '2020-10-01 17:46:50', 0, 'windows', 'Google Chrome');
+(67, '::1', 'B0-6E-BF-D1-26-0A', 'thn12', '2020-09-29 22:46:03', 0, 'windows', 'Google Chrome');
 
 -- --------------------------------------------------------
 
@@ -138,15 +133,14 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`username`, `password`, `fname`, `lname`, `email`, `date_of_registration`, `id`, `sex`, `date_of_birth`, `profile_pic`, `picture_path`) VALUES
-('thn12', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Μιχάλης', 'Πανταζής', 'asd@uop.gr', '2020-05-21', 40, 0, '1989-06-11', 'anonymous_hacker.jpg', 'uploads/users/40/'),
-('mara10', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'μαρια', 'αντεπαλοβ', 'mrt@iop.com', '2020-06-02', 45, 1, '1987-10-29', 'Screenshot_160.png', 'uploads/users/45/'),
-('opl', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'mlo', 'klo', 'gnasos219@gmail.com', '2020-06-06', 47, 0, '2020-06-02', 'ekthema.png', 'uploads/users/47/'),
-('makis', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'makis', 'makis', 'makis@makis.gr', '2020-06-06', 48, 0, '2020-06-30', 'ekthema.png', 'uploads/users/48/'),
-('marigeorgitsa', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Γιωργίτσα', 'Μακριγεώργου', 'maritsa@maritso.uiop', '2020-06-06', 49, 1, '2020-06-18', 'tupisa.png', 'uploads/users/49/'),
-('kostas1234', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'jkfhg', 'fgh', 'sitetest23456@gmail.com', '2020-06-11', 50, 0, '2020-06-17', 'lias.jpg', 'uploads/users/50/'),
-('omar', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'asd', 'asd', 'asda@dfg.gt', '2020-06-11', 51, 0, '2020-06-08', 'wolf2.jpg', 'uploads/users/51/'),
-('john2', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'john', 'johnson', 'klo@we.ht', '2020-06-11', 52, 0, '1995-02-11', 'default-avatar.jpg', 'images/'),
-('abcd123', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Akratitos', 'Mitsareas', 'krt@G.grf', '2020-10-01', 58, 0, '1999-12-01', 'Untitled.png', 'uploads/users/58/');
+('thn12', '202cb962ac59075b964b07152d234b70', 'Μιχάλης', 'Πανταζής', 'asd@uop.gr', '2020-05-21', 40, 0, '1989-06-11', 'anonymous_hacker.jpg', 'uploads/users/40/'),
+('mara10', '202cb962ac59075b964b07152d234b70', 'μαρια', 'αντεπαλοβ', 'mrt@iop.com', '2020-06-02', 45, 1, '1987-10-29', 'Screenshot_160.png', 'uploads/users/45/'),
+('opl', '202cb962ac59075b964b07152d234b70', 'mlo', 'klo', 'gnasos219@gmail.com', '2020-06-06', 47, 0, '2020-06-02', 'ekthema.png', 'uploads/users/47/'),
+('makis', '827ccb0eea8a706c4c34a16891f84e7b', 'makis', 'makis', 'makis@makis.gr', '2020-06-06', 48, 0, '2020-06-30', 'ekthema.png', 'uploads/users/48/'),
+('marigeorgitsa', '202cb962ac59075b964b07152d234b70', 'Γιωργίτσα', 'Μακριγεώργου', 'maritsa@maritso.uiop', '2020-06-06', 49, 1, '2020-06-18', 'tupisa.png', 'uploads/users/49/'),
+('kostas1234', '81dc9bdb52d04dc20036dbd8313ed055', 'jkfhg', 'fgh', 'sitetest23456@gmail.com', '2020-06-11', 50, 0, '2020-06-17', 'lias.jpg', 'uploads/users/50/'),
+('omar', '202cb962ac59075b964b07152d234b70', 'asd', 'asd', 'asda@dfg.gt', '2020-06-11', 51, 0, '2020-06-08', 'wolf2.jpg', 'uploads/users/51/'),
+('john2', '12ae8bc20db709fb98c365d1bcc7d7c4', 'john', 'johnson', 'klo@we.ht', '2020-06-11', 52, 0, '1995-02-11', 'default-avatar.jpg', 'images/');
 
 -- --------------------------------------------------------
 
@@ -274,19 +268,19 @@ ALTER TABLE `hashtags`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `ip_mac_addresses`
 --
 ALTER TABLE `ip_mac_addresses`
-  MODIFY `im_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `im_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `post_comments`
