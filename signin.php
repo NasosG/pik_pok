@@ -204,8 +204,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 		date = new Date();
 		// get date of birth input value
     	var input = document.getElementById("date_of_birth");
-    	// user must be almost 16 years old but he/she can make an account 
-    	// if he/she is at least 15 years and 11 months old
+    	// user must be almost 16 years old 
     	input.setAttribute("max", date.getFullYear()-16 + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-01");
 
     	// google recaptcha is required and should be checked before submitting the form

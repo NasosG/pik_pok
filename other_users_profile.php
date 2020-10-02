@@ -309,10 +309,21 @@ $email = $row_picture['email'];
 												<div class="ed-opts">
 													<a href="#" title="" class="ed-opts-open"><i class="fa fa-ellipsis-v"></i></a>
 													<ul class="ed-options">
-														<li><a href="#" title="">Edit Post</a></li>
+													';
+														if(!isset($_SESSION['username'])) {
+															echo '<li><a href="#" title="">Login or make an acount for more actions</a></li>'; 
+														}
+														else {
+															echo '
+														
+														<li><a href="picComments.php?photo_id='.$photos_ids[$i-1].'"'.' 
+														title="">Comment</a></li>
+														
 														<li><a href="#" title="">Unsaved</a></li>
-														<li><a href="#" title="">Close</a></li>
-														<li><a href="#" title="">Hide</a></li>
+
+														<li><a class="close-ed-opts" href="#" onclick="funct" title="">Close</a></li>';
+													}
+													echo '
 													</ul>
 												</div>
 											</div>

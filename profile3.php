@@ -107,7 +107,7 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 				
 				
 				// find user id from session name
-				$query_picture = "SELECT email, fname, lname, picture_path, profile_pic FROM members WHERE username = '$uname'";
+				$query_picture = "SELECT email, fname, lname, picture_path, profile_pic, bio FROM members WHERE username = '$uname'";
 				$result_picture = mysqli_query($con, $query_picture);
 				$row_picture = mysqli_fetch_array($result_picture);
 				$picture_path = $row_picture['picture_path'];
@@ -115,6 +115,7 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 				$fname = $row_picture['fname'];
 				$lname = $row_picture['lname'];
 				$email = $row_picture['email'];
+				$bio = $row_picture['bio'];
 				//mysqli_close($con);
 				echo "
 					<div class='user-account'>
@@ -227,11 +228,17 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 									<div class="suggestions full-width">
 										<div class="sd-title">
 											<h3>Short Bio</h3>
-											<i class="fa fa-ellipsis-v"></i>
+											<div class="">
+													<a href="#" title="" class="bio-opts ed-opts-open"><i class="fa fa-ellipsis-v"></i></a>
+													<ul class="ed-options">
+														<li><a href="#" title="">Edit Bio</a></li>
+														<!--<li><a href="#" title="">Clear Bio</a></li>-->
+													</ul>
+												</div>
 										</div><!--sd-title end-->
 										<div class="suggestions-list">
 											<div class="suggestion-usd">
-												<!--  empty area  -->
+												<?php echo $bio;?>
 											</div>
 											<ul class="user-bio">
 
@@ -309,9 +316,9 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 													<a href="#" title="" class="ed-opts-open"><i class="fa fa-ellipsis-v"></i></a>
 													<ul class="ed-options">
 														<li><a href="#" title="">Edit Post</a></li>
+														<li><a href="picComments.php?photo_id='.$photos_ids[$i-1].'"'.' title="">Comment</a></li>
 														<li><a href="#" title="">Unsaved</a></li>
-														<li><a href="#" title="">Close</a></li>
-														<li><a href="#" title="">Hide</a></li>
+														<li><a class="close-ed-opts" href="#" onclick="funct" title="">Close</a></li>
 													</ul>
 												</div>
 											</div>

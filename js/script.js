@@ -208,6 +208,13 @@ $(window).on("load", function() {
     });
 
 
+    // needs some testing
+    $(".close-ed-opts").on("click", function(){
+        $(".ed-options").removeClass("active");
+        return false;
+    });
+
+
     // ============== Menu Script =============
 
     $(".menu-btn > a").on("click", function(){

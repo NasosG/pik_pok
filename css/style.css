@@ -152,6 +152,7 @@ nav ul li a,
 .tags-sec ul li a,
 .post-st ul li a,
 .ed-opts > a,
+.bio-opts > i:hover,
 .bk-links li a,
 .like-com li a,
 .user-profy > a,
@@ -1114,7 +1115,7 @@ main {
 	top: 7px;
 }
 .ed-opts > a {
-	 color: #b2b2b2;
+	color: #b2b2b2;
     font-size: 24px;
     float: right;
     position: relative;
@@ -1157,6 +1158,9 @@ main {
 }
 .ed-opts > a:hover {
 	color: #e44d3a;
+}
+.bio-opts > i:hover {
+	color: #e44d3a!important;
 }
 .usy-name {
 	float: left;

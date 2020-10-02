@@ -42,6 +42,7 @@ $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
+$bio = !empty($_POST['bio']) ? $_POST['bio'] : NULL;
 	
 	// Check if image file is a actual image or fake image
 	if(isset($_POST["submit"])) {
@@ -91,7 +92,7 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 		mysqli_set_charset($con,"utf8");
 		
 		$query = "UPDATE members
-		SET profile_pic = '$file_up', picture_path='$general_dir'
+		SET profile_pic = '$file_up', picture_path='$general_dir', bio='$bio'
 		WHERE username = '$uname'";
 		
 		$result = mysqli_query($con,$query);
