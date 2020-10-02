@@ -105,7 +105,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 												</div>
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
-														<input type="date" id="date_of_birth" name="date_of_birth" placeholder="date of birth" required>
+														<input type="date" id="date_of_birth" name="date_of_birth" placeholder="date of birth" required min='1900-01-01' >
 														<i class="fa fa-birthday-cake"></i>
 													</div>
 												</div>
@@ -200,6 +200,15 @@ include("db/auth.php"); //include auth.php file on all secure pages
 <script type="text/javascript" src="lib/slick/slick.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script>
+		// today's date
+		date = new Date();
+		// get date of birth input value
+    	var input = document.getElementById("date_of_birth");
+    	// user must be almost 16 years old but he/she can make an account 
+    	// if he/she is at least 15 years and 11 months old
+    	input.setAttribute("max", date.getFullYear()-16 + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-01");
+
+    	// google recaptcha is required and should be checked before submitting the form
 		window.onload = function() {
     	var $recaptcha = document.querySelector('#g-recaptcha-response');
 
@@ -208,7 +217,6 @@ include("db/auth.php"); //include auth.php file on all secure pages
     		}
 
 		};
-
 
 		//var form = document.getElementById("sign_in");
 		var form_signup = document.getElementById("sign_in_sec");
