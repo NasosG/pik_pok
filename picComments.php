@@ -5,7 +5,7 @@ require('db/errorFuncts.php');
 
 $photo_id = $_GET['photo_id'];
 
-mysqli_set_charset($con,"utf8");
+mysqli_set_charset($con,"utf8mb4");
 $query = "SELECT * FROM post_comments WHERE post_id = $photo_id";
 
 $result = mysqli_query($con, $query);
@@ -44,6 +44,8 @@ $photo_tag = explode("#", $string_array);
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/responsive.css">
 	<link rel="stylesheet" type="text/css" href="css/other-styles.css">
+
+	<link href="emojis/lib/css/emoji.css" rel="stylesheet">
 	<!-- font awesome icons kit -->
 	<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
 </head>
@@ -331,7 +333,7 @@ $photo_tag = explode("#", $string_array);
                                                         <form class='aform'>
                                                             <div class="form-group">
                                                             	<input type='hidden' name='photo_id' id='photo_id' value='<?php echo $photo_id; ?> '/>
-                                                                <input type="text" class="form-control" id="comment-text" name="comment-text"  placeholder="Add a comment"/>
+                                                                <input type="text" class="form-control" id="comment-text" name="comment-text"  placeholder="Add a comment" data-emojiable="true" data-emoji-input="unicode"/>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -460,6 +462,26 @@ $photo_tag = explode("#", $string_array);
     <script type="text/javascript" src="js/jquery.range-min.js"></script>
     <script type="text/javascript" src="lib/slick/slick.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+
+	<!-- emojis libraries -->
+	<script src="emojis/lib/js/config.js"></script>
+    <script src="emojis/lib/js/util.js"></script>
+    <script src="emojis/lib/js/jquery.emojiarea.js"></script>
+    <script src="emojis/lib/js/emoji-picker.js"></script>
+    <script>
+      $(function() {
+        // Initializes and creates emoji set from sprite sheet
+        window.emojiPicker = new EmojiPicker({
+          emojiable_selector: '[data-emojiable=true]',
+          assetsPath: 'emojis/lib/img/',
+          popupButtonClasses: 'fa fa-smile-o'
+        });
+        // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
+        // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
+        // It can be called as many times as necessary; previously converted input fields will not be converted again
+        window.emojiPicker.discover();
+      });
+    </script>
 	<script>
 var form = $('.aform');
 $('.aform').submit(function(e) {

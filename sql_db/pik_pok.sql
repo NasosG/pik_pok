@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2020 at 12:33 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Generation Time: Oct 03, 2020 at 04:12 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -77,7 +77,7 @@ INSERT INTO `images` (`photo_id`, `photo_name`, `photo_likes`, `photo_path`, `us
 (16, 'mlk.webp', 2, 'uploads/pik_pok_pics/', 'marigeorgitsa', '#funny#darkhumor', '2020-06-12 02:16:18'),
 (17, 'ekthema.png', 1, 'uploads/pik_pok_pics/', 'opl', '#art#spartan#warrior', '2020-06-12 13:10:05'),
 (35, '8512e2cf098b4f2daa4b5480353091f2.png', 0, 'uploads/pik_pok_pics/', 'thn12', '', '2020-10-01 18:42:29'),
-(37, '5e91dafe455df872999ab7120170d7ca.jpg', 0, 'uploads/pik_pok_pics/', 'mike', '', '2020-10-02 23:15:16');
+(37, '5e91dafe455df872999ab7120170d7ca.jpg', 1, 'uploads/pik_pok_pics/', 'mike', '', '2020-10-02 23:15:16');
 
 -- --------------------------------------------------------
 
@@ -101,7 +101,6 @@ CREATE TABLE `ip_mac_addresses` (
 --
 
 INSERT INTO `ip_mac_addresses` (`im_id`, `IP_address`, `mac_address`, `user_name`, `login_date`, `mobile`, `OS`, `browser`) VALUES
-(12, '::1', '3C-A0-67-C1-E3-B2', 'thn12', '2020-09-24 19:29:19', 0, 'windows', 'Google Chrome'),
 (40, '::1', 'B0-6E-BF-D1-26-0A', 'kostas1234', '2020-09-28 18:58:58', 0, 'windows', 'Google Chrome'),
 (44, '::1', 'B0-6E-BF-D1-26-0A', 'mara10', '2020-09-28 19:00:37', 0, 'windows', 'Google Chrome'),
 (53, '::1', 'B0-6E-BF-D1-26-0A', 'asd123', '2020-09-28 20:30:14', 0, 'windows', 'Google Chrome'),
@@ -112,7 +111,8 @@ INSERT INTO `ip_mac_addresses` (`im_id`, `IP_address`, `mac_address`, `user_name
 (74, '::1', 'B0-6E-BF-D1-26-0A', 'opl', '2020-10-01 17:28:06', 0, 'windows', 'Google Chrome'),
 (79, '::1', 'B0-6E-BF-D1-26-0A', 'gio2', '2020-10-02 22:55:41', 0, 'windows', 'Google Chrome'),
 (84, '::1', 'B0-6E-BF-D1-26-0A', 'mike', '2020-10-02 23:37:47', 0, 'windows', 'Google Chrome'),
-(86, '::1', 'B0-6E-BF-D1-26-0A', 'thn12', '2020-10-03 01:32:06', 0, 'windows', 'Google Chrome');
+(86, '::1', 'B0-6E-BF-D1-26-0A', 'thn12', '2020-10-03 01:32:06', 0, 'windows', 'Google Chrome'),
+(93, '::1', '3C-A0-67-C1-E3-B2', 'thn12', '2020-10-03 16:56:59', 0, 'windows', 'Google Chrome');
 
 -- --------------------------------------------------------
 
@@ -162,7 +162,7 @@ CREATE TABLE `post_comments` (
   `post_comments_id` int(11) NOT NULL,
   `post_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `comment_text` text CHARACTER SET utf8 DEFAULT NULL,
+  `comment_text` text CHARACTER SET utf8mb4 DEFAULT NULL,
   `time_commented` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -180,7 +180,9 @@ INSERT INTO `post_comments` (`post_comments_id`, `post_id`, `user_id`, `comment_
 (72, 10, 50, 'jaja', '2020-06-11 16:32:19'),
 (73, 13, 45, 'look at the sky :->', '2020-06-12 01:50:23'),
 (80, 17, 40, 'true art!! Is it Van Gogh or Picasso?', '2020-06-14 01:15:42'),
-(83, 37, 59, 'Link from: https://www.pocket-lint.com/cameras/news/sony/151442-stunning-photos-from-the-national-sony-world-photography-awards-2020', '2020-10-02 23:16:16');
+(83, 37, 59, 'Link from: https://www.pocket-lint.com/cameras/news/sony/151442-stunning-photos-from-the-national-sony-world-photography-awards-2020', '2020-10-02 23:16:16'),
+(87, 35, 40, 'as😍', '2020-10-03 17:05:44'),
+(89, 35, 40, 'φανταστικό ', '2020-10-03 17:09:53');
 
 -- --------------------------------------------------------
 
@@ -206,7 +208,8 @@ INSERT INTO `post_likes` (`post_likes_id`, `liked_by_user`, `posted_photo_id`, `
 (755, 40, 13, '2020-09-28 22:02:10'),
 (757, 40, 16, '2020-09-28 22:02:28'),
 (758, 40, 12, '2020-09-28 22:05:05'),
-(769, 40, 10, '2020-10-03 01:19:15');
+(769, 40, 10, '2020-10-03 01:19:15'),
+(770, 40, 37, '2020-10-03 03:18:51');
 
 --
 -- Indexes for dumped tables
@@ -284,7 +287,7 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `ip_mac_addresses`
 --
 ALTER TABLE `ip_mac_addresses`
-  MODIFY `im_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `im_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `members`
@@ -296,13 +299,13 @@ ALTER TABLE `members`
 -- AUTO_INCREMENT for table `post_comments`
 --
 ALTER TABLE `post_comments`
-  MODIFY `post_comments_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `post_comments_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `post_likes`
 --
 ALTER TABLE `post_likes`
-  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=770;
+  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=771;
 
 --
 -- Constraints for dumped tables
