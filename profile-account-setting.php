@@ -28,6 +28,24 @@ $query = "SELECT COUNT(*), SUM(photo_likes) FROM images WHERE username = '$usern
 $result1 = mysqli_query($con, $query);
 $num = mysqli_fetch_array($result1);
 
+////////////////////////////////////
+$current_month = date("m");
+
+if(!isset($_SESSION['username'])) 
+	header('Location: index.php');
+
+// code below may get optimized in the future
+$uname = $_SESSION['username'];
+
+// find user id from session name
+$query_uid = "SELECT id FROM members WHERE username = '$uname'";
+$result_uid = mysqli_query($con, $query_uid);
+$row_uid = mysqli_fetch_array($result_uid);
+				
+
+$query_month_likes = "SELECT COUNT(*) FROM post_likes WHERE liked_by_user = '$row_uid[0]' AND  MONTH(time) ='$current_month' ";
+$result_month_likes = mysqli_query($con, $query_month_likes);
+$likes_month = mysqli_fetch_array($result_month_likes);
 
 ?>
 
@@ -113,7 +131,7 @@ $num = mysqli_fetch_array($result1);
 				if(isset($_SESSION['username'])) {
 				
 				$uname = $_SESSION['username'];
-				// find user id from session name
+				
 				$query_picture = "SELECT picture_path, profile_pic FROM members WHERE username = '$uname'";
 				$result_picture = mysqli_query($con, $query_picture);
 				$row_picture = mysqli_fetch_array($result_picture);
@@ -344,11 +362,11 @@ $num = mysqli_fetch_array($result1);
 							  							<div class="pro-bx">
 							  								<img src="images/pro-icon4.png" alt="">
 							  								<div class="bx-info">
-							  									<h3>2</h3>
-							  									<h5>Deleted Posts</h5>
+							  									<h3>= <?php echo $likes_month[0]; ?></h3>
+							  									<h5>Likes this Month</h5>
 							  								</div>
 							  							</div>
-							  							<p>You didn't like them very much. Yeah we know the feeling.</p>
+							  							<p>The likes you got his month. Stay fresh and post something new!</p>
 							  						</div>
 							  					</div>
 							  				</div>

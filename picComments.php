@@ -48,10 +48,30 @@ $photo_tag = explode("#", $string_array);
 	<link href="emojis/lib/css/emoji.css" rel="stylesheet">
 	<!-- font awesome icons kit -->
 	<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
+	<style>
+		@media only screen and (min-width: 1200px) {
+			#page-container {
+			  position: relative;
+			  min-height: 100vh;
+			}
+
+			#content-wrap {
+	  			padding-bottom: 5rem;    /* Footer height */
+			}
+
+			#footer {
+	 	 		position: absolute;
+	  			bottom: 0;
+	  			width: 100%;
+	  			height: 5rem;            /* Footer height */
+			}
+		}
+	</style>
 </head>
 
 <body oncontextmenu="return false;">
-    <div class="wrapper">
+    <div id="page-container" class="wrapper">
+    	<div id="content-wrap">
         <header>
 			<div class="container">
 				<div class="header-data">
@@ -183,7 +203,7 @@ $photo_tag = explode("#", $string_array);
 			</div>
 		</header><!--header end-->
 
-        <main>
+        <main class="mb-3">
             <div class="main-section">
                 <div class="container">
                     <div class="main-section-data">
@@ -232,7 +252,7 @@ $photo_tag = explode("#", $string_array);
                                                 </div>
                                             </div>
 
-                                            <div class="pt-3 job_descp accountnone">
+                                            <div  class="pt-3 job_descp accountnone">
                                                 <img src="<?php echo $row2['photo_path'].$row2['photo_name'];?>" class="job-dt"></img>
                                                 <ul class="skill-tags">
                                                 	<?php 
@@ -431,7 +451,9 @@ $photo_tag = explode("#", $string_array);
                 </div>
             </div>
         </main>
-        <footer class="fixed-bottom">
+
+    	</div>
+        <footer id="footer" class="mt-3">
 			<div class="footy-sec mn no-margin">
 				<div class="container">
 					<ul>
@@ -450,10 +472,7 @@ $photo_tag = explode("#", $string_array);
 			</div>
         </footer>
         <!--footer end-->
-
-
-        </div>
-        <!--post-project-popup end-->
+		<!--</div>-->
     </div>
     <!--theme-layout end-->
     <script type="text/javascript" src="js/jquery.min.js"></script>
