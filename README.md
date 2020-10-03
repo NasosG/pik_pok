@@ -27,11 +27,11 @@ Have a bug or an issue with this project? Send an email at gnasos219@gmail.com
 
 ## Copyright and License
 
-Copyright 2020 licence not yet
+Copyright 2020 (licence not yet, it will be added soon)
 
 
 ## Copyright claims
-Many images used in the project belong to their respective creators/authors. No claim by me & those who use this project!!
+Some images that got posted and used in the project for testing purposes belong to their respective creators. No claim by me & those who use this project!!
 
 **Thanks for reading**
 
