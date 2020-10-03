@@ -218,10 +218,14 @@ $photo_tag = explode("#", $string_array);
                                                 <div class="ed-opts">
                                                     <a href="#" title="" class="ed-opts-open"><i class="fa fa-ellipsis-v"></i></a>
                                                     <ul class="ed-options">
-                                                        <li><a href="#" title="">Edit Post</a></li>
+                                                    	<?php 
+                                                    	if ($_SESSION['username'] == $user_of_post)
+															echo'<li><a href="#" title="">Edit Post</a></li>';
+                                                        else echo '<li><a href="report.php?message='.$photo_id.'" title="">Report</a></li>';
+                                                        ?>
                                                         <li><a href="#" title="">Unsaved</a></li>
-                                                        <li><a href="#" title="">Close</a></li>
-                                                        <li><a href="#" title="">Hide</a></li>
+                                                        <li><a href="#" onclick="CopyText()" title="">Copy Link</a></li>
+                                                        <li><a class="close-ed-opts" href="#" title="">Close</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -233,7 +237,7 @@ $photo_tag = explode("#", $string_array);
                                                 	$i;
 												$len = count($photo_tag);
 												/*
-												could do something is photo has no tags
+												could do something if photo has no tags
 												if ($len === 0)  echo 'No tags for this post';
 												*/
 
@@ -291,7 +295,7 @@ $photo_tag = explode("#", $string_array);
 											$query3 = "SELECT username, picture_path, profile_pic FROM members WHERE id = '$user_id'";
 											$result3 = mysqli_query($con, $query3);
 											$row3 = mysqli_fetch_array($result3);
-											$user_of_post= $row3['username'];
+											$user_of_post = $row3['username'];
 											//$newDate = date("d-m-Y", strtotime($row['date_posted']));
 
 											echo '
@@ -412,7 +416,7 @@ $photo_tag = explode("#", $string_array);
                                     </div>
                                      
                                      <div class="widget widget-projectid">
-                                        <a style="color:black; font-size:16px;" href="contact.php"><i style="color:#e44d3a;" class="fa fa-exclamation-circle" aria-hidden="true"></i> Report Post</a>
+                                        <a style="color:black; font-size:16px;" href=<?php echo '"report.php?message='.$photo_id.'"';?> ><i style="color:#e44d3a;" class="fa fa-exclamation-circle" aria-hidden="true"></i> Report Post</a>
                                     </div>
 
                                 </div>

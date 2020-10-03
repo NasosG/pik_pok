@@ -17,7 +17,7 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 	$sum_likes += $likes['photo_likes'];
 
 // find user id from session name
-$query_picture = "SELECT email, fname, lname, picture_path, profile_pic FROM members WHERE username = '$uname'";
+$query_picture = "SELECT email, fname, lname, picture_path, profile_pic, bio FROM members WHERE username = '$uname'";
 $result_picture = mysqli_query($con, $query_picture);
 $row_picture = mysqli_fetch_array($result_picture);
 $picture_path = $row_picture['picture_path'];
@@ -25,6 +25,7 @@ $picture_name = $row_picture['profile_pic'];
 $fname = $row_picture['fname'];
 $lname = $row_picture['lname'];
 $email = $row_picture['email'];
+$bio = $row_picture['bio'];
 
 ?>
 
@@ -235,7 +236,7 @@ $email = $row_picture['email'];
 										</div><!--sd-title end-->
 										<div class="suggestions-list">
 											<div class="suggestion-usd">
-												<!--  empty area  -->
+												<?php echo $bio;?>
 											</div>
 											<ul class="user-bio">
 
