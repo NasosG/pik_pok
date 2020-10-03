@@ -278,6 +278,7 @@ header {
 	float: left;
 	width: 100%;
 }
+
 .logo {
 	float: left;
 	width: 40px;
@@ -6358,7 +6359,7 @@ a:hover {
 	padding-right: 8px;
 }
 .postcomment .form-control{
-	width: 112%;
+	width: 112.5%;
 	margin-left: -50px;
 	background-color: #efefef;
 	border-radius: 3px;

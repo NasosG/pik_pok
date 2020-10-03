@@ -49,6 +49,10 @@ $photo_tag = explode("#", $string_array);
 	<!-- font awesome icons kit -->
 	<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
 	<style>
+		.emoji-menu .emoji-items a {
+			background-color:white !important;
+		}
+		
 		@media only screen and (min-width: 1200px) {
 			#page-container {
 			  position: relative;
@@ -523,7 +527,7 @@ document.getElementById("send-comment").addEventListener("click", function () {
 function CopyText() {
   var copyText = document.getElementById("postLink");
   copyText.select();
-  copyText.setSelectionRange(0, 99999)
+  copyText.setSelectionRange(0, 99999);
   document.execCommand("copy");
   alert("Copied: " + copyText.value);
 }
