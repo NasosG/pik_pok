@@ -17,6 +17,7 @@ $lname = $row['lname'];
 $email = $row['email'];
 $date_of_registration = $row['date_of_registration'];
 $date_of_birth = $row['date_of_birth'];
+$bio = $row['bio']==null?"Tell us a liitle about yourself":$row['bio'];
 
 $datetime1 = new DateTime('NOW');
 $datetime2 = new DateTime($date_of_registration);
@@ -310,6 +311,23 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 
 													
 													<i class="fa fa-birthday-cake"></i>
+												</div>
+											</div>
+											<div class="cp-field">
+												<h5>Short Bio</h5>
+												<div class="cpp-fiel">
+
+													<table>	
+														<th style="width:100%;">
+															<input type="text" name="bio" placeholder="<?php echo $bio; ?>"/>
+														</th>
+														<th style="">
+															<button class="btn" type="submit">Change</button>
+														</th>
+													</table>
+
+													
+													<i class="fa fa-file"></i>
 												</div>
 											</div>
 											<div class="save-stngs pd3"></div>

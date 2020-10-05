@@ -79,6 +79,16 @@ else if (isset($_REQUEST['email']) && (trim($_REQUEST['email']) != '')) {
               WHERE username = '$username'";
 
 }
+else if (isset($_REQUEST['bio']) && (trim($_REQUEST['bio']) != '')) {
+    $bio = stripslashes($_REQUEST['bio']); // removes backslashes
+    $bio = filter_var($bio, FILTER_SANITIZE_STRING);  // sanitize data
+    $bio = mysqli_real_escape_string($con, $bio); // escapes special characters in a string
+
+    $query = "UPDATE members
+              SET bio = '$bio'
+              WHERE username = '$username'";
+
+}
 else if (isset($_REQUEST['bdate']) && (trim($_REQUEST['bdate']) != '')) {
     $date_of_birth = $_REQUEST['bdate'];
     $date_of_birth = stripslashes($date_of_birth); // removes backslashes

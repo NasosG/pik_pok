@@ -29,7 +29,7 @@ function send_security_alert()
 	$mail->addAddress($email[0]);               // Name is+ optional
 	$mail->addReplyTo($myemail, 'Team pikpok');
 	$mail->isHTML(true);                                  // Set email format to HTML
-	$mail->Subject = 'Security Breach. They fucked us (hard)';
+	$mail->Subject = 'security breach';
 
 	/*
 	 * Message Configuration

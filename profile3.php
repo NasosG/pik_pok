@@ -231,7 +231,7 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 											<div class="">
 													<a href="#" title="" class="bio-opts ed-opts-open"><i class="fa fa-ellipsis-v"></i></a>
 													<ul class="ed-options">
-														<li><a href="#" title="">Edit Bio</a></li>
+														<li><a href="profile-account-setting.php" title="">Edit Bio</a></li>
 														<!--<li><a href="#" title="">Clear Bio</a></li>-->
 													</ul>
 												</div>
