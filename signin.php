@@ -20,6 +20,34 @@ include("db/auth.php"); //include auth.php file on all secure pages
 	<link rel="stylesheet" type="text/css" href="css/responsive.css">
 	<!-- font awesome icons kit -->
 	<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
+	<style>
+	.field-icon {
+		float: right;
+	  	position: relative;
+	  	z-index: 2;
+	  	cursor: pointer;
+	}
+
+	input[type=text], input[type=password], input[type=email], input[type=date], #sex{
+	  -webkit-transition: all 0.30s ease-in-out;
+	  -moz-transition: all 0.30s ease-in-out;
+	  -ms-transition: all 0.30s ease-in-out;
+	  -o-transition: all 0.30s ease-in-out;
+	}
+
+	/* Add a background color when the inputs get focus */
+	input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=date]:focus, #sex:focus {
+	    /*background-color: #F5F5F5;*/
+		outline: none;
+		/*
+		** blue box shadow and border below
+		** box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+		** border: 1px solid rgba(81, 203, 238, 1);
+		*/
+		box-shadow: 0 0 5px grey;
+		border: 1px solid #909090;
+	}
+	</style>
 </head>
 
 <body class="sign-in" oncontextmenu="return false;">
@@ -57,6 +85,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 											<div class="col-lg-12 no-pdd">
 												<div class="sn-field">
 													<input type="password" id="psw" name="psw" placeholder="Password" required>
+														<span toggle="#psw" id="toggle_pass" class="fa fa-eye fa-2x field-icon toggle-password"></span>
 													<i class="fa fa-lock"></i>
 												</div>
 											</div>
@@ -133,13 +162,15 @@ include("db/auth.php"); //include auth.php file on all secure pages
 												</div>
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
-														<input type="password" id ="password" name="psw" placeholder="Password" onkeyup='check();' required>
-														<i class="fa fa-lock"></i>
+														<input type="password" id ="password" name="psw" pattern="(?=.*\d).{5,}" title="password should contain at least 5 characters and one digit" placeholder="Password" onkeyup='check();' required>
+														<span toggle="#password" id="toggle_pass" class="fa fa-eye fa-2x field-icon toggle-password"></span>
+														<i class="fa fa-lock"></i>													
 													</div>
 												</div>
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
-														<input type="password" id="repeat_password" name="repeat-password" placeholder="Repeat Password" onkeyup='check();' required>
+														<input type="password" title="" id="repeat_password" name="repeat-password" placeholder="Repeat Password" onkeyup='check();' required>
+														<span toggle="#repeat_password" id="toggle_pass" class="fa fa-eye fa-2x field-icon toggle-password"></span>
 														<i class="fa fa-lock"></i>
 													</div>
 													<span id='message'></span>
@@ -255,6 +286,17 @@ include("db/auth.php"); //include auth.php file on all secure pages
 		event.preventDefault();
 	  }
 	}
+
+	// toggle show/hide password
+	$(".toggle-password").click(function() {
+		$(this).toggleClass("fa-eye fa-eye-slash");
+		var input = $($(this).attr("toggle"));
+		if (input.attr("type") == "password") {
+		    input.attr("type", "text");
+		} else {
+			input.attr("type", "password");
+		}
+	});
 </script>
 </body>
 </html>
