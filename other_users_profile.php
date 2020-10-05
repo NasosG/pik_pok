@@ -204,7 +204,7 @@ $bio = $row_picture['bio'];
 											<div class="username-dt">
 											<div class="user-pro-img">
 												<div class="usr-pic  ">
-											<img src= <?php echo '"'.$picture_path.$picture_name.'"'; ?> alt="">
+											<img style="max-height:150px;" src= <?php echo '"'.$picture_path.$picture_name.'"'; ?> alt="">
 											<form id="changeAvatar" name="changeAvatar" method="post" action = "db/add_profile_pic.php" enctype= "multipart/form-data">
 												
 											</form>

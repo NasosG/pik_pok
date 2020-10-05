@@ -195,7 +195,7 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 											<div class="username-dt">
 											<div class="user-pro-img">
 												<div class="usr-pic  ">
-											<img src= <?php echo '"'.$picture_path.$picture_name.'"'; ?> alt="">
+											<img style="max-height:150px;" src= <?php echo '"'.$picture_path.$picture_name.'"'; ?> alt="">
 											<form id="changeAvatar" name="changeAvatar" method="post" action = "db/add_profile_pic.php" enctype= "multipart/form-data">
 												<div class="add-dp" id="OpenImgUpload">
 													<input type="file" id="file" name="fileToUpload">

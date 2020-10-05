@@ -28,7 +28,7 @@
 
 	//Checking if user exists in the database or not
 
-        $query = "SELECT * FROM members WHERE username='$username' AND password='".hash('sha256', $password)."'";
+        $query = "SELECT * FROM members WHERE BINARY username='$username' AND password='".hash('sha256', $password)."'";
 		$result = mysqli_query($con,$query) or die("Not able to execute the query");
 		$rows = mysqli_num_rows($result);
         if($rows == 1) {
