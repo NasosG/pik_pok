@@ -301,7 +301,7 @@ $bio = $row_picture['bio'];
 										<div class="post-bar">
 											<div class="post_topbar">
 												<div class="usy-dt">
-													<img src="images/us-pic.png" alt="">
+													<img src="" alt="">
 													<div class="usy-name">
 														<h3>Posted by '.$uname.'</h3>
 														<span><img src="images/clock.png" alt="">'.$date_posted.'</span>

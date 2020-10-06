@@ -342,9 +342,9 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 							  					<div class="col-lg-3 col-md-6 col-sm-12">
 							  						<div class="profile-bx-info">
 							  							<div class="pro-bx">
-							  								<img src="images/pro-icon1.png" alt="">
+							  								<img src="images/posts_settings.png" alt="">
 							  								<div class="bx-info">
-							  									<h3>> <?php echo $num[0]."";?></h3>
+							  									<h3><?php echo $num[0]."";?></h3>
 							  									<h5>Total Posts</h5>
 							  								</div><!--bx-info end-->
 							  							</div><!--pro-bx end-->
@@ -354,9 +354,9 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 							  					<div class="col-lg-3 col-md-6 col-sm-12">
 							  						<div class="profile-bx-info">
 							  							<div class="pro-bx">
-							  								<img src="images/pro-icon2.png" alt="">
+							  								<img src="images/like_settings.png" alt="">
 							  								<div class="bx-info">
-							  									<h3>> <?php echo $num[1].""; ?></h3>
+							  									<h3><?php echo $num[1].""; ?></h3>
 							  									<h5>Likes</h5>
 							  								</div><!--bx-info end-->
 							  							</div><!--pro-bx end-->
@@ -366,10 +366,10 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 							  					<div class="col-lg-3 col-md-6 col-sm-12">
 							  						<div class="profile-bx-info">
 							  							<div class="pro-bx">
-							  								<img src="images/pro-icon3.png" alt="">
+							  								<img src="images/days_settings.png" alt="">
 							  								<div class="bx-info">
-							  									<h3>= <?php echo $member_for.""; ?></h3>
-							  									<h5>Days Since Register</h5>
+							  									<h3><?php echo $member_for.""; ?></h3>
+							  									<h5>Days Registered</h5>
 							  								</div><!--bx-info end-->
 							  							</div><!--pro-bx end-->
 							  							<p>Pik-Pok thanks you for your support. It means a lot!!</p>
@@ -378,9 +378,9 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 							  					<div class="col-lg-3 col-md-6 col-sm-12">
 							  						<div class="profile-bx-info">
 							  							<div class="pro-bx">
-							  								<img src="images/pro-icon4.png" alt="">
+							  								<img src="images/likes_month_settings.png" alt="">
 							  								<div class="bx-info">
-							  									<h3>= <?php echo $likes_month[0]; ?></h3>
+							  									<h3><?php echo $likes_month[0]; ?></h3>
 							  									<h5>Likes this Month</h5>
 							  								</div>
 							  							</div>
@@ -440,73 +440,73 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 							  			<div class="notifications-list">
 							  				<div class="notfication-details">
 								  				<div class="noty-user-img">
-								  					<img src="images/ny-img1.png" alt="">
+								  					<img src="images/s5.png" alt="">
 								  				</div>
 								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
+								  					<h3><a href="#" title="">Mary Jones</a> Commented on your post.</h3>
 								  					<span>2 min ago</span>
 								  				</div><!--notification-info -->
 							  				</div><!--notfication-details end-->
 							  				<div class="notfication-details">
 								  				<div class="noty-user-img">
-								  					<img src="images/ny-img2.png" alt="">
+								  					<img src="images/s5.png" alt="">
 								  				</div>
 								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Poonam Verma</a> Bid on your Latest project.</h3>
+								  					<h3><a href="#" title="">George Argiros</a> Liked your post.</h3>
 								  					<span>2 min ago</span>
 								  				</div><!--notification-info -->
 							  				</div><!--notfication-details end-->
 							  				<div class="notfication-details">
 								  				<div class="noty-user-img">
-								  					<img src="images/ny-img3.png" alt="">
+								  					<img src="images/s5.png" alt="">
 								  				</div>
 								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Tonney Dhman</a> Comment on your project.</h3>
+								  					<h3><a href="#" title="">Mike Boyd</a> Commented on your post.</h3>
 								  					<span>2 min ago</span>
 								  				</div><!--notification-info -->
 							  				</div><!--notfication-details end-->
 							  				<div class="notfication-details">
 								  				<div class="noty-user-img">
-								  					<img src="images/ny-img1.png" alt="">
+								  					<img src="images/s5.png" alt="">
 								  				</div>
 								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
+								  					<h3><a href="#" title="">Jessica Turner</a> Commented on your post.</h3>
 								  					<span>2 min ago</span>
 								  				</div><!--notification-info -->
 							  				</div><!--notfication-details end-->
 							  				<div class="notfication-details">
 								  				<div class="noty-user-img">
-								  					<img src="images/ny-img1.png" alt="">
+								  					<img src="images/s5.png" alt="">
 								  				</div>
 								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
+								  					<h3><a href="#" title="">John Wick</a> Commented on your post.</h3>
 								  					<span>2 min ago</span>
 								  				</div><!--notification-info -->
 							  				</div><!--notfication-details end-->
 							  				<div class="notfication-details">
 								  				<div class="noty-user-img">
-								  					<img src="images/ny-img2.png" alt="">
+								  					<img src="images/s5.png" alt="">
 								  				</div>
 								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Poonam Verma </a> Bid on your Latest project.</h3>
+								  					<h3><a href="#" title="">Mike Boyd</a> Liked your post.</h3>
 								  					<span>2 min ago</span>
 								  				</div><!--notification-info -->
 							  				</div><!--notfication-details end-->
 							  				<div class="notfication-details">
 								  				<div class="noty-user-img">
-								  					<img src="images/ny-img3.png" alt="">
+								  					<img src="images/s5.png" alt="">
 								  				</div>
 								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Tonney Dhman</a> Comment on your project</h3>
+								  					<h3><a href="#" title="">Helen Jackson</a> Commented on your post.</h3>
 								  					<span>2 min ago</span>
 								  				</div><!--notification-info -->
 							  				</div><!--notfication-details end-->
 							  				<div class="notfication-details">
 								  				<div class="noty-user-img">
-								  					<img src="images/ny-img1.png" alt="">
+								  					<img src="images/s5.png" alt="">
 								  				</div>
 								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
+								  					<h3><a href="#" title="">Jassica William</a> Commented on your post.</h3>
 								  					<span>2 min ago</span>
 								  				</div><!--notification-info -->
 							  				</div><!--notfication-details end-->
@@ -519,7 +519,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 							  			<div class="requests-list">
 							  				<div class="request-details">
 							  					<div class="noty-user-img">
-							  						<img src="images/r-img1.png" alt="">
+							  						<img src="images/usr1.png" alt="">
 							  					</div>
 							  					<div class="request-info">
 							  						<h3>Jessica William</h3>
@@ -534,7 +534,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 							  				</div><!--request-detailse end-->
 							  				<div class="request-details">
 							  					<div class="noty-user-img">
-							  						<img src="images/r-img2.png" alt="">
+							  						<img src="images/usr1.png" alt="">
 							  					</div>
 							  					<div class="request-info">
 							  						<h3>John Doe</h3>
@@ -549,7 +549,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 							  				</div><!--request-detailse end-->
 							  				<div class="request-details">
 							  					<div class="noty-user-img">
-							  						<img src="images/r-img3.png" alt="">
+							  						<img src="images/usr1.png" alt="">
 							  					</div>
 							  					<div class="request-info">
 							  						<h3>Poonam</h3>
@@ -564,7 +564,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 							  				</div><!--request-detailse end-->
 							  				<div class="request-details">
 							  					<div class="noty-user-img">
-							  						<img src="images/r-img4.png" alt="">
+							  						<img src="images/usr1.png" alt="">
 							  					</div>
 							  					<div class="request-info">
 							  						<h3>Bill Gates</h3>
@@ -579,7 +579,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 							  				</div><!--request-detailse end-->
 							  				<div class="request-details">
 							  					<div class="noty-user-img">
-							  						<img src="images/r-img5.png" alt="">
+							  						<img src="images/usr1.png" alt="">
 							  					</div>
 							  					<div class="request-info">
 							  						<h3>Jessica William</h3>
@@ -594,7 +594,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 							  				</div><!--request-detailse end-->
 							  				<div class="request-details">
 							  					<div class="noty-user-img">
-							  						<img src="images/r-img6.png" alt="">
+							  						<img src="images/usr1.png" alt="">
 							  					</div>
 							  					<div class="request-info">
 							  						<h3>John Doe</h3>

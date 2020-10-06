@@ -306,7 +306,7 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 										<div class="post-bar">
 											<div class="post_topbar">
 												<div class="usy-dt">
-													<img src="images/us-pic.png" alt="">
+													<img src="" alt="">
 													<div class="usy-name">
 														<h3>Posted by Me</h3>
 														<span><img src="images/clock.png" alt="">'.$date_posted.'</span>
