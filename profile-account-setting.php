@@ -721,7 +721,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 							  			<div class="requests-list">
 							  				<div class="request-details">
 							  					<div class="noty-user-img">
-							  						<img src="images/r-img1.png" alt="">
+							  						<img src="images/s5.png" alt="">
 							  					</div>
 							  					<div class="request-info">
 							  						<h3>Jessica William</h3>
@@ -736,7 +736,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 							  				</div><!--request-detailse end-->
 							  				<div class="request-details">
 							  					<div class="noty-user-img">
-							  						<img src="images/r-img2.png" alt="">
+							  						<img src="images/s5.png" alt="">
 							  					</div>
 							  					<div class="request-info">
 							  						<h3>John Doe</h3>
@@ -751,7 +751,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 							  				</div><!--request-detailse end-->
 							  				<div class="request-details">
 							  					<div class="noty-user-img">
-							  						<img src="images/r-img3.png" alt="">
+							  						<img src="images/s5.png" alt="">
 							  					</div>
 							  					<div class="request-info">
 							  						<h3>Poonam</h3>
@@ -766,7 +766,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 							  				</div><!--request-detailse end-->
 							  				<div class="request-details">
 							  					<div class="noty-user-img">
-							  						<img src="images/r-img4.png" alt="">
+							  						<img src="images/s5.png" alt="">
 							  					</div>
 							  					<div class="request-info">
 							  						<h3>Bill Gates</h3>
@@ -781,7 +781,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 							  				</div><!--request-detailse end-->
 							  				<div class="request-details">
 							  					<div class="noty-user-img">
-							  						<img src="images/r-img5.png" alt="">
+							  						<img src="images/s5.png" alt="">
 							  					</div>
 							  					<div class="request-info">
 							  						<h3>Jessica William</h3>
@@ -796,7 +796,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 							  				</div><!--request-detailse end-->
 							  				<div class="request-details">
 							  					<div class="noty-user-img">
-							  						<img src="images/r-img6.png" alt="">
+							  						<img src="images/s5.png" alt="">
 							  					</div>
 							  					<div class="request-info">
 							  						<h3>John Doe</h3>
@@ -1051,8 +1051,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/popper.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/jquery.mCustomScrollbar.js"></script>
-<script type="text/javascript" src="lib/slick/slick.min.js"></script>
+<script type="text/javascript" src="js/slick.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script>
   /* make clear button onclick to clear and not submit the form */

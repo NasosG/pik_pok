@@ -2468,7 +2468,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 <script type="text/javascript" src="js/popper.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/flatpickr.min.js"></script>
-<script type="text/javascript" src="lib/slick/slick.min.js"></script>
+<script type="text/javascript" src="js/slick.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

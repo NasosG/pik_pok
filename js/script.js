@@ -267,6 +267,8 @@ $(".user-info").on("click", function(){$("#users").hide();
         e.stopPropagation();
     });
 
+
+	/*
     //  ============= PORTFOLIO SLIDER FUNCTION =========
 
     $('.profiles-slider').slick({
@@ -309,7 +311,7 @@ $(".user-info").on("click", function(){$("#users").hide();
 
 
     });
-
+	*/
 
 
 
