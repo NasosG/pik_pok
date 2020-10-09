@@ -366,24 +366,27 @@ function getRepliessCount($post_id, $con)
 
 												echo '<div class="postcomment" id="reply-'.$row['post_comments_id'].'" style="display:none">';?>
 	                                                <div class="row">
-	                                                    <div class="col-md-2">
-	                                                               <?php echo "<img style=\"width:40px; height:40px;border-radius: 50%;\" src=\"".$picture_path.$picture_name."\" alt=\"users photo\"/>"; ?>                                      	
+	                                                    <div style="margin-right:-20px;" class="ml-4 col-md-2">
+	                                                               <?php echo "<img style=\"width:36px; height:36px;border-radius: 50%;\" src=\"".$picture_path.$picture_name."\" alt=\"users photo\"/>"; ?>                                      	
 	                                                       <!-- <img src="images/bg-img4.png" alt=""> -->
 	                                                    </div>
-	                                                    <div class="col-md-8">
+	                                                    <div class="col-md-7">
 	                                                        
 	                                                       <?php echo '<form id="reply-form'.$row['post_comments_id'].'" class="reply-form">';?>
 	                                                            <div class="form-group">
 	                                                            	<input type='hidden' name='post_id' id='post_id' value='<?php echo $row["post_comments_id"]; ?> '/>
-	                                                               <?php echo '<input type="text" class="form-control" id="reply-text" name="reply-text"  placeholder="Add a comment" data-emojiable="true" data-emoji-input="unicode"/>'
+	                                                               <?php echo '<input type="text" class="form-control" id="reply-text" name="reply-text"  placeholder="Add a reply" />'
 	                                                               ?>
 	                                                            </div>
 	                                                        </form>
 	                                                    </div>
-	                                                    <div class="col-md-2">
+	                                                    <div class="col-md-1 mt-2 mr-2">
+	                                                    	<?php echo '<a style="all:initial;margin-left:-10px;padding:10px;border-radius:4px;background-color:lightgrey;cursor:pointer;" id="cancel-reply'.$row['post_comments_id'].'" name="cancel-reply'.$row['post_comments_id'].'" onclick="CancelReply('.$row['post_comments_id'].');" class="send-comment">Cancel</a>'
+	                                                        ?>
+	                                                	</div>
+	                                                    <div class="col-md-1">	                                                          
 	                                                    	<?php echo '<a style="cursor:pointer;" id="send-reply'.$row['post_comments_id'].'" name="send-reply'.$row['post_comments_id'].'" onclick="sendReplyForm('.$row['post_comments_id'].');" class="send-comment text-white">Reply</a>'
-	                                                               ?>
-	                                                          
+	                                                    	?>
 	                                                    </div>
 	                                                </div>
 	                                            </div>
@@ -617,9 +620,7 @@ function getRepliessCount($post_id, $con)
 	});
   
 
-
 	function reply(num) {
-		isReply = true;
 		var str = "reply-" + num;
 	    //console.log(str);                                                             
 		document.getElementById(str).style.display="block";
@@ -645,6 +646,12 @@ function getRepliessCount($post_id, $con)
 		form2.submit();
 	}
 
+	function CancelReply(num)
+	{
+		var str = "reply-" + num;
+	    //console.log(str);                                                             
+		document.getElementById(str).style.display="none";
+	}
 
 	</script>
 </body>
