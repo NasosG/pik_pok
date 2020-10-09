@@ -371,16 +371,19 @@ function getRepliessCount($post_id, $con)
 	                                                       <!-- <img src="images/bg-img4.png" alt=""> -->
 	                                                    </div>
 	                                                    <div class="col-md-8">
-	                                                        <form class="reply-form">
+	                                                        
+	                                                       <?php echo '<form id="reply-form'.$row['post_comments_id'].'" class="reply-form">';?>
 	                                                            <div class="form-group">
 	                                                            	<input type='hidden' name='post_id' id='post_id' value='<?php echo $row["post_comments_id"]; ?> '/>
-	                                                                <input type="text" class="form-control" id="reply-text" name="reply-text"  placeholder="Add a comment" data-emojiable="true" data-emoji-input="unicode"/>
+	                                                               <?php echo '<input type="text" class="form-control" id="reply-text" name="reply-text"  placeholder="Add a comment" data-emojiable="true" data-emoji-input="unicode"/>'
+	                                                               ?>
 	                                                            </div>
 	                                                        </form>
 	                                                    </div>
 	                                                    <div class="col-md-2">
-	                                                    	
-	                                                        <a style="cursor:pointer;" id="send-reply"  class="send-comment text-white">Reply</a>
+	                                                    	<?php echo '<a style="cursor:pointer;" id="send-reply'.$row['post_comments_id'].'" name="send-reply'.$row['post_comments_id'].'" onclick="sendReplyForm('.$row['post_comments_id'].');" class="send-comment text-white">Reply</a>'
+	                                                               ?>
+	                                                          
 	                                                    </div>
 	                                                </div>
 	                                            </div>
@@ -430,7 +433,7 @@ function getRepliessCount($post_id, $con)
                                                         <form class='aform'>
                                                             <div class="form-group">
                                                             	<input type='hidden' name='photo_id' id='photo_id' value='<?php echo $photo_id; ?> '/>
-                                                                <input type="text" class="form-control" id="comment-text" name="comment-text"  placeholder="Add a comment" data-emojiable="true" data-emoji-input="unicode"/>
+                                                                <input type="text" class="form-control" id="comment-text" name="comment-text" placeholder="Add a comment" data-emojiable="true" data-emoji-input="unicode"/>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -575,29 +578,13 @@ function getRepliessCount($post_id, $con)
 	    	});
 	});
 
-	var form2 = $('.reply-form');
-	form2.submit(function(e) {
-	    e.preventDefault();
-	        $.ajax({
-	           type: "POST",
-	           url: 'db/comments.php',
-	           data: form2.serialize(), // serializes the form's elements.
-	           success: function(data)
-	           {
-	            location.reload();
-	           }
-	    	});
-	});
 
 
 	document.getElementById("send-comment").addEventListener("click", function () {
 	  form.submit();
 	});
 
-	document.getElementById("send-reply").addEventListener("click", function () {
-	  form2.submit();
-	});
-
+	
 
 	function CopyText() {
 		var copyText = document.getElementById("postLink");
@@ -631,18 +618,33 @@ function getRepliessCount($post_id, $con)
   
 
 
-function reply(num) {
+	function reply(num) {
+		isReply = true;
+		var str = "reply-" + num;
+	    //console.log(str);                                                             
+		document.getElementById(str).style.display="block";
+	    //console.log( document.getElementById("reply-83").style.display);
+	}
 
-	isReply = true;
-	var str = "reply-" + num;
-    //console.log(str);                                   
-                                                
+	function sendReplyForm(num)
+	{
+		var formsName = "#reply-form" + num;
+		var form2 = $(formsName);
+		form2.submit(function(e) {
+		    e.preventDefault();
+		        $.ajax({
+		           type: "POST",
+		           url: 'db/comments.php',
+		           data: form2.serialize(), // serializes the form's elements.
+		           success: function(data)
+		           {
+		            location.reload();
+		           }
+		    	});
+		});
+		form2.submit();
+	}
 
-	 document.getElementById(str).style.display="block";
-    //console.log( document.getElementById("reply-83").style.display);
-
-
-        }
 
 	</script>
 </body>

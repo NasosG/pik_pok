@@ -34,8 +34,10 @@ if (isset($_POST['comment-text'])) {
 
 }
 // If the user clicked submit on reply form...
-else if (isset($_POST['reply-text'])) {
-
+else if (isset($_POST['reply-text'])) 
+{
+	$post_id = $_POST['post_id'];
+	//$var = 'reply-text'.$post_id.'';
 	$comment_text = $_POST['reply-text'];
 
 	// find user id from session name
@@ -43,7 +45,7 @@ else if (isset($_POST['reply-text'])) {
 	$result = mysqli_query($con, $query);
 	$row = mysqli_fetch_array($result);
 	$user_id = $row['id'];
-	$post_id = $_POST['post_id'];
+	//$post_id = $_POST['post_id'];
 	mysqli_set_charset($con,"utf8mb4");
 	$query = "INSERT INTO comment_replies (comment_id, user_id, comment_text, time_commented) VALUES ('$post_id', '$user_id', '$comment_text', '$comment_date') "; 													
 	$result = mysqli_query($con, $query);	
