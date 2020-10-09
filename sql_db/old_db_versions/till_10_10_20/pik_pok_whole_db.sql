@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2020 at 02:59 AM
+-- Generation Time: Oct 03, 2020 at 04:10 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `pik_pok`
 --
+CREATE DATABASE IF NOT EXISTS `pik_pok` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `pik_pok`;
 
 -- --------------------------------------------------------
 
@@ -33,30 +35,6 @@ CREATE TABLE `comment_likes` (
   `comment_id` int(11) NOT NULL,
   `time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `comment_replies`
---
-
-CREATE TABLE `comment_replies` (
-  `reply_id` int(11) NOT NULL,
-  `comment_id` int(11) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `comment_text` text CHARACTER SET utf8mb4 DEFAULT NULL,
-  `time_commented` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `comment_replies`
---
-
-INSERT INTO `comment_replies` (`reply_id`, `comment_id`, `user_id`, `comment_text`, `time_commented`) VALUES
-(1, 83, 45, 'nice photos there', '2020-10-08 18:37:32'),
-(5, 83, 40, 'geia', '2020-10-09 03:36:00'),
-(6, 92, 50, 'who knows', '2020-10-09 03:36:00'),
-(7, 92, 40, 'sdf', '2020-10-09 03:47:36');
 
 -- --------------------------------------------------------
 
@@ -206,8 +184,7 @@ INSERT INTO `post_comments` (`post_comments_id`, `post_id`, `user_id`, `comment_
 (80, 17, 40, 'true art!! Is it Van Gogh or Picasso?', '2020-06-14 01:15:42'),
 (83, 37, 59, 'Link from: https://www.pocket-lint.com/cameras/news/sony/151442-stunning-photos-from-the-national-sony-world-photography-awards-2020', '2020-10-02 23:16:16'),
 (87, 35, 40, 'as😍', '2020-10-03 17:05:44'),
-(89, 35, 40, 'φανταστικό ', '2020-10-03 17:09:53'),
-(92, 37, 40, 'where is it though?', '2020-10-09 03:15:25');
+(89, 35, 40, 'φανταστικό ', '2020-10-03 17:09:53');
 
 -- --------------------------------------------------------
 
@@ -245,14 +222,6 @@ INSERT INTO `post_likes` (`post_likes_id`, `liked_by_user`, `posted_photo_id`, `
 --
 ALTER TABLE `comment_likes`
   ADD PRIMARY KEY (`comment_like_id`);
-
---
--- Indexes for table `comment_replies`
---
-ALTER TABLE `comment_replies`
-  ADD PRIMARY KEY (`reply_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `post_id` (`comment_id`);
 
 --
 -- Indexes for table `hashtags`
@@ -305,12 +274,6 @@ ALTER TABLE `comment_likes`
   MODIFY `comment_like_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `comment_replies`
---
-ALTER TABLE `comment_replies`
-  MODIFY `reply_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
 -- AUTO_INCREMENT for table `hashtags`
 --
 ALTER TABLE `hashtags`
@@ -338,7 +301,7 @@ ALTER TABLE `members`
 -- AUTO_INCREMENT for table `post_comments`
 --
 ALTER TABLE `post_comments`
-  MODIFY `post_comments_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `post_comments_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `post_likes`
