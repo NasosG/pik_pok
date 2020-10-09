@@ -23,6 +23,33 @@ $row_after_count = mysqli_fetch_row($result_of_count);
 $string_array  = $row2['photo_tag'];
 $photo_tag = explode("#", $string_array);
 
+// Receives a user id and returns the username
+function getUsernameById($id, $con) 
+{
+	$result = mysqli_query($con, "SELECT username FROM members WHERE id=" . $id . " LIMIT 1");
+	// return the username
+	return mysqli_fetch_assoc($result)['username'];
+}
+
+// Receives username and returns user's profile picture details
+function getMemberDetails($username, $con) 
+{
+	$query = "SELECT picture_path, profile_pic FROM members WHERE username = '$username'  LIMIT 1";
+	$result = mysqli_query($con, $query);
+	$row = mysqli_fetch_array($result);
+	$img_path = $row['picture_path'];
+	$img_name = $row['profile_pic'];
+	return array($img_path, $img_name);
+}
+
+// Receives a post id and returns the total number of comments on that post
+function getRepliessCount($post_id, $con) 
+{
+	$result = mysqli_query($con, "SELECT COUNT(*) AS total FROM comment_replies");
+	$data = mysqli_fetch_assoc($result);
+	return $data['total'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +100,7 @@ $photo_tag = explode("#", $string_array);
 	</style>
 </head>
 
-<body oncontextmenu="return false;">
+<body>
     <div id="page-container" class="wrapper">
     	<div id="content-wrap">
         <header>
@@ -271,13 +298,6 @@ $photo_tag = explode("#", $string_array);
 													for ($i=1; $i<$len; $i++) { ?>
 													     <li><a href="#" title=""><?php echo '#'.$photo_tag[$i];?></a></li>
 													<?php }
-
-
-													/*
-														not working for some reason
-														for ($i=1; $i<$len; $i++) {
-													    echo '<li><a href="#" title=""><'. $photo_tag[$i] .'</a></li>';
-													}*/
 												
 												?>
                                                 </ul>
@@ -290,10 +310,6 @@ $photo_tag = explode("#", $string_array);
 													<li>
 														<button class="like-submit-btn"><a id="like-submit" class="com-page-likes"><i class="fa fa-heart"></i> Like</a></button>
 													</li>
-														<!--<img src="images/liked-img.png" alt="">
-														
-													</li>
-													<li><a href="#" class="com"><i class="fa fa-comment"></i> Comments 15</a></li>-->
 												</ul>
 												<ul style= "float:right;" class="like-com">
 													<li><a id="likes-link-red" style="color:#b2b2b2;" class="likes-link-red"><i class="fa fa-thumbs-up"></i> Likes <?php echo $row['photo_likes']; ?></a></li>
@@ -314,35 +330,92 @@ $photo_tag = explode("#", $string_array);
 											$query = "SELECT * FROM post_comments WHERE post_id = $photo_id";
 											$result = mysqli_query($con, $query);
 
-
 											while ($row = mysqli_fetch_array($result)) {
 
-											$user_id = $row['user_id'];
-											$query3 = "SELECT username, picture_path, profile_pic FROM members WHERE id = '$user_id'";
-											$result3 = mysqli_query($con, $query3);
-											$row3 = mysqli_fetch_array($result3);
-											$user_of_post = $row3['username'];
-											//$newDate = date("d-m-Y", strtotime($row['date_posted']));
+												$user_id = $row['user_id'];
+												$query3 = "SELECT username, picture_path, profile_pic FROM members WHERE id = '$user_id'";
+												$result3 = mysqli_query($con, $query3);
+												$row3 = mysqli_fetch_array($result3);
+												$user_of_post = $row3['username'];
+												//$newDate = date("d-m-Y", strtotime($row['date_posted']));
 
-											echo '
-                                            <div class="comment-area">
-                                                <div class="post_topbar">
-                                                    <div class="usy-dt">
-                                                        <img style="width:40px; height:40px;" src="'.$row3['picture_path'].$row3['profile_pic'].'" alt="users photo"/>
-                                                        <div class="usy-name">
-                                                            <h3>'.$row3['username'].'</h3>
-                                                            <span><img src="images/clock.png" alt="">'.date("d-m-Y H:i:s", strtotime($row['time_commented'])).'</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="reply-area">
-                                                    <p class="myp">'.$row['comment_text'];
-                                                    echo'</p>
-                                                    <span><i class="fa fa-mail-reply"></i>Reply</span>
-                                                </div>
-                                            </div>
-                                        	<br>
-											';
+												$commentID =  $row['post_comments_id'];
+
+												$replies = "SELECT * FROM comment_replies WHERE comment_id = '$commentID'";
+												$result_replies = mysqli_query($con, $replies);
+												
+
+												echo '
+	                                            <div id="'.$row['post_comments_id'].'" class="comment-area">
+	                                                <div class="post_topbar">
+	                                                    <div class="usy-dt">
+	                                                        <img style="width:40px; height:40px;" src="'.$row3['picture_path'].$row3['profile_pic'].'" alt="users photo"/>
+	                                                        <div class="usy-name">
+	                                                            <h3>'.$row3['username'].'</h3>
+	                                                            <span><img src="images/clock.png" alt="">'.date("d-m-Y H:i:s", strtotime($row['time_commented'])).'</span>
+	                                                        </div>
+	                                                    </div>
+	                                                </div>
+	                                                <div id="reply-area" class="reply-area">
+	                                                    <p class="myp">'.$row['comment_text'];
+	                                                    echo'</p>
+	                                                    <span id="replyComment" onclick="reply('.$row['post_comments_id'].');"><i class="fa fa-mail-reply"></i>Reply</span>
+	                                                </div>
+
+	                                                ';
+
+												echo '<div class="postcomment" id="reply-'.$row['post_comments_id'].'" style="display:none">';?>
+	                                                <div class="row">
+	                                                    <div class="col-md-2">
+	                                                               <?php echo "<img style=\"width:40px; height:40px;border-radius: 50%;\" src=\"".$picture_path.$picture_name."\" alt=\"users photo\"/>"; ?>                                      	
+	                                                       <!-- <img src="images/bg-img4.png" alt=""> -->
+	                                                    </div>
+	                                                    <div class="col-md-8">
+	                                                        <form class="reply-form">
+	                                                            <div class="form-group">
+	                                                            	<input type='hidden' name='post_id' id='post_id' value='<?php echo $row["post_comments_id"]; ?> '/>
+	                                                                <input type="text" class="form-control" id="reply-text" name="reply-text"  placeholder="Add a comment" data-emojiable="true" data-emoji-input="unicode"/>
+	                                                            </div>
+	                                                        </form>
+	                                                    </div>
+	                                                    <div class="col-md-2">
+	                                                    	
+	                                                        <a style="cursor:pointer;" id="send-reply"  class="send-comment text-white">Reply</a>
+	                                                    </div>
+	                                                </div>
+	                                            </div>
+                                        
+	                                            <?php echo '</div><br>';
+
+												while ($row_replies = mysqli_fetch_array($result_replies)) {
+
+													$reply_user = getUsernameById($row_replies['user_id'], $con);
+													$userDetails = getMemberDetails($reply_user, $con);
+													$img_path = $userDetails[0];
+													$img_name = $userDetails[1];
+
+													echo '
+													<div class="reply-area">
+		                                            	<div class="post_topbar">
+		                                                	<div class="usy-dt">
+		                                                    	<img style="width:40px; height:40px;" src="'.$img_path.$img_name.'" alt="users photo"/>
+		                                                    	<div class="usy-name">
+		                                                        	<h3>'.$reply_user.'</h3>
+		                                                        	<span><img src="images/clock.png" alt="">'.date("d-m-Y H:i:s", strtotime($row_replies['time_commented'])).'</span>
+		                                                     	</div>
+		                                                	</div>
+		                                             	</div>
+		                                                        
+		                                                <div class="">
+		                                                    <p class="myp">'.$row_replies['comment_text'].'</p>';
+		                                                    //<span id="replyComment" onclick="reply();"><i class="fa fa-mail-reply"></i>Reply</span>
+		                                                    echo '
+		                                                </div>
+		                                            </div>
+		                                        	<br>
+													';
+												}
+
 											}
 
 											mysqli_close($con);
@@ -375,43 +448,6 @@ $photo_tag = explode("#", $string_array);
                             <!--main-ws-sec end-->
                             <div class="col-xl-3 col-lg-3 col-md-12">
                                 <div class="right-sidebar">
-                                    <!-- 
-                                    <div class="widget widget-about bid-place">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#applyjob" data-whatever="@mdo">Like</button>
-                                    </div>
-                                	-->
-
-                                    <!--<div class="widget widget-jobs">
-                                        <div class="sd-title">
-                                            <h3>About the Client</h3>
-                                            <i class="fa fa-ellipsis-v"></i>
-                                        </div>
-                                        <div class="sd-title paymethd">
-                                            <h4>Payment Method</h4>
-                                            <p>Verified</p>
-                                            <ul class="star">
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star"></i></li>
-                                                <li><i class="fa fa-star-half-o"></i></li>
-                                                <li><a href="#">5.00 of 5 Reviews</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="sd-title">
-                                            <h4>India</h4>
-                                            <p>SKS Nagar, Ludhiana 1 AM</p>
-                                        </div>
-                                        <div class="sd-title">
-                                            <h4>20 Projects Posted | 15 Jobs Posted</h4>
-                                            <p>85% Hire Rate, 15% Open Jobs</p>
-                                        </div>
-                                        <div class="sd-title">
-                                            <h4>Member Since</h4>
-                                            <p>August 24, 2017</p>
-                                        </div>
-                                    </div>-->
-
                                     <div class="widget widget-jobs">
                                         <div class="sd-title">
                                             <h3>Post Link</h3>
@@ -440,10 +476,29 @@ $photo_tag = explode("#", $string_array);
                                             </ul>
                                         </div>
                                     </div>
-                                     
+
                                      <div class="widget widget-projectid">
                                         <a style="color:black; font-size:16px;" href=<?php echo '"report.php?message='.$photo_id.'"';?> ><i style="color:#e44d3a;" class="fa fa-exclamation-circle" aria-hidden="true"></i> Report Post</a>
                                     </div>
+
+									<!--<div class="widget widget-jobs">
+                                        <div class="sd-title">
+                                            <h3>Similar Posts</h3>
+                                          
+                                        </div>
+                                        <div class="sm-posts">
+                                           
+                                            <img src="uploads/pik_pok_pics/5e91dafe455df872999ab7120170d7ca.jpg"></img>
+                                        </div>
+                                        <div class="sm-posts">
+                                            
+                                             <img src="uploads/pik_pok_pics/sky2.jpg"></img>
+                                        </div>
+                                        <div class="sm-posts">
+                                            
+                                             <img src="uploads/pik_pok_pics/corona-summer.jpg"></img>
+                                        </div>
+                                    </div>-->
 
                                 </div>
                                 <!--right-sidebar end-->
@@ -492,67 +547,102 @@ $photo_tag = explode("#", $string_array);
     <script src="emojis/lib/js/jquery.emojiarea.js"></script>
     <script src="emojis/lib/js/emoji-picker.js"></script>
     <script>
-      $(function() {
-        // Initializes and creates emoji set from sprite sheet
-        window.emojiPicker = new EmojiPicker({
-          emojiable_selector: '[data-emojiable=true]',
-          assetsPath: 'emojis/lib/img/',
-          popupButtonClasses: 'fa fa-smile-o'
-        });
-        // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
-        // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
-        // It can be called as many times as necessary; previously converted input fields will not be converted again
-        window.emojiPicker.discover();
-      });
+	$(function() {
+	    // Initializes and creates emoji set from sprite sheet
+		window.emojiPicker = new EmojiPicker({
+	    	emojiable_selector: '[data-emojiable=true]',
+	    	assetsPath: 'emojis/lib/img/',
+			popupButtonClasses: 'fa fa-smile-o'
+		});
+		// Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
+		// You may want to delay this step if you have dynamically created input fields that appear later in the loading process
+		// It can be called as many times as necessary; previously converted input fields will not be converted again
+		window.emojiPicker.discover();
+	});
     </script>
 	<script>
-var form = $('.aform');
-$('.aform').submit(function(e) {
-    e.preventDefault();
-        $.ajax({
-           type: "POST",
-           url: 'db/comments.php',
-           data: form.serialize(), // serializes the form's elements.
-           success: function(data)
-           {
-            location.reload();
-           }
-         });
-});
+	var form = $('.aform');
+	$('.aform').submit(function(e) {
+	    e.preventDefault();
+	        $.ajax({
+	           type: "POST",
+	           url: 'db/comments.php',
+	           data: form.serialize(), // serializes the form's elements.
+	           success: function(data)
+	           {
+	            location.reload();
+	           }
+	    	});
+	});
 
-document.getElementById("send-comment").addEventListener("click", function () {
-  form.submit();
-});
+	var form2 = $('.reply-form');
+	form2.submit(function(e) {
+	    e.preventDefault();
+	        $.ajax({
+	           type: "POST",
+	           url: 'db/comments.php',
+	           data: form2.serialize(), // serializes the form's elements.
+	           success: function(data)
+	           {
+	            location.reload();
+	           }
+	    	});
+	});
 
-function CopyText() {
-  var copyText = document.getElementById("postLink");
-  copyText.select();
-  copyText.setSelectionRange(0, 99999);
-  document.execCommand("copy");
-  alert("Copied: " + copyText.value);
-}
 
-document.getElementById("like-submit").addEventListener("click", function () {
+	document.getElementById("send-comment").addEventListener("click", function () {
+	  form.submit();
+	});
 
-$(".likes-form").submit(function(e) {
-	
-    e.preventDefault(); // avoid to execute the actual submit of the form.
+	document.getElementById("send-reply").addEventListener("click", function () {
+	  form2.submit();
+	});
 
-    var form = $(this);
-    var url = form.attr('action');
 
-    $.ajax({
-           type: "POST",
-           url: 'db/likes.php',
-           data: form.serialize(), // serializes the form's elements.
-           success: function(data)
-           { 
-			location.reload();
-           }
-         });
+	function CopyText() {
+		var copyText = document.getElementById("postLink");
+		copyText.select();
+		copyText.setSelectionRange(0, 99999);
+		document.execCommand("copy");
+		alert("Copied: " + copyText.value);
+	}
 
-});
-});
+	document.getElementById("like-submit").addEventListener("click", function () {
+
+	$(".likes-form").submit(function(e) {
+		
+		e.preventDefault(); // avoid to execute the actual submit of the form.
+
+	    var form = $(this);
+	    var url = form.attr('action');
+
+	    $.ajax({
+	           type: "POST",
+	           url: 'db/likes.php',
+	           data: form.serialize(), // serializes the form's elements.
+	           success: function(data)
+	           { 
+				location.reload();
+	           }
+	         });
+
+		});
+	});
+  
+
+
+function reply(num) {
+
+	isReply = true;
+	var str = "reply-" + num;
+    //console.log(str);                                   
+                                                
+
+	 document.getElementById(str).style.display="block";
+    //console.log( document.getElementById("reply-83").style.display);
+
+
+        }
 
 	</script>
 </body>

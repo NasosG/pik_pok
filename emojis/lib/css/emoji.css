@@ -88,11 +88,19 @@ img.emoji {
     content: none;
 }
 
+
+
+
+
+
+
+
+/*
 .emoji-wysiwyg-editor {
     padding: 6px;
     padding-right: 35px;
     margin-bottom: 0px;
-    min-height: 35px; /* 35 */
+    min-height: 35px; 
     height: 30px;
     max-height: 284px;
     overflow: auto;
@@ -106,6 +114,7 @@ img.emoji {
     -webkit-user-select: text;
     word-wrap: break-word;
 }
+*/
 
 .emoji-wysiwyg-editor.parent-has-scroll {
      padding-right: 40px;
@@ -149,6 +158,16 @@ img.emoji {
     margin-bottom: 8px;
     margin-top: 3px;
 }
+
+
+
+
+
+
+
+
+
+
 
 .emoji-items-wrap1 .emoji-menu-tabs td {
     text-align: center;
