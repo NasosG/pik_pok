@@ -183,7 +183,7 @@ $num = $_GET['message'];
 				<div class="row">
 					
 					<div class="col-12 pb-3">
-						<textarea style="min-height:180px;" id="message" name="message" placeholder="Write your message.."  required><?php echo 'http://localhost/pik_pok/picComments.php?photo_id='.$num.' violated community guidelines by... Type the reason here';?></textarea>
+						<textarea style="min-height:180px;" id="messageText" name="message" placeholder="Write your message.."  required><?php echo 'http://localhost/pik_pok/picComments.php?photo_id='.$num.' violated community guidelines by... Type the reason here';?></textarea>
 					</div>
 				</div>
 				<div class="row">

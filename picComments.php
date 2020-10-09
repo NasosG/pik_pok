@@ -619,7 +619,6 @@ function getRepliessCount($post_id, $con)
 		});
 	});
   
-
 	function reply(num) {
 		var str = "reply-" + num;
 	    //console.log(str);                                                             

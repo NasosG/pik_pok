@@ -43,10 +43,6 @@ img.emoji {
     height: 1em;
 }
 
-.emoji-wysiwyg-editor:empty:before {
-    content: attr(placeholder);
-    color: #9aa2ab;
-}
 
 .emoji-picker-container {
     position: relative;
@@ -80,6 +76,7 @@ img.emoji {
 /* Emoji area */
 .emoji-wysiwyg-editor:empty:before {
     content: attr(placeholder);
+	cursor: text;
     color: #9aa2ab;
 }
 

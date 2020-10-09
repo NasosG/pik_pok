@@ -182,7 +182,7 @@ require('db/errorFuncts.php');
 				<div class="row">
 					
 					<div class="col-12 pb-3">
-						<textarea style="min-height:180px;" id="message" name="message" placeholder="Write your message.."  required></textarea>
+						<textarea style="min-height:180px;" id="messageText" name="message" placeholder="Write your message.."  required></textarea>
 					</div>
 				</div>
 				<div class="row">

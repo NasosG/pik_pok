@@ -8,9 +8,9 @@ function sendContactForm() {
             url: $(a).attr("action"),
             data: l
         }).done(function(a) {
-            alert("Email sent! Thank you for your input"), $("#name").val(""), $("#email").val(""), $("#message").val("")
+            alert("Email sent! Thank you for your input"), $("#name").val(""), $("#email").val(""), $("#messageText").val("")
         }).fail(function(a) {
-            alert("Sorry, try again. An error has occurred during the procedure!"), $("#name").val(""), $("#email").val(""), $("#message").val("")
+            alert("Sorry, try again. An error has occurred during the procedure!"), $("#name").val(""), $("#email").val(""), $("#messageText").val("")
         })
 		grecaptcha.reset();
     })
