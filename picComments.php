@@ -76,6 +76,12 @@ function getRepliessCount($post_id, $con)
 	<!-- font awesome icons kit -->
 	<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
 	<style>
+		#qrcode {
+  			width:140px;
+  			height:140px;
+  			margin-top:15px;
+		}
+
 		.emoji-menu .emoji-items a {
 			background-color:white !important;
 		}
@@ -463,7 +469,14 @@ function getRepliessCount($post_id, $con)
                                             <span><a onclick="CopyText()">Copy Link</a></span>
                                         </div>
                                     </div>
-
+                                    <div class="widget widget-jobs">
+                                        <div class="sd-title mb-3">
+                                            <h3>QR Code</h3>
+                                        </div>
+                                        <div class="p-3 mx-auto mb-4">
+                                           <div class="mx-auto mb-4" id="qrcode"></div>
+                                        </div>
+                                    </div>
                                     <div class="widget widget-jobs">
                                         <div class="sd-title">
                                             <h3>Share</h3>
@@ -552,6 +565,8 @@ function getRepliessCount($post_id, $con)
     <script src="emojis/lib/js/util.js"></script>
     <script src="emojis/lib/js/jquery.emojiarea.js"></script>
     <script src="emojis/lib/js/emoji-picker.js"></script>
+    <!-- QR code library -->
+    <script type="text/javascript" src="qrcodejs/qrcode.min.js"></script>
     <script>
 	$(function() {
 	    // Initializes and creates emoji set from sprite sheet
@@ -652,6 +667,21 @@ function getRepliessCount($post_id, $con)
 		document.getElementById(str).style.display="none";
 	}
 
+var qrcode = new QRCode("qrcode");
+
+function makeCode () {		
+	var elText = document.getElementById("postLink");
+	
+	if (!elText.value) {
+		alert("Input a text");
+		elText.focus();
+		return;
+	}
+	
+	qrcode.makeCode(elText.value);
+}
+
+makeCode();
 	</script>
 </body>
 

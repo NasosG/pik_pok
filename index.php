@@ -47,6 +47,20 @@ if (isset ($_SESSION['username'])) {
 <link rel="stylesheet" type="text/css" href="css/responsive.css">
 <!-- font awesome icons kit -->
 <script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
+<style>
+/*
+	html{
+    		filter: invert(1) hue-rotate(180deg);
+	}
+	html {
+	    transition: color 300ms, background-color 300ms;
+	}
+
+	 img,header,.logo, .fa-heart,.fa-heart-broken,.fa-comment{
+	    filter: invert(1) hue-rotate(-180deg);
+	}
+*/
+</style>
 </head>
 
 <body oncontextmenu="return false;">
