@@ -155,9 +155,7 @@ require('db/errorFuncts.php');
 							
 						</div>
 					";
-			?>
-					
-					
+			?>					
 				</div><!--header-data end-->
 			</div>
 		</header><!--header end-->
@@ -167,8 +165,8 @@ require('db/errorFuncts.php');
 		</div>
 			<div class="bennertext">
 			<div class="innertitle">
-				<h2>World's largest social network #NOT<br></h2>                
-                <p>More than 0.000002 million people globally connected from over 1 country!</p>
+				<h2>World's safest social network <br></h2>                
+                <p>We're committed to bring everyone closer to the things they love, where they can feel safe to express themselves!</p>
             </div>
             </div>
            
@@ -216,8 +214,6 @@ require('db/errorFuncts.php');
 				</div>
 			</div>
 		</footer><!--footer end-->
-
-
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/popper.js"></script>

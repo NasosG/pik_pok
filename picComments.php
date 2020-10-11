@@ -586,25 +586,24 @@ function getRepliessCount($post_id, $con)
 	$('.aform').submit(function(e) {
 	    e.preventDefault();
 	        $.ajax({
-	           type: "POST",
-	           url: 'db/comments.php',
-	           data: form.serialize(), // serializes the form's elements.
-	           success: function(data)
-	           {
-	            location.reload();
-	           }
+	        	type: "POST",
+	        	url: 'db/comments.php',
+	        	data: form.serialize(), // serializes the form's elements.
+	        	success: function(data)
+	        	{
+	            	location.reload();
+	        	}
 	    	});
 	});
-
 
 
 	document.getElementById("send-comment").addEventListener("click", function () {
 	  form.submit();
 	});
-
 	
 
-	function CopyText() {
+	function CopyText() 
+	{
 		var copyText = document.getElementById("postLink");
 		copyText.select();
 		copyText.setSelectionRange(0, 99999);
@@ -613,32 +612,30 @@ function getRepliessCount($post_id, $con)
 	}
 
 	document.getElementById("like-submit").addEventListener("click", function () {
+		$(".likes-form").submit(function(e) {
+			e.preventDefault(); // avoid to execute the actual submit of the form.
 
-	$(".likes-form").submit(function(e) {
-		
-		e.preventDefault(); // avoid to execute the actual submit of the form.
+		    var form = $(this);
+		    var url = form.attr('action');
 
-	    var form = $(this);
-	    var url = form.attr('action');
-
-	    $.ajax({
-	           type: "POST",
-	           url: 'db/likes.php',
-	           data: form.serialize(), // serializes the form's elements.
-	           success: function(data)
-	           { 
-				location.reload();
-	           }
-	         });
-
+			$.ajax({
+		    	type: "POST",
+		    	url: 'db/likes.php',
+		    	data: form.serialize(), // serializes the form's elements.
+		    	success: function(data)
+		    	{ 
+					location.reload();
+		    	}
+			});
 		});
 	});
   
-	function reply(num) {
-		var str = "reply-" + num;
-	    //console.log(str);                                                             
-		document.getElementById(str).style.display="block";
-	    //console.log( document.getElementById("reply-83").style.display);
+	function reply(num) 
+	{
+		var str = "reply-" + num;                                           
+		document.getElementById(str).style.display = "block";
+		//console.log(str);    
+	    //console.log(document.getElementById(str).style.display);
 	}
 
 	function sendReplyForm(num)
@@ -648,13 +645,13 @@ function getRepliessCount($post_id, $con)
 		form2.submit(function(e) {
 		    e.preventDefault();
 		        $.ajax({
-		           type: "POST",
-		           url: 'db/comments.php',
-		           data: form2.serialize(), // serializes the form's elements.
-		           success: function(data)
-		           {
-		            location.reload();
-		           }
+		        	type: "POST",
+		        	url: 'db/comments.php',
+		        	data: form2.serialize(), // serializes the form's elements.
+		        	success: function(data)
+		        	{
+		        		location.reload();
+		        	}
 		    	});
 		});
 		form2.submit();
@@ -667,21 +664,23 @@ function getRepliessCount($post_id, $con)
 		document.getElementById(str).style.display="none";
 	}
 
-var qrcode = new QRCode("qrcode");
+	var qrcode = new QRCode("qrcode");
 
-function makeCode () {		
-	var elText = document.getElementById("postLink");
-	
-	if (!elText.value) {
-		alert("Input a text");
-		elText.focus();
-		return;
+	function makeCode () 
+	{		
+		var elText = document.getElementById("postLink");
+		
+		if (!elText.value) {
+			alert("Input a text");
+			elText.focus();
+			return;
+		}
+		
+		qrcode.makeCode(elText.value);
 	}
-	
-	qrcode.makeCode(elText.value);
-}
 
-makeCode();
+	makeCode();
+
 	</script>
 </body>
 
