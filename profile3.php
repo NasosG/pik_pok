@@ -20,10 +20,14 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 
 $query1 = "SELECT * FROM images WHERE username = '$uname' ORDER BY photo_likes DESC LIMIT 12";
 $result1 = mysqli_query($con, $query1);
+// get user id from username
+$query_uid = "SELECT id FROM members WHERE username = '$uname' LIMIT 1";
+$result_uid = mysqli_query($con, $query_uid);
+$row_uid = mysqli_fetch_array($result_uid);
+$uid = $row_uid[0];
 // saved posts ordered by their date (max 12 rows again)
-$query_save_post = "SELECT * FROM images, saved_posts WHERE images.photo_id=saved_posts.post_id LIMIT 12";
+$query_save_post = "SELECT * FROM images, saved_posts WHERE saved_posts.user_id='$uid' AND images.photo_id=saved_posts.post_id LIMIT 12";
 $result_save_post = mysqli_query($con, $query_save_post);
-
 ?>
 
 <!DOCTYPE html>
