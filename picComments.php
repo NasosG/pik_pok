@@ -23,6 +23,10 @@ $row_after_count = mysqli_fetch_row($result_of_count);
 $string_array  = $row2['photo_tag'];
 $photo_tag = explode("#", $string_array);
 
+$query_save_post = "SELECT COUNT(*) FROM saved_posts WHERE post_id = $photo_id";
+$result_save_post = mysqli_query($con, $query_save_post);
+$row_save_post = mysqli_fetch_row($result_save_post);
+
 // Receives a user id and returns the username
 function getUsernameById($id, $con) 
 {
@@ -274,19 +278,29 @@ function getRepliessCount($post_id, $con)
 														<span><i class="fa fa-clock-o" aria-hidden="true"> '.date("d-m-Y H:i:s", strtotime($row['date_posted'])).'</i></span>'; ?>
                                                     </div>
                                                 </div>
+                                                <form action="db/save_post.php" method="post" class="spa-form" id="spa-form" name="spa-form">
                                                 <div class="ed-opts">
                                                     <a href="#" title="" class="ed-opts-open"><i class="fa fa-ellipsis-v"></i></a>
+
                                                     <ul class="ed-options">
+                                                    	<?php echo "<input type='hidden' name='photo_id' id='photo_id' value='".$row['photo_id']."' />";?>
                                                     	<?php 
                                                     	if ($_SESSION['username'] == $user_of_post)
 															echo'<li><a href="#" title="">Edit Post</a></li>';
                                                         else echo '<li><a href="report.php?message='.$photo_id.'" title="">Report</a></li>';
                                                         ?>
-                                                        <li><a href="#" title="">Unsaved</a></li>
+                                                        <?php 
+														if($row_save_post[0] > 0) {
+                                                       		echo '<li><a id="save-but" href="#" title="" onclick="savePost();">Saved</a></li>';
+														}
+														else 
+															echo '<li><a id="save-but" href="#" title="" onclick="savePost();">Unsaved</a></li>';
+                                                        ?>
                                                         <li><a href="#" onclick="CopyText()" title="">Copy Link</a></li>
                                                         <li><a class="close-ed-opts" href="#" title="">Close</a></li>
                                                     </ul>
                                                 </div>
+                                           	 	</form>
                                             </div>
 
                                             <div  class="pt-3 job_descp accountnone">
@@ -597,10 +611,28 @@ function getRepliessCount($post_id, $con)
 	});
 
 
+	function savePost() {
+		var save_form = $('.spa-form');
+		save_form.submit(function(e) {
+	    e.preventDefault();
+	        $.ajax({
+	        	type: "POST",
+	        	url: 'db/save_post.php',
+	        	data: save_form.serialize(), // serializes the form's elements.
+	        	success: function(data)
+	        	{
+	            	location.reload();
+	            	alert("saved");
+	        	}
+	    	});
+	});
+
+		save_form.submit();
+	}
+
 	document.getElementById("send-comment").addEventListener("click", function () {
 	  form.submit();
 	});
-	
 
 	function CopyText() 
 	{

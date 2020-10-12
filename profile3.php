@@ -16,6 +16,14 @@ $result_likes = mysqli_query($con, $query);
 for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 	$sum_likes += $likes['photo_likes'];
 
+///////////////////////////////////////////
+
+$query1 = "SELECT * FROM images WHERE username = '$uname' ORDER BY photo_likes DESC LIMIT 12";
+$result1 = mysqli_query($con, $query1);
+// saved posts ordered by their date (max 12 rows again)
+$query_save_post = "SELECT * FROM images, saved_posts WHERE images.photo_id=saved_posts.post_id LIMIT 12";
+$result_save_post = mysqli_query($con, $query_save_post);
+
 ?>
 
 <!DOCTYPE html>
@@ -386,8 +394,53 @@ for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
 												
 												?>
 											</ul>
-										</div><!--pf-gallery end-->
-									</div><!--widget-portfolio end-->
+										</div>
+									</div>
+
+
+									<div class="widget widget-portfolio">
+										<div class="wd-heady">
+											<h3>Best-liked posts</h3>
+											<img src="images/photo-icon.png" alt="">
+										</div>
+										<div class="pf-gallery">
+											<ul>
+												<?php 
+												$len = mysqli_num_rows($result1);
+												if ($len === 0)  echo 'No posts yet';
+
+												else
+													while ($row_likes = mysqli_fetch_array($result1)) {
+													    echo '<li><a href="picComments.php?photo_id='.$row_likes['photo_id'].'" title="" ><img style=" border-radius:10%;height:53px;width:70px;" src="'.$row_likes['photo_path'].$row_likes['photo_name'].'" alt=""></a></li>';
+													}
+												
+												?>
+											</ul>
+										</div>
+									</div>
+
+									<div class="widget widget-portfolio">
+										<div class="wd-heady">
+											<h3>Saved posts</h3>
+											<img src="images/photo-icon.png" alt="">
+										</div>
+										<div class="pf-gallery">
+											<ul>
+												<?php 
+												$len = mysqli_num_rows($result_save_post);
+
+												if ($len === 0)  echo 'No posts yet';
+
+												else
+													while ($row_saves = mysqli_fetch_array($result_save_post)) {
+													    echo '<li><a href="picComments.php?photo_id='.$row_saves['post_id'].'" title="" ><img style=" border-radius:10%;height:53px;width:70px;" src="'.$row_saves['photo_path'].$row_saves['photo_name'].'" alt=""></a></li>';
+													}
+												
+												?>
+											</ul>
+										</div>
+
+									</div>
 								</div><!--right-sidebar end-->
 							</div>
 							</div>
