@@ -1,3 +1,4 @@
+
 <?php
 include("db/auth.php"); //include auth.php file on all secure pages 
 require('db/db.php');
@@ -26,6 +27,13 @@ $fname = $row_picture['fname'];
 $lname = $row_picture['lname'];
 $email = $row_picture['email'];
 $bio = $row_picture['bio'];
+
+function isSaved($con, $post_id) {
+	$query_count_saves = "SELECT COUNT(*) FROM saved_posts WHERE post_id = $post_id";
+	$result_count_saves = mysqli_query($con, $query_count_saves);
+	$row_count_saves = mysqli_fetch_row($result_count_saves);
+	return ($row_count_saves[0] > 0);
+}
 
 ?>
 
@@ -320,7 +328,13 @@ $bio = $row_picture['bio'];
 														<li><a href="picComments.php?photo_id='.$photos_ids[$i-1].'"'.' 
 														title="">Comment</a></li>
 														
-														<li><a href="#" title="">Unsaved</a></li>
+														'; 
+														if(isSaved($con, $photos_ids[$i-1])) {
+                                                       		echo '<li><a href="#" title="">Saved</a></li>';
+														}
+														else 
+															echo '<li><a href="#" onclick="savePost('.$photos_ids[$i-1].')" title="">Unsaved</a></li>';
+                                                        echo '
 
 														<li><a class="close-ed-opts" href="#" onclick="funct" title="">Close</a></li>';
 													}
@@ -521,6 +535,20 @@ $(".likes-form").submit(function(e) {
 
 });
 
+function savePost(num) {
+    var values = {
+        'photo_id': num
+    };
+    $.ajax({
+        type: "POST",
+        url: 'db/save_post.php',
+        data: values,
+        success: function(data) {
+            location.reload();
+            //alert("saved");
+        }
+    });
+}
 
 </script>
 

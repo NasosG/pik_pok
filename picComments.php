@@ -291,7 +291,7 @@ function getRepliessCount($post_id, $con)
                                                         ?>
                                                         <?php 
 														if($row_save_post[0] > 0) {
-                                                       		echo '<li><a id="save-but" href="#" title="" onclick="savePost();">Saved</a></li>';
+                                                       		echo '<li><a id="save-but" href="#" title="">Saved</a></li>';
 														}
 														else 
 															echo '<li><a id="save-but" href="#" title="" onclick="savePost();">Unsaved</a></li>';

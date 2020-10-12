@@ -28,6 +28,14 @@ $uid = $row_uid[0];
 // saved posts ordered by their date (max 12 rows again)
 $query_save_post = "SELECT * FROM images, saved_posts WHERE saved_posts.user_id='$uid' AND images.photo_id=saved_posts.post_id LIMIT 12";
 $result_save_post = mysqli_query($con, $query_save_post);
+
+function isSaved($con, $post_id) {
+	$query_count_saves = "SELECT COUNT(*) FROM saved_posts WHERE post_id = $post_id";
+	$result_count_saves = mysqli_query($con, $query_count_saves);
+	$row_count_saves = mysqli_fetch_row($result_count_saves);
+	return ($row_count_saves[0] > 0);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +63,7 @@ $result_save_post = mysqli_query($con, $query_save_post);
 	</style>
 </head>
 
-<body oncontextmenu="return false;">	
+<body>	
 	<div class="wrapper">	
 		<header>
 			<div class="container">
@@ -296,7 +304,7 @@ $result_save_post = mysqli_query($con, $query_save_post);
 									</div><!--post-topbar end-->
 									<div class="posts-section">
 									<?php 
-									$i=0;
+									$i = 0;
 									$photos_table = array();
 									$photos_ids = array();
 									while ($row = mysqli_fetch_array($result)) {
@@ -329,7 +337,14 @@ $result_save_post = mysqli_query($con, $query_save_post);
 													<ul class="ed-options">
 														<li><a href="#" title="">Edit Post</a></li>
 														<li><a href="picComments.php?photo_id='.$photos_ids[$i-1].'"'.' title="">Comment</a></li>
-														<li><a href="#" title="">Unsaved</a></li>
+														'; 
+														if(isSaved($con, $photos_ids[$i-1])) {
+                                                       		echo '<li><a href="#" title="">Saved</a></li>';
+														}
+														else 
+															echo '<li><a href="#" onclick="savePost('.$photos_ids[$i-1].')" title="">Unsaved</a></li>';
+                                                        echo '
+														
 														<li><a class="close-ed-opts" href="#" onclick="funct" title="">Close</a></li>
 													</ul>
 												</div>
@@ -354,8 +369,7 @@ $result_save_post = mysqli_query($con, $query_save_post);
                                                <ul class="like-com">
 													<li>
 														<button style="background:white; border:none;" class="like-submit-btn"><a id="like-submit" style="color:#e44d3a;" class="com-page-likes"><i class="fa fa-heart"></i> Like</a></button>
-													</li>
-														
+													</li>	
 												</ul>
 												<ul style= "float:right;" class="like-com">
 													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-thumbs-up"></i> <?php echo 'Likes '.$row['photo_likes'];?></a></li>
@@ -364,10 +378,7 @@ $result_save_post = mysqli_query($con, $query_save_post);
 											</div>
 											</form>
 										</div><!--post-bar end-->
-										<?php
-										} 
-									?>
-										
+							<?php	}	// while-end ?>	
 									</div><!--posts-section end-->
 								</div><!--main-ws-sec end-->
 							</div>
@@ -395,7 +406,6 @@ $result_save_post = mysqli_query($con, $query_save_post);
 														*/
 													    echo '<li><a href="picComments.php?photo_id='.$photos_ids[$i].'" title="" ><img style=" border-radius:10%;height:53px;width:70px;" src="'.$photos_table[$i].'" alt=""></a></li>';
 													}
-												
 												?>
 											</ul>
 										</div>
@@ -417,7 +427,6 @@ $result_save_post = mysqli_query($con, $query_save_post);
 													while ($row_likes = mysqli_fetch_array($result1)) {
 													    echo '<li><a href="picComments.php?photo_id='.$row_likes['photo_id'].'" title="" ><img style=" border-radius:10%;height:53px;width:70px;" src="'.$row_likes['photo_path'].$row_likes['photo_name'].'" alt=""></a></li>';
 													}
-												
 												?>
 											</ul>
 										</div>
@@ -439,7 +448,6 @@ $result_save_post = mysqli_query($con, $query_save_post);
 													while ($row_saves = mysqli_fetch_array($result_save_post)) {
 													    echo '<li><a href="picComments.php?photo_id='.$row_saves['post_id'].'" title="" ><img style=" border-radius:10%;height:53px;width:70px;" src="'.$row_saves['photo_path'].$row_saves['photo_name'].'" alt=""></a></li>';
 													}
-												
 												?>
 											</ul>
 										</div>
@@ -453,64 +461,10 @@ $result_save_post = mysqli_query($con, $query_save_post);
 			</div>
 		</main>
 
-
-		<div class="post-popup pst-pj">
-			<div class="post-project">
-				<h3>Post a project</h3>
-				<div class="post-project-fields">
-					<form>
-						<div class="row">
-							<div class="col-lg-12">
-								<input type="text" name="title" placeholder="Title">
-							</div>
-							<div class="col-lg-12">
-								<div class="inp-field">
-									<select>
-										<option>Category</option>
-										<option>Category 1</option>
-										<option>Category 2</option>
-										<option>Category 3</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-12">
-								<input type="text" name="skills" placeholder="Skills">
-							</div>
-							<div class="col-lg-12">
-								<div class="price-sec">
-									<div class="price-br">
-										<input type="text" name="price1" placeholder="Price">
-										<i class="fa fa-dollar"></i>
-									</div>
-									<span>To</span>
-									<div class="price-br">
-										<input type="text" name="price1" placeholder="Price">
-										<i class="fa fa-dollar"></i>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-12">
-								<textarea name="description" placeholder="Description"></textarea>
-							</div>
-							<div class="col-lg-12">
-								<ul>
-									<li><button class="active" type="submit" value="post">Post</button></li>
-									<li><a href="#" title="">Cancel</a></li>
-								</ul>
-							</div>
-						</div>
-					</form>
-				</div><!--post-project-fields end-->
-				<a href="#" title=""><i class="fa fa-times-circle-o"></i></a>
-			</div><!--post-project end-->
-		</div><!--post-project-popup end-->
-
-	
 		<div class="post-popup job_post">
 			<div class="post-project">
 				<h3>Post Image</h3>
 				<div class="post-project-fields">
-				
 					<form id="post_form" name="post_form" method="post" action = "db/addnew.php" enctype= "multipart/form-data">
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-12">
@@ -521,9 +475,7 @@ $result_save_post = mysqli_query($con, $query_save_post);
 										<button class="btn-up">Upload an Image</button>
 										<input type="file" id="fileToUpload" name="fileToUpload" class="input-file"></input>
 									</div>
-								
 									<?php
-									
 									function isMobileDevice() { 
 									    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo 
 									|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i" 
@@ -535,7 +487,6 @@ $result_save_post = mysqli_query($con, $query_save_post);
 											  <button disabled class="btn-up" id="mylink"><a class="a-up" href="webcam.php">Take a photo</a></button>
 											</div> ';
 									}
-
 									?>	
 									</div>					
 							<img style="max-height:32vh;margin-left:auto;margin-right:auto" src="images/SocialMediaPost.png" id="add-prof-pic"></img>
@@ -569,45 +520,58 @@ document.getElementById("file").onchange = function() {
     document.getElementById("changeAvatar").submit();
 };
 
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            
-            reader.onload = function (e) {
-                $('#add-prof-pic').attr('src', e.target.result);
-            }
-            
-            reader.readAsDataURL(input.files[0]);
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('#add-prof-pic').attr('src', e.target.result);
         }
+
+        reader.readAsDataURL(input.files[0]);
     }
-    
-    $("#fileToUpload").change(function(){
-        readURL(this);
-    });
+}
+
+$("#fileToUpload").change(function() {
+    readURL(this);
+});
 
 document.getElementsByClassName("like-submit-btn").onclick = function() {
-    	document.getElementsByClassName("likes-form").submit();
+	document.getElementsByClassName("likes-form").submit();
 }
 
 $(".likes-form").submit(function(e) {
-	
+
     e.preventDefault(); // avoid to execute the actual submit of the form.
 
     var form = $(this);
     var url = form.attr('action');
 
     $.ajax({
-           type: "POST",
-           url: 'db/likes.php',
-           data: form.serialize(), // serializes the form's elements.
-           success: function(data)
-           { 
-			location.reload();
-           }
-         });
+        type: "POST",
+        url: 'db/likes.php',
+        data: form.serialize(), // serializes the form's elements.
+        success: function(data) {
+            location.reload();
+        }
+    });
 
 });
 
+function savePost(num) {
+    var values = {
+        'photo_id': num
+    };
+    $.ajax({
+        type: "POST",
+        url: 'db/save_post.php',
+        data: values,
+        success: function(data) {
+            location.reload();
+            //alert("saved");
+        }
+    });
+}
 
 </script>
 

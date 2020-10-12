@@ -47,20 +47,6 @@ if (isset ($_SESSION['username'])) {
 <link rel="stylesheet" type="text/css" href="css/responsive.css">
 <!-- font awesome icons kit -->
 <script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
-<style>
-/*
-	html{
-    		filter: invert(1) hue-rotate(180deg);
-	}
-	html {
-	    transition: color 300ms, background-color 300ms;
-	}
-
-	 img,header,.logo, .fa-heart,.fa-heart-broken,.fa-comment{
-	    filter: invert(1) hue-rotate(-180deg);
-	}
-*/
-</style>
 </head>
 
 <body oncontextmenu="return false;">
@@ -192,9 +178,7 @@ if (isset ($_SESSION['username'])) {
 						</div>
 					";
 			?>
-
 					
-				
 				
 				</div><!--header-data end-->
 			</div>
@@ -209,11 +193,10 @@ if (isset ($_SESSION['username'])) {
 					<div class="row">
 				<?php 
 				while ($row = mysqli_fetch_array($result)) {
-				$newDate = date("d-m-Y", strtotime($row['date_posted']));
-				echo '	
-						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-						
-							<div >
+					$newDate = date("d-m-Y", strtotime($row['date_posted']));
+					echo '	
+						<div class="col-lg-3 col-md-4 col-sm-6 col-12">						
+							<div>
 							<form id="myform" class="likes-comments-form company_profile_info" name="myform" method="get" action="picComments.php" >
 								<div class="company-up-info">
 									';
@@ -318,8 +301,7 @@ if (isset ($_SESSION['username'])) {
 var formSubmit = true;
 
 $('.btn2').on('click', function() {
-
-formSubmit = false;
+	formSubmit = false;
     $.ajax({
     	//type: "GET",
         url : 'picComments.php',
@@ -327,29 +309,26 @@ formSubmit = false;
 });
 
 $(".likes-comments-form").submit(function(e) {
-	
-	if(!formSubmit) return;
-	
-	
+
+    if (!formSubmit) return;
+
     e.preventDefault(); // avoid to execute the actual submit of the form.
 
     var form = $(this);
     var url = form.attr('action');
 
     $.ajax({
-           type: "POST",
-           url: 'db/likes.php',
-           data: form.serialize(), // serializes the form's elements.
-           success: function(data)
-           {  
-			$(form).children("#likesNum").html( " Likes: <img src='images/likes.png' alt='' height='18' width='18'>" + data + "</img>" );
-           }
-         });
+        type: "POST",
+        url: 'db/likes.php',
+        data: form.serialize(), // serializes the form's elements.
+        success: function(data) {
+            $(form).children("#likesNum").html(" Likes: <img src='images/likes.png' alt='' height='18' width='18'>" + data + "</img>");
+        }
+    });
 
 });
 
-function changeLikeState(x1){
-	
+function changeLikeState(x1) {	
 	var x = x1.children;
 	//alert (x[0].textContent );
 	if(x[0].textContent.includes("Unlike")) {
