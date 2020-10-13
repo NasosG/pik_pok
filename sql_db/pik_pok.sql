@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2020 at 02:11 AM
+-- Generation Time: Oct 14, 2020 at 01:35 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -32,7 +32,7 @@ CREATE TABLE `chat_message` (
   `by_user_id` int(11) NOT NULL,
   `to_user_id` int(11) NOT NULL,
   `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `time` datetime NOT NULL,
+  `time_sent` datetime NOT NULL,
   `status` enum('read','unread') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'unread'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -40,8 +40,16 @@ CREATE TABLE `chat_message` (
 -- Dumping data for table `chat_message`
 --
 
-INSERT INTO `chat_message` (`chat_message_id`, `by_user_id`, `to_user_id`, `message`, `time`, `status`) VALUES
-(1, 50, 40, 'hello there', '2020-10-11 00:58:07', 'unread');
+INSERT INTO `chat_message` (`chat_message_id`, `by_user_id`, `to_user_id`, `message`, `time_sent`, `status`) VALUES
+(1, 50, 40, 'hello there', '2020-10-11 00:58:07', 'unread'),
+(2, 40, 50, 'hello to you too', '2020-10-13 18:28:22', 'unread'),
+(3, 50, 40, 'what\'s up??????', '2020-10-11 00:58:07', 'unread'),
+(4, 40, 50, 'nooothing really sdfjsd', '2020-10-13 18:28:22', 'unread'),
+(5, 40, 50, 'anyway have a nice day mate', '2020-10-14 01:49:07', 'unread'),
+(6, 50, 40, 'yeah u2', '2020-10-14 01:49:24', 'unread'),
+(7, 40, 49, 'γειαααα', '2020-10-14 02:17:42', 'unread'),
+(8, 50, 40, 'γεια και παλι', '2020-10-14 02:22:41', 'unread'),
+(9, 40, 50, 'γεια τι λεει', '2020-10-14 02:23:00', 'unread');
 
 -- --------------------------------------------------------
 
@@ -158,7 +166,8 @@ INSERT INTO `ip_mac_addresses` (`im_id`, `IP_address`, `mac_address`, `user_name
 (79, '::1', 'B0-6E-BF-D1-26-0A', 'gio2', '2020-10-02 22:55:41', 0, 'windows', 'Google Chrome'),
 (84, '::1', 'B0-6E-BF-D1-26-0A', 'mike', '2020-10-02 23:37:47', 0, 'windows', 'Google Chrome'),
 (105, '::1', 'B0-6E-BF-D1-26-0A', 'thn12', '2020-10-12 19:50:06', 0, 'windows', 'Google Chrome'),
-(108, '::1', '3C-A0-67-C1-E3-B2', 'thn12', '2020-10-13 02:50:24', 0, 'windows', 'Mozilla Firefox');
+(112, '::1', '3C-A0-67-C1-E3-B2', 'thn12', '2020-10-14 02:25:52', 0, 'windows', 'Mozilla Firefox'),
+(113, '::1', '3C-A0-67-C1-E3-B2', 'kostas1234', '2020-10-14 02:26:13', 0, 'windows', 'Mozilla Firefox');
 
 -- --------------------------------------------------------
 
@@ -191,10 +200,9 @@ INSERT INTO `members` (`username`, `password`, `fname`, `lname`, `email`, `date_
 ('opl', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'manolis', 'klo', 'gnasos219@gmail.com', '2020-06-06', 47, 0, '2020-06-02', 'ekthema.png', 'uploads/users/47/', NULL),
 ('makis', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'makis', 'makis', 'makis@makis.gr', '2020-06-06', 48, 0, '2020-06-30', 'ekthema.png', 'uploads/users/48/', NULL),
 ('marigeorgitsa', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Γιωργίτσα', 'Μακριγεώργου', 'maritsa@maritso.uiop', '2020-06-06', 49, 1, '2020-06-18', 'tupisa.png', 'uploads/users/49/', NULL),
-('kostas1234', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'James', 'Jones', 'sitetest23456@gmail.com', '2020-06-11', 50, 0, '2020-06-17', 'lias.jpg', 'uploads/users/50/', NULL),
+('kostas1234', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Kostas', 'Jones', 'sitetest23456@gmail.com', '2020-06-11', 50, 0, '2020-06-17', 'lias.jpg', 'uploads/users/50/', NULL),
 ('omar', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Nick', 'asd', 'asda@dfg.gt', '2020-06-11', 51, 0, '2020-06-08', 'wolf2.jpg', 'uploads/users/51/', NULL),
 ('john2', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'john', 'johnson', 'klo@we.ht', '2020-06-11', 52, 0, '1995-02-11', 'default-avatar.jpg', 'images/', NULL),
-('abcd123', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Akratitos', 'Mitsareas', 'krt@G.grf', '2020-10-01', 58, 0, '1999-12-01', 'Untitled.png', 'uploads/users/58/', NULL),
 ('mike', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'giorgos', 'kloipoilo', 'opkl@riop.gre', '2020-10-02', 59, 0, '2004-10-01', 'sdf.png', 'uploads/users/59/', 'I am therefore I am'),
 ('gio2', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'giorgitsa', 'georgiou', 'giorgitsa@uio.jk', '2020-10-02', 60, 1, '2004-09-27', 'default-avatar.jpg', 'images/', NULL);
 
@@ -253,10 +261,10 @@ INSERT INTO `post_likes` (`post_likes_id`, `liked_by_user`, `posted_photo_id`, `
 (199, 51, 12, '2020-06-11 19:42:38'),
 (676, 45, 16, '2020-06-14 00:23:00'),
 (755, 40, 13, '2020-09-28 22:02:10'),
-(757, 40, 16, '2020-09-28 22:02:28'),
 (758, 40, 12, '2020-09-28 22:05:05'),
 (775, 40, 10, '2020-10-12 16:57:03'),
-(776, 40, 37, '2020-10-12 22:43:10');
+(776, 40, 37, '2020-10-12 22:43:10'),
+(778, 40, 16, '2020-10-14 02:28:48');
 
 -- --------------------------------------------------------
 
@@ -360,7 +368,7 @@ ALTER TABLE `saved_posts`
 -- AUTO_INCREMENT for table `chat_message`
 --
 ALTER TABLE `chat_message`
-  MODIFY `chat_message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `chat_message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `comment_likes`
@@ -390,7 +398,7 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `ip_mac_addresses`
 --
 ALTER TABLE `ip_mac_addresses`
-  MODIFY `im_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `im_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT for table `members`
@@ -408,7 +416,7 @@ ALTER TABLE `post_comments`
 -- AUTO_INCREMENT for table `post_likes`
 --
 ALTER TABLE `post_likes`
-  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=777;
+  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=779;
 
 --
 -- AUTO_INCREMENT for table `saved_posts`
