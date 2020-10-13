@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2020 at 07:02 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Generation Time: Oct 13, 2020 at 02:11 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -157,8 +157,8 @@ INSERT INTO `ip_mac_addresses` (`im_id`, `IP_address`, `mac_address`, `user_name
 (74, '::1', 'B0-6E-BF-D1-26-0A', 'opl', '2020-10-01 17:28:06', 0, 'windows', 'Google Chrome'),
 (79, '::1', 'B0-6E-BF-D1-26-0A', 'gio2', '2020-10-02 22:55:41', 0, 'windows', 'Google Chrome'),
 (84, '::1', 'B0-6E-BF-D1-26-0A', 'mike', '2020-10-02 23:37:47', 0, 'windows', 'Google Chrome'),
-(93, '::1', '3C-A0-67-C1-E3-B2', 'thn12', '2020-10-03 16:56:59', 0, 'windows', 'Google Chrome'),
-(105, '::1', 'B0-6E-BF-D1-26-0A', 'thn12', '2020-10-12 19:50:06', 0, 'windows', 'Google Chrome');
+(105, '::1', 'B0-6E-BF-D1-26-0A', 'thn12', '2020-10-12 19:50:06', 0, 'windows', 'Google Chrome'),
+(108, '::1', '3C-A0-67-C1-E3-B2', 'thn12', '2020-10-13 02:50:24', 0, 'windows', 'Mozilla Firefox');
 
 -- --------------------------------------------------------
 
@@ -188,11 +188,11 @@ CREATE TABLE `members` (
 INSERT INTO `members` (`username`, `password`, `fname`, `lname`, `email`, `date_of_registration`, `id`, `sex`, `date_of_birth`, `profile_pic`, `picture_path`, `bio`) VALUES
 ('thn12', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Μιχάλης', 'Πανταζής', 'asd@uop.gr', '2020-05-21', 40, 0, '1989-06-11', 'anonymous_hacker.jpg', 'uploads/users/40/', NULL),
 ('mara10', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'μαρια', 'αντεπαλοβ', 'mrt@iop.com', '2020-06-02', 45, 1, '1987-10-29', 'Screenshot_160.png', 'uploads/users/45/', NULL),
-('opl', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'mlo', 'klo', 'gnasos219@gmail.com', '2020-06-06', 47, 0, '2020-06-02', 'ekthema.png', 'uploads/users/47/', NULL),
+('opl', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'manolis', 'klo', 'gnasos219@gmail.com', '2020-06-06', 47, 0, '2020-06-02', 'ekthema.png', 'uploads/users/47/', NULL),
 ('makis', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'makis', 'makis', 'makis@makis.gr', '2020-06-06', 48, 0, '2020-06-30', 'ekthema.png', 'uploads/users/48/', NULL),
 ('marigeorgitsa', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Γιωργίτσα', 'Μακριγεώργου', 'maritsa@maritso.uiop', '2020-06-06', 49, 1, '2020-06-18', 'tupisa.png', 'uploads/users/49/', NULL),
-('kostas1234', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'jkfhg', 'fgh', 'sitetest23456@gmail.com', '2020-06-11', 50, 0, '2020-06-17', 'lias.jpg', 'uploads/users/50/', NULL),
-('omar', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'asd', 'asd', 'asda@dfg.gt', '2020-06-11', 51, 0, '2020-06-08', 'wolf2.jpg', 'uploads/users/51/', NULL),
+('kostas1234', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'James', 'Jones', 'sitetest23456@gmail.com', '2020-06-11', 50, 0, '2020-06-17', 'lias.jpg', 'uploads/users/50/', NULL),
+('omar', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Nick', 'asd', 'asda@dfg.gt', '2020-06-11', 51, 0, '2020-06-08', 'wolf2.jpg', 'uploads/users/51/', NULL),
 ('john2', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'john', 'johnson', 'klo@we.ht', '2020-06-11', 52, 0, '1995-02-11', 'default-avatar.jpg', 'images/', NULL),
 ('abcd123', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Akratitos', 'Mitsareas', 'krt@G.grf', '2020-10-01', 58, 0, '1999-12-01', 'Untitled.png', 'uploads/users/58/', NULL),
 ('mike', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'giorgos', 'kloipoilo', 'opkl@riop.gre', '2020-10-02', 59, 0, '2004-10-01', 'sdf.png', 'uploads/users/59/', 'I am therefore I am'),
@@ -255,8 +255,8 @@ INSERT INTO `post_likes` (`post_likes_id`, `liked_by_user`, `posted_photo_id`, `
 (755, 40, 13, '2020-09-28 22:02:10'),
 (757, 40, 16, '2020-09-28 22:02:28'),
 (758, 40, 12, '2020-09-28 22:05:05'),
-(770, 40, 37, '2020-10-03 03:18:51'),
-(775, 40, 10, '2020-10-12 16:57:03');
+(775, 40, 10, '2020-10-12 16:57:03'),
+(776, 40, 37, '2020-10-12 22:43:10');
 
 -- --------------------------------------------------------
 
@@ -278,7 +278,9 @@ CREATE TABLE `saved_posts` (
 INSERT INTO `saved_posts` (`saved_post_id`, `user_id`, `post_id`, `time_saved`) VALUES
 (13, 40, 17, '2020-10-12 19:21:25'),
 (14, 40, 16, '2020-10-12 19:21:49'),
-(15, 40, 37, '2020-10-12 19:58:36');
+(15, 40, 37, '2020-10-12 19:58:36'),
+(18, 40, 35, '2020-10-13 00:00:02'),
+(23, 40, 15, '2020-10-13 00:29:53');
 
 --
 -- Indexes for dumped tables
@@ -388,7 +390,7 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `ip_mac_addresses`
 --
 ALTER TABLE `ip_mac_addresses`
-  MODIFY `im_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `im_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `members`
@@ -406,13 +408,13 @@ ALTER TABLE `post_comments`
 -- AUTO_INCREMENT for table `post_likes`
 --
 ALTER TABLE `post_likes`
-  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=776;
+  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=777;
 
 --
 -- AUTO_INCREMENT for table `saved_posts`
 --
 ALTER TABLE `saved_posts`
-  MODIFY `saved_post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `saved_post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
