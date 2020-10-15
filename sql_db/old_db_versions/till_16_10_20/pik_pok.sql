@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2020 at 11:02 PM
+-- Generation Time: Oct 14, 2020 at 01:35 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `pik_pok`
 --
-CREATE DATABASE IF NOT EXISTS `pik_pok` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `pik_pok`;
 
 -- --------------------------------------------------------
 
@@ -168,8 +166,8 @@ INSERT INTO `ip_mac_addresses` (`im_id`, `IP_address`, `mac_address`, `user_name
 (79, '::1', 'B0-6E-BF-D1-26-0A', 'gio2', '2020-10-02 22:55:41', 0, 'windows', 'Google Chrome'),
 (84, '::1', 'B0-6E-BF-D1-26-0A', 'mike', '2020-10-02 23:37:47', 0, 'windows', 'Google Chrome'),
 (105, '::1', 'B0-6E-BF-D1-26-0A', 'thn12', '2020-10-12 19:50:06', 0, 'windows', 'Google Chrome'),
-(117, '::1', '3C-A0-67-C1-E3-B2', 'thn12', '2020-10-15 19:28:05', 0, 'windows', 'Mozilla Firefox'),
-(118, '::1', '3C-A0-67-C1-E3-B2', 'kostas1234', '2020-10-15 21:26:00', 0, 'windows', 'Google Chrome');
+(112, '::1', '3C-A0-67-C1-E3-B2', 'thn12', '2020-10-14 02:25:52', 0, 'windows', 'Mozilla Firefox'),
+(113, '::1', '3C-A0-67-C1-E3-B2', 'kostas1234', '2020-10-14 02:26:13', 0, 'windows', 'Mozilla Firefox');
 
 -- --------------------------------------------------------
 
@@ -271,27 +269,6 @@ INSERT INTO `post_likes` (`post_likes_id`, `liked_by_user`, `posted_photo_id`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `relationship`
---
-
-CREATE TABLE `relationship` (
-  `relationship_id` int(11) NOT NULL,
-  `user_one_id` int(11) NOT NULL,
-  `user_two_id` int(11) NOT NULL,
-  `status` tinyint(4) NOT NULL,
-  `action_user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `relationship`
---
-
-INSERT INTO `relationship` (`relationship_id`, `user_one_id`, `user_two_id`, `status`, `action_user_id`) VALUES
-(1, 40, 50, 1, 50);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `saved_posts`
 --
 
@@ -378,13 +355,6 @@ ALTER TABLE `post_likes`
   ADD KEY `posted_photo_id` (`posted_photo_id`);
 
 --
--- Indexes for table `relationship`
---
-ALTER TABLE `relationship`
-  ADD PRIMARY KEY (`relationship_id`),
-  ADD UNIQUE KEY `user_one_id` (`user_one_id`,`user_two_id`);
-
---
 -- Indexes for table `saved_posts`
 --
 ALTER TABLE `saved_posts`
@@ -428,7 +398,7 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `ip_mac_addresses`
 --
 ALTER TABLE `ip_mac_addresses`
-  MODIFY `im_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `im_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT for table `members`
@@ -447,12 +417,6 @@ ALTER TABLE `post_comments`
 --
 ALTER TABLE `post_likes`
   MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=779;
-
---
--- AUTO_INCREMENT for table `relationship`
---
-ALTER TABLE `relationship`
-  MODIFY `relationship_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `saved_posts`

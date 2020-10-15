@@ -26,9 +26,16 @@ $sender_id = $row_uid[0];
 $query_sender_rows = mysqli_query($con, "SELECT * FROM members WHERE id='$sender_id'");
 $sender_row = mysqli_fetch_array($query_sender_rows);
 
-$query_receiver_rows = mysqli_query($con, "SELECT * FROM members WHERE id='$receiver_id'");	
-$receiver_row = mysqli_fetch_array($query_receiver_rows);
+//
+//
 
+$row_uid = mysqli_fetch_array($query_uid);
+
+$query_requests = "SELECT * FROM members, relationship
+   WHERE (relationship.user_one_id = '$sender_id' OR relationship.user_two_id = '$sender_id') AND relationship.status = '1' 
+    AND members.username <> '$uname' AND (members.id = relationship.user_one_id OR members.id = relationship.user_two_id)";
+
+$result_users = mysqli_query($con, $query_requests);
 ?>
 
 <!DOCTYPE html>
@@ -95,17 +102,39 @@ $receiver_row = mysqli_fetch_array($query_receiver_rows);
 								</a>
 							</li>
 							<?php 
-							if(isset($_SESSION['username']))
-							echo '
-							<li>
-								<a href="post.php" title="">
-									<span>
-									<i class="fa fa-plus"></i>
-									</span>
-									Post
-								</a>
-							</li>
-							';?>
+							if (isset($_SESSION['username'])) {
+								echo '
+								<li>
+									<a href="post.php" title="">
+										<span>
+										<i class="fa fa-plus"></i>
+										</span>
+										Post
+									</a>
+								</li>
+								';
+								echo '
+								<li>
+									<a href="people.php" title="">
+										<span>
+										<i class="fa fa-user-friends"></i>
+										</span>
+										Friends
+									</a>
+								</li>
+								';
+								echo '
+								<li>
+									<a href="messages.php" title="">
+										<span>
+										<i class="fa fa-comments"></i>
+										</span>
+										Chat
+									</a>
+								</li>
+								';
+							}
+							?>
 						</ul>
 					</nav><!--nav end-->
 					<div class="menu-btn">
@@ -229,7 +258,8 @@ $receiver_row = mysqli_fetch_array($query_receiver_rows);
 										<?php while ($row_users = mysqli_fetch_array($result_users)) {
 										if(!isset($receiver_id))
  											$receiver_id = $row_users['id'];
-
+										$query_receiver_rows = mysqli_query($con, "SELECT * FROM members WHERE id='$receiver_id'");	
+										$receiver_row = mysqli_fetch_array($query_receiver_rows);
 										echo '
 										<a onclick="userDetails('.$row_users['id'].');" href="messages.php?receiver_id='.$row_users['id'].'">
 										<li class="btns'; if($receiver_id==$row_users['id']) echo ' active"';

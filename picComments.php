@@ -152,17 +152,39 @@ function getRepliessCount($post_id, $con)
 								</a>
 							</li>
 							<?php
-							if(isset($_SESSION['username']))
-							echo '
-							<li>
-								<a href="post.php" title="">
-									<span>
-									<i class="fa fa-plus"></i>
-									</span>
-									Post
-								</a>
-							</li>
-							';?>
+							if (isset($_SESSION['username'])) {
+								echo '
+								<li>
+									<a href="post.php" title="">
+										<span>
+										<i class="fa fa-plus"></i>
+										</span>
+										Post
+									</a>
+								</li>
+								';
+								echo '
+								<li>
+									<a href="people.php" title="">
+										<span>
+										<i class="fa fa-user-friends"></i>
+										</span>
+										Friends
+									</a>
+								</li>
+								';
+								echo '
+								<li>
+									<a href="messages.php" title="">
+										<span>
+										<i class="fa fa-comments"></i>
+										</span>
+										Chat
+									</a>
+								</li>
+								';
+							}
+							?>
 						</ul>
 					</nav><!--nav end-->
 					<div class="menu-btn">

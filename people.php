@@ -5,20 +5,10 @@ require('db/errorFuncts.php');
 
 mysqli_set_charset($con,"utf8");
 
-if (isset($_GET['search']) && !empty($_GET['search'])) {		
-	$search = $_GET['search'];
-	$query = "SELECT *
-				FROM images 
-				WHERE photo_tag LIKE '%{$search}%'
-				ORDER BY photo_id DESC";
+if (!isset($_SESSION['username'])) {
+	header('location:index.php');
 }
 else {
-	$query = "SELECT * FROM images ORDER BY photo_id DESC"; //mporoume na kanoume order by date alla kai to id petuxainei ton skopo kai den xreiazetai na kratame kai thn wra sthn bash alla mono hmeromhnia
-}	
-
-$result = mysqli_query($con, $query);
-
-if (isset ($_SESSION['username'])) {
 	$uname = $_SESSION['username'];	
 	// find user id from session name
 	$query2 = "SELECT id FROM members WHERE username = '$uname'";
@@ -26,6 +16,29 @@ if (isset ($_SESSION['username'])) {
 	$row = mysqli_fetch_array($result2);
 	$user_id = $row['id'];
 }
+
+
+if (isset($_GET['search']) && !empty($_GET['search'])) {		
+	$search = $_GET['search'];
+	$query = "SELECT *
+				FROM members 
+				WHERE fname LIKE '%{$search}%'
+				OR lname LIKE '%{$search}%'";
+}
+else {
+	$query = "SELECT * FROM members WHERE username <> '$uname'"; //mporoume na kanoume order by date alla kai to id petuxainei ton skopo kai den xreiazetai na kratame kai thn wra sthn bash alla mono hmeromhnia
+}	
+
+$result = mysqli_query($con, $query);
+
+$query_requests = "SELECT * FROM relationship
+  WHERE (user_one_id = '$user_id' OR user_two_id = '$user_id')
+  AND status = 0
+  AND action_user_id <> '$user_id'";
+
+
+$result_requests = mysqli_query($con, $query_requests);
+
 
 ?>
 	
@@ -47,6 +60,18 @@ if (isset ($_SESSION['username'])) {
 <link rel="stylesheet" type="text/css" href="css/responsive.css">
 <!-- font awesome icons kit -->
 <script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
+<style>
+.add-friend-but {
+	border: 1px solid #CFCFD1;
+	background-color: #F5F4F7;
+	color: #55595E!important;
+}
+
+.add-friend-but:hover {
+	background-color: #FCFCFC;
+	
+}
+</style>
 </head>
 
 <body oncontextmenu="return false;">
@@ -59,7 +84,7 @@ if (isset ($_SESSION['username'])) {
 					</div><!--logo end-->
 					<div class="search-bar">
 						<form>
-							<input type="text" name="search" id="search" placeholder="Search...">
+							<input type="text" name="search" id="search" placeholder="Search people...">
 							<button type="submit"><i class="fa fa-search"></i></button>
 						</form>
 					</div><!--search-bar end-->
@@ -90,7 +115,7 @@ if (isset ($_SESSION['username'])) {
 								</a>
 							</li>
 							<?php 
-							if(isset($_SESSION['username'])) {
+							if (isset($_SESSION['username'])) {
 								echo '
 								<li>
 									<a href="post.php" title="">
@@ -204,73 +229,80 @@ if (isset ($_SESSION['username'])) {
 				
 				</div><!--header-data end-->
 			</div>
-		</header><!--header end-->		
+		</header><!--header end-->	
 
-		<section class="companies-info">
+		<section class="col-12 col-lg-2 col-md-12 col-sm-12 companies-info">
+			<div class="container">
+				<div class="companies-list">
+					<div class="row">
+						<div class="tab-pane ">
+							<div class="acc-setting">
+								<h3>Friend Requests</h3>
+								<div class="requests-list">
+								<?php 
+								while ($row = mysqli_fetch_array($result_requests)) {
+									$uID = $row['user_one_id'];
+									$result_user_requested = mysqli_query($con, "SELECT * FROM members WHERE id = '$uID'");
+									$row_user_requested = mysqli_fetch_array($result_user_requested);
+									echo '
+									<div class="request-details">
+										<div class="noty-user-img">
+											<img src="'.$row_user_requested['picture_path'].$row_user_requested['profile_pic'].'" alt = "friend request photo"/>
+										</div>
+										<div class="request-info">
+											<h3>'.$row_user_requested['fname'].' '.$row_user_requested['lname'].'</h3>
+										</div>
+										<div class="accept-feat">
+											<ul>
+												<li>
+													<button type="submit" id="accept-request" onclick="manageRequest('.$row_user_requested['id'].', 1);" class="accept-req"><i class="fa fa-check"></i></button>
+												</li>
+												<li>
+													<button type="submit" id="decline-request" onclick="manageRequest('.$row_user_requested['id'].', 2);" class="close-req"><i class="fa fa-close"></i></button>
+												</li>
+											</ul>
+										</div><!--accept-feat end-->
+									</div><!--request-details end-->
+									';
+								}?>
+								</div><!--requests-list end-->
+							</div><!--acc-setting end-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="col-12 col-lg-8 col-md-12 col-sm-12 companies-info">
 			<div class="container">
 				<div class="company-title">
-					<h3>All Photos</h3>
+					<h3>Find People</h3>
 				</div><!--company-title end-->
 				<div class="companies-list">
 					<div class="row">
 				<?php 
 				while ($row = mysqli_fetch_array($result)) {
-					$newDate = date("d-m-Y", strtotime($row['date_posted']));
+					
 					echo '	
-						<div class="col-lg-3 col-md-4 col-sm-6 col-12">						
+						<div class="col-lg-4 col-md-6 col-sm-6 col-12">						
 							<div>
-							<form id="myform" class="likes-comments-form company_profile_info" name="myform" method="get" action="picComments.php" >
+							<form id="people-form" class="likes-comments-form company_profile_info" name="people-form" method="post" action="db/add_friend.php" >
 								<div class="company-up-info">
 									';
-
-									if (!isset ($_SESSION['username']) || $row['username'] != $_SESSION['username'])
-										echo '<a href="other_users_profile.php?photo_username='.$row['username'].'">';
-									else
-										echo '<a href="profile3.php">';
-
-									echo "<h3 class='pt-2'>".$row['username']."</h3>";
-									echo "</a><h4>".$newDate."</h4>
-									<img src=\"".$row['photo_path'].$row['photo_name']."\" alt='user's photo' />";
-									
-									if(isset($_SESSION['username'])) 
-									{	
-										$photo_id = $row['photo_id'];
-										$query3 = "SELECT * FROM post_likes WHERE liked_by_user = '$user_id' AND posted_photo_id = '$photo_id'"; 
-										$result3 = mysqli_query($con, $query3);									
-									echo "
-									<input type='hidden' name='photo_id' id='photo_id' value='".$row['photo_id']."' />
-									<ul>
-										<li>
-										<button class='likeBut' onclick='changeLikeState(this)' style='border:none'>";
-										 if (mysqli_num_rows($result3) == 0 )  
-										echo "
-											<a id='likeLink' class='likeLink follow text-white'>Like <i class='fa fa-heart' aria-hidden='true'></i></a>";
-											else
-												echo "
-											<a id='likeLink' class='likeLink follow text-white'>Unlike <i class='fa fa-heart-broken' aria-hidden='true'></i></a>";
-											echo "
-										</button>
-											
-										</li>
-										<li>
-										<button onclick = '' class='btn2' style='border:none' >
-										<a class='hire-us text-white'>Comment <i class='fa fa-comment' aria-hidden='true'></i></a>
-										</button>
-										</li>
+									echo '<a href="other_users_profile.php?photo_username='.$row['username'].'">';
+									echo '<h3 class="">'.$row['fname'].' '.$row['lname'].'</h3>
+									<img src="'.$row['picture_path'].$row['profile_pic'].'" alt="user photo" />
+									<input type="hidden" name="id" id="id" value="'.$row['id'].'"/>
+									</a>
+									<ul class="pl-2">
+										<li><button id="friend-request" onclick="sendRequest();" style="all:inherit;cursor:pointer"><a id="request-link" title="" class="add-friend-but"><i style="font-size:16px;top: 0;" class="fa fa-user-plus"></i> <span style="font-weight:600;">Add Friend</span></a></button></li>
 									</ul>
-									";
-									}
-								echo "
 								</div>
-								<a id='likesNum' class='view-more-pro'> Likes:
-									<img src='images/likes.png' alt='' height='18' width='18'>
-									".$row['photo_likes']."
-								</a>
-								</form>
 							</div><!--company_profile_info end-->
-							
+							</form>
 						</div>
-						";} 
+						';
+					} 
 						?>
 					</div>
 				</div><!--companies-list end-->
@@ -295,12 +327,9 @@ if (isset ($_SESSION['username'])) {
 					<ul>
 						<li><a href="help_center.php" title="">Help Center</a></li>
 						<li><a href="about.php" title="">About</a></li>
-						<!--<li><a href="#" title="">Privacy Policy</a></li>-->
 						<li><a href="community_guidelines.php" title="">Community Guidelines</a></li>
-						<!--<li><a href="#" title="">Cookies Policy</a></li>-->
 						<li><a href="termsofuse.php" title="">Terms of Use</a></li>
 						<li><a href="#" title="">Language: English</a></li>
-						<!--<li><a href="#" title="">Copyright Policy</a></li>-->
 					</ul>
 					<p><img src="images/copy-icon2.png" alt="">Copyright <script type="text/javascript">document.write(new Date().getFullYear());</script></p>
 					<img class="fl-rgt" src="images/logo2.png" alt="">
@@ -320,46 +349,48 @@ if (isset ($_SESSION['username'])) {
 <script type="text/javascript" src="js/script.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> <!-- load jquery via CDN -->
 <script>
-var formSubmit = true;
+var form = $("#people-form");
 
-$('.btn2').on('click', function() {
-	formSubmit = false;
-    $.ajax({
-    	//type: "GET",
-        url : 'picComments.php',
-    });
+// button listeners
+$('#friend-request').on('click', function() {
+	form.submit();
 });
 
-$(".likes-comments-form").submit(function(e) {
+function manageRequest(id, accepted) { 
+	var values = {
+        'id': id,
+        'accepted': accepted
+    };
+    $.ajax({
+        type: "POST",
+        url: 'db/manage_friend_request.php',
+        data: values,
+        success: function(data) {
+            location.reload();
+            //alert("saved");
+        }
+    });
+}
 
-    if (!formSubmit) return;
+// forms' submission with ajax
+
+$("#people-form").submit(function(e) {
 
     e.preventDefault(); // avoid to execute the actual submit of the form.
-
     var form = $(this);
     var url = form.attr('action');
 
     $.ajax({
         type: "POST",
-        url: 'db/likes.php',
+        url: 'db/add_friend.php',
         data: form.serialize(), // serializes the form's elements.
         success: function(data) {
-            $(form).children("#likesNum").html(" Likes: <img src='images/likes.png' alt='' height='18' width='18'>" + data + "</img>");
+           // $(form).children("#request-link").html(" Likes: <img src='images/likes.png' alt='' height='18' width='18'>" + data + "</img>");
         }
     });
-
 });
 
-function changeLikeState(x1) {	
-	var x = x1.children;
-	//alert (x[0].textContent );
-	if(x[0].textContent.includes("Unlike")) {
-		x[0].innerHTML = "Like <i class='fa fa-heart' aria-hidden='true'></i>";
-	}
-	else {
-		x[0].innerHTML = "Unlike <i class='fas fa-heart-broken'></i>";
-	}
-}
+
 
 </script>
 </body>
