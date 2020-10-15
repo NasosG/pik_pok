@@ -90,7 +90,7 @@ if (isset ($_SESSION['username'])) {
 								</a>
 							</li>
 							<?php 
-							if(isset($_SESSION['username'])) {
+							if (isset($_SESSION['username'])) {
 								echo '
 								<li>
 									<a href="post.php" title="">

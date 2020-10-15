@@ -36,6 +36,9 @@ $query_requests = "SELECT * FROM members, relationship
     AND members.username <> '$uname' AND (members.id = relationship.user_one_id OR members.id = relationship.user_two_id)";
 
 $result_users = mysqli_query($con, $query_requests);
+
+$no_friends = mysqli_num_rows($result_users) == 0;
+
 ?>
 
 <!DOCTYPE html>
@@ -288,6 +291,11 @@ $result_users = mysqli_query($con, $query_requests);
 							<div class="main-conversation-box">
 								<div class="message-bar-head">
 									<div class="usr-msg-details">
+										<?php
+											if ($no_friends) {
+												echo '<p style="font-size:24px; min-height:48px;">No friends to chat yet <i class="far fa-frown"></i></p>';
+												die;
+										}?>
 										<div class="usr-ms-img">
 											<?php
 											echo '<img id="chat-upper-image" src="'.$receiver_row['picture_path'].$receiver_row['profile_pic'].'" alt="users photo"/>';
@@ -309,9 +317,6 @@ $result_users = mysqli_query($con, $query_requests);
 								$query_show_messages = mysqli_query($con, "SELECT * FROM chat_message WHERE (by_user_id='$sender_id' OR to_user_id='$sender_id') AND (by_user_id='$receiver_id' OR to_user_id='$receiver_id') ");
 								$num = mysqli_num_rows($query_show_messages);
 
-
-
-								$num = mysqli_num_rows($query_show_messages);
 								while($row_show_messages = mysqli_fetch_array($query_show_messages))
 								{
 									if($row_show_messages['by_user_id'] == $sender_id)
@@ -341,67 +346,8 @@ $result_users = mysqli_query($con, $query_requests);
 											</div><!--messg-usr-img end-->
 										</div><!--main-message-box end-->';
 								}
-/*
-									<div class="main-message-box st3">
-										<div class="message-dt st3">
-											<div class="message-inner-dt">
-												<p>Cras ultricies ligula.<img src="images/smley.png" alt=""></p>
-											</div><!--message-inner-dt end-->
-											<span>5 minutes ago</span>
-										</div><!--message-dt end-->
-										<div class="messg-usr-img">
-											<img src="images/s2.png" alt="">
-										</div><!--messg-usr-img end-->
-									</div><!--main-message-box end-->
+								?>
 
-									<div class="main-message-box ta-right">
-										<div class="message-dt">
-											<div class="message-inner-dt">
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.</p>
-											</div><!--message-inner-dt end-->
-											<span>Sat, Aug 23, 1:08 PM</span>
-										</div><!--message-dt end-->
-										<div class="messg-usr-img">											
-											<img src="images/default-avatar.jpg" alt="">
-										</div><!--messg-usr-img end-->
-									</div><!--main-message-box end-->
-
-									<div class="main-message-box st3">
-										<div class="message-dt st3">
-											<div class="message-inner-dt">
-												<p>Lorem ipsum dolor sit amet</p>
-											</div><!--message-inner-dt end-->
-											<span>2 minutes ago</span>
-										</div><!--message-dt end-->
-										<div class="messg-usr-img">
-											<img src="images/s2.png" alt="">
-										</div><!--messg-usr-img end-->
-									</div><!--main-message-box end-->
-
-									<div class="main-message-box ta-right">
-										<div class="message-dt">
-											<div class="message-inner-dt">
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor.</p>
-											</div><!--message-inner-dt end-->
-											<span>Sat, Aug 23, 1:08 PM</span>
-										</div><!--message-dt end-->
-										<div class="messg-usr-img">
-											<img src="images/default-avatar.jpg" alt="">
-										</div><!--messg-usr-img end-->
-									</div><!--main-message-box end-->
-
-									<div class="main-message-box st3">
-										<div class="message-dt st3">
-											<div class="message-inner-dt">
-												<p>....</p>
-											</div><!--message-inner-dt end-->
-											<span>Typing...</span>
-										</div><!--message-dt end-->
-										<div class="messg-usr-img">
-											<img src="images/s2.png" alt="">
-										</div><!--messg-usr-img end-->
-									</div><!--main-message-box end-->
-									*/?>
 								</div><!--messages-line end-->
 
 

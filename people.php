@@ -240,6 +240,13 @@ $result_requests = mysqli_query($con, $query_requests);
 								<h3>Friend Requests</h3>
 								<div class="requests-list">
 								<?php 
+								if (mysqli_num_rows($result_requests)==0)
+									echo '
+									<div class="request-details">
+										<div class="request-info">
+											<h3>No friend requests</h3>
+										</div>
+									</div>';
 								while ($row = mysqli_fetch_array($result_requests)) {
 									$uID = $row['user_one_id'];
 									$result_user_requested = mysqli_query($con, "SELECT * FROM members WHERE id = '$uID'");
