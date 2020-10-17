@@ -274,7 +274,7 @@ $no_friends = mysqli_num_rows($result_users) == 0;
 												</div>
 												<div class="usr-mg-info">
 													<h3 id="flname">'.$row_users['fname']." ".$row_users['lname'].'</h3>
-													<p>consolidate look carbon random...</p>
+													<!--<p>consolidate look carbon random...</p>-->
 												</div><!--usr-mg-info end-->
 												<span class="posted_time">1:55 PM</span>
 											</div><!--usr-msg-details end-->
@@ -326,7 +326,7 @@ $no_friends = mysqli_num_rows($result_users) == 0;
 												<div class="message-inner-dt">
 													<p>'.$row_show_messages['message'].'</p>
 												</div><!--message-inner-dt end-->
-												<span>5 minutes ago</span>
+												<span>'.date("F j, Y, g:i a", strtotime($row_show_messages['time_sent'])).'</span>
 											</div><!--message-dt end-->
 											<div class="messg-usr-img">
 												<img src="'.$sender_row['picture_path'].$sender_row['profile_pic'].'" alt="users photo"/>
@@ -339,7 +339,7 @@ $no_friends = mysqli_num_rows($result_users) == 0;
 												<div class="message-inner-dt message-inner-dt2">
 													<p>'.$row_show_messages['message'].'</p>
 												</div><!--message-inner-dt end-->
-												<span>Sat, Aug 23, 1:08 PM</span>
+												<span>'.date("F j, Y, g:i a", strtotime($row_show_messages['time_sent'])).'</span>
 											</div><!--message-dt end-->
 											<div class="messg-usr-img">
 												<img src="'.$receiver_row['picture_path'].$receiver_row['profile_pic'].'" alt="users photo"/>

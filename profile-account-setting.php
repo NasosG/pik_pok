@@ -17,7 +17,7 @@ $lname = $row['lname'];
 $email = $row['email'];
 $date_of_registration = $row['date_of_registration'];
 $date_of_birth = $row['date_of_birth'];
-$bio = $row['bio']==null?"Tell us a liitle about yourself":$row['bio'];
+$bio = $row['bio']==null?"Tell us a little about yourself":$row['bio'];
 
 $datetime1 = new DateTime('NOW');
 $datetime2 = new DateTime($date_of_registration);
@@ -44,7 +44,7 @@ $result_uid = mysqli_query($con, $query_uid);
 $row_uid = mysqli_fetch_array($result_uid);
 				
 
-$query_month_likes = "SELECT COUNT(*) FROM post_likes WHERE liked_by_user = '$row_uid[0]' AND  MONTH(time) ='$current_month' ";
+$query_month_likes = "SELECT COUNT(*) FROM post_likes WHERE liked_by_user = '$row_uid[0]' AND MONTH(time) ='$current_month' ";
 $result_month_likes = mysqli_query($con, $query_month_likes);
 $likes_month = mysqli_fetch_array($result_month_likes);
 
