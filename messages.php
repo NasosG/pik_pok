@@ -354,7 +354,7 @@ $no_friends = mysqli_num_rows($result_users) == 0;
 								<div class="message-send-area">
 									<form id="chat-form" name="chat-form">
 										<div class="mf-field">
-											<input type="text" id="message" name="message" placeholder="Type a message here">
+											<input type="text" id="message-text" name="message" placeholder="Type a message here">
 											<button id="message-submit" type="submit">Send</button>
 										</div>
 										<ul>
@@ -403,7 +403,7 @@ $no_friends = mysqli_num_rows($result_users) == 0;
 var form = $('#chat-form');
 form.submit(function(e) {
     e.preventDefault();
-    var message = $('#message').val();
+    var message = $('#message-text').val();
     var by_user_id = <?php echo $sender_id ?>;
     var to_user_id = <?php echo $receiver_id ?>;
     $.ajax({
@@ -421,16 +421,16 @@ form.submit(function(e) {
 });
 
 window.onbeforeunload = function() {
-    localStorage.setItem("message", $('#message').val());
+    localStorage.setItem("message", $('#message-text').val());
 }
 
 window.onload = function() {
     var message = localStorage.getItem("message");
-    if (message !== null) $('#message').val(message);
+    if (message !== null) $('#message-text').val(message);
 }
 
 $(document).ready(function() {
-    $('#message').focus();
+    $('#message-text').focus();
 });
 
 setTimeout(function() {
