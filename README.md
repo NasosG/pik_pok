@@ -31,7 +31,7 @@ Copyright 2020 **[MIT license](http://opensource.org/licenses/mit-license.php)**
 
 
 ## Copyright claims
-Some images that got posted and used in the project for testing purposes belong to their respective creators. No claim by me & those who use this project!!
+Some images that got posted and used in the project for testing purposes belong to their respective creators. No claim by us & those who use this project!!
 
 **Thanks for reading**
 
