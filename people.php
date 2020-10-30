@@ -293,7 +293,7 @@ $result_requests = mysqli_query($con, $query_requests);
 					echo '	
 						<div class="col-lg-4 col-md-6 col-sm-6 col-12">						
 							<div>
-							<form id="people-form" class="likes-comments-form company_profile_info" name="people-form" method="post" action="db/add_friend.php" >
+							<form id="people-form" class="people-form likes-comments-form company_profile_info" name="people-form" method="post" action="db/add_friend.php" >
 								<div class="company-up-info">
 									';
 									echo '<a href="other_users_profile.php?photo_username='.$row['username'].'">';
@@ -356,7 +356,7 @@ $result_requests = mysqli_query($con, $query_requests);
 <script type="text/javascript" src="js/script.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> <!-- load jquery via CDN -->
 <script>
-var form = $("#people-form");
+var form = $(".people-form");
 
 // button listeners
 $('#friend-request').on('click', function() {
@@ -380,8 +380,7 @@ function manageRequest(id, accepted) {
 }
 
 // forms' submission with ajax
-
-$("#people-form").submit(function(e) {
+form.submit(function(e) {
 
     e.preventDefault(); // avoid to execute the actual submit of the form.
     var form = $(this);
@@ -392,12 +391,12 @@ $("#people-form").submit(function(e) {
         url: 'db/add_friend.php',
         data: form.serialize(), // serializes the form's elements.
         success: function(data) {
-           // $(form).children("#request-link").html(" Likes: <img src='images/likes.png' alt='' height='18' width='18'>" + data + "</img>");
+        	location.reload();
+        	// $(form).children("#request-link").html(" Likes: <img src='images/likes.png' alt='' height='18' width='18'>" + data + "</img>");
+           alert(data);
         }
     });
 });
-
-
 
 </script>
 </body>
