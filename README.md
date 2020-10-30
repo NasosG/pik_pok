@@ -25,9 +25,9 @@ for example our variables are $dbhost = "localhost", $dbuser = "root", $dbpass =
 Have a bug or an issue with this project? Send an email at gnasos219@gmail.com
 
 
-## Copyright and License
+## Copyright and License(http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
-Copyright 2020 (licence not yet, it will be added soon)
+Copyright 2020 **[MIT license](http://opensource.org/licenses/mit-license.php)**
 
 
 ## Copyright claims
