@@ -1,4 +1,4 @@
-  function dataURItoBlob(dataURI) {
+function dataURItoBlob(dataURI) {
     // convert base64/URLEncoded data component to raw binary data held in a string
     var byteString;
     if (dataURI.split(',')[0].indexOf('base64') >= 0)
@@ -10,12 +10,12 @@
     var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
 
     // write the bytes of the string to a typed array
-    var ia = new Uint8Array(byteString.length);
+    var intArray = new Uint8Array(byteString.length);
     for (var i = 0; i < byteString.length; i++) {
-        ia[i] = byteString.charCodeAt(i);
+        intArray[i] = byteString.charCodeAt(i);
     }
 
-    return new Blob([ia], {type:mimeString});
+    return new Blob([intArray], {type:mimeString});
 }
 
 const imageUpload = document.getElementById('imageUpload').attributes.value.textContent;
@@ -54,6 +54,19 @@ async function start() {
                 label: 'Face'
             })
             drawBox.draw(canvas);
+
+            // bluring
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = 'rgba(192,192,192,0.8)';
+            ctx.filter = 'blur(10px)';
+            //alert("hjkhjk"+box.width + " and " + box.height+" start.x " + box.x);
+            ctx.fillRect(box.x, box.y, box.width, box.height);
+            //image.style.filter="blur(5px)";
         })
-    
+
+     imageUpload.addEventListener('click', async () => {
+
+
+
+     })
 }
