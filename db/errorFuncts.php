@@ -1,4 +1,15 @@
 <?php
+	function errorDefault()
+	{
+		include('../includes/echo_header.php');
+		echo "<br><h1 style='font-size: 40px; padding-top:100px; font-family:\"Sofia\"; text-align:center;'>";
+		echo " <font color=\"red\"> Sorry, Something went wrong </font> <br> ";
+		echo " We're working on it and we'll get it fixed as soon as we can <br> ";
+		echo " - Click <a href='../index.php'>here</a> to return to Home";
+		echo "</h1>";
+		include('../includes/echo_end.php');
+	}
+	
 	function myerror()
 	{
 		include('../includes/echo_header.php');
@@ -58,6 +69,39 @@
 		include('../includes/echo_header.php');
 		echo "<br><h1 style='font-size: 40px; padding-top:100px; font-family:\"Sofia\"; text-align:center;'>";
 		echo " <font color=\"red\"> Sorry, that email already exists </font> <br> ";
+		echo " - Click <a href='../profile-account-setting.php'>here</a> to go back<br>";
+		echo " - Click <a href='../index.php'>here</a> to return to Home";
+		echo "</h1>";
+		include('../includes/echo_end.php');
+	}
+	
+	function emailPatternError()
+	{
+		include('../includes/echo_header.php');
+		echo "<br><h1 style='font-size: 40px; padding-top:100px; font-family:\"Sofia\"; text-align:center;'>";
+		echo " <font color=\"red\"> Sorry, email doesn't match the requested pattern </font> <br> ";
+		echo " - Click <a href='../profile-account-setting.php'>here</a> to go back<br>";
+		echo " - Click <a href='../index.php'>here</a> to return to Home";
+		echo "</h1>";
+		include('../includes/echo_end.php');
+	}
+	
+	function usernamePatternError()
+	{
+		include('../includes/echo_header.php');
+		echo "<br><h1 style='font-size: 40px; padding-top:100px; font-family:\"Sofia\"; text-align:center;'>";
+		echo " <font color=\"red\"> Sorry, username should only contain characters, numbers and period(.), dash(-), underscore(_) symbols</font> <br> ";
+		echo " - Click <a href='../profile-account-setting.php'>here</a> to go back<br>";
+		echo " - Click <a href='../index.php'>here</a> to return to Home";
+		echo "</h1>";
+		include('../includes/echo_end.php');
+	}
+	
+	function passwordPatternError()
+	{
+		include('../includes/echo_header.php');
+		echo "<br><h1 style='font-size: 40px; padding-top:100px; font-family:\"Sofia\"; text-align:center;'>";
+		echo " <font color=\"red\"> Sorry, password doesn't match the requested pattern </font> <br> ";
 		echo " - Click <a href='../profile-account-setting.php'>here</a> to go back<br>";
 		echo " - Click <a href='../index.php'>here</a> to return to Home";
 		echo "</h1>";
