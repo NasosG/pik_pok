@@ -36,15 +36,10 @@ if(isset($_POST['imgData'])) {
 </body>
 <script>
     function save_photo() {
-      // actually snap photo (from preview freeze) and display it
-      Webcam.snap( function(data_uri) {
-        // display results in page
-        document.getElementById('results').innerHTML = 
-          '<h2>Your Previous Photo:</h2>' + 
-          '<img src="'+data_uri+'"/>';
-        // store the data uri of the photo to our hidden field
-        document.getElementById("imgData").value = data_uri;
-      } );
+        // store the data of the photo to our hidden field
+        const file = document.getElementById('imageUpload').attributes.value.textContent;
+        //alert(file);
+        document.getElementById("imgData").value = file;
     }
   </script>
 </body>
