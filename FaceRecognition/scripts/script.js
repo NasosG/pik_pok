@@ -1,3 +1,7 @@
+// this file is used to detect faces (using facerecognition.js api) and apply basic blurring filters
+// it's ok for the scope of our research but would like to implement a smarter feature in the future
+// such as blurring/unblurring when user clicks a face and smarter automatic blurring
+
 function dataURItoBlob(dataURI) {
     // convert base64/URLEncoded data component to raw binary data held in a string
     var byteString;
@@ -33,40 +37,38 @@ async function start() {
 
     let image;
     let canvas;
-    document.body.append('Loaded');
+    document.body.append('Image Loaded');
     
-        if (image) image.remove();
-        if (canvas) canvas.remove();
-        image = await faceapi.bufferToImage(dataURItoBlob(imageUpload));
-        container.append(image);
-        canvas = faceapi.createCanvasFromMedia(image);
-        container.append(canvas);
-        const displaySize = {
-            width: image.width,
-            height: image.height
-        }
-        faceapi.matchDimensions(canvas, displaySize);
-        const detections = await faceapi.detectAllFaces(image).withFaceLandmarks().withFaceDescriptors();
-        const resizedDetections = faceapi.resizeResults(detections, displaySize);
-        resizedDetections.forEach(detection => {
-            const box = detection.detection.box;
-            const drawBox = new faceapi.draw.DrawBox(box, {
-                label: 'Face'
-            })
-            drawBox.draw(canvas);
+    if (image) image.remove();
+    if (canvas) canvas.remove();
+    image = await faceapi.bufferToImage(dataURItoBlob(imageUpload));
+    container.append(image);
+    canvas = faceapi.createCanvasFromMedia(image);
+    container.append(canvas);
+    const displaySize = {
+        width: image.width,
+        height: image.height
+    }
+    faceapi.matchDimensions(canvas, displaySize);
+    const detections = await faceapi.detectAllFaces(image).withFaceLandmarks().withFaceDescriptors();
+    const resizedDetections = faceapi.resizeResults(detections, displaySize);
+    resizedDetections.forEach(detection => {
+        const box = detection.detection.box;
+        const drawBox = new faceapi.draw.DrawBox(box, { label: 'Face' });
+        drawBox.draw(canvas);
+        // blurring
+        blurring(canvas, box);
+    })
+    // 
+    // imageUpload.addEventListener('click', async () => {
+    // })
+}
 
-            // bluring
-            const ctx = canvas.getContext('2d');
-            ctx.fillStyle = 'rgba(192,192,192,0.8)';
-            ctx.filter = 'blur(10px)';
-            //alert("hjkhjk"+box.width + " and " + box.height+" start.x " + box.x);
-            ctx.fillRect(box.x, box.y, box.width, box.height);
-            //image.style.filter="blur(5px)";
-        })
-
-     imageUpload.addEventListener('click', async () => {
-
-
-
-     })
+// blurring function
+function blurring(canvas, box) {
+    let ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'rgba(200,200,200,0.8)';
+    ctx.filter = 'blur(9px)';
+    ctx.fillRect(box.x, box.y, box.width, box.height);
+    ctx.filter = 'none';
 }
