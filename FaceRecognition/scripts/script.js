@@ -24,6 +24,8 @@ function dataURItoBlob(dataURI) {
 
 const imageUpload = document.getElementById('imageUpload').attributes.value.textContent;
 
+// load all models
+// run asynchronous calls in parrallel, just an optimization
 Promise.all([
     faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
     faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
@@ -67,7 +69,7 @@ async function start() {
 // blurring function
 function blurring(canvas, box) {
     let ctx = canvas.getContext('2d');
-    ctx.fillStyle = 'rgba(200,200,200,0.8)';
+    ctx.fillStyle = 'rgba(200,200,200,0.9)';
     ctx.filter = 'blur(9px)';
     ctx.fillRect(box.x, box.y, box.width, box.height);
     ctx.filter = 'none';
