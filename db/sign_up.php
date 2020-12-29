@@ -5,12 +5,43 @@
 	
     // If form submitted, insert values into the database.
     if (isset($_REQUEST['username'])) {
+		// custom email and password patterns
+		// they need more tweaking in the future
+		//$USERNAME_PATTERN = "^[a-zA-Z0-9._-]*$";
+		//$EMAIL_PATTERN = "^[A-Za-z0-9._!#$%&'*/=?^`{|}~+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$";
+		
+		// old password patterns -> may be better but they're more restrictive
+		//$PASSWORD_PATTERN = "^[a-zA-Z0-9@#$%^&!'*/=?^`{|}~+-]*";
+		//$PASSWORD_PATTERN = '^[a-zA-Z0-9@#$%^&]*$';
+		
+		//$PASSWORD_PATTERN = "^[a-zA-Z0-9,.;_@#$%^&!'*/=?^`\]\[{|}~+()\\-]{8,80}";
+
+		/*
+		$EMAIL_MIN_SIZE = 3;
+		$EMAIL_MAX_SIZE = 40;
+		$PASSWORD_MIN_SIZE = 8;
+		$PASSWORD_MAX_SIZE = 50;
+		$AFM_SIZE = 9;
+		$PHONE_NUMBER_MIN_SIZE = 10;
+		$PHONE_NUMBER_MAX_SIZE = 10;
+		*/
+		
 		$username = stripslashes($_REQUEST['username']); // removes backslashes
+		// if (preg_match($USERNAME_PATTERN, $username) !== 1) {
+		// 	// email address is not valid
+		// 	usernamePatternError();
+		// }
 		// sanitize username data
 		$username = filter_var($username, FILTER_SANITIZE_STRING);
 		$username = mysqli_real_escape_string($con, $username); //escapes special characters in a string
 		
+		///////////////////////////////////////////////////////
+		
 		$email = stripslashes($_REQUEST['email']);
+		// if (preg_match($EMAIL_PATTERN, $email) !== 1) {
+		// 	// email address is not valid
+		// 	emailPatternError();
+		// }
 		// sanitize email
 		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
 		$email = mysqli_real_escape_string($con, $email);
@@ -41,6 +72,10 @@
 
 		else {
 			$password = stripslashes($_REQUEST['psw']);
+			// if (preg_match($PASSWORD_PATTERN, $password) !== 1) {
+			// 	// email address is not valid
+			// 	passwordPatternError();
+			// }
 			// sanitize password
 			//$password = filter_var($password, FILTER_SANITIZE_STRING);
 			$password = mysqli_real_escape_string($con, $password);
@@ -90,12 +125,12 @@
 				//echo "<div class='form'><h3>You are registered successfully.</h3><br/>Click here to return to <a //href='../index.php'>Home</a></div>";
 			}
 			else {
-				myerror();
+				errorDefault();
 			}
 		}
 
     }
 	else {
-		myerror();
+		errorDefault();
 	}
 ?>

@@ -17,7 +17,7 @@
 
 	<style type="text/css">
 		body { font-family: Helvetica, sans-serif; }
-		h2, h3 { margin-top:0; }
+		h2, h3 { margin-top: 0; }
 		form { margin-top: 15px; }
 		form > input { margin-right: 15px; }
 
@@ -111,7 +111,7 @@
 	<!-- Configure a few settings and attach camera -->
 	<script language="JavaScript">
 		
-		function set_camera(){
+		function set_camera() {
 		 	var mobile_width = window.innerWidth>600 ? 560 : window.innerWidth;
 			Webcam.set({
 			// live preview size
@@ -135,7 +135,6 @@
 	function updateCanvas() {
 		if(!freezed && window.innerWidth < 600)
 			set_camera();
-  
 	}
 	
 	//make canvas fluid meaning change camera properties (mostly width) every time the user resizes the window
@@ -143,8 +142,9 @@
 
 	</script>
 	
-	<!-- A button for taking snaps -->
-	<form action="post.php" method="post">
+	<!-- Form and buttons for taking snaps -->
+	<!-- <form action="post.php" method="post"> -->
+	<form action="FaceRecognition/face_recognition.php" method="post">	
 
 		<input type="hidden" name="imgData" id="imgData" value= "" />
 

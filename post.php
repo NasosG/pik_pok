@@ -8,9 +8,7 @@ $photo_taken = false;
 if(isset($_POST['imgData'])) {
 	$photo_taken = true;
 	$imgData = $_POST['imgData'];
-	
-	//echo "post value " . $imgData . " end";
-	
+	//echo "post value " . $imgData . " end";	
 }
 
 ?>
@@ -222,7 +220,7 @@ if(isset($_POST['imgData'])) {
 									, $_SERVER["HTTP_USER_AGENT"]); 
 									} 
 									
-									if(!isMobileDevice()){
+									if(!isMobileDevice()) {
 										echo '<div class="upload-btn-wrapper">
 											  <button disabled class="btn-up" id="mylink"><a class="a-up" href="webcam.php">Take a photo</a></button>
 											</div> ';
