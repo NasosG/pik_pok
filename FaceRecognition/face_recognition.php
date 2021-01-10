@@ -31,7 +31,7 @@ if(isset($_POST['imgData'])) {
     <?php echo '<input type="file" id="imageUpload" value= "'.$imgData.'" />'; ?>
  <!--  <input type="file" id="imageUpload" value= <?php echo"\"".$imgData."\""?> > -->
 
-   <button type="submit" onClick="save_photo()">Submit photo &#187;</button>
+  <button type="submit" onClick="save_photo()">Submit photo &#187;</button>
   </form>
 </body>
 <script>
