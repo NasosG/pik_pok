@@ -399,7 +399,7 @@ function getRepliessCount($post_id, $con)
 	                                                    </div>
 	                                                </div>
 	                                                <div id="reply-area" class="reply-area">
-	                                                    <p class="myp">'.$row['comment_text'];
+	                                                    <p class="myp" style="word-wrap: break-word;">'.$row['comment_text'];
 	                                                    echo'</p>
 	                                                    <span id="replyComment" onclick="reply('.$row['post_comments_id'].');"><i class="fa fa-mail-reply"></i>Reply</span>
 	                                                </div>
