@@ -18,7 +18,7 @@ for example our variables are $dbhost = "localhost", $dbuser = "root", $dbpass =
 
 ## Requirements
 
-1. Latest version of PHP.
+1. PHP version 7.0 or later.
 
 ## Bugs and Issues
 
