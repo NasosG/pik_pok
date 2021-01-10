@@ -150,7 +150,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 												</div>
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
-														<input type="email" id="email" name="email" placeholder="email" required>
+														<input type="email" id="email" name="email" placeholder="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required>
 														<i class="fa fa-at"></i>
 													</div>
 												</div>
@@ -162,7 +162,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 												</div>
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
-														<input type="password" id ="password" name="psw" pattern="(?=.*\d).{5,}" title="password should contain at least 5 characters and one digit" placeholder="Password" onkeyup='check();' required>
+														<input type="password" id ="password" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" title="password should contain at least 7 characters, one number, one uppercase and one lowercase letter" placeholder="Password" onkeyup='check();' required>
 														<span toggle="#password" id="toggle_pass" class="fa fa-eye fa-2x field-icon toggle-password"></span>
 														<i class="fa fa-lock"></i>													
 													</div>
