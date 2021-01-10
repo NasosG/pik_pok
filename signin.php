@@ -186,7 +186,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 															<label for="c2">
 																<span></span>
 															</label>
-															<small>Yes, I understand and agree to the pik pok Terms & Conditions.</small>
+															<small>Yes, I understand and agree to the pik pok <a href="termsofuse.php">Terms & Conditions.</a></small>
 														</div><!--fgt-sec end-->
 													</div>
 												</div>
