@@ -82,7 +82,7 @@ function check_friendship_status($con, $user_id, $user2_id) {
 </style>
 </head>
 
-<body oncontextmenu="return false;">
+<body>
 	<div class="wrapper">
 		<header>
 			<div class="container">
@@ -292,7 +292,7 @@ function check_friendship_status($con, $user_id, $user2_id) {
 			<div class="container">
 				<div class="company-title">
 					<h3>Find People</h3>
-				</div><!--company-title end-->
+				</div>
 				<div class="companies-list">
 					<div class="row">
 				<?php 
@@ -302,16 +302,15 @@ function check_friendship_status($con, $user_id, $user2_id) {
 						<div class="col-lg-4 col-md-6 col-sm-6 col-12">						
 							<div>
 							<form id="people-form" class="people-form likes-comments-form company_profile_info" name="people-form" method="post" action="db/add_friend.php" >
-								<div class="company-up-info">
-									';
-									echo '<a href="other_users_profile.php?photo_username='.$row['username'].'">';
+								<div class="company-up-info">';
+									
 									echo '<h3 class="">'.$row['fname'].' '.$row['lname'].'</h3>
 									<img src="'.$row['picture_path'].$row['profile_pic'].'" alt="user photo" />
 									<input type="hidden" name="id" id="id" value="'.$row['id'].'"/>
-									</a>
+									
 									<ul class="pl-2">
 									';
-									if ((mysqli_num_rows(check_friendship_status($con, $user_id,$row['id'])) == 0)) 
+									if ((mysqli_num_rows(check_friendship_status($con, $user_id, $row['id'])) == 0)) 
 										echo '
 										<li><button id="friend-request" onclick="sendRequest();" style="all:inherit;cursor:pointer"><a id="request-link" title="" class="add-friend-but"><i style="font-size:16px;top: 0;" class="fa fa-user-plus"></i> <span style="font-weight:600;">Add Friend</span></a></button></li>
 										';
@@ -321,14 +320,14 @@ function check_friendship_status($con, $user_id, $user2_id) {
 									echo '
 									</ul>
 								</div>
-							</div><!--company_profile_info end-->
 							</form>
+							</div>
 						</div>
 						';
 					} 
 						?>
 					</div>
-				</div><!--companies-list end-->
+				</div>
 				
 				<div class='process-comm'>
 					<!--<div class='spinner'>
@@ -376,7 +375,7 @@ var form = $(".people-form");
 
 // button listeners
 $('#friend-request').on('click', function() {
-	form.submit();
+	this.submit();
 });
 
 function manageRequest(id, accepted) { 
@@ -409,7 +408,7 @@ form.submit(function(e) {
         success: function(data) {
         	location.reload();
         	// $(form).children("#request-link").html(" Likes: <img src='images/likes.png' alt='' height='18' width='18'>" + data + "</img>");
-           alert("Friend request sent");
+           alert(data);
         }
     });
 });
