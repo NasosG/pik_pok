@@ -39,6 +39,14 @@ $query_requests = "SELECT * FROM relationship
 
 $result_requests = mysqli_query($con, $query_requests);
 
+function check_friendship_status($con, $user_id, $user2_id) {
+	$query_friends_status = "SELECT * FROM relationship
+	  WHERE ((user_one_id = '$user_id' AND user_two_id = '$user2_id')
+	  OR (user_one_id = '$user2_id'AND user_two_id = '$user_id'))
+	  AND (status = 1)";
+
+	return mysqli_query($con, $query_friends_status);
+}
 
 ?>
 	
@@ -302,7 +310,15 @@ $result_requests = mysqli_query($con, $query_requests);
 									<input type="hidden" name="id" id="id" value="'.$row['id'].'"/>
 									</a>
 									<ul class="pl-2">
+									';
+									if ((mysqli_num_rows(check_friendship_status($con, $user_id,$row['id'])) == 0)) 
+										echo '
 										<li><button id="friend-request" onclick="sendRequest();" style="all:inherit;cursor:pointer"><a id="request-link" title="" class="add-friend-but"><i style="font-size:16px;top: 0;" class="fa fa-user-plus"></i> <span style="font-weight:600;">Add Friend</span></a></button></li>
+										';
+									else echo '
+										<li><p id="friend-request style="all:inherit;cursor:pointer"><a id="request-link" title="" class="add-friend-but"><i style="font-size:16px;top: 0;" class="fas fa-check"></i> <span style="font-weight:600;">You are friends</span></a></p></li>
+									';
+									echo '
 									</ul>
 								</div>
 							</div><!--company_profile_info end-->
@@ -393,7 +409,7 @@ form.submit(function(e) {
         success: function(data) {
         	location.reload();
         	// $(form).children("#request-link").html(" Likes: <img src='images/likes.png' alt='' height='18' width='18'>" + data + "</img>");
-           alert(data);
+           alert("Friend request sent");
         }
     });
 });
