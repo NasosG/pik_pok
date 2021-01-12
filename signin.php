@@ -78,7 +78,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 										<div class="row">
 											<div class="col-lg-12 no-pdd">
 												<div class="sn-field">
-													<input type="text" id = "username" name="username" placeholder="Username" required>
+													<input type="text" id = "uname" name="username" placeholder="Username" required>
 													<i class="fa fa-user"></i>
 												</div><!--sn-field end-->
 											</div>
@@ -116,7 +116,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 									</div><!--login-resources end-->
 								</div><!--sign_in_sec end-->
 								<div class="sign_in_sec" id="tab-2">	
-									<h3>Sign Up</h3>	
+									<h3>Sign Up</h3>
 									<div class="dff-tab current" id="tab-3">
 										<form id="sign_up" name="sign_up" method = "post" action="db/sign_up.php" enctype= "multipart/form-data" onsubmit="validatePass();">
 											<div class="row">
@@ -148,12 +148,15 @@ include("db/auth.php"); //include auth.php file on all secure pages
 														<span><i class="fa fa-ellipsis-h"></i></span>
 													</div>
 												</div>
+												<span id="unique-email-span"></span>
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
 														<input type="email" id="email" name="email" placeholder="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" required>
 														<i class="fa fa-at"></i>
+														<span></span>
 													</div>
 												</div>
+												<span id="unique-uname-span"></span>
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
 														<input type="text" id="username" name="username" placeholder="username" required>
@@ -164,7 +167,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
 													<div class="sn-field">
 														<input type="password" id ="password" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" title="password should contain at least 7 characters, one number, one uppercase and one lowercase letter" placeholder="Password" onkeyup='check();' required>
 														<span toggle="#password" id="toggle_pass" class="fa fa-eye fa-2x field-icon toggle-password"></span>
-														<i class="fa fa-lock"></i>													
+														<i class="fa fa-lock"></i>												
 													</div>
 												</div>
 												<div class="col-lg-12 no-pdd">
@@ -226,10 +229,12 @@ include("db/auth.php"); //include auth.php file on all secure pages
 
 <script src="https://www.google.com/recaptcha/api.js"></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/credentialsExistsCheck.js"></script>
 <script type="text/javascript" src="js/popper.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/slick.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+
 <script>
 		// today's date
 		date = new Date();

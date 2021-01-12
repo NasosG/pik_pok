@@ -2317,6 +2317,22 @@ select {
 	-o-transform: translateY(-50%);
 	transform: translateY(-50%);
 }
+#unique-uname-span {
+	margin: 0px;
+	padding: 0px;
+	margin-bottom: 4px;
+	
+	color: #666666;
+   
+}
+#unique-email-span {
+	margin: 0px;
+	padding: 0px;
+	margin-bottom: 4px;
+	
+	color: #666666;
+   
+}
 .sign_in_sec form input {
 	height: 40px;
 }
