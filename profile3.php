@@ -395,7 +395,7 @@ function isSaved($con, $post_id) {
 												</ul>
 												<ul style= "float:right;" class="like-com">
 													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-thumbs-up"></i> <?php echo 'Likes '.$row['photo_likes'];?></a></li>
-													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-comment"></i> <?php echo 'Comments '.$row_after_count[0];?></a></li>
+													<li><a href=<?php echo "picComments.php?photo_id=".$row['photo_id']."";?>  class=""><i class="fa fa-comment"></i> <?php echo 'Comments '.$row_after_count[0];?></a></li>
 												</ul>
 											</div>
 											</form>

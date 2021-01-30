@@ -501,7 +501,7 @@ function getRepliessCount($post_id, $con)
                                             <h3>Post Link</h3>
                                         </div>
                                         <div class="sd-title copylink">
-                                            <input type="text" id="postLink" value="http://localhost/pik_pok/picComments.php?photo_id=<?php echo $photo_id;?>" readonly></input>
+                                            <input type="text" id="postLink" value=<?php echo "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?> readonly></input>
                                             <span><a onclick="CopyText()">Copy Link</a></span>
                                         </div>
                                     </div>
