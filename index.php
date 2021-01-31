@@ -49,7 +49,7 @@ if (isset ($_SESSION['username'])) {
 <script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
 </head>
 
-<body oncontextmenu="return false;">
+<body>
 	<div class="wrapper">
 		<header>
 			<div class="container">
