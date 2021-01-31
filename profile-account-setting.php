@@ -374,17 +374,20 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 								               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Who can send you friend requests?</a>
 								               <div class="dropdown-menu">
 								                  <p>Choose who can send you friend requestson</p>
-								                  <div class="row">
-								                     <div class="col-md-9 col-sm-12">
-								                        <form class="radio-form">
-															<input type="radio" id="everyone" name="request" value="everyone">
-														 	<label for="everyone">Everyone</label><br>
-															<input type="radio" id="friendsOfFriends" name="request" value="friendsOfFriends">
-															<label for="friendsOfFriends">Friends of Friends</label><br>
-								                        </form>
-								                     </div>
-								                     
-								                  </div>
+								                	<div class="row">
+                                                     	<div class="col-md-9 col-sm-12">
+                                                       		<form class="radio-form">
+																<div class="custom-control custom-radio">
+																	<input type="radio" id="requests_everyone" name="requests" class="custom-control-input">
+																	<label class="custom-control-label" for="requests_everyone">Everyone</label>
+																</div>
+																<div class="custom-control custom-radio">
+																	<input type="radio" id="requests_friends" name="requests" class="custom-control-input">
+																	<label class="custom-control-label" for="requests_friends">Friends of Friends</label>
+																</div>
+                                                            </form>
+                                                       	</div>
+								                  	</div>
 								               </div>
 								            </div>
 								         </div>
@@ -702,7 +705,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 			                     	<div class="dropdown privacydropd">
                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Search history</a>
                                                    <div class="dropdown-menu">
-                                                       		<p>Clear all previous searches performed on LinkedIn</p>
+                                                       		<p>Clear all previous searches performed on PikPok</p>
                                                        		 <div class="row">
                                                        	<div class="col-12">
                                                        		<form class="radio-form">
@@ -724,25 +727,23 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 			                                <div class="row">
 			                     		<div class="col-12">
 			                     	<div class="dropdown privacydropd">
-                                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sharing your profile when you click apply</a>
+                                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Making your profile visible</a>
                                                    <div class="dropdown-menu">
-                                                       		<p>Chose if you want to share your full profile with the job poster when you're taken off linkedin after clicking apply </p>
+                                                       		<p>Profile Visibility</p>
                                                        		 <div class="row">
                                                        	<div class="col-md-9 col-sm-12">
                                                        		<form class="radio-form">
 																<div class="custom-control custom-radio">
 																	<input type="radio" id="customRadio5" name="customRadio" class="custom-control-input">
-																	<label class="custom-control-label" for="customRadio5">Yes</label>
+																	<label class="custom-control-label" for="customRadio5">Public</label>
 																</div>
 																<div class="custom-control custom-radio">
 																	<input type="radio" id="customRadio6" name="customRadio" class="custom-control-input">
-																	<label class="custom-control-label" for="customRadio6">Yes</label>
+																	<label class="custom-control-label" for="customRadio6">Private</label>
 																</div>
                                                             </form>
                                                        	</div>
-                                                       	<div class="col-md-3 col-sm-12">
-                                                       		<p style="float: right;">Yes</p>
-                                                       	</div>
+
                                                        </div>
                                                    </div>
                                                </div>
