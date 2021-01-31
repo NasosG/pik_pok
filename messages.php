@@ -446,7 +446,6 @@ window.onload = function() {
     if (message !== null) $('#message-text').val(message);
 }
 
-"posted_time".text = 
 $(document).ready(function() {
     $('#message-text').focus();
 });
