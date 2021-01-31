@@ -258,29 +258,46 @@ $no_friends = mysqli_num_rows($result_users) == 0;
 										';
 										*/
 										?>
-										<?php while ($row_users = mysqli_fetch_array($result_users)) {
-										if(!isset($receiver_id))
- 											$receiver_id = $row_users['id'];
-										$query_receiver_rows = mysqli_query($con, "SELECT * FROM members WHERE id='$receiver_id'");	
-										$receiver_row = mysqli_fetch_array($query_receiver_rows);
-										echo '
-										<a onclick="userDetails('.$row_users['id'].');" href="messages.php?receiver_id='.$row_users['id'].'">
-										<li class="btns'; if($receiver_id==$row_users['id']) echo ' active"';
-										echo ' onclick="userDetails('.$row_users['id'].');">
-											<div class="usr-msg-details">
-												<div class="usr-ms-img">
-													<img style="width:50px; height:50px;" src="'.$row_users['picture_path'].$row_users['profile_pic'].'" alt="users photo"/>
-													<span class="msg-status"></span>
-												</div>
-												<div class="usr-mg-info">
-													<h3 id="flname">'.$row_users['fname']." ".$row_users['lname'].'</h3>
-													<!--<p>consolidate look carbon random...</p>-->
-												</div><!--usr-mg-info end-->
-												<span class="posted_time">1:55 PM</span>
-											</div><!--usr-msg-details end-->
-										</li></a>
-										'
-										;
+										<?php 
+										while ($row_users = mysqli_fetch_array($result_users)) {
+
+											if(!isset($receiver_id))
+	 											$receiver_id = $row_users['id'];
+
+											$current_user_id = $row_users['id'];
+
+											$query_receiver_rows = mysqli_query($con, "SELECT * FROM members WHERE id='$receiver_id'");	
+											$receiver_row = mysqli_fetch_array($query_receiver_rows);
+
+											$query_get_time = mysqli_query($con, "SELECT time_sent FROM chat_message WHERE by_user_id='$current_user_id' OR to_user_id='$current_user_id' ORDER BY chat_message_id DESC LIMIT 1;");
+											$last_message_time = mysqli_fetch_array($query_get_time);
+
+											if (empty($last_message_time)) 
+												$time_sent = '<i class="fas fa-paper-plane"></i>';
+											else $time_sent = date("g:i a", strtotime($last_message_time[0]));
+											
+											echo '
+											<a onclick="userDetails('.$row_users['id'].');" href="messages.php?receiver_id='.$row_users['id'].'">
+											<li class="btns'; 
+
+											if ($receiver_id == $row_users['id']) echo ' active"';
+
+											echo ' onclick="userDetails('.$row_users['id'].');">
+												<div class="usr-msg-details">
+													<div class="usr-ms-img">
+														<img style="width:50px; height:50px;" src="'.$row_users['picture_path'].$row_users['profile_pic'].'" alt="users photo"/>
+														<span class="msg-status"></span>
+													</div>
+													<div class="usr-mg-info">
+														<h3 id="flname">'.$row_users['fname']." ".$row_users['lname'].'</h3>
+														<!--<p>consolidate look carbon random...</p>-->
+													</div><!--usr-mg-info end-->
+													
+													
+													<span class="posted_time text-uppercase">'.$time_sent.'</span>
+												</div><!--usr-msg-details end-->
+											</li></a>
+											';
 									}?>
 									</ul>
 								</div><!--messages-list end-->
@@ -312,7 +329,7 @@ $no_friends = mysqli_num_rows($result_users) == 0;
 								</div><!--message-bar-head end-->
 
 
-								<div class="messages-line">
+								<div class="messages-line" style="margin-top:100px;">
 								<?php
 								$query_show_messages = mysqli_query($con, "SELECT * FROM chat_message WHERE (by_user_id='$sender_id' OR to_user_id='$sender_id') AND (by_user_id='$receiver_id' OR to_user_id='$receiver_id') ");
 								$num = mysqli_num_rows($query_show_messages);
@@ -429,6 +446,7 @@ window.onload = function() {
     if (message !== null) $('#message-text').val(message);
 }
 
+"posted_time".text = 
 $(document).ready(function() {
     $('#message-text').focus();
 });

@@ -5177,7 +5177,8 @@ a:hover {
 .messages-line {
 	float: left;
 	width: 100%;
-	height: 604px;
+	//height: 604px;
+	height: 504px;
 }
 
 /* ============== message-send-area ============ */
