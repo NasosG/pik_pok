@@ -357,135 +357,42 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 								  					<span>2 min ago</span>
 								  				</div><!--notification-info -->
 							  				</div><!--notfication-details end-->
-							  				<div class="notfication-details">
-								  				<div class="noty-user-img">
-								  					<img src="images/s5.png" alt="">
-								  				</div>
-								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Mike Boyd</a> Liked your post.</h3>
-								  					<span>2 min ago</span>
-								  				</div><!--notification-info -->
-							  				</div><!--notfication-details end-->
-							  				<div class="notfication-details">
-								  				<div class="noty-user-img">
-								  					<img src="images/s5.png" alt="">
-								  				</div>
-								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Helen Jackson</a> Commented on your post.</h3>
-								  					<span>2 min ago</span>
-								  				</div><!--notification-info -->
-							  				</div><!--notfication-details end-->
-							  				<div class="notfication-details">
-								  				<div class="noty-user-img">
-								  					<img src="images/s5.png" alt="">
-								  				</div>
-								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Jassica William</a> Commented on your post.</h3>
-								  					<span>2 min ago</span>
-								  				</div><!--notification-info -->
-							  				</div><!--notfication-details end-->
 							  			</div><!--notifications-list end-->
 							  		</div><!--acc-setting end-->
 							  	</div>
-							  	<div class="tab-pane fade" id="privcy" role="tabpanel" aria-labelledby="nav-privcy-tab">
-							  		<div class="acc-setting">
-							  			<h3>Requests</h3>
-							  			<div class="requests-list">
-							  				<div class="request-details">
-							  					<div class="noty-user-img">
-							  						<img src="images/usr1.png" alt="">
-							  					</div>
-							  					<div class="request-info">
-							  						<h3>Jessica William</h3>
-							  						<span>Graphic Designer</span>
-							  					</div>
-							  					<div class="accept-feat">
-							  						<ul>
-							  							<li><button type="submit" class="accept-req">Accept</button></li>
-							  							<li><button type="submit" class="close-req"><i class="fa fa-close"></i></button></li>
-							  						</ul>
-							  					</div><!--accept-feat end-->
-							  				</div><!--request-detailse end-->
-							  				<div class="request-details">
-							  					<div class="noty-user-img">
-							  						<img src="images/usr1.png" alt="">
-							  					</div>
-							  					<div class="request-info">
-							  						<h3>John Doe</h3>
-							  						<span>PHP Developer</span>
-							  					</div>
-							  					<div class="accept-feat">
-							  						<ul>
-							  							<li><button type="submit" class="accept-req">Accept</button></li>
-							  							<li><button type="submit" class="close-req"><i class="fa fa-close"></i></button></li>
-							  						</ul>
-							  					</div><!--accept-feat end-->
-							  				</div><!--request-detailse end-->
-							  				<div class="request-details">
-							  					<div class="noty-user-img">
-							  						<img src="images/usr1.png" alt="">
-							  					</div>
-							  					<div class="request-info">
-							  						<h3>Poonam</h3>
-							  						<span>Wordpress Developer</span>
-							  					</div>
-							  					<div class="accept-feat">
-							  						<ul>
-							  							<li><button type="submit" class="accept-req">Accept</button></li>
-							  							<li><button type="submit" class="close-req"><i class="fa fa-close"></i></button></li>
-							  						</ul>
-							  					</div><!--accept-feat end-->
-							  				</div><!--request-detailse end-->
-							  				<div class="request-details">
-							  					<div class="noty-user-img">
-							  						<img src="images/usr1.png" alt="">
-							  					</div>
-							  					<div class="request-info">
-							  						<h3>Bill Gates</h3>
-							  						<span>C & C++ Developer</span>
-							  					</div>
-							  					<div class="accept-feat">
-							  						<ul>
-							  							<li><button type="submit" class="accept-req">Accept</button></li>
-							  							<li><button type="submit" class="close-req"><i class="fa fa-close"></i></button></li>
-							  						</ul>
-							  					</div><!--accept-feat end-->
-							  				</div><!--request-detailse end-->
-							  				<div class="request-details">
-							  					<div class="noty-user-img">
-							  						<img src="images/usr1.png" alt="">
-							  					</div>
-							  					<div class="request-info">
-							  						<h3>Jessica William</h3>
-							  						<span>Graphic Designer</span>
-							  					</div>
-							  					<div class="accept-feat">
-							  						<ul>
-							  							<li><button type="submit" class="accept-req">Accept</button></li>
-							  							<li><button type="submit" class="close-req"><i class="fa fa-close"></i></button></li>
-							  						</ul>
-							  					</div><!--accept-feat end-->
-							  				</div><!--request-detailse end-->
-							  				<div class="request-details">
-							  					<div class="noty-user-img">
-							  						<img src="images/usr1.png" alt="">
-							  					</div>
-							  					<div class="request-info">
-							  						<h3>John Doe</h3>
-							  						<span>PHP Developer</span>
-							  					</div>
-							  					<div class="accept-feat">
-							  						<ul>
-							  							<li><button type="submit" class="accept-req">Accept</button></li>
-							  							<li><button type="submit" class="close-req"><i class="fa fa-close"></i></button></li>
-							  						</ul>
-							  					</div><!--accept-feat end-->
-							  				</div><!--request-detailse end-->
-							  			</div><!--requests-list end-->
-							  		</div><!--acc-setting end-->
-							  	</div>
+								<div class="tab-pane fade" id="privcy" role="tabpanel" aria-labelledby="nav-privcy-tab">
+								   <div class="privac">
+								      <div class="row">
+								         <div class="col-12">
+								            <h3>Requests</h3>
+								         </div>
+								      </div>
+								      <hr>
+								      <div class="row">
+								         <div class="col-12">
+								            <div class="dropdown privacydropd">
+								               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Who can send you friend requests?</a>
+								               <div class="dropdown-menu">
+								                  <p>Choose who can send you friend requestson</p>
+								                  <div class="row">
+								                     <div class="col-md-9 col-sm-12">
+								                        <form class="radio-form">
+															<input type="radio" id="everyone" name="request" value="everyone">
+														 	<label for="everyone">Everyone</label><br>
+															<input type="radio" id="friendsOfFriends" name="request" value="friendsOfFriends">
+															<label for="friendsOfFriends">Friends of Friends</label><br>
+								                        </form>
+								                     </div>
+								                     
+								                  </div>
+								               </div>
+								            </div>
+								         </div>
+								      </div>
+								   </div>
+								</div>
 							  	<div class="tab-pane fade" id="security-login" role="tabpanel" aria-labelledby="security">
-							  		<div class="privacy security">
+							  	<div class="privacy security">
 			                     <div class="row">
 			                     	<div class="col-12">
 			                     		<h3>Security and Login</h3>
