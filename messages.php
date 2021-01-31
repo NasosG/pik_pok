@@ -63,7 +63,7 @@ $no_friends = mysqli_num_rows($result_users) == 0;
 	<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
 </head>
 
-<body oncontextmenu="return false;">	
+<body>	
 
 	<div class="wrapper">		
 		<header>
@@ -435,7 +435,7 @@ $(document).ready(function() {
 
 setTimeout(function() {
     window.location.reload(1);
-}, 30000);
+}, 10000);
 
 </script>
 
