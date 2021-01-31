@@ -393,11 +393,18 @@ function isSaved($con, $post_id) {
 												</ul>
 												<ul style= "float:right;" class="like-com">
 													<li><a style="color:#b2b2b2;" class=""><i class="fa fa-thumbs-up"></i> <?php echo 'Likes '.$row['photo_likes'];?></a></li>
-													<li><a href=<?php echo "picComments.php?photo_id=".$row['photo_id']."";?>  class=""><i class="fa fa-comment"></i> <?php echo 'Comments '.$row_after_count[0];?></a></li>
+													<?php 
+														if (!(isset($_SESSION['username']))) {
+															echo '<li><a style="color:#b2b2b2;"><i class="fa fa-comment"></i>Comments '.$row_after_count[0].'</a></li>';
+														}
+														else {
+															echo '<li><a href= "picComments.php?photo_id='.$row['photo_id'].'"><i class="fa fa-comment"></i>Comments '.$row_after_count[0].'</a></li>';
+														}
+													?>
 												</ul>
 											</div>
 											</form>
-										</div><!--post-bar end-->
+										</div>
 										<?php
 										} 
 									?>
@@ -419,7 +426,7 @@ function isSaved($con, $post_id) {
 											<ul>
 												<?php 
 												$len = count($photos_table);
-												if ($len === 0)  echo 'No posts yet';
+												if ($len === 0) echo 'No posts yet';
 
 												else
 													for ($i=0; $i<$len; $i++) {
@@ -429,7 +436,6 @@ function isSaved($con, $post_id) {
 														*/
 													    echo '<li><a title="" ><img style=" border-radius:10%;height:53px;width:70px;" src="'.$photos_table[$i].'" alt=""></a></li>';
 													}
-												
 												?>
 											</ul>
 										</div><!--pf-gallery end-->
