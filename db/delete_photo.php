@@ -2,7 +2,7 @@
 	require('db.php');
 	require('errorFuncts.php');
 	
-    $photo_id = $_POST['photo_id'];
+	$photo_id = $_POST['photo_id'];
 	$query = "DELETE FROM images WHERE photo_id = '$photo_id'";
 	$result = mysqli_query($con, $query);
 	
