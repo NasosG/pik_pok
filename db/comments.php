@@ -1,10 +1,10 @@
 <?php
-	require('db.php');
-	include("auth.php"); //include auth.php file on all secure pages 
+require('db.php');
+include("auth.php"); //include auth.php file on all secure pages 
 
-	$data = array();
-	$uname = $_SESSION['username'];
-	$comment_date = date("Y-m-d H:i:s");
+$data = array();
+$uname = $_SESSION['username'];
+$comment_date = date("Y-m-d H:i:s");
 
 // If the user clicked submit on comment form...
 if (isset($_POST['comment-text'])) {

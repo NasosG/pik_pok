@@ -7,7 +7,7 @@ $db 	= "pik_pok";
 
 $con = mysqli_connect( $dbhost, $dbuser, $dbpass, $db);
 
-if(!$con) {
+if (!$con) {
 	echo "con not established".mysqli_error();
 	die('Connection Failed'.mysqli_error());
 }

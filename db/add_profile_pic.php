@@ -14,7 +14,7 @@ function make_dir($path, $mode) {
     return is_dir($path) || mkdir($path, $mode, true);
 }
 
-if($result) {
+if ($result) {
 	if (make_dir("../uploads/users/".$user_id."/", 0755)) {
 		$target_dir = "../uploads/users/".$user_id."/";
 		$general_dir = "uploads/users/".$user_id."/";
@@ -28,9 +28,9 @@ $query_old_pic = "SELECT profile_pic, picture_path FROM members WHERE username =
 		
 $result = mysqli_query($con,$query_old_pic);
 		
-if($result && mysqli_num_rows($result)>0) {
+if ($result && mysqli_num_rows($result)>0) {
 	$row = mysqli_fetch_array($result);
-	if($row["picture_path"] === 'images/') /* this means that user wants to continue with the default avatar and he/she didn't update his/her profile photo*/
+	if ($row["picture_path"] === 'images/') /* this means that user wants to continue with the default avatar and he/she didn't update his/her profile photo*/
 		header("Location: ../profile3.php"); /* so just redirect the user to his 'new' profile page */
 	else
 		unlink('../'.$row["picture_path"].$row["profile_pic"]);
@@ -45,9 +45,9 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 $bio = !empty($_POST['bio']) ? $_POST['bio'] : NULL;
 	
 	// Check if image file is a actual image or fake image
-	if(isset($_POST["submit"])) {
+	if (isset($_POST["submit"])) {
 	  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-	  if($check !== false) {
+	  if ($check !== false) {
 		echo "File is an image - " . $check["mime"] . ".";
 		$uploadOk = 1;
 	  } 
@@ -70,7 +70,7 @@ $bio = !empty($_POST['bio']) ? $_POST['bio'] : NULL;
 	}
 
 	// Allow certain file formats
-	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+	if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 	&& $imageFileType != "gif" && $imageFileType != "webp") {
 	  echo "Sorry, only JPG, JPEG, PNG, WEBP & GIF files are allowed.";
 	  $uploadOk = 0;
@@ -79,7 +79,7 @@ $bio = !empty($_POST['bio']) ? $_POST['bio'] : NULL;
 	// Check if $uploadOk is set to 0 by an error
 	if ($uploadOk == 0) {
 	  echo "Sorry, your file was not uploaded.";
-	// if everything is ok, try to upload file
+	  // if everything is ok, try to upload file
 	} 
 	else 
 	{
@@ -97,16 +97,13 @@ $bio = !empty($_POST['bio']) ? $_POST['bio'] : NULL;
 		
 		$result = mysqli_query($con,$query);
 		
-		if($result) {
-				header("Location: ../profile3.php");
+		if ($result) {
+			header("Location: ../profile3.php");
 		}
 		else {
 			echo "error occurred";
-		}
-			
+		}	
 	}
-	
-
 
 ?>
 

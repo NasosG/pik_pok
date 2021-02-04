@@ -6,13 +6,11 @@
     // If form submitted, insert values into the database.
     if (isset($_REQUEST['username'])) {
 		$username = stripslashes($_REQUEST['username']); // removes backslashes
-		// sanitize username data
-		$username = filter_var($username, FILTER_SANITIZE_STRING);
+		$username = filter_var($username, FILTER_SANITIZE_STRING); // sanitize username data
 		$username = mysqli_real_escape_string($con, $username); //escapes special characters in a string
 		
 		$email = stripslashes($_REQUEST['email']);
-		// sanitize email
-		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+		$email = filter_var($email, FILTER_SANITIZE_EMAIL); // sanitize email
 		$email = mysqli_real_escape_string($con, $email);
 		
 		///////////////////////////////////////////////////////
@@ -71,7 +69,7 @@
 			VALUES ('$username','".hash('sha256', $password)."','$fname','$surname','$email','$RegDate', '$sex', '$date_of_birth', '$profile_picture', '$picture_path', NULL)";
 
 			$result = mysqli_query($con,$query);
-			if($result) {
+			if ($result) {
 				session_start();
 				$_SESSION['username'] = $username;
 				
@@ -85,9 +83,8 @@
 			VALUES ('$IP','$MAC','$username','$RegDate', '$is_mobile', '$ua_OS', '$ua_browser')";
 				$result = mysqli_query($con,$query_ip_mac);
 
-				if($result) 
+				if ($result) 
 					header("Location: ../addAvatar.php");
-				//echo "<div class='form'><h3>You are registered successfully.</h3><br/>Click here to return to <a //href='../index.php'>Home</a></div>";
 			}
 			else {
 				myerror();
