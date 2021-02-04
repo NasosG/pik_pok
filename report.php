@@ -8,27 +8,13 @@ $num = $_GET['message'];
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel='shortcut icon' type='image/x-icon' href='images/logo.png'/>
-	<meta charset="UTF-8">
-	<title>Contact - Pik Pok</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-	<link rel="stylesheet" type="text/css" href="css/animate.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/flatpickr.min.css">
-	<link rel="stylesheet" type="text/css" href="lib/slick/slick.css">
-	<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/responsive.css">
+	<title>Report - Pik Pok</title>
+	<?php include_once('./includes/head.php'); ?>
 	<link rel="stylesheet" type="text/css" href="css/contact.css">
 	<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
-	<!-- font awesome icons kit -->
-	<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
 </head>
 
-
-<body oncontextmenu="return false;">	
+<body>	
 	<div class="wrapper">	
 
 		<?php
@@ -36,7 +22,7 @@ $num = $_GET['message'];
 		include_once('./includes/header.php');		
 		?>
 		
-<!-- Contact Section -->
+	<!-- Contact Section -->
 	<section id="contact" class="py-5 p-y-contact">
 		<h2 class="text-uppercase text-center pt-5">Contact Us</h2>
 		<h3 class="text-muted text-center pb-3">Feel free to send us your comments!</h3>
@@ -97,7 +83,7 @@ $num = $_GET['message'];
 		window.onload = function() {
     	var $recaptcha = document.querySelector('#g-recaptcha-response');
 
-    		if($recaptcha) {
+    		if ($recaptcha) {
         		$recaptcha.setAttribute("required", "required");
     		}
 
@@ -106,7 +92,7 @@ $num = $_GET['message'];
 		var form_contact = document.getElementById("contactForm");
 
 		document.getElementById("submit_form").addEventListener("click", function () {
-			if(grecaptcha && grecaptcha.getResponse().length > 0) {
+			if (grecaptcha && grecaptcha.getResponse().length > 0) {
 				//form_contact.submit();
 			    sendContactForm();
 			}

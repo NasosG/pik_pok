@@ -5,12 +5,6 @@ require('db/errorFuncts.php');
 
 mysqli_set_charset($con,"utf8");
 
-/*
-	$search=get ['search'];
-	1. tha kanoume get/post na pairnoume to keimeno tou input
-  1. na kanoume query opou tha tou dinoume to keimeno tou search bar apo to input
-  2. 
-*/
 if (isset($_GET['search']) && !empty($_GET['search']))	{		
 	$search = $_GET['search'];
 	$query = "SELECT *
@@ -38,24 +32,11 @@ if (isset ($_SESSION['username'])) {
 <!DOCTYPE html>
 <html>
 <head>
-<link rel='shortcut icon' type='image/x-icon' href='images/logo.png'/>
-<meta charset="UTF-8">
-<title>Trending - Pik Pok</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<link rel="stylesheet" type="text/css" href="css/animate.css">
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/flatpickr.min.css">
-<link rel="stylesheet" type="text/css" href="lib/slick/slick.css">
-<link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/responsive.css">
-<!-- font awesome icons kit -->
-<script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
+	<title>Trending - Pik Pok</title>
+	<?php include_once('./includes/head.php'); ?>
 </head>
 
-<body oncontextmenu="return false;">
+<body>
 	<div class="wrapper">
 
 		<?php
