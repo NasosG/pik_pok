@@ -13,7 +13,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
 				ORDER BY photo_id DESC";
 }
 else {
-	$query = "SELECT * FROM images ORDER BY photo_id DESC"; //mporoume na kanoume order by date alla kai to id petuxainei ton skopo kai den xreiazetai na kratame kai thn wra sthn bash alla mono hmeromhnia
+	$query = "SELECT * FROM images ORDER BY photo_id DESC"; //we can order by date but order by id achieves the same goal and we don't need to keep specific time in the database but only the date [implementation may change in the future]
 }	
 
 $result = mysqli_query($con, $query);
