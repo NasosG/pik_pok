@@ -14,7 +14,7 @@ require('db/errorFuncts.php');
 	<link rel="stylesheet" type="text/css" href="css/other-styles.css">
 </head>
 
-<body oncontextmenu="return false;">
+<body>
 	<div class="wrapper">
 
 		<?php

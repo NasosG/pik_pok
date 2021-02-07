@@ -31,10 +31,10 @@
 	font-weight: bold;
 }
 
-h4:before {
+/*h4:before {
 	content: "• ";
 }
-
+*/
 h4 {
 	font-weight: bold;
 	margin-bottom: 10px;
@@ -67,4 +67,15 @@ b {
 
 .terms_section {
 	color: black;
+}
+
+.uiList {
+	list-style: disc; 
+	color: black; 
+	display: block; 
+	-webkit-margin-after: 12px; 
+	-webkit-margin-before: 12px; 
+	-webkit-margin-end: 0px; 
+	-webkit-margin-start: 0px; 
+	-webkit-padding-start: 40px;
 }
