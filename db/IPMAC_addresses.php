@@ -1,7 +1,7 @@
 <?php
 // PHP program to get IP address of client 
 $IP = $_SERVER['REMOTE_ADDR']; 
-  
+//$mac = shell_exec("arp -a ".escapeshellarg($_SERVER['REMOTE_ADDR'])." | grep -o -E '(:xdigit:{1,2}:){5}:xdigit:{1,2}'");
 // $IP stores the ip address of client 
 // echo "Client's IP address is: $IP"; 
   
