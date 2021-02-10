@@ -6,8 +6,8 @@ session_start();
 
 function is_base64($str)
 {
-    $b64_starts_with = "data:image/jpeg;base64";
-    return (bool)(substr($str, 0, strlen($b64_starts_with)) === $b64_starts_with);
+	$b64_starts_with = "data:image/jpeg;base64";
+	return (bool)(substr($str, 0, strlen($b64_starts_with)) === $b64_starts_with);
 }
 
 $tags = $_POST['tags'];
@@ -26,24 +26,24 @@ $uploadOk = 1;
 
 
 if (isset($_POST['imgData']) &&  is_base64($_POST['imgData']) && empty($file_up)) {
-    // it requires php5
-    define('UPLOAD_DIR', '../uploads/pik_pok_pics/');
-    $img = $_POST['imgData'];
-    $img = str_replace('data:image/jpeg;base64,', '', $img);
-    $img = str_replace(' ', '+', $img);
-    $data = base64_decode($img);
-    $filename =  uniqid() . '.jpeg';
-    $file = UPLOAD_DIR . $filename;
-    $success = file_put_contents($file, $data);
-    print $success ? $file : 'Unable to save the file.';
+	// it requires php5
+	define('UPLOAD_DIR', '../uploads/pik_pok_pics/');
+	$img = $_POST['imgData'];
+	$img = str_replace('data:image/jpeg;base64,', '', $img);
+	$img = str_replace(' ', '+', $img);
+	$data = base64_decode($img);
+	$filename =  uniqid() . '.jpeg';
+	$file = UPLOAD_DIR . $filename;
+	$success = file_put_contents($file, $data);
+	print $success ? $file : 'Unable to save the file.';
 	
 	
-    //store in the db -> TODO 
-    mysqli_set_charset($con,"utf8");
-    $query = "INSERT INTO images(photo_name, photo_likes, photo_path, username, photo_tag, date_posted) 
+	//store in the db -> TODO 
+	mysqli_set_charset($con,"utf8");
+	$query = "INSERT INTO images(photo_name, photo_likes, photo_path, username, photo_tag, date_posted) 
 	VALUES ('$filename', 0, '$general_dir' ,'$username', '$tags', '$date')";
 
-    $result = mysqli_query($con, $query) or die("Not able to execute the query"); 
+	$result = mysqli_query($con, $query) or die("Not able to execute the query"); 
 }
 
 else {
@@ -56,7 +56,7 @@ else {
 	// Check if image file is a actual image or fake image
 	if (isset($_POST["submit"])) {
 		$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-		if($check !== false) {
+		if ($check !== false) {
 			echo "File is an image - " . $check["mime"] . ".";
 			$uploadOk = 1;
 		} 
@@ -111,4 +111,3 @@ mysqli_close($con);
 // Redirect user to index.php
 header("Location: ../index.php");
 ?>
-
