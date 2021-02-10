@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2020 at 11:02 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Generation Time: Feb 10, 2021 at 03:16 AM
+-- Server version: 10.4.16-MariaDB
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -51,7 +51,9 @@ INSERT INTO `chat_message` (`chat_message_id`, `by_user_id`, `to_user_id`, `mess
 (6, 50, 40, 'yeah u2', '2020-10-14 01:49:24', 'unread'),
 (7, 40, 49, 'γειαααα', '2020-10-14 02:17:42', 'unread'),
 (8, 50, 40, 'γεια και παλι', '2020-10-14 02:22:41', 'unread'),
-(9, 40, 50, 'γεια τι λεει', '2020-10-14 02:23:00', 'unread');
+(9, 40, 50, 'γεια τι λεει', '2020-10-14 02:23:00', 'unread'),
+(10, 40, 61, 'hello ', '2021-02-05 09:43:19', 'unread'),
+(11, 61, 40, 'hello!!!', '2021-02-05 09:44:32', 'unread');
 
 -- --------------------------------------------------------
 
@@ -88,7 +90,8 @@ INSERT INTO `comment_replies` (`reply_id`, `comment_id`, `user_id`, `comment_tex
 (1, 83, 45, 'nice photos there', '2020-10-08 18:37:32'),
 (5, 83, 40, 'geia', '2020-10-09 03:36:00'),
 (6, 92, 50, 'who knows', '2020-10-09 03:36:00'),
-(11, 92, 40, 'geia xaraa', '2020-10-12 16:26:14');
+(11, 92, 40, 'geia xaraa', '2020-10-12 16:26:14'),
+(12, 102, 61, 'asa', '2021-02-05 09:41:38');
 
 -- --------------------------------------------------------
 
@@ -169,7 +172,11 @@ INSERT INTO `ip_mac_addresses` (`im_id`, `IP_address`, `mac_address`, `user_name
 (84, '::1', 'B0-6E-BF-D1-26-0A', 'mike', '2020-10-02 23:37:47', 0, 'windows', 'Google Chrome'),
 (105, '::1', 'B0-6E-BF-D1-26-0A', 'thn12', '2020-10-12 19:50:06', 0, 'windows', 'Google Chrome'),
 (117, '::1', '3C-A0-67-C1-E3-B2', 'thn12', '2020-10-15 19:28:05', 0, 'windows', 'Mozilla Firefox'),
-(118, '::1', '3C-A0-67-C1-E3-B2', 'kostas1234', '2020-10-15 21:26:00', 0, 'windows', 'Google Chrome');
+(118, '::1', '3C-A0-67-C1-E3-B2', 'kostas1234', '2020-10-15 21:26:00', 0, 'windows', 'Google Chrome'),
+(122, '::1', '00-FF-E4-38-B1-19', 'uipp', '2021-02-05 09:44:21', 0, 'windows', 'Google Chrome'),
+(126, '127.0.0.1', '00-FF-E4-38-B1-19', 'uipp', '2021-02-07 19:35:39', 0, 'windows', 'Mozilla Firefox'),
+(127, '127.0.0.1', '00-FF-E4-38-B1-19', 'thn12', '2021-02-07 19:36:03', 0, 'windows', 'Mozilla Firefox'),
+(131, '::1', '00-FF-E4-38-B1-19', 'thn12', '2021-02-10 03:04:08', 0, 'windows', 'Google Chrome');
 
 -- --------------------------------------------------------
 
@@ -189,24 +196,26 @@ CREATE TABLE `members` (
   `date_of_birth` date DEFAULT NULL,
   `profile_pic` varchar(100) DEFAULT NULL,
   `picture_path` varchar(100) DEFAULT NULL,
-  `bio` text DEFAULT NULL
+  `bio` text DEFAULT NULL,
+  `status` varchar(20) CHARACTER SET utf8mb4 DEFAULT 'offline'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `members`
 --
 
-INSERT INTO `members` (`username`, `password`, `fname`, `lname`, `email`, `date_of_registration`, `id`, `sex`, `date_of_birth`, `profile_pic`, `picture_path`, `bio`) VALUES
-('thn12', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Μιχάλης', 'Πανταζής', 'asd@uop.gr', '2020-05-21', 40, 0, '1989-06-11', 'anonymous_hacker.jpg', 'uploads/users/40/', NULL),
-('mara10', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'μαρια', 'αντεπαλοβ', 'mrt@iop.com', '2020-06-02', 45, 1, '1987-10-29', 'Screenshot_160.png', 'uploads/users/45/', NULL),
-('opl', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'manolis', 'klo', 'gnasos219@gmail.com', '2020-06-06', 47, 0, '2020-06-02', 'ekthema.png', 'uploads/users/47/', NULL),
-('makis', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'makis', 'makis', 'makis@makis.gr', '2020-06-06', 48, 0, '2020-06-30', 'ekthema.png', 'uploads/users/48/', NULL),
-('marigeorgitsa', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Γιωργίτσα', 'Μακριγεώργου', 'maritsa@maritso.uiop', '2020-06-06', 49, 1, '2020-06-18', 'tupisa.png', 'uploads/users/49/', NULL),
-('kostas1234', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Kostas', 'Jones', 'sitetest23456@gmail.com', '2020-06-11', 50, 0, '2020-06-17', 'lias.jpg', 'uploads/users/50/', NULL),
-('omar', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Nick', 'asd', 'asda@dfg.gt', '2020-06-11', 51, 0, '2020-06-08', 'wolf2.jpg', 'uploads/users/51/', NULL),
-('john2', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'john', 'johnson', 'klo@we.ht', '2020-06-11', 52, 0, '1995-02-11', 'default-avatar.jpg', 'images/', NULL),
-('mike', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'giorgos', 'kloipoilo', 'opkl@riop.gre', '2020-10-02', 59, 0, '2004-10-01', 'sdf.png', 'uploads/users/59/', 'I am therefore I am'),
-('gio2', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'giorgitsa', 'georgiou', 'giorgitsa@uio.jk', '2020-10-02', 60, 1, '2004-09-27', 'default-avatar.jpg', 'images/', NULL);
+INSERT INTO `members` (`username`, `password`, `fname`, `lname`, `email`, `date_of_registration`, `id`, `sex`, `date_of_birth`, `profile_pic`, `picture_path`, `bio`, `status`) VALUES
+('thn12', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Μιχάλης', 'Πανταζής', 'asd@uop.gr', '2020-05-21', 40, 0, '1989-06-11', 'anonymous_hacker.jpg', 'uploads/users/40/', 'coffee obsessed ☕', 'online'),
+('mara10', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'μαρια', 'αντεπαλοβ', 'mrt@iop.com', '2020-06-02', 45, 1, '1987-10-29', 'Screenshot_160.png', 'uploads/users/45/', NULL, 'offline'),
+('opl', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'manolis', 'klo', 'gnasos219@gmail.com', '2020-06-06', 47, 0, '2020-06-02', 'ekthema.png', 'uploads/users/47/', NULL, 'offline'),
+('makis', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'makis', 'makis', 'makis@makis.gr', '2020-06-06', 48, 0, '2020-06-30', 'ekthema.png', 'uploads/users/48/', NULL, 'offline'),
+('marigeorgitsa', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Γιωργίτσα', 'Μακριγεώργου', 'maritsa@maritso.uiop', '2020-06-06', 49, 1, '2020-06-18', 'tupisa.png', 'uploads/users/49/', NULL, 'offline'),
+('kostas1234', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Kostas', 'Jones', 'sitetest23456@gmail.com', '2020-06-11', 50, 0, '2020-06-17', 'lias.jpg', 'uploads/users/50/', NULL, 'offline'),
+('omar', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Nick', 'asd', 'asda@dfg.gt', '2020-06-11', 51, 0, '2020-06-08', 'wolf2.jpg', 'uploads/users/51/', NULL, 'offline'),
+('john2', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'john', 'johnson', 'klo@we.ht', '2020-06-11', 52, 0, '1995-02-11', 'default-avatar.jpg', 'images/', NULL, 'offline'),
+('mike', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'giorgos', 'kloipoilo', 'opkl@riop.gre', '2020-10-02', 59, 0, '2004-10-01', 'sdf.png', 'uploads/users/59/', 'I am therefore I am', 'offline'),
+('gio2', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'giorgitsa', 'georgiou', 'giorgitsa@uio.jk', '2020-10-02', 60, 1, '2004-09-27', 'default-avatar.jpg', 'images/', NULL, 'offline'),
+('uipp', '34f2dc63b2c3a36f26103e912a3ddbbb34cfc95be8f7f03ea29339cccb2772e6', 'makis', 'klksla', 'gnasos29@gmail.com', '2021-02-05', 61, 0, '2005-02-01', 'default-avatar.jpg', 'images/', NULL, 'offline');
 
 -- --------------------------------------------------------
 
@@ -266,7 +275,7 @@ INSERT INTO `post_likes` (`post_likes_id`, `liked_by_user`, `posted_photo_id`, `
 (758, 40, 12, '2020-09-28 22:05:05'),
 (775, 40, 10, '2020-10-12 16:57:03'),
 (776, 40, 37, '2020-10-12 22:43:10'),
-(778, 40, 16, '2020-10-14 02:28:48');
+(779, 40, 16, '2021-02-07 19:36:38');
 
 -- --------------------------------------------------------
 
@@ -287,7 +296,8 @@ CREATE TABLE `relationship` (
 --
 
 INSERT INTO `relationship` (`relationship_id`, `user_one_id`, `user_two_id`, `status`, `action_user_id`) VALUES
-(1, 40, 50, 1, 50);
+(1, 40, 50, 1, 50),
+(3, 61, 40, 1, 40);
 
 -- --------------------------------------------------------
 
@@ -398,7 +408,7 @@ ALTER TABLE `saved_posts`
 -- AUTO_INCREMENT for table `chat_message`
 --
 ALTER TABLE `chat_message`
-  MODIFY `chat_message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `chat_message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `comment_likes`
@@ -410,7 +420,7 @@ ALTER TABLE `comment_likes`
 -- AUTO_INCREMENT for table `comment_replies`
 --
 ALTER TABLE `comment_replies`
-  MODIFY `reply_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `reply_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `hashtags`
@@ -422,37 +432,37 @@ ALTER TABLE `hashtags`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `ip_mac_addresses`
 --
 ALTER TABLE `ip_mac_addresses`
-  MODIFY `im_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `im_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `post_comments`
 --
 ALTER TABLE `post_comments`
-  MODIFY `post_comments_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `post_comments_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `post_likes`
 --
 ALTER TABLE `post_likes`
-  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=779;
+  MODIFY `post_likes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=780;
 
 --
 -- AUTO_INCREMENT for table `relationship`
 --
 ALTER TABLE `relationship`
-  MODIFY `relationship_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `relationship_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `saved_posts`
