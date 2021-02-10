@@ -1,7 +1,25 @@
 $(window).on("load", function() {
     "use strict";
 
+    $("#c5").on("click", function() {
+        $.ajax({
+            type: "POST",
+            url: './db/handle_status.php',
+            data:{action:'set_status', text:'online'},
+            success:function() {}
+        });
     
+    });
+
+    $("#c6").on("click", function() {
+        $.ajax({
+            type: "POST",
+            url: './db/handle_status.php',
+            data:{action:'set_status', text:'offline'},
+            success:function() {}
+        });
+    
+    });
 
     //  ============= POST PROJECT POPUP FUNCTION =========
 

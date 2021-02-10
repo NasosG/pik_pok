@@ -32,6 +32,10 @@ if (isset($_POST['username'])) {
 	$result = mysqli_query($con,$query) or die("Not able to execute the query");
 	$rows = mysqli_num_rows($result);
     if ($rows == 1) {
+
+		$status = 'online';
+		$set_status($con, $username, $status);
+
 		$_SESSION['username'] = $username;
 		
 		$get_mac = "SELECT MAC_address, IP_address FROM ip_mac_addresses WHERE user_name='$username'";
