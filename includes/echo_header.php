@@ -37,40 +37,28 @@
                     <ul>
                         <li>
                             <a href="../index.php" title="">
-									<span>
-									<i style="font-size:1.2em;" class="fa fa-home"></i>
-									</span>
+                                <span>
+                                    <i style="font-size:1.2em;" class="fa fa-home"></i>
+                                </span>
                                 Home
                             </a>
                         </li>
                         <li>
                             <a href="../top.php" title="">
-									<span>
-									<i class="fa fa-thumbs-up "></i>
-									</span>
+                                <span>
+                                    <i class="fa fa-thumbs-up "></i>
+                                </span>
                                 Trending
                             </a>
                         </li>
                         <li>
                             <a href="../contact.php" title="">
-									<span>
-									<i class="fa fa-id-card"></i>
-									</span>
+                                <span>
+                                    <i class="fa fa-id-card"></i>
+                                </span>
                                 Contact
                             </a>
                         </li>
-                        <?php
-                        if (isset($_SESSION['username']))
-                            echo '
-							<li>
-								<a href="post.php" title="">
-									<span>
-									<i class="fa fa-plus"></i>
-									</span>
-									Post
-								</a>
-							</li>
-							'; ?>
                     </ul>
                 </nav><!--nav end-->
                 <div class="menu-btn">
