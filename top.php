@@ -198,7 +198,7 @@ if (isset($_SESSION['username'])) {
                 x[0].innerHTML = "Unlike <i class='fas fa-heart-broken'></i>";
             }
         }
-        
+
     </script>
 </body>
 
