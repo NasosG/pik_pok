@@ -1,7 +1,7 @@
 <?php
 // PHP program to get IP address of client 
 $IP = $_SERVER['REMOTE_ADDR'];
-//$mac = shell_exec("arp -a ".escapeshellarg($_SERVER['REMOTE_ADDR'])." | grep -o -E '(:xdigit:{1,2}:){5}:xdigit:{1,2}'");
+// $mac = shell_exec("arp -a ".escapeshellarg($_SERVER['REMOTE_ADDR'])." | grep -o -E '(:xdigit:{1,2}:){5}:xdigit:{1,2}'");
 // $IP stores the ip address of client 
 // echo "Client's IP address is: $IP"; 
 
@@ -16,8 +16,7 @@ $MAC = strtok($MAC, ' ');
 // Updating $MAC value using strtok function,  
 // strtok is used to split the string into tokens 
 // split character of strtok is defined as a space 
-// because getmac returns transport name after 
-// MAC address    
+// because getmac returns transport name after MAC address
 // echo "MAC address of client is: $MAC"; 
 
 function getBrowser()
@@ -32,7 +31,8 @@ function getBrowser()
     if (preg_match('/android/i', $u_agent)) {
         $platform = 'android';
         $is_mobile = true;
-    } else if (preg_match("/(avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $u_agent)) {
+    }
+    else if (preg_match("/(avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $u_agent)) {
         $platform = 'non android mobile';
         $is_mobile = true;
     }
@@ -109,12 +109,5 @@ function getBrowser()
         'pattern' => $pattern
     );
 }
-
-// now try it
-//$ua = getBrowser();
-
-// lines below for debugging purposes
-// $yourbrowser= "Your browser: " . $ua['name'] . " " . $ua['version'] . " on " .$ua['platform'] ;
-// print_r($yourbrowser);
 
 ?>
