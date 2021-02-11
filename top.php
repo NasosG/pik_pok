@@ -8,9 +8,9 @@ mysqli_set_charset($con, "utf8");
 if (isset($_GET['search']) && !empty($_GET['search'])) {
 	$search = $_GET['search'];
 	$query = "SELECT *
-				FROM images 
-				WHERE photo_tag LIKE '%{$search}%'
-				ORDER BY photo_likes DESC";
+                FROM images 
+                WHERE photo_tag LIKE '%{$search}%'
+                ORDER BY photo_likes DESC";
 } 
 else {
 	$query = "SELECT * FROM images ORDER BY photo_likes DESC";

@@ -1,18 +1,18 @@
 <?php
 // PHP program to get IP address of client 
-$IP = $_SERVER['REMOTE_ADDR']; 
+$IP = $_SERVER['REMOTE_ADDR'];
 //$mac = shell_exec("arp -a ".escapeshellarg($_SERVER['REMOTE_ADDR'])." | grep -o -E '(:xdigit:{1,2}:){5}:xdigit:{1,2}'");
 // $IP stores the ip address of client 
 // echo "Client's IP address is: $IP"; 
-  
+
 // Print the ip address of client 
 
 // PHP code to get the MAC address of Client 
-$MAC = exec('getmac'); 
-  
+$MAC = exec('getmac');
+
 // Storing 'getmac' value in $MAC 
-$MAC = strtok($MAC, ' '); 
-  
+$MAC = strtok($MAC, ' ');
+
 // Updating $MAC value using strtok function,  
 // strtok is used to split the string into tokens 
 // split character of strtok is defined as a space 
@@ -32,8 +32,7 @@ function getBrowser()
     if (preg_match('/android/i', $u_agent)) {
         $platform = 'android';
         $is_mobile = true;
-    }
-    else if (preg_match("/(avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $u_agent)) {
+    } else if (preg_match("/(avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $u_agent)) {
         $platform = 'non android mobile';
         $is_mobile = true;
     }
@@ -46,9 +45,9 @@ function getBrowser()
     else if (preg_match('/linux/i', $u_agent)) {
         $platform = 'linux';
     }
-    
+
     // Next get the name of the user agent separately
-    if (preg_match('/MSIE/i',$u_agent) && !preg_match('/Opera/i', $u_agent)) {
+    if (preg_match('/MSIE/i', $u_agent) && !preg_match('/Opera/i', $u_agent)) {
         $bname = 'Internet Explorer';
         $ub = "MSIE";
     }
@@ -72,21 +71,21 @@ function getBrowser()
         $bname = 'Netscape';
         $ub = "Netscape";
     }
-   
+
     // finally get the correct version number
     $known = array('Version', $ub, 'other');
     $pattern = '#(?<browser>' . join('|', $known) .
-    ')[/ ]+(?<version>[0-9.|a-zA-Z.]*)#';
+        ')[/ ]+(?<version>[0-9.|a-zA-Z.]*)#';
     if (!preg_match_all($pattern, $u_agent, $matches)) {
         // we have no matching number just continue
     }
-   
+
     // see how many we have
     $i = count($matches['browser']);
     if ($i != 1) {
         //we will have two since we are not using 'other' argument yet
         //see if version is before or after the name
-        if (strripos($u_agent,"Version") < strripos($u_agent,$ub)) {
+        if (strripos($u_agent, "Version") < strripos($u_agent, $ub)) {
             $version = $matches['version'][0];
         }
         else {
@@ -96,16 +95,18 @@ function getBrowser()
     else {
         $version = $matches['version'][0];
     }
-   
+
     // check if we have a number
-    if ($version == null || $version == "") {$version = "?";}
-   
+    if ($version == null || $version == "") {
+        $version = "?";
+    }
+
     return array(
-    	'is_mobile' => $is_mobile,
-        'name'      => $bname,
-        'version'   => $version,
-        'platform'  => $platform,
-        'pattern'   => $pattern
+        'is_mobile' => $is_mobile,
+        'name' => $bname,
+        'version' => $version,
+        'platform' => $platform,
+        'pattern' => $pattern
     );
 }
 

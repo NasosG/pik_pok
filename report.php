@@ -30,22 +30,18 @@ $num = $_GET['message'];
             <div class="contact-container">
                 <form name="contactForm" id="contactForm" action="mail/contact_us.php" method="post">
                     <div class="row">
-
                         <div class="col-12 pb-3">
                             <input type="text" id="name" name="name" placeholder="Your name.." required>
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="col-12 pb-3">
                             <input type="email" id="email" name="email" placeholder="Your e-mail.." minlength="5" required>
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="col-12 pb-3">
-                            <textarea style="min-height:180px;" id="messageText" name="message"
-                                      placeholder="Write your message.."
+                            <textarea style="min-height:180px;" id="messageText" name="message" placeholder="Write your message.."
                                       required><?php echo 'http://localhost/pik_pok/picComments.php?photo_id=' . $num . ' violated community guidelines by... Type the reason here'; ?></textarea>
                         </div>
                     </div>

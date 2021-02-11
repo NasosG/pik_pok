@@ -46,7 +46,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
     </style>
 </head>
 
-<body class="sign-in" oncontextmenu="return false;">
+<body class="sign-in">
     <div class="wrapper">
         <div class="sign-in-page">
             <div class="signin-popup">

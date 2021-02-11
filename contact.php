@@ -30,22 +30,18 @@ require('db/errorFuncts.php');
             <div class="contact-container">
                 <form name="contactForm" id="contactForm" action="mail/contact_us.php" method="post">
                     <div class="row">
-
                         <div class="col-12 pb-3">
                             <input type="text" id="name" name="name" placeholder="Your name.." required>
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="col-12 pb-3">
                             <input type="email" id="email" name="email" placeholder="Your e-mail.." minlength="5" required>
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="col-12 pb-3">
-                            <textarea style="min-height:180px;" id="messageText" name="message"
-                                      placeholder="Write your message.." required></textarea>
+                            <textarea style="min-height:180px;" id="messageText" name="message" placeholder="Write your message.." required></textarea>
                         </div>
                     </div>
                     <div class="row">
@@ -83,8 +79,7 @@ require('db/errorFuncts.php');
             </div>
         </footer>
 
-    </div>
-    <!--theme-layout end-->
+    </div><!--theme-layout end-->
 
     <script>
         window.onload = function () {

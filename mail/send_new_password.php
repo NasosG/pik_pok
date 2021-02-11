@@ -1,5 +1,5 @@
 <?php
- 
+
 date_default_timezone_set('Etc/UTC');
 
 require('../db/db.php');
@@ -10,8 +10,8 @@ require 'PHPMailer/PHPMailerAutoload.php';
 $email = $_POST['forgot_text'];
 
 // Check for empty fields
-if(empty($_POST['forgot_text']) || !filter_var($_POST['forgot_text'],FILTER_VALIDATE_EMAIL)) {
-	header("Location: ../formError.html"); 
+if (empty($_POST['forgot_text']) || !filter_var($_POST['forgot_text'], FILTER_VALIDATE_EMAIL)) {
+    header("Location: ../formError.html");
 }
 
 // we check if user exists in the database
@@ -25,10 +25,10 @@ if (!$result) {
 /////////////////////////////////////////////////////
 
 //if email doesn't exist
-else if (mysqli_num_rows($result) == 0)  {
-	echo "<br> We didn't find any users with that email <br>";
-	echo "<br> Click <a href='../signin.php'>here</a> to Sign Up<br>";
-	return;
+else if (mysqli_num_rows($result) == 0) {
+    echo "<br> We didn't find any users with that email <br>";
+    echo "<br> Click <a href='../signin.php'>here</a> to Sign Up<br>";
+    return;
 }
 
 /*
@@ -38,7 +38,7 @@ else if (mysqli_num_rows($result) == 0)  {
 // Emails form data to this email and the person submitting the form
 $myemail = 'sitetest23456@gmail.com';
 
-    
+
 $mail = new PHPMailer();
 $mail->isSMTP();// Set mailer to use SMTP                              
 $mail->Host = 'smtp.gmail.com'; // Which SMTP server to use.
@@ -56,12 +56,12 @@ $mail->Subject = 'Activate your Pik-Pok account';
 /*
  * New Password Generation And Database Update
  */
- 
- // generate a pseudorandom password
-function password_generate($chars) 
+
+// generate a pseudorandom password
+function password_generate($chars)
 {
-	$data = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
-	return substr(str_shuffle($data), 0, $chars);
+    $data = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+    return substr(str_shuffle($data), 0, $chars);
 }
 
 // the pseudorandom password we want, has 8 characters.
@@ -91,8 +91,7 @@ $mail->Body = "<span>Hello, You're receiving this email because you requested a 
 <span>Click on the button below to login with your new password</span><br><br>		
 <a href='localhost/pik_pok/signin.php' style='border: 1px solid #1b9be9; font-weight: 600; color: #fff; border-radius: 3px; cursor: pointer; outline: none; background: #1b9be9; padding: 4px 15px; display: inline-block; text-decoration: none;'>Login</a>";
 
-if($mail->send()) echo "A new password has been sent to your email. Check your inbox"; 
-else echo "an error has occurred during the procedure"; 
-
+if ($mail->send()) echo "A new password has been sent to your email. Check your inbox";
+else echo "an error has occurred during the procedure";
 
 ?>

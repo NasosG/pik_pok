@@ -1,6 +1,8 @@
 $(window).on("load", function() {
     "use strict";
 
+    //  == CHANGE STATUS(ONLINE/OFFLINE) FUNCTIONALITY ==
+
     $("#c5").on("click", function() {
         $.ajax({
             type: "POST",
@@ -8,7 +10,6 @@ $(window).on("load", function() {
             data:{action:'set_status', text:'online'},
             success:function() {}
         });
-    
     });
 
     $("#c6").on("click", function() {
@@ -18,7 +19,6 @@ $(window).on("load", function() {
             data:{action:'set_status', text:'offline'},
             success:function() {}
         });
-    
     });
 
     //  ============= POST PROJECT POPUP FUNCTION =========

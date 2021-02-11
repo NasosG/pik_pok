@@ -1,8 +1,8 @@
 <?php
- 
- /*
-   * na kanoume epipleon elegxous gia to i'm not a robot
- */
+
+/*
+  * more checks for robots -> i'm not a robot
+*/
 
 date_default_timezone_set('Etc/UTC');
 
@@ -10,16 +10,16 @@ date_default_timezone_set('Etc/UTC');
 require 'PHPMailer/PHPMailerAutoload.php';
 
 // Check for empty fields
-if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['message']) || !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)) {
-	echo "something went wrong";
-	exit();
+if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['message']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    echo "something went wrong";
+    exit();
 }
 
 // Receive and sanitize input
 $name = strip_tags(htmlspecialchars($_POST['name']));
 $email_address = strip_tags(htmlspecialchars($_POST['email']));
 $message = strip_tags(htmlspecialchars($_POST['message']));
-$message = wordwrap($message,70); 
+$message = wordwrap($message, 70);
 
 /*
  * Server Configuration
@@ -42,12 +42,11 @@ $mail->Subject = "Website Contact Form:  $name";
  */
 
 // and finaly send the email to the user to let him know that password has been changed
-$mail->Body = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\nEmail: $email_address\n\nMessage: $message";
+$mail->Body = "You have received a new message from your website contact form.\n\n" . "Here are the details:\n\nName: $name\n\nEmail: $email_address\n\nMessage: $message";
 
 /*if($mail->send()) echo "Email sent thank you for your input"; 
 else echo "an error has occurred during the procedure"; */
 
-if(!($mail->send())) 
-	http_response_code(500);
-
+if (!($mail->send()))
+    http_response_code(500);
 ?>
