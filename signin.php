@@ -1,6 +1,6 @@
 <?php
 include("db/auth.php"); //include auth.php file on all secure pages
-$redirect_users();
+$redirect_signed_in_users();
 ?>
 
 <!DOCTYPE html>
