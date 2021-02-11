@@ -1,7 +1,7 @@
 <?php
 require('db.php');
-require('errorFuncts.php');
-require('IPMAC_addresses.php');
+require('error_functions.php');
+require('IP_MAC_addresses.php');
 
 // If form submitted, insert values into the database.
 if (isset($_REQUEST['username'])) {

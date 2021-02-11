@@ -1,7 +1,7 @@
 <?php
 include("db/auth.php"); //include auth.php file on all secure pages include("db/auth.php"); //include auth.php file on all secure pages 
 require('db/db.php');
-require('db/errorFuncts.php');
+require('db/error_functions.php');
 
 $username = $_SESSION['username'];
 mysqli_set_charset($con, "utf8");

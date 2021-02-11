@@ -1,7 +1,7 @@
 <?php
 include("auth.php"); //include auth.php file on all secure pages include("db/auth.php"); //include auth.php file on all secure pages
 require('db.php');
-require('errorFuncts.php');
+require('error_functions.php');
 
 $username = $_SESSION['username'];
 //echo isset($_REQUEST['fname']) . ' isset value ';

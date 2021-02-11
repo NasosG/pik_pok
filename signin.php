@@ -1,5 +1,6 @@
 <?php
-include("db/auth.php"); //include auth.php file on all secure pages 
+include("db/auth.php"); //include auth.php file on all secure pages
+$redirect_users();
 ?>
 
 <!DOCTYPE html>

@@ -1,7 +1,7 @@
 <?php
 include("db/auth.php"); //include auth.php file on all secure pages 
 require('db/db.php');
-require('db/errorFuncts.php');
+require('db/error_functions.php');
 
 $uname = $_SESSION['username'];
 mysqli_set_charset($con, "utf8");
@@ -496,7 +496,7 @@ function isSaved($con, $post_id)
         <div class="post-project">
             <h3>Post Image</h3>
             <div class="post-project-fields">
-                <form id="post_form" name="post_form" method="post" action="db/addnew.php" enctype="multipart/form-data">
+                <form id="post_form" name="post_form" method="post" action="db/add_new.php" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-12">
                             <input type="text" name="tags" placeholder="Insert Tags, f.e. #summer2020#i<3beach">

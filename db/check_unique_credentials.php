@@ -1,7 +1,7 @@
 <?php
 require('db.php');
-require('errorFuncts.php');
-require('IPMAC_addresses.php');
+require('error_functions.php');
+require('IP_MAC_addresses.php');
 
 if (isset($_REQUEST['username']) || isset($_REQUEST['email'])) {
 

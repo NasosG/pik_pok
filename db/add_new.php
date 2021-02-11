@@ -1,7 +1,7 @@
 <?php
 
 require('db.php');
-require('errorFuncts.php');
+require('error_functions.php');
 session_start();
 
 function is_base64($str) {
@@ -43,7 +43,6 @@ if (isset($_POST['imgData']) && is_base64($_POST['imgData']) && empty($file_up))
     $result = mysqli_query($con, $query) or die("Not able to execute the query");
 }
 else {
-
     /* code below needs optimization */
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $target_file = $target_dir . $newname . "." . $imageFileType;

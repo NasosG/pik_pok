@@ -1,6 +1,6 @@
 <?php
 require('db.php');
-require('errorFuncts.php');
+require('error_functions.php');
 
 $photo_id = $_POST['photo_id'];
 $query = "DELETE FROM images WHERE photo_id = '$photo_id'";

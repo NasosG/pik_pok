@@ -1,7 +1,7 @@
 <?php
 include("db/auth.php"); //include auth.php file on all secure pages 
 require('db/db.php');
-require('db/errorFuncts.php');
+require('db/error_functions.php');
 
 $photo_taken = false;
 
@@ -36,7 +36,7 @@ if (isset($_POST['imgData'])) {
                     Photo</h2>
                 <div class="post-project-fields">
 
-                    <form id="post_form" name="post_form" method="post" action="db/addnew.php"
+                    <form id="post_form" name="post_form" method="post" action="db/add_new.php"
                           enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-12">
