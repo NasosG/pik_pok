@@ -93,8 +93,8 @@
                     <img style=\"width:32px; height:32px;\" src=\"" . $picture_path . $picture_name . "\" alt=\"users photo\"/>
 					
                     <a href='profile3.php' title=''>"; ?>
-                <?php if (isset($_SESSION['username'])) echo $_SESSION['username'];
-                echo "</a>
+                    <?php if (isset($_SESSION['username'])) echo $_SESSION['username'];
+                    echo "</a>
                     <i class='fa fa-angle-down'></i>
                 </div>
                 <div class='user-account-settingss'>
@@ -103,8 +103,8 @@
                         <li>
                             <div class='fgt-sec'>
                                 <input type='radio'";
-                if ($get_status($con, $_SESSION['username']) === 'online') echo 'checked="checked"';
-                echo "name='cc' id='c5'>
+                                if ($get_status($con, $_SESSION['username']) === 'online') echo 'checked="checked"';
+                                echo "name='cc' id='c5'>
                                 <label for='c5'>
                                     <span></span>
                                 </label>
@@ -114,8 +114,8 @@
                         <li>
                             <div class='fgt-sec'>
                                 <input type='radio'";
-                if ($get_status($con, $_SESSION['username']) === 'offline') echo 'checked="checked"';
-                echo "name='cc' id='c6'>
+                                if ($get_status($con, $_SESSION['username']) === 'offline') echo 'checked="checked"';
+                                echo "name='cc' id='c6'>
                                 <label for='c6'>
                                     <span></span>
                                 </label>
@@ -141,7 +141,8 @@
                 </div><!--user-account-settingss end-->
             </div>
             ";
-            } else
+            }
+            else
                 echo "<div class='user-account'>
                 <div class='user-info' style='margin-left:auto; margin-right:auto;'>		
                     <a href='signin.php' title=''> <i class='fa fa-sign-in fa-lg'></i> Sign In</a>
