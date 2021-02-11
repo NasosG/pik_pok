@@ -162,29 +162,29 @@ var formSubmit = true;
 
 $('.btn2').on('click', function() {
 	formSubmit = false;
-    $.ajax({
-    	//type: "GET",
-        url : 'picComments.php',
-    });
+	$.ajax({
+		//type: "GET",
+		url : 'picComments.php',
+	});
 });
 
 $(".likes-comments-form").submit(function(e) {
 
-    if (!formSubmit) return;
+	if (!formSubmit) return;
 
-    e.preventDefault(); // avoid to execute the actual submit of the form.
+	e.preventDefault(); // avoid to execute the actual submit of the form.
 
-    var form = $(this);
-    var url = form.attr('action');
+	var form = $(this);
+	var url = form.attr('action');
 
-    $.ajax({
-        type: "POST",
-        url: 'db/likes.php',
-        data: form.serialize(), // serializes the form's elements.
-        success: function(data) {
-            $(form).children("#likesNum").html(" Likes: <img src='images/likes.png' alt='' height='18' width='18'>" + data + "</img>");
-        }
-    });
+	$.ajax({
+		type: "POST",
+		url: 'db/likes.php',
+		data: form.serialize(), // serializes the form's elements.
+		success: function(data) {
+			$(form).children("#likesNum").html(" Likes: <img src='images/likes.png' alt='' height='18' width='18'>" + data + "</img>");
+		}
+	});
 
 });
 

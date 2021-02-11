@@ -527,27 +527,27 @@ function isSaved($con, $post_id) {
 <script type="text/javascript" src="js/script.js"></script>
 <script>
 document.getElementsByClassName("trash-button").onclick = function() {
-    	document.getElementsByClassName("form-delete").submit();
+	document.getElementsByClassName("form-delete").submit();
 }
 
 document.getElementById("file").onchange = function() {
-    document.getElementById("changeAvatar").submit();
+	document.getElementById("changeAvatar").submit();
 };
 
 function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
 
-        reader.onload = function(e) {
-            $('#add-prof-pic').attr('src', e.target.result);
-        }
+		reader.onload = function(e) {
+			$('#add-prof-pic').attr('src', e.target.result);
+		}
 
-        reader.readAsDataURL(input.files[0]);
-    }
+		reader.readAsDataURL(input.files[0]);
+	}
 }
 
 $("#fileToUpload").change(function() {
-    readURL(this);
+	readURL(this);
 });
 
 document.getElementsByClassName("like-submit-btn").onclick = function() {
@@ -556,35 +556,35 @@ document.getElementsByClassName("like-submit-btn").onclick = function() {
 
 $(".likes-form").submit(function(e) {
 
-    e.preventDefault(); // avoid to execute the actual submit of the form.
+	e.preventDefault(); // avoid to execute the actual submit of the form.
 
-    var form = $(this);
-    var url = form.attr('action');
+	var form = $(this);
+	var url = form.attr('action');
 
-    $.ajax({
-        type: "POST",
-        url: 'db/likes.php',
-        data: form.serialize(), // serializes the form's elements.
-        success: function(data) {
-            location.reload();
-        }
-    });
+	$.ajax({
+		type: "POST",
+		url: 'db/likes.php',
+		data: form.serialize(), // serializes the form's elements.
+		success: function(data) {
+			location.reload();
+		}
+	});
 
 });
 
 function savePost(num) {
-    var values = {
-        'photo_id': num
-    };
-    $.ajax({
-        type: "POST",
-        url: 'db/save_post.php',
-        data: values,
-        success: function(data) {
-            location.reload();
-            //alert("saved");
-        }
-    });
+	var values = {
+		'photo_id': num
+	};
+	$.ajax({
+		type: "POST",
+		url: 'db/save_post.php',
+		data: values,
+		success: function(data) {
+			location.reload();
+			//alert("saved");
+		}
+	});
 }
 
 </script>

@@ -42,7 +42,6 @@ $uname = $_SESSION['username'];
 $query_uid = "SELECT id FROM members WHERE username = '$uname'";
 $result_uid = mysqli_query($con, $query_uid);
 $row_uid = mysqli_fetch_array($result_uid);
-				
 
 $query_month_likes = "SELECT COUNT(*) FROM post_likes WHERE liked_by_user = '$row_uid[0]' AND MONTH(time) ='$current_month' ";
 $result_month_likes = mysqli_query($con, $query_month_likes);
@@ -72,17 +71,16 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 						<div class="col-lg-3">
 							<div class="acc-leftbar">
 								<div class="nav nav-tabs" id="nav-tab" role="tablist">
-
-								    <a class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" href="#nav-acc" role="tab" aria-controls="nav-acc" aria-selected="false"><i class="fa fa-cog"></i>General</a>
-								    <a class="nav-item nav-link" id="nav-blockking-tab" data-toggle="tab" href="#general" role="tab" aria-controls="nav-general-tab" aria-selected="true"><i class="fa fa-cogs"></i>Account Setting</a>
-								    <a class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false"><i class="fa fa-line-chart"></i>Status</a>
-								    <a class="nav-item nav-link" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false"><i class="fa fa-lock"></i>Change Password</a>
-								    <a class="nav-item nav-link" id="nav-notification-tab" data-toggle="tab" href="#nav-notification" role="tab" aria-controls="nav-notification" aria-selected="false"><i class="fa fa-flash"></i>Notifications</a>
-								    <a class="nav-item nav-link" id="nav-privcy-tab" data-toggle="tab" href="#privcy" role="tab" aria-controls="privacy" aria-selected="false"><i class="fa fa-group"></i>Requests</a>
-								    <a class="nav-item nav-link" id="security" data-toggle="tab" href="#security-login" role="tab" aria-controls="security-login" aria-selected="false"><i class="fa fa-user-secret"></i>Security and Login</a>
-								    <a class="nav-item nav-link" id="nav-privacy-tab" data-toggle="tab" href="#privacy" role="tab" aria-controls="privacy" aria-selected="false"><i class="fa fa-paw"></i>Privacy</a>
-								    <a class="nav-item nav-link" id="nav-deactivate-tab" data-toggle="tab" href="#nav-deactivate" role="tab" aria-controls="nav-deactivate" aria-selected="false"><i class="fa fa-random"></i>Delete Account</a>
-								  </div>
+									<a class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" href="#nav-acc" role="tab" aria-controls="nav-acc" aria-selected="false"><i class="fa fa-cog"></i>General</a>
+									<a class="nav-item nav-link" id="nav-blockking-tab" data-toggle="tab" href="#general" role="tab" aria-controls="nav-general-tab" aria-selected="true"><i class="fa fa-cogs"></i>Account Setting</a>
+									<a class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false"><i class="fa fa-line-chart"></i>Status</a>
+									<a class="nav-item nav-link" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false"><i class="fa fa-lock"></i>Change Password</a>
+									<a class="nav-item nav-link" id="nav-notification-tab" data-toggle="tab" href="#nav-notification" role="tab" aria-controls="nav-notification" aria-selected="false"><i class="fa fa-flash"></i>Notifications</a>
+									<a class="nav-item nav-link" id="nav-privcy-tab" data-toggle="tab" href="#privcy" role="tab" aria-controls="privacy" aria-selected="false"><i class="fa fa-group"></i>Requests</a>
+									<a class="nav-item nav-link" id="security" data-toggle="tab" href="#security-login" role="tab" aria-controls="security-login" aria-selected="false"><i class="fa fa-user-secret"></i>Security and Login</a>
+									<a class="nav-item nav-link" id="nav-privacy-tab" data-toggle="tab" href="#privacy" role="tab" aria-controls="privacy" aria-selected="false"><i class="fa fa-paw"></i>Privacy</a>
+									<a class="nav-item nav-link" id="nav-deactivate-tab" data-toggle="tab" href="#nav-deactivate" role="tab" aria-controls="nav-deactivate" aria-selected="false"><i class="fa fa-random"></i>Delete Account</a>
+								</div>
 							</div><!--acc-leftbar end-->
 						</div>
 						<div class="col-lg-9">
@@ -164,7 +162,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 														<th style="width:100%;">
 															<input type="date" name="bdate" placeholder="<?php echo $date_of_birth; ?>" value="<?php echo $date_of_birth; ?>"/>
 														</th>
-														<th style="">
+														<th>
 															<button class="btn" type="submit">Change</button>
 														</th>
 													</table>
@@ -181,7 +179,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 														<th style="width:100%;">
 															<input type="text" name="bio" placeholder="<?php echo $bio; ?>"/>
 														</th>
-														<th style="">
+														<th>
 															<button class="btn" type="submit">Change</button>
 														</th>
 													</table>
@@ -822,37 +820,33 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 <script type="text/javascript" src="js/slick.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <script>
-  /* make clear button onclick to clear and not submit the form */
-
-  $("#clear").click(function(event)
-  {
-    event.preventDefault(); //prevent submiting the form
-	document.getElementById('change_password-form').reset(); //clear form
-  });
-
+	/* make clear button onclick to clear and not submit the form */
+	$("#clear").click(function(event)
+	{
+		event.preventDefault(); //prevent submiting the form
+		document.getElementById('change_password-form').reset(); //clear form
+	});
 </script>
 
 <script>
 	/* Passwords do not match functionality */
-	  var check = function() { //check passwords if are the same
-
-	  if (document.getElementById('new_password').value ==
-		document.getElementById('repeat_password').value) {
-		document.getElementById('message').innerHTML = null;
-
-	  } 
-	  else {
-		document.getElementById('message').style.color = 'red';
-		document.getElementById('message').innerHTML = 'Passwords do not match';
-	  }
+	var check = function() { //check passwords if are the same
+		if (document.getElementById('new_password').value ==
+			document.getElementById('repeat_password').value) {
+			document.getElementById('message').innerHTML = null;
+		} 
+		else {
+			document.getElementById('message').style.color = 'red';
+			document.getElementById('message').innerHTML = 'Passwords do not match';
+		}
 	}
 	
 	function validatePass()
 	{
-	  if(document.getElementById('message').innerHTML == 'Passwords do not match') { 
-		alert("Passwords do not match");
-		event.preventDefault();
-	  }
+		if (document.getElementById('message').innerHTML == 'Passwords do not match') { 
+			alert("Passwords do not match");
+			event.preventDefault();
+		}
 	}
 </script>
 </body>

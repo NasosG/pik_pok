@@ -1,4 +1,3 @@
-
 <?php
 include("db/auth.php"); //include auth.php file on all secure pages 
 require('db/db.php');
@@ -45,7 +44,7 @@ function isSaved($con, $post_id) {
 	<style>	
 	.like-submit-btn:hover {
 		outline:none!important;
-	}		
+	}
 	</style>
 </head>
 
@@ -211,8 +210,7 @@ function isSaved($con, $post_id) {
 
 				</div><!--header-data end-->
 			</div>
-		</header><!--header end-->	
-
+		</header><!--header end-->
 		
 		<main>
 			<div class="main-section">
@@ -344,11 +342,11 @@ function isSaved($con, $post_id) {
 														
 														'; 
 														if(isSaved($con, $photos_ids[$i-1])) {
-                                                       		echo '<li><a href="#" title="">Saved</a></li>';
+															echo '<li><a href="#" title="">Saved</a></li>';
 														}
 														else 
 															echo '<li><a href="#" onclick="savePost('.$photos_ids[$i-1].')" title="">Unsaved</a></li>';
-                                                        echo '
+														echo '
 
 														<li><a class="close-ed-opts" href="#" onclick="funct" title="">Close</a></li>';
 													}
@@ -371,7 +369,7 @@ function isSaved($con, $post_id) {
 											<form id="likes-form" class="likes-form" name="likes-form" method="post" action="db/likes.php">
 											<div class="job-status-bar">
 											 <?php echo '<input type="hidden" name="photo_id" id="photo_id" value="'.$row['photo_id'].'" />';?>
-                                               <ul class="like-com">
+												<ul class="like-com">
 													<li>
 														<?php 
 														if(isset($_SESSION['username'])) {
@@ -533,41 +531,41 @@ function isSaved($con, $post_id) {
 <script type="text/javascript" src="js/script.js"></script>
 <script>
 document.getElementsByClassName("like-submit-btn").onclick = function() {
-    	document.getElementsByClassName("likes-form").submit();
+	document.getElementsByClassName("likes-form").submit();
 }
 
 $(".likes-form").submit(function(e) {
 	
-    e.preventDefault(); // avoid to execute the actual submit of the form.
+	e.preventDefault(); // avoid to execute the actual submit of the form.
 
-    var form = $(this);
-    var url = form.attr('action');
+	var form = $(this);
+	var url = form.attr('action');
 
     $.ajax({
-           type: "POST",
-           url: 'db/likes.php',
-           data: form.serialize(), // serializes the form's elements.
-           success: function(data)
-           { 
+		type: "POST",
+		url: 'db/likes.php',
+		data: form.serialize(), // serializes the form's elements.
+		success: function(data)
+		{ 
 			location.reload();
-           }
-         });
+		}
+	});
 
 });
 
 function savePost(num) {
-    var values = {
-        'photo_id': num
-    };
-    $.ajax({
-        type: "POST",
-        url: 'db/save_post.php',
-        data: values,
-        success: function(data) {
-            location.reload();
-            //alert("saved");
-        }
-    });
+	var values = {
+		'photo_id': num
+	};
+	$.ajax({
+		type: "POST",
+		url: 'db/save_post.php',
+		data: values,
+		success: function(data) {
+			location.reload();
+			//alert("saved");
+		}
+	});
 }
 
 </script>

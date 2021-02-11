@@ -224,37 +224,37 @@ $('#friend-request').on('click', function() {
 
 function manageRequest(id, accepted) { 
 	var values = {
-        'id': id,
-        'accepted': accepted
-    };
-    $.ajax({
-        type: "POST",
-        url: 'db/manage_friend_request.php',
-        data: values,
-        success: function(data) {
-            location.reload();
-            //alert("saved");
-        }
-    });
+		'id': id,
+		'accepted': accepted
+	};
+	$.ajax({
+		type: "POST",
+		url: 'db/manage_friend_request.php',
+		data: values,
+		success: function(data) {
+			location.reload();
+			//alert("saved");
+		}
+	});
 }
 
 // forms' submission with ajax
 form.submit(function(e) {
 
-    e.preventDefault(); // avoid to execute the actual submit of the form.
-    var form = $(this);
-    var url = form.attr('action');
+	e.preventDefault(); // avoid to execute the actual submit of the form.
+	var form = $(this);
+	var url = form.attr('action');
 
-    $.ajax({
-        type: "POST",
-        url: 'db/add_friend.php',
-        data: form.serialize(), // serializes the form's elements.
-        success: function(data) {
-        	location.reload();
-        	// $(form).children("#request-link").html(" Likes: <img src='images/likes.png' alt='' height='18' width='18'>" + data + "</img>");
-           alert(data);
-        }
-    });
+	$.ajax({
+		type: "POST",
+		url: 'db/add_friend.php',
+		data: form.serialize(), // serializes the form's elements.
+		success: function(data) {
+ 			location.reload();
+			// $(form).children("#request-link").html(" Likes: <img src='images/likes.png' alt='' height='18' width='18'>" + data + "</img>");
+			alert(data);
+		}
+	});
 });
 
 </script>

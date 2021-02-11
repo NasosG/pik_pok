@@ -254,39 +254,39 @@ $no_friends = mysqli_num_rows($result_users) == 0;
 <script>	
 var form = $('#chat-form');
 form.submit(function(e) {
-    e.preventDefault();
-    var message = $('#message-text').val();
-    var by_user_id = <?php echo $sender_id ?>;
-    var to_user_id = <?php echo $receiver_id ?>;
-    $.ajax({
-        type: 'POST',
-        url: 'db/insert_chat_message.php',
-        data: {
-            by_user_id: by_user_id,
-            to_user_id: to_user_id,
-            message: message
-        },
-        success: function(data) {
-            location.reload();
-        }
-    });
+	e.preventDefault();
+	var message = $('#message-text').val();
+	var by_user_id = <?php echo $sender_id ?>;
+	var to_user_id = <?php echo $receiver_id ?>;
+	$.ajax({
+		type: 'POST',
+		url: 'db/insert_chat_message.php',
+		data: {
+			by_user_id: by_user_id,
+			to_user_id: to_user_id,
+			message: message
+		},
+		success: function(data) {
+			location.reload();
+		}
+	});
 });
 
 window.onbeforeunload = function() {
-    localStorage.setItem("message", $('#message-text').val());
+	localStorage.setItem("message", $('#message-text').val());
 }
 
 window.onload = function() {
-    var message = localStorage.getItem("message");
-    if (message !== null) $('#message-text').val(message);
+	var message = localStorage.getItem("message");
+	if (message !== null) $('#message-text').val(message);
 }
 
 $(document).ready(function() {
-    $('#message-text').focus();
+	$('#message-text').focus();
 });
 
 setTimeout(function() {
-    window.location.reload(1);
+	window.location.reload(1);
 }, 10000);
 
 </script>

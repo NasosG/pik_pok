@@ -13,8 +13,7 @@ require('db/errorFuncts.php');
 </head>
 
 
-<body oncontextmenu="return false;">	
-		
+<body>
 		<?php
 		// include header for all web pages
 		include_once('./includes/header.php');		
@@ -22,16 +21,16 @@ require('db/errorFuncts.php');
 		
 		<section class="banner">
 			<div class="bannerimage">
-			<img src="images/about.png" style="width:100%;min-height:300px;max-height:300px;margin-bottom:30px;" alt="image">
-		</div>
+				<img src="images/about.png" style="width:100%;min-height:300px;max-height:300px;margin-bottom:30px;" alt="image">
+			</div>
 			<div class="bennertext">
 			<div class="innertitle">
 				<h2>World's safest social network <br></h2>                
-                <p>We're committed to bring everyone closer to the things they love, where they can feel safe to express themselves!</p>
-            </div>
-            </div>
-           
-		</section>	
+				<p>We're committed to bring everyone closer to the things they love, where they can feel safe to express themselves!</p>
+			</div>
+			</div>
+
+		</section>
 		<section class="Company-overview" >
 			<div class="container" >
 			<div class="row">

@@ -3,23 +3,23 @@ include("db/auth.php"); //include auth.php file on all secure pages
 require('db/db.php');
 require('db/errorFuncts.php');
 
-mysqli_set_charset($con,"utf8");
+mysqli_set_charset($con, "utf8");
 
-if (isset($_GET['search']) && !empty($_GET['search']))	{		
+if (isset($_GET['search']) && !empty($_GET['search'])) {
 	$search = $_GET['search'];
 	$query = "SELECT *
-				  FROM images 
-				  WHERE photo_tag LIKE '%{$search}%'
-				  ORDER BY photo_likes DESC";
-}
+				FROM images 
+				WHERE photo_tag LIKE '%{$search}%'
+				ORDER BY photo_likes DESC";
+} 
 else {
-	$query = "SELECT * FROM images ORDER BY photo_likes DESC"; 
-}	
+	$query = "SELECT * FROM images ORDER BY photo_likes DESC";
+}
 
 $result = mysqli_query($con, $query);
 
-if (isset ($_SESSION['username'])) {
-	$uname = $_SESSION['username'];	
+if (isset($_SESSION['username'])) {
+	$uname = $_SESSION['username'];
 	// find user id from session name
 	$query2 = "SELECT id FROM members WHERE username = '$uname'";
 	$result2 = mysqli_query($con, $query2);
@@ -28,9 +28,10 @@ if (isset ($_SESSION['username'])) {
 }
 
 ?>
-	
+
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Trending - Pik Pok</title>
 	<?php include_once('./includes/head.php'); ?>
@@ -41,48 +42,48 @@ if (isset ($_SESSION['username'])) {
 
 		<?php
 		// include header for all web pages
-		include_once('./includes/header.php');		
+		include_once('./includes/header.php');
 		?>
-		
+
 		<section class="companies-info">
 			<div class="container">
 				<div class="company-title">
 					<h3>All Photos</h3>
-				</div><!--company-title end-->
+				</div>
+				<!--company-title end-->
 				<div class="companies-list">
 					<div class="row">
-				<?php 
-				while ($row = mysqli_fetch_array($result)) {
-				$newDate = date("d-m-Y", strtotime($row['date_posted']));
-				echo '	
-						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+						<?php
+						while ($row = mysqli_fetch_array($result)) {
+							$newDate = date("d-m-Y", strtotime($row['date_posted']));
+							echo '	
+							<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 						
-							<div >
+							<div>
 							<form id="myform" class="likes-comments-form company_profile_info" name="myform" method="get" action="picComments.php" >
 								<div class="company-up-info">
 								
-									<a href="other_users_profile.php?photo_username='.$row['username'].'">';
-									echo "<h3 class='pt-2'>".$row['username']."</h3>";
-									echo "</a><h4>".$newDate."</h4>
-									<img src=\"".$row['photo_path'].$row['photo_name']."\" alt='user's photo' />";
-									
-									if(isset($_SESSION['username'])) 
-									{	
-										$photo_id = $row['photo_id'];
-										$query3 = "SELECT * FROM post_likes WHERE liked_by_user = '$user_id' AND posted_photo_id = '$photo_id'"; 
-										$result3 = mysqli_query($con, $query3);									
-									echo "
-									<input type='hidden' name='photo_id' id='photo_id' value='".$row['photo_id']."' />
+									<a href="other_users_profile.php?photo_username=' . $row['username'] . '">';
+							echo "<h3 class='pt-2'>" . $row['username'] . "</h3>";
+							echo "</a><h4>" . $newDate . "</h4>
+									<img src=\"" . $row['photo_path'] . $row['photo_name'] . "\" alt='user's photo' />";
+
+							if (isset($_SESSION['username'])) {
+								$photo_id = $row['photo_id'];
+								$query3 = "SELECT * FROM post_likes WHERE liked_by_user = '$user_id' AND posted_photo_id = '$photo_id'";
+								$result3 = mysqli_query($con, $query3);
+								echo "
+									<input type='hidden' name='photo_id' id='photo_id' value='" . $row['photo_id'] . "' />
 									<ul>
 										<li>
 										<button class='likeBut' onclick='changeLikeState(this)' style='border:none'>";
-										 if (mysqli_num_rows($result3) == 0 )  
-										echo "
+								if (mysqli_num_rows($result3) == 0)
+									echo "
 											<a id='likeLink' class='likeLink follow text-white'>Like <i class='fa fa-heart' aria-hidden='true'></i></a>";
-											else
-												echo "
+								else
+									echo "
 											<a id='likeLink' class='likeLink follow text-white'>Unlike <i class='fa fa-heart-broken' aria-hidden='true'></i></a>";
-											echo "
+									echo "
 										</button>
 											
 										</li>
@@ -93,22 +94,23 @@ if (isset ($_SESSION['username'])) {
 										</li>
 									</ul>
 									";
-									}
-								echo "
+							}
+							echo "
 								</div>
 								<a id='likesNum' class='view-more-pro'> Likes:
 									<img src='images/likes.png' alt='' height='18' width='18'>
-									".$row['photo_likes']."
+									" . $row['photo_likes'] . "
 								</a>
 								</form>
 							</div><!--company_profile_info end-->
 							
 						</div>
-						";} 
+						";
+						}
 						?>
 					</div>
 				</div><!--companies-list end-->
-				
+
 				<div class='process-comm'>
 					<!--<div class='spinner'>
 						<div class='bounce1'></div>
@@ -116,13 +118,12 @@ if (isset ($_SESSION['username'])) {
 						<div class='bounce3'></div>
 					</div>
 					-->
-				</div>
-				<!--process-comm end-->
-				
+				</div><!--process-comm end-->
+
 			</div>
 		</section>
-		
-		
+
+
 		<footer class="fixed-bottom">
 			<div class="footy-sec mn no-margin">
 				<div class="container">
@@ -136,7 +137,10 @@ if (isset ($_SESSION['username'])) {
 						<li><a href="#" title="">Language: English</a></li>
 						<!--<li><a href="#" title="">Copyright Policy</a></li>-->
 					</ul>
-					<p><img src="images/copy-icon2.png" alt="">Copyright <script type="text/javascript">document.write(new Date().getFullYear());</script></p>
+					<p><img src="images/copy-icon2.png" alt="">Copyright <script type="text/javascript">
+							document.write(new Date().getFullYear());
+						</script>
+					</p>
 					<img class="fl-rgt" src="images/logo2.png" alt="">
 				</div>
 			</div>
@@ -144,86 +148,81 @@ if (isset ($_SESSION['username'])) {
 
 	</div><!--theme-layout end-->
 
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/popper.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/flatpickr.min.js"></script>
+	<script type="text/javascript" src="js/slick.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> <!-- load jquery via CDN -->
+	<script>
+		var formSubmit = true;
+
+		$('.btn2').on('click', function() {
+
+			formSubmit = false;
+			$.ajax({
+				//type: "GET",
+				url: 'picComments.php',
+			});
+		});
+
+		$(".likes-comments-form").submit(function(e) {
+
+			if (!formSubmit) return;
+
+			e.preventDefault(); // avoid to execute the actual submit of the form.
+
+			var form = $(this);
+			var url = form.attr('action');
+
+			$.ajax({
+				type: "POST",
+				url: 'db/likes.php',
+				data: form.serialize(), // serializes the form's elements.
+				success: function(data) {
+					$(form).children("#likesNum").html(" Likes: <img src='images/likes.png' alt='' height='18' width='18'>" + data + "</img>");
+					location.reload();
+				}
+			});
+
+		});
+
+		function changeLikeState(x1) {
+			var x = x1.children;
+			//alert (x[0].textContent );
+			if (x[0].textContent.includes("Unlike")) {
+				x[0].innerHTML = "Like <i class='fa fa-heart' aria-hidden='true'></i>";
+			} 
+			else {
+				x[0].innerHTML = "Unlike <i class='fas fa-heart-broken'></i>";
+			}
+		}
+
+		/*
+		function myFunction() {
+		  // Declare variables
+		  var input, filter, ul, li, a, i, txtValue;
+		  input = document.getElementById('search');
+		  filter = input.value.toUpperCase();
 
 
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/popper.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/flatpickr.min.js"></script>
-<script type="text/javascript" src="js/slick.min.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> <!-- load jquery via CDN -->
-<script>
-var formSubmit = true;
+		 // ul = document.getElementById("myUL");
+		  //li = ul.getElementsByTagName('li');
 
-$('.btn2').on('click', function() {
-
-formSubmit = false;
-    $.ajax({
-    	//type: "GET",
-        url : 'picComments.php',
-    });
-});
-
-$(".likes-comments-form").submit(function(e) {
-	
-	if(!formSubmit) return;
-	
-	
-    e.preventDefault(); // avoid to execute the actual submit of the form.
-
-    var form = $(this);
-    var url = form.attr('action');
-
-    $.ajax({
-           type: "POST",
-           url: 'db/likes.php',
-           data: form.serialize(), // serializes the form's elements.
-           success: function(data)
-           {  
-			$(form).children("#likesNum").html( " Likes: <img src='images/likes.png' alt='' height='18' width='18'>" + data + "</img>" );
-			location.reload();
-           }
-         });
-
-});
-
-function changeLikeState(x1){
-	
-	var x = x1.children;
-	//alert (x[0].textContent );
-	if(x[0].textContent.includes("Unlike")) {
-		x[0].innerHTML = "Like <i class='fa fa-heart' aria-hidden='true'></i>";
-	}
-	else {
-		x[0].innerHTML = "Unlike <i class='fas fa-heart-broken'></i>";
-	}
-}
-
-/*
-function myFunction() {
-  // Declare variables
-  var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById('search');
-  filter = input.value.toUpperCase();
-
-
- // ul = document.getElementById("myUL");
-  //li = ul.getElementsByTagName('li');
-
-  // Loop through all list items, and hide those who don't match the search query
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
-    }
-  }
-}
-
-*/
-</script>
+		  // Loop through all list items, and hide those who don't match the search query
+		  for (i = 0; i < li.length; i++) {
+		    a = li[i].getElementsByTagName("a")[0];
+		    txtValue = a.textContent || a.innerText;
+		    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+		      li[i].style.display = "";
+		    } else {
+		      li[i].style.display = "none";
+		    }
+		  }
+		}
+		*/
+	</script>
 </body>
+
 </html>

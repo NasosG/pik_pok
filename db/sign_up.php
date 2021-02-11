@@ -3,7 +3,7 @@
 	require('errorFuncts.php');
 	require('IPMAC_addresses.php');
 	
-    // If form submitted, insert values into the database.
+	// If form submitted, insert values into the database.
 	if (isset($_REQUEST['username'])) {
 		$username = stripslashes($_REQUEST['username']); // removes backslashes
 		$username = filter_var($username, FILTER_SANITIZE_STRING); // sanitize username data

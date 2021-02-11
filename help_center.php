@@ -10,7 +10,7 @@ require('db/db.php');
 	<?php include_once('./includes/head.php'); ?>
 </head>
 
-<body oncontextmenu="return false;">	
+<body>	
 
 	<div class="wrapper">		
 
@@ -127,7 +127,6 @@ require('db/db.php');
 								  			<hr>
 								  			<a href="#">Editing Your Profile</a>
 								  			<hr>
-								  			
 								  		</div>
 								  	</div>
 								  	</div>
@@ -139,9 +138,6 @@ require('db/db.php');
 				</div> 
 			</div>
 		</main>
-
-
-
 
 		<div class="post-popup pst-pj">
 			<div class="post-project">
