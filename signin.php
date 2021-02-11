@@ -274,7 +274,8 @@ include("db/auth.php"); //include auth.php file on all secure pages
 				document.getElementById('repeat_password').value) {
 				document.getElementById('message').innerHTML = null;
 
-			} else {
+			} 
+			else {
 				document.getElementById('message').style.color = 'red';
 				document.getElementById('message').innerHTML = 'Passwords do not match';
 			}
