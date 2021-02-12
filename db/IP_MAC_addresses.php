@@ -94,28 +94,22 @@ function getVersion($user_browser, $user_agent): array
     $known = array('Version', $user_browser, 'other');
     $pattern = '#(?<browser>' . join('|', $known) .
         ')[/ ]+(?<version>[0-9.|a-zA-Z.]*)#';
-    if (!preg_match_all($pattern, $user_agent, $matches)) {
-        // we have no matching number just continue
-    }
+    if (!preg_match_all($pattern, $user_agent, $matches)) {/* no matching number, just continue*/}
 
-    // see how many do we have
+    // how many do we have
     $i = count($matches['browser']);
     if ($i != 1) {
-        //we will have two since we are not using 'other' argument yet
-        //see if version is before or after the name
-        if (strripos($user_agent, "Version") < strripos($user_agent, $user_browser)) {
+        // we will have two since we are not using 'other' argument yet
+        // check if version is before or after the name
+        if (strripos($user_agent, "Version") < strripos($user_agent, $user_browser))
             $version = $matches['version'][0];
-        } else {
+        else
             $version = $matches['version'][1];
-        }
-    } else {
-        $version = $matches['version'][0];
     }
+    else $version = $matches['version'][0];
 
     // check if we have a number
-    if ($version == null || $version == "") {
-        $version = "?";
-    }
+    if ($version == null || $version == "") $version = "?";
 
     return array($version, $pattern);
 }
