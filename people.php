@@ -17,7 +17,6 @@ else {
     $user_id = $row['id'];
 }
 
-
 if (isset($_GET['search']) && !empty($_GET['search'])) {
     $search = $_GET['search'];
     $query = "SELECT *

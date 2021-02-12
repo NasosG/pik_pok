@@ -196,7 +196,6 @@ $redirect_signed_in_users();
                                                     <span id='message'></span>
                                                 </div>
 
-
                                                 <div class="g-recaptcha mt-1" id="signup_robot"
                                                      data-sitekey="6LfmCc0ZAAAAAMnp0Sxs59aUCInXiUSw1r6tn1EY" required></div>
 
@@ -248,9 +247,7 @@ $redirect_signed_in_users();
             </div><!--footy-sec end-->
         </div><!--sign-in-page end-->
 
-
     </div><!--theme-layout end-->
-
 
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>

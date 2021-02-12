@@ -26,9 +26,6 @@ $sender_id = $row_uid[0];
 $query_sender_rows = mysqli_query($con, "SELECT * FROM members WHERE id='$sender_id'");
 $sender_row = mysqli_fetch_array($query_sender_rows);
 
-//
-//
-
 $row_uid = mysqli_fetch_array($query_uid);
 
 $query_requests = "SELECT * FROM members, relationship
@@ -222,7 +219,6 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                 </div><!--messages-sec end-->
             </div>
         </section><!--messages-page end-->
-
 
         <footer>
             <div class="footy-sec mn no-margin">

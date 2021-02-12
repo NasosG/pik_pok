@@ -12,7 +12,6 @@ require('db/error_functions.php');
     <link rel="stylesheet" type="text/css" href="css/forgot_psw.css">
 </head>
 
-
 <body class="sign-in">
     <div class="wrapper">
         <div class="sign-in-page">
@@ -33,15 +32,12 @@ require('db/error_functions.php');
                                         <input type="submit" name="forgot_submit" value="Recover" class="f_p_submit">
                                     </form>
                                 </div>
-                            </div>
-                        </div>
-                        <!--login-sec end-->
-                    </div>
-                </div>
-            </div>
-            <!--signin-pop end-->
-        </div>
-        <!--signin-popup end-->
+                            </div><!--login-sec end-->
+                        </div><!--col-lg-12 end-->
+                    </div><!--row end-->
+                </div><!--signin-popup end-->
+            </div><!--signin-popup end-->
+        </div><!--sign-in-page end-->
         <div class="footy-sec">
             <div class="container">
                 <ul>
@@ -58,11 +54,9 @@ require('db/error_functions.php');
                     <script type="text/javascript">document.write(new Date().getFullYear());</script>
                 </p>
             </div>
-        </div>
-        <!--footy-sec end-->
-    </div><!--sign-in-page end-->
-
+        </div><!--footy-sec end-->
     </div><!--theme-layout end-->
+
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/popper.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>

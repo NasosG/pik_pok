@@ -32,7 +32,6 @@ require('db/error_functions.php');
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-6">
                                 <img src="images/newAvatar.png" id="add-prof-pic"></img>
-
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-6">
@@ -41,7 +40,6 @@ require('db/error_functions.php');
                                     <input type="file" id="fileToUpload" name="fileToUpload" class="input-file"></input>
                                 </div>
                             </div>
-
 
                             <div class="col-lg-12" style="margin-top:20px;">
                                 <textarea id="bio" name="bio" placeholder="Tell the world a few words about you, your Bio"></textarea>

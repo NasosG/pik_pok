@@ -82,7 +82,6 @@ $num = $_GET['message'];
 
     </div><!--theme-layout end-->
 
-
     <script>
         window.onload = function () {
             var $recaptcha = document.querySelector('#g-recaptcha-response');

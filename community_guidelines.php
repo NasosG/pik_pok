@@ -25,7 +25,6 @@ require('db/error_functions.php');
             <div id="faq-page">
                 <h2 class="terms-h2 ">Community Guidelines</h2>
                 <hr>
-
                 <h3 class="terms-h3">The Short</h3>
                 <p>We want pik-pok to continue to be an authentic and safe place for inspiration and expression. Help us
                     foster this community. Post only your own photos and videos and always follow the law. Respect everyone

@@ -19,8 +19,7 @@ require('db/error_functions.php');
 
     <section class="banner">
         <div class="bannerimage">
-            <img src="images/about.png" style="width:100%;min-height:300px;max-height:300px;margin-bottom:30px;"
-                 alt="image">
+            <img src="images/about.png" style="width:100%;min-height:300px;max-height:300px;margin-bottom:30px;" alt="image">
         </div>
         <div class="bennertext">
             <div class="innertitle">
@@ -29,7 +28,6 @@ require('db/error_functions.php');
                     themselves!</p>
             </div>
         </div>
-
     </section>
     <section class="Company-overview">
         <div class="container">
@@ -57,7 +55,6 @@ require('db/error_functions.php');
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
             </div>
-
         </div>
     </section>
     <footer class="fixed-bottom">

@@ -2347,7 +2347,6 @@ include("db/auth.php"); //include auth.php file on all secure pages
         </div>
         <!--overview-box end-->
 
-
         <div class="overview-box" id="experience-box">
             <div class="overview-edit">
                 <h3>Experience</h3>
@@ -2477,7 +2476,6 @@ include("db/auth.php"); //include auth.php file on all secure pages
 
     </div>
     <!--theme-layout end-->
-
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/popper.js"></script>

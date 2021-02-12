@@ -134,7 +134,6 @@ require('db/db.php');
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div><!-- main-section-data end-->
@@ -244,17 +243,13 @@ require('db/db.php');
                             </div>
                         </div>
                     </form>
-                </div>
-                <!--post-project-fields end-->
+                </div><!--post-project-fields end-->
                 <a href="#" title=""><i class="fa fa-times-circle-o"></i></a>
-            </div>
-            <!--post-project end-->
-        </div>
-        <!--post-project-popup end-->
+            </div><!--post-project end-->
+        </div><!--post-project-popup end-->
 
+    </div><!--theme-layout end-->
 
-    </div>
-    <!--theme-layout end-->
     <footer class="fixed-bottom">
         <div class="footy-sec mn no-margin">
             <div class="container">
