@@ -340,7 +340,7 @@ function isSaved($con, $post_id)
                                         } else {
                                             echo '
                                                             
-                                                            <li><a href="picComments.php?photo_id=' . $photos_ids[$i - 1] . '"' . ' 
+                                                            <li><a href="pic_comments.php?photo_id=' . $photos_ids[$i - 1] . '"' . ' 
                                                             title="">Comment</a></li>
                                                             
                                                             ';
@@ -392,7 +392,7 @@ function isSaved($con, $post_id)
                                                     if (!(isset($_SESSION['username']))) {
                                                         echo '<li><a style="color:#b2b2b2;"><i class="fa fa-comment"></i>Comments ' . $row_after_count[0] . '</a></li>';
                                                     } else {
-                                                        echo '<li><a href= "picComments.php?photo_id=' . $row['photo_id'] . '"><i class="fa fa-comment"></i>Comments ' . $row_after_count[0] . '</a></li>';
+                                                        echo '<li><a href= "pic_comments.php?photo_id=' . $row['photo_id'] . '"><i class="fa fa-comment"></i>Comments ' . $row_after_count[0] . '</a></li>';
                                                     }
                                                     ?>
                                                 </ul>

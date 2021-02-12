@@ -57,7 +57,7 @@ if (isset ($_SESSION['username'])) {
                             echo '	
                             <div class="col-lg-3 col-md-4 col-sm-6 col-12">						
                                 <div>
-                                <form id="myform" class="likes-comments-form company_profile_info" name="myform" method="get" action="picComments.php" >
+                                <form id="myform" class="likes-comments-form company_profile_info" name="myform" method="get" action="pic_comments.php" >
                                     <div class="company-up-info">
                                         ';
 
@@ -165,7 +165,7 @@ if (isset ($_SESSION['username'])) {
             formSubmit = false;
             $.ajax({
                 //type: "GET",
-                url: 'picComments.php',
+                url: 'pic_comments.php',
             });
         });
 

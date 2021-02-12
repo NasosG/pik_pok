@@ -358,7 +358,7 @@ function isSaved($con, $post_id)
                                                         <a href="#" title="" class="ed-opts-open"><i class="fa fa-ellipsis-v"></i></a>
                                                         <ul class="ed-options">
                                                             <li><a href="#" title="">Edit Post</a></li>
-                                                            <li><a href="picComments.php?photo_id=' . $photos_ids[$i - 1] . '"' . ' title="">Comment</a></li>
+                                                            <li><a href="pic_comments.php?photo_id=' . $photos_ids[$i - 1] . '"' . ' title="">Comment</a></li>
                                                             ';
                                         if (isSaved($con, $photos_ids[$i - 1])) {
                                             echo '<li><a href="#" title="">Saved</a></li>';
@@ -402,7 +402,7 @@ function isSaved($con, $post_id)
                                                                     class="fa fa-thumbs-up"></i> <?php echo 'Likes ' . $row['photo_likes']; ?>
                                                         </a></li>
                                                     <li>
-                                                        <a href=<?php echo "picComments.php?photo_id=" . $row['photo_id'] . ""; ?>  class=""><i
+                                                        <a href=<?php echo "pic_comments.php?photo_id=" . $row['photo_id'] . ""; ?>  class=""><i
                                                                     class="fa fa-comment"></i> <?php echo 'Comments ' . $row_after_count[0]; ?>
                                                         </a></li>
                                                 </ul>
@@ -435,7 +435,7 @@ function isSaved($con, $post_id)
                                                         45/60 possible
                                                         45/72-73 golden ratio
                                                     */
-                                                    echo '<li><a href="picComments.php?photo_id=' . $photos_ids[$i] . '" title="" ><img style=" border-radius:10%;height:53px;width:70px;" src="' . $photos_table[$i] . '" alt=""></a></li>';
+                                                    echo '<li><a href="pic_comments.php?photo_id=' . $photos_ids[$i] . '" title="" ><img style=" border-radius:10%;height:53px;width:70px;" src="' . $photos_table[$i] . '" alt=""></a></li>';
                                                 }
                                             ?>
                                         </ul>
@@ -456,7 +456,7 @@ function isSaved($con, $post_id)
 
                                             else
                                                 while ($row_likes = mysqli_fetch_array($result1)) {
-                                                    echo '<li><a href="picComments.php?photo_id=' . $row_likes['photo_id'] . '" title="" ><img style=" border-radius:10%;height:53px;width:70px;" src="' . $row_likes['photo_path'] . $row_likes['photo_name'] . '" alt=""></a></li>';
+                                                    echo '<li><a href="pic_comments.php?photo_id=' . $row_likes['photo_id'] . '" title="" ><img style=" border-radius:10%;height:53px;width:70px;" src="' . $row_likes['photo_path'] . $row_likes['photo_name'] . '" alt=""></a></li>';
                                                 }
                                             ?>
                                         </ul>
@@ -477,7 +477,7 @@ function isSaved($con, $post_id)
 
                                             else
                                                 while ($row_saves = mysqli_fetch_array($result_save_post)) {
-                                                    echo '<li><a href="picComments.php?photo_id=' . $row_saves['post_id'] . '" title="" ><img style=" border-radius:10%;height:53px;width:70px;" src="' . $row_saves['photo_path'] . $row_saves['photo_name'] . '" alt=""></a></li>';
+                                                    echo '<li><a href="pic_comments.php?photo_id=' . $row_saves['post_id'] . '" title="" ><img style=" border-radius:10%;height:53px;width:70px;" src="' . $row_saves['photo_path'] . $row_saves['photo_name'] . '" alt=""></a></li>';
                                                 }
                                             ?>
                                         </ul>
