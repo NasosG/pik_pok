@@ -135,9 +135,6 @@ function getRepliessCount($post_id, $con)
                                                         echo "
                                                             <img style=\"width:32px; height:32px;\" src=\"" . $post_user_picture_path . $post_user_picture_name . "\" alt=\"users photo\"/> "; ?>
                                                         <div class="usy-name">
-                                                            <?php
-
-                                                            ?>
                                                             <h3><?php echo $user_of_post . '</h3>
                                                             <span><i class="fa fa-clock-o" aria-hidden="true"> ' . date("d-m-Y H:i:s", strtotime($row['date_posted'])) . '</i></span>'; ?>
                                                         </div>
@@ -149,16 +146,15 @@ function getRepliessCount($post_id, $con)
                                                                         class="fa fa-ellipsis-v"></i></a>
 
                                                             <ul class="ed-options">
-                                                                <?php echo "<input type='hidden' name='photo_id' id='photo_id' value='" . $row['photo_id'] . "' />"; ?>
-                                                                <?php
+                                                                <?php echo "<input type='hidden' name='photo_id' id='photo_id' value='" . $row['photo_id'] . "' />";
+
                                                                 if ($_SESSION['username'] == $user_of_post)
                                                                     echo '<li><a href="#" title="">Edit Post</a></li>';
                                                                 else echo '<li><a href="report.php?message=' . $photo_id . '" title="">Report</a></li>';
-                                                                ?>
-                                                                <?php
-                                                                if ($row_save_post[0] > 0) {
+
+                                                                if ($row_save_post[0] > 0)
                                                                     echo '<li><a id="save-but" href="#" title="">Saved</a></li>';
-                                                                } else
+                                                                else
                                                                     echo '<li><a id="save-but" href="#" title="" onclick="savePost();">Unsaved</a></li>';
                                                                 ?>
                                                                 <li><a href="#" onclick="CopyText()" title="">Copy Link</a>
@@ -175,7 +171,6 @@ function getRepliessCount($post_id, $con)
                                                          class="job-dt"></img>
                                                     <ul class="skill-tags">
                                                         <?php
-                                                        $i;
                                                         $len = count($photo_tag);
                                                         /*
                                                         could do something if photo has no tags
@@ -549,8 +544,6 @@ function getRepliessCount($post_id, $con)
         function reply(num) {
             var str = "reply-" + num;
             document.getElementById(str).style.display = "block";
-            //console.log(str);
-            //console.log(document.getElementById(str).style.display);
         }
 
         function sendReplyForm(num) {
@@ -572,7 +565,6 @@ function getRepliessCount($post_id, $con)
 
         function CancelReply(num) {
             var str = "reply-" + num;
-            //console.log(str);
             document.getElementById(str).style.display = "none";
         }
 

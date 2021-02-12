@@ -607,7 +607,6 @@ function isSaved($con, $post_id)
                 }
             });
         }
-
     </script>
 
 </body>
