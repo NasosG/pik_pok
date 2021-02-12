@@ -59,7 +59,7 @@ if (isset($_SESSION['username'])) {
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                             
                                 <div>
-                                <form id="myform" class="likes-comments-form company_profile_info" name="myform" method="get" action="picComments.php" >
+                                <form id="myform" class="likes-comments-form company_profile_info" name="myform" method="get" action="pic_comments.php" >
                                     <div class="company-up-info">
                                     
                                         <a href="other_users_profile.php?photo_username=' . $row['username'] . '">';
@@ -132,7 +132,7 @@ if (isset($_SESSION['username'])) {
                         <!--<li><a href="#" title="">Privacy Policy</a></li>-->
                         <li><a href="community_guidelines.php" title="">Community Guidelines</a></li>
                         <!--<li><a href="#" title="">Cookies Policy</a></li>-->
-                        <li><a href="termsofuse.php" title="">Terms of Use</a></li>
+                        <li><a href="terms_of_use.php" title="">Terms of Use</a></li>
                         <li><a href="#" title="">Language: English</a></li>
                         <!--<li><a href="#" title="">Copyright Policy</a></li>-->
                     </ul>

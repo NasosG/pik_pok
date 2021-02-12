@@ -231,7 +231,7 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                         <li><a href="help_center.php" title="">Help Center</a></li>
                         <li><a href="about.php" title="">About</a></li>
                         <li><a href="community_guidelines.php" title="">Community Guidelines</a></li>
-                        <li><a href="termsofuse.php" title="">Terms of Use</a></li>
+                        <li><a href="terms_of_use.php" title="">Terms of Use</a></li>
                         <li><a href="#" title="">Language: English</a></li>
                     </ul>
                     <p><img src="images/copy-icon2.png" alt="">Copyright

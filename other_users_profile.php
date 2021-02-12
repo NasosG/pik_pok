@@ -189,9 +189,9 @@ function isSaved($con, $post_id)
                                 <h3>Setting</h3>
                                 <ul class='us-links'>
                                     <li><a href='profile3.php' title=''>My Profile</a></li>
-                                    <li><a href='profile-account-setting.php' title=''>Account Setting</a></li>
+                                    <li><a href='profile_account_setting.php' title=''>Account Setting</a></li>
                                     <li><a href='privacy_policy.php' title=''>Privacy</a></li>
-                                    <li><a href='termsofuse.php' title=''>Terms & Conditions</a></li>
+                                    <li><a href='terms_of_use.php' title=''>Terms & Conditions</a></li>
                                 </ul>
                                 <h3 class='tc'><a href='db/logout.php' title=''>Logout</a></h3>
                             </div><!--user-account-settingss end-->
@@ -273,7 +273,7 @@ function isSaved($con, $post_id)
                                         <ul>
                                             <li><a href="help_center.php" title="">Help Center</a></li>
                                             <li><a href="about.php" title="">About</a></li>
-                                            <li><a href="termsofuse.php" title="">Privacy Policy</a></li>
+                                            <li><a href="terms_of_use.php" title="">Privacy Policy</a></li>
                                             <li><a href="community_guidelines.php" title="">Community Guidelines</a></li>
                                             <li><a href="cookies_policy.php" title="">Cookies Policy</a></li>
                                             <li><a href="#" title="">Career</a></li>

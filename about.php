@@ -69,7 +69,7 @@ require('db/error_functions.php');
                     <!--<li><a href="#" title="">Privacy Policy</a></li>-->
                     <li><a href="community_guidelines.php" title="">Community Guidelines</a></li>
                     <!--<li><a href="#" title="">Cookies Policy</a></li>-->
-                    <li><a href="termsofuse.php" title="">Terms of Use</a></li>
+                    <li><a href="terms_of_use.php" title="">Terms of Use</a></li>
                     <li><a href="#" title="">Language: English</a></li>
                     <!--<li><a href="#" title="">Copyright Policy</a></li>-->
                 </ul>

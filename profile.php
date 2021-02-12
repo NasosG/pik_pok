@@ -2271,7 +2271,7 @@ include("db/auth.php"); //include auth.php file on all secure pages
                             <div class="col-lg-3">
                                 <div class="right-sidebar">
                                     <div class="message-btn">
-                                        <a href="profile-account-setting.php" title=""><i class="fas fa-cog"></i>
+                                        <a href="profile_account_setting.php" title=""><i class="fas fa-cog"></i>
                                             Setting</a>
                                     </div>
                                     <div class="widget widget-portfolio">

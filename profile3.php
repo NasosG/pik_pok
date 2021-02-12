@@ -194,9 +194,9 @@ function isSaved($con, $post_id)
                                 <h3>Setting</h3>
                                 <ul class='us-links'>
                                     <li><a href='profile3.php' title=''>My Profile</a></li>
-                                    <li><a href='profile-account-setting.php' title=''>Account Setting</a></li>
+                                    <li><a href='profile_account_setting.php' title=''>Account Setting</a></li>
                                     <li><a href='privacy_policy.php' title=''>Privacy</a></li>
-                                    <li><a href='termsofuse.php' title=''>Terms & Conditions</a></li>
+                                    <li><a href='terms_of_use.php' title=''>Terms & Conditions</a></li>
                                 </ul>
                                 <h3 class='tc'><a href='db/logout.php' title=''>Logout</a></h3>
                             </div><!--user-account-settingss end-->
@@ -258,7 +258,7 @@ function isSaved($con, $post_id)
                                                 <span><?php echo $sum_likes; ?></span>
                                             </li>
                                             <li>
-                                                <a href="profile-account-setting.php" title="">More Settings</a>
+                                                <a href="profile_account_setting.php" title="">More Settings</a>
                                             </li>
                                         </ul>
                                     </div><!--user-data end-->
@@ -269,7 +269,7 @@ function isSaved($con, $post_id)
                                                 <a href="#" title="" class="bio-opts ed-opts-open"><i
                                                             class="fa fa-ellipsis-v"></i></a>
                                                 <ul class="ed-options">
-                                                    <li><a href="profile-account-setting.php" title="">Edit Bio</a></li>
+                                                    <li><a href="profile_account_setting.php" title="">Edit Bio</a></li>
                                                     <!--<li><a href="#" title="">Clear Bio</a></li>-->
                                                 </ul>
                                             </div>
@@ -291,7 +291,7 @@ function isSaved($con, $post_id)
                                         <ul>
                                             <li><a href="help_center.php" title="">Help Center</a></li>
                                             <li><a href="about.php" title="">About</a></li>
-                                            <li><a href="termsofuse.php" title="">Privacy Policy</a></li>
+                                            <li><a href="terms_of_use.php" title="">Privacy Policy</a></li>
                                             <li><a href="community_guidelines.php" title="">Community Guidelines</a></li>
                                             <li><a href="cookies_policy.php" title="">Cookies Policy</a></li>
                                             <li><a href="#" title="">Career</a></li>
@@ -318,7 +318,7 @@ function isSaved($con, $post_id)
                                                 <li><a class="post-jb active" href="#" title=""><i class="fa fa-plus"></i>
                                                         Post Image</a></li>
                                                 <li>
-                                                    <a class="active" href="profile-account-setting.php" title=""><i
+                                                    <a class="active" href="profile_account_setting.php" title=""><i
                                                                 class="fa fa-cog"></i> Settings</a>
                                                 </li>
                                             </ul>

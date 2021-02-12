@@ -38,7 +38,7 @@ require('db/error_functions.php');
                     time thinking about the different points of view that create a safe and open environment for
                     everyone.</p>
                 <p>We created the Community Guidelines so you can help us foster and protect this amazing community. By
-                    using pik-pok, you agree to these guidelines and our <a href="./termsofuse.php">Terms of Use</a>. We’re
+                    using pik-pok, you agree to these guidelines and our <a href="terms_of_use.php">Terms of Use</a>. We’re
                     committed to these guidelines and we hope you are too. Overstepping these boundaries may result in
                     deleted content, disabled accounts, or other restrictions.</p>
                 <ul class="uiList">
@@ -177,7 +177,7 @@ require('db/error_functions.php');
                     </li>
                 </ul>
                 <p class="pt-3">For more information, check out our <a href="./help_center.php">Help Center</a> and <a
-                            href="./termsofuse.php">Terms of Use</a>.</p>
+                            href="terms_of_use.php">Terms of Use</a>.</p>
                 <p class="">Thank you for helping us create one of the best communities in the world,</p>
                 <p class="pb-3">The pik-pok Team</p>
             </div>

@@ -47,7 +47,7 @@
         include('../includes/echo_header.php');
         echo "<br><h1 style='font-size: 40px; padding-top:100px; font-family:\"Sofia\"; text-align:center;'>";
         echo " <font color=\"red\"> Sorry, that username already exists </font> <br> ";
-        echo " - Click <a href='../profile-account-setting.php'>here</a> to go back<br>";
+        echo " - Click <a href='../profile_account_setting.php'>here</a> to go back<br>";
         echo " - Click <a href='../index.php'>here</a> to return to Home";
         echo "</h1>";
         include('../includes/echo_end.php');
@@ -58,7 +58,7 @@
         include('../includes/echo_header.php');
         echo "<br><h1 style='font-size: 40px; padding-top:100px; font-family:\"Sofia\"; text-align:center;'>";
         echo " <font color=\"red\"> Sorry, that email already exists </font> <br> ";
-        echo " - Click <a href='../profile-account-setting.php'>here</a> to go back<br>";
+        echo " - Click <a href='../profile_account_setting.php'>here</a> to go back<br>";
         echo " - Click <a href='../index.php'>here</a> to return to Home";
         echo "</h1>";
         include('../includes/echo_end.php');
