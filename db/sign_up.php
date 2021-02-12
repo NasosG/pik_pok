@@ -80,7 +80,7 @@ if (isset($_REQUEST['username'])) {
 			VALUES ('$IP','$MAC','$username','$RegDate', '$is_mobile', '$ua_OS', '$ua_browser')";
             $result = mysqli_query($con, $query_ip_mac);
 
-            if ($result) header("Location: ../addAvatar.php");
+            if ($result) header("Location: ../add_avatar.php");
         }
         else generalError();
 
