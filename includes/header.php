@@ -5,8 +5,8 @@
                 <a href="index.php" title=""><img src="images/logo.png" alt=""></a>
             </div><!--logo end-->
             <div class="search-bar">
-                <form>
-                    <input type="text" name="search" id="search" placeholder="Search...">
+                <form method="get" action="index.php">
+                    <input type="text" name="search" placeholder="Search...">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
             </div><!--search-bar end-->
