@@ -80,13 +80,14 @@ img.emoji {
 /* Emoji area */
 .emoji-wysiwyg-editor:empty:before {
     content: attr(placeholder);
+    cursor: text;
     color: #9aa2ab;
 }
 
-.emoji-wysiwyg-editor:active:before,
-.emoji-wysiwyg-editor:focus:before {
-    content: none;
-}
+/*.emoji-wysiwyg-editor:active:before,*/
+/*.emoji-wysiwyg-editor:focus:before {*/
+/*    content: none;*/
+/*}*/
 
 .emoji-wysiwyg-editor {
     padding: 6px;

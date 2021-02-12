@@ -13,23 +13,17 @@ if (isset($_REQUEST['username'])) {
     $email = filter_var($email, FILTER_SANITIZE_EMAIL); // sanitize email
     $email = mysqli_real_escape_string($con, $email);
 
-    ///////////////////////////////////////////////////////
-
     $query = "SELECT * FROM members WHERE username ='$username'";
     $result = mysqli_query($con, $query);
     if (!$result) {
         echo ' Database Error Occured ';
     }
 
-    //////////////////////////////////////////////////////
-
     $query = "SELECT * FROM members WHERE email ='$email'";
     $result2 = mysqli_query($con, $query);
     if (!$result2) {
         echo ' Database Error Occured ';
     }
-
-    /////////////////////////////////////////////////////
 
     //if username exists
     if (mysqli_num_rows($result) > 0) ChangeUsername();
@@ -86,15 +80,12 @@ if (isset($_REQUEST['username'])) {
 			VALUES ('$IP','$MAC','$username','$RegDate', '$is_mobile', '$ua_OS', '$ua_browser')";
             $result = mysqli_query($con, $query_ip_mac);
 
-            if ($result)
-                header("Location: ../addAvatar.php");
+            if ($result) header("Location: ../addAvatar.php");
         }
-        else {
-            generalError();
-        }
+        else generalError();
+
     }
 }
-else {
-    generalError();
-}
+else generalError();
+
 ?>

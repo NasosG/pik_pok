@@ -8,7 +8,6 @@ $comment_date = date("Y-m-d H:i:s");
 
 // If the user clicked submit on comment form...
 if (isset($_POST['comment-text'])) {
-
     $comment_text = $_POST['comment-text'];
 
     // find user id from session name
@@ -37,7 +36,6 @@ else if (isset($_POST['reply-text'])) {
     $result = mysqli_query($con, $query);
     $row = mysqli_fetch_array($result);
     $user_id = $row['id'];
-    //$post_id = $_POST['post_id'];
     mysqli_set_charset($con, "utf8mb4");
     $query = "INSERT INTO comment_replies (comment_id, user_id, comment_text, time_commented) VALUES ('$post_id', '$user_id', '$comment_text', '$comment_date') ";
     $result = mysqli_query($con, $query);

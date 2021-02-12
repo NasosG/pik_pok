@@ -10,8 +10,7 @@ function getUsersID($con, $uname) {
     return $row['id'];
 }
 
-if (!isset($_POST['id']))
-    die("id is not set");
+if (!isset($_POST['id'])) die("id is not set");
 
 $user_two_id = $_POST['id'];
 $uname = $_SESSION['username'];

@@ -44,8 +44,7 @@ require('db/error_functions.php');
 
 
                             <div class="col-lg-12" style="margin-top:20px;">
-                                <textarea id="bio" name="bio"
-                                          placeholder="Tell the world a few words about you, your Bio"></textarea>
+                                <textarea id="bio" name="bio" placeholder="Tell the world a few words about you, your Bio"></textarea>
                             </div>
                             <div class="col-lg-12">
                                 <ul>

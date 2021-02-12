@@ -182,8 +182,7 @@ require('db/error_functions.php');
                 <p class="pb-3">The pik-pok Team</p>
             </div>
         </div>
-    </div>
-    <!--theme-layout end-->
+    </div><!--theme-layout end-->
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/popper.js"></script>

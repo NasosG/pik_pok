@@ -30,9 +30,8 @@ $set_status = function ($con, $username, $status) {
 $get_status = function ($con, $username) {
     $query = "SELECT status FROM members WHERE username = '$username' ";
     $result = mysqli_query($con, $query) or die("Not able to execute the query");
-    $row = mysqli_fetch_array($result);
-    $user_status = $row[0];
-    return $user_status;
+    $user_status = mysqli_fetch_array($result);
+    return $user_status[0];
 };
 
 ?>

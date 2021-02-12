@@ -4,14 +4,12 @@ require('db/db.php');
 require('db/error_functions.php');
 ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>About - Pik Pok</title>
     <?php include_once('./includes/head.php'); ?>
 </head>
-
 
 <body>
     <?php

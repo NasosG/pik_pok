@@ -61,12 +61,10 @@ if (isset($_POST['imgData'])) {
 
                                 if (!isMobileDevice()) {
                                     echo '<div class="upload-btn-wrapper">
-                                                  <button disabled class="btn-up" id="mylink"><a class="a-up" href="webcam.php">Take a photo</a></button>
-                                                </div> ';
+                                              <button disabled class="btn-up" id="mylink"><a class="a-up" href="webcam.php">Take a photo</a></button>
+                                          </div> ';
                                 }
-
                                 ?>
-
 
                             </div>
                             <div class="pt-2 col-lg-12 col-md-12 col-12">
@@ -78,7 +76,6 @@ if (isset($_POST['imgData'])) {
                                 } else echo '<img style="min-height:380px;max-height:420px;" src="images/SocialMediaPost.png" id="add-prof-pic"></img>'; ?>
 
                             </div>
-
 
                             <div class="col-lg-12">
                                 <ul>
