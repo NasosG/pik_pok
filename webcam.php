@@ -61,9 +61,14 @@
         <div id="post_take_buttons" style="display:none">
             <input type=button value="&#171; Take another" onClick="cancel_preview()">
             <button type="submit" onClick="save_photo()">Submit photo &#187;</button>
-            <input class="checkbox" onclick="check()" type="checkbox" id="editFaces" name="editFaces" value="editFaces">
-            <label for="editFaces">Face Blur</label><br>
+            <div class="switch_box ">
+            <input onclick="check()" type="checkbox" id="editFaces" name="editFaces" value="editFaces" type="checkbox" class="checkbox switch_1">
+
+            <label for="editFaces">Smart Blur</label>
+                </div><br>
         </div>
+
+
 
     </form>
 
