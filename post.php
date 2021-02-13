@@ -21,7 +21,7 @@ if (isset($_POST['imgData'])) {
     <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
 </head>
 
-<body oncontextmenu="return false;">
+<body>
     <div class="wrapper">
 
         <?php

@@ -2,101 +2,9 @@
 
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Take Photo</title>
-
-    <link rel='shortcut icon' type='image/x-icon' href='images/logo.png'/>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content=""/>
-    <meta name="keywords" content=""/>
-
-    <!-- font awesome icons kit -->
-    <script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
-
-    <style type="text/css">
-        body { font-family: Helvetica, sans-serif; }
-        h2, h3 { margin-top:0; }
-        form { margin-top: 15px; }
-        form > input { margin-right: 15px; }
-
-        input[type=button],
-        button[type=submit] {
-            font-family: Helvetica, sans-serif;
-            background-color: #F0F0F0;
-            font-size: 1.1em;
-            letter-spacing: 1.5px;
-            color: black;
-            border: 1px solid black;
-            padding: 14px 20px;
-            margin: 8px 0;
-            transition-duration: 0.4s;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 5px;
-        }
-
-        input[type=button]:hover {
-            opacity: 0.8;
-            background-color: #555555;
-            border: 1px solid #555555;
-            color: white;
-        }
-
-        button[type=submit]:hover {
-            opacity: 0.8;
-            background-color: green;
-            border: 1px solid green;
-            color: white;
-        }
-
-        @media only screen and (max-width: 600px) {
-            body {
-                margin-left: 0px;
-            }
-
-            h1, h2, h3, form, form > input {
-                margin-left: 10px;
-            }
-
-            #results {
-                display: none;
-            }
-        }
-
-        @media only screen and (min-width: 600px) and (max-width: 1250px) {
-            body {
-                position: relative;
-                width: 100%;
-                display: block;
-            }
-
-            body > * {
-                margin-left: auto;
-                margin-right: auto;
-                width: 570px;
-                display: block;
-            }
-
-            body > script {
-                display: none
-            }
-
-            #results {
-                display: none;
-            }
-        }
-
-        @media only screen and (min-width: 1251px) {
-            #results {
-                float: right;
-                margin: 20px;
-                padding: 20px;
-                border: 1px solid;
-                background: #ccc;
-            }
-        }
-	</style>
+    <?php include_once('./includes/minimal_head.php'); ?>
+    <link rel="stylesheet" type="text/css" href="css/webcam-style.css">
 </head>
 <body>
     <div id="results">Your captured image will appear here...</div>
@@ -143,7 +51,7 @@
     </script>
 
     <!-- A button for taking snaps -->
-    <form action="post.php" method="post">
+    <form id="faceRecognitionForm" action="post.php" method="post">
 
         <input type="hidden" name="imgData" id="imgData" value=""/>
 
@@ -153,6 +61,8 @@
         <div id="post_take_buttons" style="display:none">
             <input type=button value="&#171; Take another" onClick="cancel_preview()">
             <button type="submit" onClick="save_photo()">Submit photo &#187;</button>
+            <input class="checkbox" onclick="check()" type="checkbox" id="editFaces" name="editFaces" value="editFaces">
+            <label for="editFaces">Face Blur</label><br>
         </div>
 
     </form>
@@ -185,7 +95,6 @@
             // swap buttons back
             document.getElementById('pre_take_buttons').style.display = '';
             document.getElementById('post_take_buttons').style.display = 'none';
-
         }
 
         function save_photo() {
@@ -205,6 +114,13 @@
             });
         }
 
+        function check() {
+            getCheckbox().checked?form.action = "FaceRecognition/face_recognition.php":form.action = "post.php";
+            console.log(form.action);
+        }
+
+        let getCheckbox = () => document.querySelector('#editFaces');
+        var form = document.getElementById('faceRecognitionForm');
     </script>
 
 </body>

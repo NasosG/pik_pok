@@ -8,8 +8,6 @@ require('db/error_functions.php');
 <html>
 
 <head>
-    <link rel='shortcut icon' type='image/x-icon' href='images/logo.png'/>
-    <meta charset="UTF-8">
     <title>Cookies Policy - Pik Pok</title>
     <?php include_once('./includes/head.php'); ?>
     <link rel="stylesheet" type="text/css" href="css/other-styles.css">
