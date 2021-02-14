@@ -43,6 +43,9 @@ if (isset($_POST['username'])) {
         $result1 = mysqli_query($con, $get_mac) or die("Not able to execute the query");
         $values_db = mysqli_fetch_array($result1);
 
+        $MAC = getClientsMAC();
+        $IP = getClientsIP();
+
         if ($values_db[0] != $MAC && $values_db[1] != $IP) {
             send_security_alert(); // Device or network may have changed;
         }

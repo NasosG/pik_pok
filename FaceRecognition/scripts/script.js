@@ -2,6 +2,14 @@
 // it's ok for the scope of our research but would like to implement a smarter feature in the future
 // such as blurring/unblurring when user clicks a face and smarter automatic blurring
 
+// store the data of the original photo
+const imageUpload = document.getElementById('imageUpload').attributes.value.textContent;
+var image;
+var canvas;
+var detectionBoxes = [];
+var blurred = false;
+const container = document.createElement('div');
+
 function dataURItoBlob(dataURI) {
     // convert base64/URLEncoded data component to raw binary data held in a string
     let byteString;
@@ -21,14 +29,6 @@ function dataURItoBlob(dataURI) {
 
     return new Blob([intArray], {type: mimeString});
 }
-
-// store the data of the original photo
-const imageUpload = document.getElementById('imageUpload').attributes.value.textContent;
-var image;
-var canvas;
-var detectionBoxes = [];
-var blurred = false;
-const container = document.createElement('div');
 
 // load all models
 // run asynchronous calls in parrallel, just an optimization
@@ -110,4 +110,8 @@ function unblurring(canvas, box, image) {
 function drawBox(box) {
     const drawBox = new faceapi.draw.DrawBox(box, {label: 'Face'});
     drawBox.draw(canvas);
+}
+
+function save_photo() {
+    document.getElementById("imgData").value = getCanvasData();
 }

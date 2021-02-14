@@ -23,20 +23,12 @@ if (isset($_POST['imgData'])) {
     <title>Face Recognition</title>
 </head>
 <body>
-<h1>Your privacy matters to us!<i class="fa fa-picture-o" aria-hidden="true"></i></h1>
-<!-- <h3><span style="color:#e44d3a;">Press a face to blur</span> and then &amp; submit the photo</h3> -->
-<h3><span style="color:#e44d3a;">Press a face to blur or unblur</span> and then &amp; submit the photo</h3>
-<form name="blurringPageForm" method="post" action="../post.php" enctype="multipart/form-data">
-    <input type="hidden" name="imgData" id="imgData" value=""/>
-    <?php echo '<input type="file" id="imageUpload" value= "' . $imgData . '" />'; ?>
-    <!--  <input type="file" id="imageUpload" value= <?php echo "\"" . $imgData . "\"" ?> > -->
-    <button type="submit" onClick="save_photo()">Submit photo &#187;</button>
-</form>
-</body>
-<script>
-    function save_photo() {
-        document.getElementById("imgData").value = getCanvasData();
-    }
-</script>
+    <h1>Your privacy matters to us!<i class="fa fa-picture-o" aria-hidden="true"></i></h1>
+    <h3><span style="color:#e44d3a;">Press a face to blur or unblur</span> and then &amp; submit the photo</h3>
+    <form name="blurringPageForm" method="post" action="../post.php" enctype="multipart/form-data">
+        <input type="hidden" name="imgData" id="imgData" value=""/>
+        <input type="file" id="imageUpload" value= <?php echo '"' . $imgData . '"'; ?>/>
+        <button type="submit" onClick="save_photo()">Submit photo &#187;</button>
+    </form>
 </body>
 </html>

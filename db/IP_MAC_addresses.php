@@ -1,17 +1,4 @@
 <?php
-// $IP stores the ip address of client
-$IP = $_SERVER['REMOTE_ADDR'];
-// $mac = shell_exec("arp -a ".escapeshellarg($_SERVER['REMOTE_ADDR'])." | grep -o -E '(:xdigit:{1,2}:){5}:xdigit:{1,2}'");
-
-// get the MAC address of Client by storing 'getmac' value in $MAC -> not the best method
-$MAC = exec('getmac');
-
-/*
- * Updating $MAC value using strtok function,
- * strtok is used to split the string into tokens, split character of strtok is defined as a space
- * because getmac returns transport name after MAC address
- * */
-$MAC = strtok($MAC, ' ');
 
 function getBrowser(): array
 {
@@ -112,6 +99,32 @@ function getVersion($user_browser, $user_agent): array
     if ($version == null || $version == "") $version = "?";
 
     return array($version, $pattern);
+}
+
+// get MAC address
+function getClientsMAC() {
+    //$MAC = shell_exec("arp -a ".escapeshellarg($IP)." | grep -o -E '(:xdigit:{1,2}:){5}:xdigit:{1,2}'");
+    //$MAC = shell_exec("arp -a ".escapeshellarg($IP));
+    //$mac_string = shell_exec("arp -a $IP");
+    //$mac_array = explode(" ",$mac_string);
+    //$MAC = $mac_array[3];
+
+    // get the MAC address of Client by storing 'getmac' value in $MAC -> not the best method
+    // exec() only works in Windows, generally we can't get MAC with complete safety
+    // so we don't use these methods in production
+    $MAC = exec('getmac');
+    /*
+     * Updating $MAC value using strtok function, strtok is used to split the string into tokens,
+     * space is used as split character of strtok, because getmac returns transport name after MAC address
+     * */
+    $MAC = strtok($MAC, ' ');
+    return $MAC;
+}
+
+// get IP address
+function getClientsIP() {
+    // $IP stores the ip address of client
+    return $_SERVER['REMOTE_ADDR'];
 }
 
 ?>
