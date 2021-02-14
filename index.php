@@ -1,5 +1,5 @@
 <?php
-include("db/auth.php"); //include auth.php file on all secure pages 
+include('db/auth.php'); //include auth.php file on all secure pages
 require('db/db.php');
 require('db/error_functions.php');
 
@@ -8,9 +8,9 @@ mysqli_set_charset($con, "utf8");
 if (isset($_GET['search']) && !empty($_GET['search'])) {
     $search = $_GET['search'];
     $query = "SELECT *
-				FROM images 
-				WHERE photo_tag LIKE '%{$search}%'
-				ORDER BY photo_id DESC";
+                FROM images 
+                WHERE photo_tag LIKE '%{$search}%'
+                ORDER BY photo_id DESC";
 }
 else {
     $query = "SELECT * FROM images ORDER BY photo_id DESC"; //we can order by date but order by id achieves the same goal and we don't need to keep specific time in the database but only the date [implementation may change in the future]

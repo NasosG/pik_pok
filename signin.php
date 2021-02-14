@@ -1,5 +1,5 @@
 <?php
-include("db/auth.php"); //include auth.php file on all secure pages
+include('db/auth.php'); //include auth.php file on all secure pages
 $redirect_signed_in_users(); //signed in users haven't access to this page
 ?>
 

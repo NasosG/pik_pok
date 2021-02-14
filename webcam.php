@@ -17,7 +17,7 @@
       <script type="text/javascript" src="webcamjs/webcam.min.js"></script>
 
     <!-- Configure a few settings and attach camera -->
-    <script language="JavaScript">
+    <script>
 
         function set_camera() {
             var mobile_width = window.innerWidth > 600 ? 560 : window.innerWidth;
@@ -60,14 +60,14 @@
             <input type=button value="&#171; Take another" onClick="cancel_preview()">
             <button type="submit" onClick="save_photo()">Submit photo &#187;</button>
             <div class="switch_box ">
-            <input onclick="check()" type="checkbox" id="editFaces" name="editFaces" value="editFaces" type="checkbox" class="checkbox switch_1">
+            <input onclick="check()" type="checkbox" id="editFaces" name="editFaces" value="editFaces" class="checkbox switch_1">
             <label for="editFaces">Blur Faces</label>
             </div><br>
         </div>
     </form>
 
     <!-- Code to handle taking the snapshot and displaying it locally -->
-    <script language="JavaScript">
+    <script>
 
         var form = document.getElementById('faceRecognitionForm');
         // preload shutter audio clip

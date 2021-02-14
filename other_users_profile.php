@@ -1,5 +1,5 @@
 <?php
-include("db/auth.php"); //include auth.php file on all secure pages 
+include('db/auth.php'); //include auth.php file on all secure pages
 require('db/db.php');
 require('db/error_functions.php');
 
@@ -129,11 +129,8 @@ function isSaved($con, $post_id)
                         <a href="#" title=""><i class="fa fa-bars"></i></a>
                     </div><!--menu-btn end-->
 
-
                     <?php
-
                     if (isset($_SESSION['username'])) {
-
                         $session_uname = $_SESSION['username'];
                         // find user id from session name
                         $query_session = "SELECT picture_path, profile_pic FROM members WHERE username = '$session_uname'";
@@ -159,8 +156,8 @@ function isSaved($con, $post_id)
                                     <li>
                                         <div class='fgt-sec'>
                                             <input type='radio'";
-                        if ($get_status($con, $_SESSION['username']) === 'online') echo 'checked="checked"';
-                        echo "name='cc' id='c5'>
+                                            if ($get_status($con, $_SESSION['username']) === 'online') echo 'checked="checked"';
+                                            echo "name='cc' id='c5'>
                                             <label for='c5'>
                                                 <span></span>
                                             </label>
@@ -170,8 +167,8 @@ function isSaved($con, $post_id)
                                     <li>
                                         <div class='fgt-sec'>
                                             <input type='radio'";
-                        if ($get_status($con, $_SESSION['username']) === 'offline') echo 'checked="checked"';
-                        echo "name='cc' id='c6'>
+                                            if ($get_status($con, $_SESSION['username']) === 'offline') echo 'checked="checked"';
+                                            echo "name='cc' id='c6'>
                                             <label for='c6'>
                                                 <span></span>
                                             </label>
@@ -531,7 +528,6 @@ function isSaved($con, $post_id)
     </div><!--post-project-popup end-->
 
     </div><!--theme-layout end-->
-
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/popper.js"></script>
