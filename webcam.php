@@ -14,7 +14,7 @@
     <div id="my_camera"></div>
 
     <!-- First, include the Webcam.js JavaScripts Library -->
-    <script type="text/javascript" src="webcamjs/webcam.min.js"></script>
+      <script type="text/javascript" src="webcamjs/webcam.min.js"></script>
 
     <!-- Configure a few settings and attach camera -->
     <script language="JavaScript">
@@ -52,9 +52,7 @@
 
     <!-- A button for taking snaps -->
     <form id="faceRecognitionForm" action="post.php" method="post">
-
         <input type="hidden" name="imgData" id="imgData" value=""/>
-
         <div id="pre_take_buttons">
             <input type=button name="snapshot" id="snapshot" value="Take a photo" onClick="preview_snapshot()">
         </div>
@@ -63,18 +61,15 @@
             <button type="submit" onClick="save_photo()">Submit photo &#187;</button>
             <div class="switch_box ">
             <input onclick="check()" type="checkbox" id="editFaces" name="editFaces" value="editFaces" type="checkbox" class="checkbox switch_1">
-
-            <label for="editFaces">Smart Blur</label>
-                </div><br>
+            <label for="editFaces">Blur Faces</label>
+            </div><br>
         </div>
-
-
-
     </form>
 
     <!-- Code to handle taking the snapshot and displaying it locally -->
     <script language="JavaScript">
 
+        var form = document.getElementById('faceRecognitionForm');
         // preload shutter audio clip
         var shutter = new Audio();
         shutter.autoplay = false;
@@ -120,12 +115,10 @@
         }
 
         function check() {
-            getCheckbox().checked?form.action = "FaceRecognition/face_recognition.php":form.action = "post.php";
-            console.log(form.action);
+            form.action = (getCheckbox().checked ) ? "FaceRecognition/face_recognition.php" : "post.php";
         }
 
         let getCheckbox = () => document.querySelector('#editFaces');
-        var form = document.getElementById('faceRecognitionForm');
     </script>
 
 </body>

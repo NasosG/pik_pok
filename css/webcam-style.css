@@ -132,7 +132,7 @@ input[type="checkbox"].switch_1{
 }
 
 input[type="checkbox"].switch_1:checked{
-    background: #fc5617;
+    background: #e4533a;
 }
 
 input[type="checkbox"].switch_1:after{

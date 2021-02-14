@@ -1,6 +1,6 @@
 <?php
 require('db.php');
-include("auth.php"); //include auth.php file on all secure pages 
+include('auth.php'); //include auth.php file on all secure pages
 
 function getUsersID($con, $uname) {
     //find user id from session name

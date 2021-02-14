@@ -1,5 +1,4 @@
 <?php
-
 require('db.php');
 require('error_functions.php');
 session_start();
