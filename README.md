@@ -27,7 +27,7 @@ Have a bug or an issue with this project? Send an email at gnasos219@gmail.com
 
 ## Copyright and License
 
-Copyright 2020 **[MIT license](http://opensource.org/licenses/mit-license.php)**
+Copyright 2021 **[GNU General Public License v3.0 license](https://opensource.org/licenses/GPL-3.0)**
 
 
 ## Copyright claims
