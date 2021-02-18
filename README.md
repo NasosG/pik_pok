@@ -13,7 +13,7 @@ All the tables of the database are in sql_db folder. `pik_pok_whole_db.sql` cont
 <br>open PHPMyAdmin, create your own database & import `pik_pok.sql`. 
 
 2. Open `db/db.php` & fill up your host, username, password and database name 
-for example our variables are $dbhost = "localhost", $dbuser = "root", $dbpass = "", $db = "pik_pok"; but will be changed in the future for security reasons
+for example: $dbhost = "localhost", $dbuser = "root", $dbpass = "", $db = "pik_pok"; but of course it's better to use another username and a stronger password for security reasons
 3. Enjoy!!
 
 ## Requirements
