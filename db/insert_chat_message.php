@@ -20,5 +20,3 @@ if (isset($_POST['message'])) {
     $data['message'] = $message_text;
     echo $message_text;
 }
-
-?>

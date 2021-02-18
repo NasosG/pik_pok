@@ -34,18 +34,14 @@ if (!mysqli_num_rows($result)) {
 
     $query = "INSERT INTO post_likes(liked_by_user, posted_photo_id, time)
 	VALUES ('$user_id',$photo_id,'$time_posted')";
-
     $result = mysqli_query($con, $query);
-
     if (!$result) echo "error occurred";
 }
 else {
     $photo_likes--;
 
     $query = "DELETE FROM post_likes WHERE liked_by_user = '$user_id' AND posted_photo_id = '$photo_id'";
-
     $result = mysqli_query($con, $query);
-
     if (!$result) echo "error occurred";
 }
 
@@ -61,5 +57,3 @@ mysqli_close($con);
 $data['success'] = true;
 $data['message'] = $photo_likes;
 echo $photo_likes;
-
-?>

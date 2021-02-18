@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,6 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/responsive.min.css">
     <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
-    <!-- font awesome icons kit -->
     <script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
 </head>
 
@@ -64,21 +64,6 @@
                 <div class="menu-btn">
                     <a href="#" title=""><i class="fa fa-bars"></i></a>
                 </div><!--menu-btn end-->
-
-
-                <?php
-                if (isset($_SESSION['username'])) {
-                    header('Location:../index.php');
-                }
-                else
-                    echo "<div class='user-account'>
-                        <div class='user-info' style='margin-left:auto; margin-right:auto;'>
-                            <a href='../signin.php' title=''> <i class='fa fa-sign-in fa-lg'></i> Sign In</a>
-                        </div>
-                    ";
-                ?>
-
-
             </div><!--header-data end-->
         </div>
     </header><!--header end-->

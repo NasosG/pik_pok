@@ -9,4 +9,3 @@ $result = mysqli_query($con, $query);
 mysqli_close($con);
 if ($result) header("Location: ../profile3.php");
 else echo "delete not successfull";
-?>

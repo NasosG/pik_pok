@@ -26,6 +26,3 @@ $success_text = 'Request Sent';
 $data['success'] = true;
 $data['message'] = $success_text;
 echo $success_text;
-
-?>
-

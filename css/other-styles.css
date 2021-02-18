@@ -9,9 +9,7 @@
 
 .like-submit-btn:hover {
 	outline:none!important;
-
 }
-
 
 /* ----------   community guidelines custom style      ---------------*/
 
@@ -35,6 +33,7 @@
 	content: "• ";
 }
 */
+
 h4 {
 	font-weight: bold;
 	margin-bottom: 10px;
@@ -44,7 +43,6 @@ h4 {
 .terms_section {
 	color: black;
 }
-
 
 /* ----------   terms of use custom style      ---------------*/
 

@@ -75,5 +75,3 @@ if (isset($_POST['username'])) {
 else {
     generalError();
 }
-
-?>

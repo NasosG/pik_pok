@@ -45,5 +45,3 @@ else if (isset($_POST['reply-text'])) {
     $data['message'] = $comment_text;
     echo $comment_text;
 }
-
-?>

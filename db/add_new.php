@@ -103,4 +103,3 @@ else {
 mysqli_close($con);
 // Redirect user to index.php
 header("Location: ../index.php");
-?>

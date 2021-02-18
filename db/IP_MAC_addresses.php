@@ -126,5 +126,3 @@ function getClientsIP() {
     // $IP stores the ip address of client
     return $_SERVER['REMOTE_ADDR'];
 }
-
-?>

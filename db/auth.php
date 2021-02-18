@@ -14,5 +14,3 @@ $redirect_signed_in_users = function() use ($signed_in) {
 $redirect_unsigned_users = function() use ($signed_in) {
     if (!$signed_in()) header('Location: ./index.php');
 };
-
-?>

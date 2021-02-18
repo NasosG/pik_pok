@@ -32,5 +32,3 @@ $success_text = 'success';
 $data['success'] = true;
 $data['message'] = $success_text;
 echo $success_text;
-
-?>

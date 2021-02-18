@@ -23,5 +23,3 @@ if (isset($_POST['photo_id']) && (!isSaved($con, $_POST['photo_id']))) {
     $query = "INSERT INTO saved_posts (user_id, post_id, time_saved) VALUES ('$user_id', '$post_id', '$time_saved')";
     $result = mysqli_query($con, $query);
 }
-
-?>

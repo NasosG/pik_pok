@@ -101,5 +101,3 @@ else /*if all went fine*/ {
         echo "error occurred";
     }
 }
-
-?>

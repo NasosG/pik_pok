@@ -33,5 +33,3 @@ $get_status = function ($con, $username) {
     $user_status = mysqli_fetch_array($result);
     return $user_status[0];
 };
-
-?>

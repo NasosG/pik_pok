@@ -13,8 +13,7 @@ if (isset($_POST['old_password'])) {
     $repeat_password = ($_REQUEST['repeat_password']);
 
     if ($repeat_password != $new_password) {
-        echo 'wrong password';
-        exit;
+        exit ('wrong password');
     }
 
     $new_password = hash('sha256', $new_password);
@@ -38,5 +37,3 @@ if (isset($_POST['old_password'])) {
     else invalidCredentials();
 }
 else generalError();
-
-?>

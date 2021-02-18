@@ -1,16 +1,15 @@
 <?php
 require('db.php');
 require('error_functions.php');
-require('IP_MAC_addresses.php');
+require('security_functions.php');
 
 if (isset($_REQUEST['username']) || isset($_REQUEST['email'])) {
 
     $taken = false;
 
     if (isset($_REQUEST['username'])) {
-        $username = stripslashes($_REQUEST['username']); // removes backslashes
-        $username = filter_var($username, FILTER_SANITIZE_STRING); // sanitize username data
-        $username = mysqli_real_escape_string($con, $username); //escapes special characters in a string
+        // removes backslashes, sanitize and escape special characters
+        $username = sanitizeString($con, $_REQUEST['username']);
 
         $query = "SELECT * FROM members WHERE username ='$username'";
         $result = mysqli_query($con, $query);
@@ -23,9 +22,7 @@ if (isset($_REQUEST['username']) || isset($_REQUEST['email'])) {
     }
 
     if (isset($_REQUEST['email'])) {
-        $email = stripslashes($_REQUEST['email']);
-        $email = filter_var($email, FILTER_SANITIZE_EMAIL); // sanitize email
-        $email = mysqli_real_escape_string($con, $email);
+        $email = sanitizeEmail($con, $_REQUEST['email']);
 
         $query = "SELECT * FROM members WHERE email ='$email'";
         $result2 = mysqli_query($con, $query);
@@ -44,4 +41,3 @@ if (isset($_REQUEST['username']) || isset($_REQUEST['email'])) {
         exit();
     }
 }
-?>
