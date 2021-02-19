@@ -2,6 +2,9 @@
 include('db/auth.php'); //include auth.php file on all secure pages
 require('db/db.php');
 require('db/error_functions.php');
+require('db/utility_functions.php');
+
+$redirect_unsigned_users();
 
 $photo_id = $_GET['photo_id'];
 
@@ -26,33 +29,6 @@ $photo_tag = explode("#", $string_array);
 $query_save_post = "SELECT COUNT(*) FROM saved_posts WHERE post_id = $photo_id";
 $result_save_post = mysqli_query($con, $query_save_post);
 $row_save_post = mysqli_fetch_row($result_save_post);
-
-// Receives a user id and returns the username
-function getUsernameById($id, $con)
-{
-    $result = mysqli_query($con, "SELECT username FROM members WHERE id=" . $id . " LIMIT 1");
-    // return the username
-    return mysqli_fetch_assoc($result)['username'];
-}
-
-// Receives username and returns user's profile picture details
-function getMemberDetails($username, $con)
-{
-    $query = "SELECT picture_path, profile_pic FROM members WHERE username = '$username'  LIMIT 1";
-    $result = mysqli_query($con, $query);
-    $row = mysqli_fetch_array($result);
-    $img_path = $row['picture_path'];
-    $img_name = $row['profile_pic'];
-    return array($img_path, $img_name);
-}
-
-// Receives a post id and returns the total number of comments on that post
-function getRepliessCount($post_id, $con)
-{
-    $result = mysqli_query($con, "SELECT COUNT(*) AS total FROM comment_replies");
-    $data = mysqli_fetch_assoc($result);
-    return $data['total'];
-}
 
 ?>
 
@@ -194,7 +170,13 @@ function getRepliessCount($post_id, $con)
                                                             <li>
                                                                 <button class="like-submit-btn"><a id="like-submit"
                                                                                                    class="com-page-likes"><i
-                                                                                class="fa fa-heart"></i> Like</a></button>
+                                                                                class=
+                                                                                <?php
+                                                                                if (post_is_liked_from($_SESSION['username'], $row['photo_id'], $con))
+                                                                                    echo '"fa fa-heart"';
+                                                                                else
+                                                                                    echo '"far fa-heart"';?>
+                                                                        ></i> Like</a></button>
                                                             </li>
                                                         </ul>
                                                         <ul style="float:right;" class="like-com">

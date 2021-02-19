@@ -2,6 +2,7 @@
 include('db/auth.php'); //include auth.php file on all secure pages
 require('db/db.php');
 require('db/error_functions.php');
+require('db/utility_functions.php');
 
 $uname = $_GET['photo_username'];
 mysqli_set_charset($con, "utf8");
@@ -27,13 +28,7 @@ $lname = $row_picture['lname'];
 $email = $row_picture['email'];
 $bio = $row_picture['bio'];
 
-function isSaved($con, $post_id)
-{
-    $query_count_saves = "SELECT COUNT(*) FROM saved_posts WHERE post_id = $post_id";
-    $result_count_saves = mysqli_query($con, $query_count_saves);
-    $row_count_saves = mysqli_fetch_row($result_count_saves);
-    return ($row_count_saves[0] > 0);
-}
+
 
 ?>
 
@@ -374,7 +369,14 @@ function isSaved($con, $post_id)
                                                         <?php
                                                         if (isset($_SESSION['username'])) {
                                                             echo '
-                                                                <button style="background:white; border:none;" class="like-submit-btn"><a id="like-submit" style="color:#e44d3a;" class="com-page-likes"><i class="fa fa-heart"></i> Like</a></button>';
+                                                                <button style="background:white; border:none;" class="like-submit-btn"><a id="like-submit" style="color:#e44d3a;" class="com-page-likes">
+                                                                <i class=';
+                                                                   if (post_is_liked_from($_SESSION['username'], $row['photo_id'], $con))
+                                                                       echo '"fa fa-heart"';
+                                                                   else
+                                                                       echo '"far fa-heart"';
+                                                                echo '
+                                                                ></i> Like</a></button>';
                                                         }
                                                         /*else do nothing*/
                                                         ?>

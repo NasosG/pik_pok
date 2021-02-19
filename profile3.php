@@ -2,6 +2,7 @@
 include('db/auth.php'); //include auth.php file on all secure pages
 require('db/db.php');
 require('db/error_functions.php');
+require('db/utility_functions.php');
 
 $uname = $_SESSION['username'];
 mysqli_set_charset($con, "utf8");
@@ -28,15 +29,6 @@ $uid = $row_uid[0];
 // saved posts ordered by their date (max 12 rows again)
 $query_save_post = "SELECT * FROM images, saved_posts WHERE saved_posts.user_id='$uid' AND images.photo_id=saved_posts.post_id LIMIT 12";
 $result_save_post = mysqli_query($con, $query_save_post);
-
-function isSaved($con, $post_id)
-{
-    $query_count_saves = "SELECT COUNT(*) FROM saved_posts WHERE post_id = $post_id";
-    $result_count_saves = mysqli_query($con, $query_count_saves);
-    $row_count_saves = mysqli_fetch_row($result_count_saves);
-    return ($row_count_saves[0] > 0);
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -387,7 +379,13 @@ function isSaved($con, $post_id)
                                                                 class="like-submit-btn"><a id="like-submit"
                                                                                            style="color:#e44d3a;"
                                                                                            class="com-page-likes"><i
-                                                                        class="fa fa-heart"></i> Like</a></button>
+                                                                        class=
+                                                                        <?php
+                                                                        if (post_is_liked_from($_SESSION['username'], $row['photo_id'], $con))
+                                                                            echo '"fa fa-heart"';
+                                                                        else
+                                                                            echo '"far fa-heart"';?>
+                                                                ></i> Like</a></button>
                                                     </li>
                                                 </ul>
                                                 <ul style="float:right;" class="like-com">
