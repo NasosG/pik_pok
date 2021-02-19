@@ -2,6 +2,7 @@
 include('db/auth.php'); //include auth.php file on all secure pages
 require('db/db.php');
 require('db/error_functions.php');
+require('db/utility_functions.php');
 
 mysqli_set_charset($con, "utf8");
 
@@ -21,10 +22,7 @@ $result = mysqli_query($con, $query);
 if (isset ($_SESSION['username'])) {
     $uname = $_SESSION['username'];
     // find user id from session name
-    $query2 = "SELECT id FROM members WHERE username = '$uname'";
-    $result2 = mysqli_query($con, $query2);
-    $row = mysqli_fetch_array($result2);
-    $user_id = $row['id'];
+    $user_id = getUsersID($con, $uname);
 }
 
 ?>
