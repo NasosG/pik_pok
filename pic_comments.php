@@ -16,9 +16,8 @@ $row = mysqli_fetch_array($result);
 
 $query2 = "SELECT photo_name,photo_path,photo_tag FROM images WHERE photo_id = $photo_id";
 $result = mysqli_query($con, $query2);
-
 $row2 = mysqli_fetch_array($result);
-//echo $row2['photo_path'].$row2['photo_name'];
+
 $count_comments = "SELECT COUNT(post_id) FROM post_comments WHERE post_id = '$photo_id'";
 $result_of_count = mysqli_query($con, $count_comments);
 $row_after_count = mysqli_fetch_row($result_of_count);
@@ -29,7 +28,6 @@ $photo_tag = explode("#", $string_array);
 $query_save_post = "SELECT COUNT(*) FROM saved_posts WHERE post_id = $photo_id";
 $result_save_post = mysqli_query($con, $query_save_post);
 $row_save_post = mysqli_fetch_row($result_save_post);
-
 ?>
 
 <!DOCTYPE html>
