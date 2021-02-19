@@ -65,7 +65,9 @@ if (isset($_SESSION['username'])) {
                                         <a href="other_users_profile.php?photo_username=' . $row['username'] . '">';
                             echo "<h3 class='pt-2'>" . $row['username'] . "</h3>";
                             echo "</a><h4>" . $newDate . "</h4>
-                                        <img src=\"" . $row['photo_path'] . $row['photo_name'] . "\" alt='user's photo' />";
+                                    <a  href=\"" . $row['photo_path'] . $row['photo_name'] . "\" data-lightbox=\"image-pop". $row['photo_id'] ."\">
+                                        <img src=\"" . $row['photo_path'] . $row['photo_name'] . "\" alt='user's photo' />
+                                    </a>";
 
                             if (isset($_SESSION['username'])) {
                                 $photo_id = $row['photo_id'];
@@ -155,6 +157,7 @@ if (isset($_SESSION['username'])) {
     <script type="text/javascript" src="js/slick.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> <!-- load jquery via CDN -->
+    <script src="./lightbox/dist/js/lightbox-plus-jquery.min.js"></script>
     <script>
         var formSubmit = true;
 
