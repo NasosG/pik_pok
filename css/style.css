@@ -3784,7 +3784,7 @@ a:hover {
 	padding: 30px 0;
 	border-bottom: 1px solid #e5e5e5;
 }
-@media only screen and (max-width: 559px) {
+@media only screen and (max-width: 575.9px) {
 	.company-up-info img {
 		float: none;
 		margin-bottom: 10px;
@@ -3793,7 +3793,7 @@ a:hover {
 		object-fit: cover;
 	}
 }
-@media only screen and (min-width: 560px) {
+@media only screen and (min-width: 576px) {
 	.company-up-info img {
 		float: none;
 		margin-bottom: 10px;
@@ -3802,7 +3802,7 @@ a:hover {
 		-ms-border-radius: 100px;
 		-o-border-radius: 100px;
 		border-radius: 100px;
-		height: 100px;
+		height: 90px;
 		object-fit: cover;
 	}
 }
