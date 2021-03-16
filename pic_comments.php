@@ -8,9 +8,10 @@ $redirect_unsigned_users();
 
 $photo_id = $_GET['photo_id'];
 
+if (photoIdNotExists($con, $photo_id)) header("location:index.php");
+
 mysqli_set_charset($con, "utf8mb4");
 $query = "SELECT * FROM post_comments WHERE post_id = $photo_id";
-
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_array($result);
 

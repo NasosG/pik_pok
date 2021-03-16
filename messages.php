@@ -2,6 +2,7 @@
 include('db/auth.php'); //include auth.php file on all secure pages
 require('db/db.php');
 require('db/error_functions.php');
+require('db/utility_functions.php');
 
 // this whole page is under construction and testing
 
@@ -15,10 +16,13 @@ $uname = ($_SESSION['username']);
 $query_users = "SELECT * FROM members WHERE username <> '$uname' LIMIT 7";
 $result_users = mysqli_query($con, $query_users);
 
+
 if (isset($_GET['receiver_id'])) {
+    // check if id exists or path id has been changed manually
+    if (receiverIdNotExists($con, $_GET['receiver_id']))
+        header('location:messages.php');
     $receiver_id = $_REQUEST['receiver_id'];
 }
-
 $query_uid = mysqli_query($con, "SELECT id FROM members WHERE username = '$uname' LIMIT 1");
 $row_uid = mysqli_fetch_array($query_uid);
 $sender_id = $row_uid[0];
