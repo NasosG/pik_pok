@@ -2,7 +2,7 @@
 include('db/auth.php'); //include auth.php file on all secure pages
 require('db/db.php');
 require('db/error_functions.php');
-$num = $_GET['message'];
+$photo_id = $_GET['message'];
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ $num = $_GET['message'];
                     <div class="row">
                         <div class="col-12 pb-3">
                             <textarea style="min-height:180px;" id="messageText" name="message" placeholder="Write your message.."
-                                      required><?php echo 'http://localhost/pik_pok/picComments.php?photo_id=' . $num . ' violated community guidelines by... Type the reason here'; ?></textarea>
+                                      required><?php echo 'http://localhost/pik_pok/picComments.php?photo_id=' . $photo_id . ' violated community guidelines by... Type the reason here'; ?></textarea>
                         </div>
                     </div>
                     <div class="row">
@@ -99,7 +99,7 @@ $num = $_GET['message'];
                 //form_contact.submit();
                 sendContactForm();
             } else {
-                // The recaptcha is not cheched
+                // The recaptcha is not checked
                 // we display an error message here
                 alert('Oops, you have to check the I\'m not a robot box !');
             }
