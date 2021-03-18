@@ -2688,6 +2688,14 @@ select {
 	font-size: 14px;
 	font-weight: 500;
 }
+
+/* footer p fix in latest version of chromium based browsers */
+@media only screen and (max-width: 1200px) {
+	.footy-sec p {
+		float: left;
+	}
+}
+
 footer {
 	float: left;
 	width: 100%;
