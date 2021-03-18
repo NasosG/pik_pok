@@ -99,8 +99,8 @@ if (isset ($_SESSION['username'])) {
                             }
                             echo "
                                     </div>
-                                    <a id='likesNum' class='view-more-pro'> Likes:
-                                        <img src='images/likes.png' alt='' height='18' width='18'>
+                                    <a id='likesNum' class='view-more-pro'> &nbsp;Likes:
+                                        <img  src='images/likes.png' alt='' height='18' width='18'>
                                         " . $row['photo_likes'] . "
                                     </a>
                                     </form>

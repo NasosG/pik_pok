@@ -3777,6 +3777,8 @@ a:hover {
 	border-right: 1px solid #e4e4e4;
 	border-bottom: 1px solid #e4e4e4;
 	margin-bottom: 30px;
+	/* round edges just a bit */
+	border-radius: 6px; /*8px!important;*/
 }
 .company-up-info {
 	float: left;

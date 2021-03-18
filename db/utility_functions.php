@@ -35,6 +35,24 @@ function getUsersID($con, $username)
     return $row['id'];
 }
 
+function photoIdNotExists($con, $photo_id): bool
+{
+    //find user id from session name
+    $query = "SELECT * FROM images WHERE photo_id = '$photo_id' LIMIT 1";
+    $result = mysqli_query($con, $query);
+    $row = mysqli_fetch_array($result);
+    return empty($row[0]);
+}
+
+function receiverIdNotExists($con, $user_id): bool
+{
+    //find user id from session name
+    $query = "SELECT * FROM members WHERE id = '$user_id' LIMIT 1";
+    $result = mysqli_query($con, $query);
+    $row = mysqli_fetch_array($result);
+    return empty($row[0]);
+}
+
 // this function is used to change like/unlike state mostly on pic_comments.php and profile3.php pages
 function post_is_liked_from($username, $post_id, $con): bool
 {

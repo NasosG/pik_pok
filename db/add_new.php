@@ -3,7 +3,7 @@ require('db.php');
 require('error_functions.php');
 session_start();
 
-function is_base64($str) {
+function is_base64($str): bool {
     $b64_starts_with = "data:image/jpeg;base64";
     return (bool)(substr($str, 0, strlen($b64_starts_with)) === $b64_starts_with);
 }
