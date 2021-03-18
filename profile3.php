@@ -222,7 +222,7 @@ $result_save_post = mysqli_query($con, $query_save_post);
                                                               action="db/add_profile_pic.php" enctype="multipart/form-data">
                                                             <div class="add-dp" id="OpenImgUpload">
                                                                 <input type="file" id="file" name="fileToUpload">
-                                                                <label for="file"><i class="fa fa-camera"
+                                                                <label for="file"><i class="fa fa-camera" style="cursor: pointer;"
                                                                                      aria-hidden="true"></i></label>
                                                             </div>
                                                         </form>

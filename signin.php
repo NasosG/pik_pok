@@ -1,5 +1,6 @@
 <?php
-include('db/auth.php'); //include auth.php file on all secure pages
+//include general_session to files user can visit without an account too
+include('db/general_session.php');
 $redirect_signed_in_users(); //signed in users haven't access to this page
 ?>
 
