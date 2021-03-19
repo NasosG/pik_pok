@@ -5,7 +5,11 @@
                 <a href="index.php" title=""><img src="images/logo.png" alt=""></a>
             </div><!--logo end-->
             <div class="search-bar">
-                <form method="get" action="index.php">
+                <form method="get"
+                    <?php if (substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1) == 'people.php') {
+                        echo 'action="people.php"';
+                    } else echo 'action="index.php"'; ?>
+                    >
                     <input type="text" name="search" placeholder="Search...">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
