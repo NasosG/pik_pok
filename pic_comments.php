@@ -4,8 +4,6 @@ require('db/db.php');
 require('db/error_functions.php');
 require('db/utility_functions.php');
 
-$redirect_unsigned_users();
-
 $photo_id = $_GET['photo_id'];
 
 if (photoIdNotExists($con, $photo_id)) header("location:index.php");
@@ -42,6 +40,12 @@ $row_save_post = mysqli_fetch_row($result_save_post);
     <link rel="stylesheet" type="text/css" href="css/other-styles.css">
     <link href="emojis/lib/css/emoji.css" rel="stylesheet">
     <style>
+        a:focus,
+        button:focus,
+        textarea:focus {
+            outline: none;
+        }
+
         #qrcode {
             width: 140px;
             height: 140px;
@@ -167,15 +171,22 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                                                         <?php echo "<input type='hidden' name='photo_id' id='photo_id' value='" . $row['photo_id'] . "' />"; ?>
                                                         <ul class="like-com">
                                                             <li>
-                                                                <button class="like-submit-btn"><a id="like-submit"
-                                                                                                   class="com-page-likes"><i
+                                                                <button onclick=changeLikeState(this) class="like-submit-btn"><a id="like-submit"
+                                                                                                                                 class="com-page-likes"><i
                                                                                 class=
                                                                                 <?php
+                                                                                // TODO ifs optimization
                                                                                 if (post_is_liked_from($_SESSION['username'], $row['photo_id'], $con))
                                                                                     echo '"fa fa-heart"';
                                                                                 else
                                                                                     echo '"far fa-heart"';?>
-                                                                        ></i> Like</a></button>
+                                                                        ></i>
+                                                                        <?php
+                                                                        if (post_is_liked_from($_SESSION['username'], $row['photo_id'], $con))
+                                                                            echo 'Unlike';
+                                                                        else
+                                                                            echo 'Like';?>
+                                                                    </a></button>
                                                             </li>
                                                         </ul>
                                                         <ul style="float:right;" class="like-com">
@@ -504,23 +515,32 @@ $row_save_post = mysqli_fetch_row($result_save_post);
             alert("Copied: " + copyText.value);
         }
 
-        document.getElementById("like-submit").addEventListener("click", function () {
-            $(".likes-form").submit(function (e) {
-                e.preventDefault(); // avoid to execute the actual submit of the form.
 
-                var form = $(this);
-                var url = form.attr('action');
+        $(".likes-form").submit(function (e) {
+            e.preventDefault(); // avoid to execute the actual submit of the form.
 
-                $.ajax({
-                    type: "POST",
-                    url: 'db/likes.php',
-                    data: form.serialize(), // serializes the form's elements.
-                    success: function (data) {
-                        location.reload();
-                    }
-                });
+            let likesForm = $(this);
+
+            $.ajax({
+                type: "POST",
+                url: 'db/likes.php',
+                data: likesForm.serialize(), // serializes the form's elements.
+                success: function (data) {
+                    $(likesForm).find("#likes-link-red").html("<i class='fa fa-thumbs-up'></i> Likes " + data);
+                }
             });
         });
+
+
+        function changeLikeState(x1) {
+            let x = x1.children;
+            if (x[0].textContent.includes("Unlike")) {
+                x[0].innerHTML = "<i class='far fa-heart' ></i> Like";
+            } else {
+                x[0].innerHTML = "<i class='fa fa-heart' aria-hidden='true'></i> Unlike";
+            }
+        }
+
 
         function reply(num) {
             var str = "reply-" + num;

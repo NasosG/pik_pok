@@ -38,6 +38,10 @@ $result_save_post = mysqli_query($con, $query_save_post);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include_once('./includes/head.php'); ?>
     <style>
+        a:focus, button:focus, textarea:focus {
+            outline: none;
+        }
+        
         .like-submit-btn:hover {
             outline: none !important;
         }
@@ -375,21 +379,28 @@ $result_save_post = mysqli_query($con, $query_save_post);
                                                 <?php echo '<input type="hidden" name="photo_id" id="photo_id" value="' . $row['photo_id'] . '" />'; ?>
                                                 <ul class="like-com">
                                                     <li>
-                                                        <button style="background:white; border:none;"
+                                                        <button style="background:white; border:none;" onclick=changeLikeState(this)
                                                                 class="like-submit-btn"><a id="like-submit"
                                                                                            style="color:#e44d3a;"
                                                                                            class="com-page-likes"><i
                                                                         class=
                                                                         <?php
+                                                                        // TODO ifs optimization
                                                                         if (post_is_liked_from($_SESSION['username'], $row['photo_id'], $con))
                                                                             echo '"fa fa-heart"';
                                                                         else
                                                                             echo '"far fa-heart"';?>
-                                                                ></i> Like</a></button>
+                                                                ></i>
+                                                                <?php
+                                                                if (post_is_liked_from($_SESSION['username'], $row['photo_id'], $con))
+                                                                    echo 'Unlike';
+                                                                else
+                                                                    echo 'Like';?>
+                                                            </a></button>
                                                     </li>
                                                 </ul>
                                                 <ul style="float:right;" class="like-com">
-                                                    <li><a style="color:#b2b2b2;" class=""><i
+                                                    <li><a style="color:#b2b2b2;" id="likes-link-red" class=""><i
                                                                     class="fa fa-thumbs-up"></i> <?php echo 'Likes ' . $row['photo_likes']; ?>
                                                         </a></li>
                                                     <li>
@@ -562,24 +573,49 @@ $result_save_post = mysqli_query($con, $query_save_post);
         document.getElementsByClassName("like-submit-btn").onclick = function () {
             document.getElementsByClassName("likes-form").submit();
         }
-
         $(".likes-form").submit(function (e) {
-
             e.preventDefault(); // avoid to execute the actual submit of the form.
 
-            var form = $(this);
-            var url = form.attr('action');
+            let likesForm = $(this);
 
             $.ajax({
                 type: "POST",
                 url: 'db/likes.php',
-                data: form.serialize(), // serializes the form's elements.
+                data: likesForm.serialize(), // serializes the form's elements.
                 success: function (data) {
-                    location.reload();
+                    $(likesForm).find("#likes-link-red").html("<i class='fa fa-thumbs-up'></i> Likes " + data);
                 }
             });
-
         });
+
+
+        function changeLikeState(x1) {
+            let x = x1.children;
+            if (x[0].textContent.includes("Unlike")) {
+                x[0].innerHTML = "<i class='far fa-heart' ></i> Like";
+            } else {
+                x[0].innerHTML = "<i class='fa fa-heart' aria-hidden='true'></i> Unlike";
+            }
+        }
+        // old reload implementation - a bit safer but -> bad UI
+        // $(".likes-form").submit(function (e) {
+        //
+        //     e.preventDefault(); // avoid to execute the actual submit of the form.
+        //
+        //     var form = $(this);
+        //     var url = form.attr('action');
+        //
+        //     $.ajax({
+        //         type: "POST",
+        //         url: 'db/likes.php',
+        //         data: form.serialize(), // serializes the form's elements.
+        //         success: function (data) {
+        //             location.reload();
+        //         }
+        //     });
+        //
+        // });
+
 
         function savePost(num) {
             var values = {
