@@ -183,7 +183,7 @@ if (isset ($_SESSION['username'])) {
                 url: 'db/likes.php',
                 data: form.serialize(), // serializes the form's elements.
                 success: function (data) {
-                    $(form).children("#likesNum").html(" Likes: <img src='images/likes.png' alt='' height='18' width='18'>" + data + "</img>");
+                    $(form).children("#likesNum").html(" &nbsp;Likes: <img src='images/likes.png' alt='' height='18' width='18'>" + data + "</img>");
                 }
             });
 
