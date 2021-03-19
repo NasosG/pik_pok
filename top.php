@@ -175,8 +175,8 @@ if (isset($_SESSION['username'])) {
 
             e.preventDefault(); // avoid to execute the actual submit of the form.
 
-            var form = $(this);
-            var url = form.attr('action');
+            let form = $(this);
+            //var url = form.attr('action');
 
             $.ajax({
                 type: "POST",
@@ -191,12 +191,11 @@ if (isset($_SESSION['username'])) {
         });
 
         function changeLikeState(x1) {
-            var x = x1.children;
+            let x = x1.children;
             //alert (x[0].textContent );
             if (x[0].textContent.includes("Unlike")) {
                 x[0].innerHTML = "Like <i class='fa fa-heart' aria-hidden='true'></i>";
-            }
-            else {
+            } else {
                 x[0].innerHTML = "Unlike <i class='fas fa-heart-broken'></i>";
             }
         }
