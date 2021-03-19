@@ -3755,7 +3755,7 @@ a:hover {
 /* ============== companies-info ============== */
 
 .companies-info {
-	padding: 60px 0;
+	padding: 35px 0; /* initial value 60px 0 */
 }
 .company-title {
 	float: left;
@@ -3769,6 +3769,7 @@ a:hover {
 	font-weight: 600;
 	background-color: #fff;
 	padding: 10px 15px;
+	//border-radius: 10px;
 }
 
 .companies-list {
