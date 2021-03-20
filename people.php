@@ -21,9 +21,10 @@ else {
 if (isset($_GET['search']) && !empty($_GET['search'])) {
     $search = $_GET['search'];
     $query = "SELECT *
-				FROM members 
+				FROM members
 				WHERE fname LIKE '%{$search}%'
-				OR lname LIKE '%{$search}%'";
+				OR lname LIKE '%{$search}%'
+				OR CONCAT(fname, ' ', lname) LIKE '%{$search}%'";
 }
 else {
     $query = "SELECT * FROM members WHERE username <> '$uname'"; //mporoume na kanoume order by date alla kai to id petuxainei ton skopo kai den xreiazetai na kratame kai thn wra sthn bash alla mono hmeromhnia
