@@ -7014,3 +7014,14 @@ ul#myTab {
 .com-page-likes:hover{
 	color: #e44d3a!important;
 }
+
+.link-underline-basic:hover {
+	color: #e44d3a;
+	opacity: 0.93;
+	text-decoration: underline;
+	transition: all 0.25s ease-in-out 0s;
+}
+
+.image-hover-basic:hover {
+	opacity:0.8;
+}

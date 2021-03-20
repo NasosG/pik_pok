@@ -115,9 +115,9 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                                                             echo '<a href="other_users_profile.php?photo_username=' . $username . '">';
                                                         else echo '<a href="profile3.php">';
                                                         echo "
-                                                            <img style=\"width:32px; height:32px;\" src=\"" . $post_user_picture_path . $post_user_picture_name . "\" alt=\"users photo\"/> "; ?>
+                                                            <img class=\"image-hover-basic\" style=\"width:32px; height:32px;\" src=\"" . $post_user_picture_path . $post_user_picture_name . "\" alt=\"users photo\"/> "; ?>
                                                         <div class="usy-name">
-                                                            <h3><?php echo $user_of_post . '</h3></a>
+                                                            <h3 class="link-underline-basic"><?php echo $user_of_post . '</h3></a>
                                                             <span><i class="fa fa-clock-o" aria-hidden="true"> ' . date("d-m-Y H:i:s", strtotime($row['date_posted'])) . '</i></span>'; ?>
                                                         </div>
                                                     </div>
