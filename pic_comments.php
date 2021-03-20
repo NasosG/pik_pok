@@ -111,10 +111,13 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                                                         $user_of_post = $row['username'];
                                                         $post_user_picture_path = $row3['picture_path'];
                                                         $post_user_picture_name = $row3['profile_pic'];
+                                                        if (!isset ($_SESSION['username']) || $username != $_SESSION['username'])
+                                                            echo '<a href="other_users_profile.php?photo_username=' . $username . '">';
+                                                        else echo '<a href="profile3.php">';
                                                         echo "
                                                             <img style=\"width:32px; height:32px;\" src=\"" . $post_user_picture_path . $post_user_picture_name . "\" alt=\"users photo\"/> "; ?>
                                                         <div class="usy-name">
-                                                            <h3><?php echo $user_of_post . '</h3>
+                                                            <h3><?php echo $user_of_post . '</h3></a>
                                                             <span><i class="fa fa-clock-o" aria-hidden="true"> ' . date("d-m-Y H:i:s", strtotime($row['date_posted'])) . '</i></span>'; ?>
                                                         </div>
                                                     </div>
