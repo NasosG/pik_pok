@@ -107,7 +107,7 @@
                         <li>
                             <div class='fgt-sec'>
                                 <input type='radio'";
-                                if ($get_status($con, $_SESSION['username']) === 'online') echo 'checked="checked"';
+                                if (get_status($con, $_SESSION['username']) === 'online') echo 'checked="checked"';
                                 echo "name='cc' id='c5'>
                                 <label for='c5'>
                                     <span></span>
@@ -118,7 +118,7 @@
                         <li>
                             <div class='fgt-sec'>
                                 <input type='radio'";
-                                if ($get_status($con, $_SESSION['username']) === 'offline') echo 'checked="checked"';
+                                if (get_status($con, $_SESSION['username']) === 'offline') echo 'checked="checked"';
                                 echo "name='cc' id='c6'>
                                 <label for='c6'>
                                     <span></span>

@@ -10,7 +10,7 @@ $result = mysqli_query($con, $query);
 $row = mysqli_fetch_array($result);
 $user_id = $row['id'];
 
-function make_dir($path, $mode) {
+function make_dir($path, $mode): bool {
     return is_dir($path) || mkdir($path, $mode, true);
 }
 

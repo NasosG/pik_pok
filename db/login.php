@@ -2,6 +2,7 @@
 require('db.php');
 require('error_functions.php');
 require('IP_MAC_addresses.php');
+require('utility_functions.php');
 require('../mail/send_security_alert.php');
 
 session_start();
@@ -35,7 +36,7 @@ if (isset($_POST['username'])) {
     if ($rows == 1) {
 
         $status = 'online';
-        $set_status($con, $username, $status);
+        set_status($con, $username, $status);
 
         $_SESSION['username'] = $username;
 

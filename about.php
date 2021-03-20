@@ -3,6 +3,7 @@
 include('db/general_session.php');
 require('db/db.php');
 require('db/error_functions.php');
+require('db/utility_functions.php');
 ?>
 
 <!DOCTYPE html>

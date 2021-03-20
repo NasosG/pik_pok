@@ -20,9 +20,8 @@ else {
     if (!$email_found_result)
         displayDatabaseError();
 
-    // if username exists
+    // check if username and email already exist
     if (mysqli_num_rows($username_found_result) > 0) ChangeUsername();
-    // if email exists
     else if (mysqli_num_rows($email_found_result) > 0) ChangeEmail();
     // else if all went ok and username and email are unique
     else {

@@ -30,6 +30,13 @@ function sanitizeEmail($con, string $email): string
     return $email;
 }
 
+/**
+ * This method is used to remove backslashes and escape special characters in an string
+ *
+ * @param $con
+ * @param string $data
+ * @return string
+ */
 function removeSpecialCharacters($con, string $data): string
 {
     $data = stripslashes($data); // strip slashes
@@ -37,6 +44,12 @@ function removeSpecialCharacters($con, string $data): string
     return $data;
 }
 
+/**
+ * This method is used to check if a variable is set and not empty
+ *
+ * @param string $parameter
+ * @return bool
+ */
 function isSetAndNotEmpty(string $parameter): bool
 {
     return isset($parameter) && (trim($parameter) != '');

@@ -2,6 +2,7 @@
 //include general_session to files user can visit without an account too
 include('db/general_session.php');
 require('db/db.php');
+require('db/utility_functions.php');
 ?>
 
 <!DOCTYPE html>

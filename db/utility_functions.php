@@ -63,10 +63,26 @@ function post_is_liked_from($username, $post_id, $con): bool
 
 // functions that used only on profile3.php page
 // ------------------------------------------ //
-function isSaved($con, $post_id)
+function isSaved($con, $post_id): bool
 {
     $query_count_saves = "SELECT COUNT(*) FROM saved_posts WHERE post_id = $post_id";
     $result_count_saves = mysqli_query($con, $query_count_saves);
     $row_count_saves = mysqli_fetch_row($result_count_saves);
     return ($row_count_saves[0] > 0);
+}
+
+/* handle user status utility functions */
+function set_status($con, $username, $status)
+{
+    $query = "UPDATE members SET status='$status' WHERE username = '$username' ";
+    $result = mysqli_query($con, $query) or die("Not able to execute the query");
+    return $result;
+}
+
+function get_status($con, $username)
+{
+    $query = "SELECT status FROM members WHERE username = '$username' ";
+    $result = mysqli_query($con, $query) or die("Not able to execute the query");
+    $user_status = mysqli_fetch_array($result);
+    return $user_status[0];
 }

@@ -11,8 +11,7 @@ $query = "SELECT * FROM images WHERE username = '$uname' ORDER BY photo_id DESC"
 $result = mysqli_query($con, $query);
 
 // a new result, because if we fetched the array at this point, counter would then be equal to 0
-// and this would be a problem when we'd want to fetch the posts later
-// a better way may exists though
+// and this would be a problem when we'd want to fetch the posts later, a better way may exists though
 $result_likes = mysqli_query($con, $query);
 // a sum of the likes => total likes
 for ($sum_likes = 0; $likes = mysqli_fetch_array($result_likes);)
@@ -29,8 +28,6 @@ $lname = $row_picture['lname'];
 $email = $row_picture['email'];
 $bio = $row_picture['bio'];
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +36,10 @@ $bio = $row_picture['bio'];
     <title>Profile - Pik Pok</title>
     <?php include_once('./includes/head.php'); ?>
     <style>
+        a:focus, button:focus, textarea:focus {
+            outline: none;
+        }
+
         .like-submit-btn:hover {
             outline: none !important;
         }
@@ -47,164 +48,7 @@ $bio = $row_picture['bio'];
 
 <body>
     <div class="wrapper">
-        <header>
-            <div class="container">
-                <div class="header-data">
-                    <div class="logo">
-                        <a href="index.php" title=""><img src="images/logo.png" alt=""></a>
-                    </div><!--logo end-->
-                    <div class="search-bar">
-                        <form method="get" action="index.php">
-                            <input type="text" name="search" placeholder="Search...">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div><!--search-bar end-->
-                    <nav>
-                        <ul>
-                            <li>
-                                <a href="index.php" title="">
-                                        <span>
-                                        <i style="font-size:1.2em;" class="fa fa-home"></i>
-                                        </span>
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="top.php" title="">
-                                        <span>
-                                        <i class="fa fa-thumbs-up "></i>
-                                        </span>
-                                    Trending
-                                </a>
-                            </li>
-                            <li>
-                                <a href="contact.php" title="">
-                                        <span>
-                                        <i class="fa fa-id-card"></i>
-                                        </span>
-                                    Contact
-                                </a>
-                            </li>
-                            <?php
-                            if (isset($_SESSION['username'])) {
-                                echo '
-                                    <li>
-                                        <a href="post.php" title="">
-                                            <span>
-                                            <i class="fa fa-plus"></i>
-                                            </span>
-                                            Post
-                                        </a>
-                                    </li>
-                                    ';
-                                echo '
-                                    <li>
-                                        <a href="people.php" title="">
-                                            <span>
-                                            <i class="fa fa-user-friends"></i>
-                                            </span>
-                                            Friends
-                                        </a>
-                                    </li>
-                                    ';
-                                echo '
-                                    <li>
-                                        <a href="messages.php" title="">
-                                            <span>
-                                            <i class="fa fa-comments"></i>
-                                            </span>
-                                            Chat
-                                        </a>
-                                    </li>
-                                    ';
-                            }
-                            ?>
-                        </ul>
-                    </nav><!--nav end-->
-                    <div class="menu-btn">
-                        <a href="#" title=""><i class="fa fa-bars"></i></a>
-                    </div><!--menu-btn end-->
-
-                    <?php
-                    if (isset($_SESSION['username'])) {
-                        $session_uname = $_SESSION['username'];
-                        // find user id from session name
-                        $query_session = "SELECT picture_path, profile_pic FROM members WHERE username = '$session_uname'";
-                        $result_session = mysqli_query($con, $query_session);
-                        $row_session = mysqli_fetch_array($result_session);
-                        $picture_path_session = $row_session['picture_path'];
-                        $picture_name_session = $row_session['profile_pic'];
-
-                        //mysqli_close($con);
-                        echo "
-                        <div class='user-account'>
-                            <div class='user-info'>
-                                <img style=\"width:32px; height:32px;\" src=\"" . $picture_path_session . $picture_name_session . "\" alt=\"users photo\"/>
-                                
-                                <a href='profile3.php' title=''>"; ?>
-                        <?php if (isset($_SESSION['username'])) echo $_SESSION['username'];
-                        echo "</a>
-                                <i class='fa fa-angle-down'></i>
-                            </div>
-                            <div class='user-account-settingss'>
-                                <h3>Online Status</h3>
-                                <ul class='on-off-status'>
-                                    <li>
-                                        <div class='fgt-sec'>
-                                            <input type='radio'";
-                                            if ($get_status($con, $_SESSION['username']) === 'online') echo 'checked="checked"';
-                                            echo "name='cc' id='c5'>
-                                            <label for='c5'>
-                                                <span></span>
-                                            </label>
-                                            <small>Online</small>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class='fgt-sec'>
-                                            <input type='radio'";
-                                            if ($get_status($con, $_SESSION['username']) === 'offline') echo 'checked="checked"';
-                                            echo "name='cc' id='c6'>
-                                            <label for='c6'>
-                                                <span></span>
-                                            </label>
-                                            <small>Offline</small>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <h3>Custom Status</h3>
-                                <div class='search_form'>
-                                    <form>
-                                        <input type='text' name='search'>
-                                        <button type='submit'>Ok</button>
-                                    </form>
-                                </div><!--search_form end-->
-                                <h3>Setting</h3>
-                                <ul class='us-links'>
-                                    <li><a href='profile3.php' title=''>My Profile</a></li>
-                                    <li><a href='profile_account_setting.php' title=''>Account Setting</a></li>
-                                    <li><a href='privacy_policy.php' title=''>Privacy</a></li>
-                                    <li><a href='terms_of_use.php' title=''>Terms & Conditions</a></li>
-                                </ul>
-                                <h3 class='tc'><a href='db/logout.php' title=''>Logout</a></h3>
-                            </div><!--user-account-settingss end-->
-                        </div>
-                        ";
-                    } else
-                        echo "<div class='user-account'>
-                            <div class='user-info' style='margin-left:auto; margin-right:auto;'>
-                                
-                                <a href='signin.php' title=''> <i class='fa fa-sign-in fa-lg'></i> Sign In</a>
-                                
-                            </div>
-                        ";
-                    ?>
-
-
-                </div><!--header-data end-->
-            </div>
-        </header><!--header end-->
-
+        <?php include_once('./includes/other_users_profile_header.php');?>
         <main>
             <div class="main-section">
                 <div class="container">
@@ -370,14 +214,25 @@ $bio = $row_picture['bio'];
                                                         <?php
                                                         if (isset($_SESSION['username'])) {
                                                             echo '
-                                                                <button style="background:white; border:none;" class="like-submit-btn"><a id="like-submit" style="color:#e44d3a;" class="com-page-likes">
-                                                                <i class=';
-                                                                   if (post_is_liked_from($_SESSION['username'], $row['photo_id'], $con))
-                                                                       echo '"fa fa-heart"';
-                                                                   else
-                                                                       echo '"far fa-heart"';
-                                                                echo '
-                                                                ></i> Like</a></button>';
+                                                                <button style="background:white; border:none;" onclick=changeLikeState(this)
+                                                                class="like-submit-btn"><a id="like-submit"
+                                                                                           style="color:#e44d3a;"
+                                                                                           class="com-page-likes"><i
+                                                                        class=';
+
+                                                                        // TODO ifs optimization
+                                                                        if (post_is_liked_from($_SESSION['username'], $row['photo_id'], $con))
+                                                                            echo '"fa fa-heart"';
+                                                                        else
+                                                                            echo '"far fa-heart"';
+                                                                echo '></i>';
+
+                                                                if (post_is_liked_from($_SESSION['username'], $row['photo_id'], $con))
+                                                                    echo 'Unlike';
+                                                                else
+                                                                    echo 'Like';
+
+                                                            echo '</a></button>';
                                                         }
                                                         /*else do nothing*/
                                                         ?>
@@ -385,7 +240,7 @@ $bio = $row_picture['bio'];
 
                                                 </ul>
                                                 <ul style="float:right;" class="like-com">
-                                                    <li><a style="color:#b2b2b2;" class=""><i
+                                                    <li><a style="color:#b2b2b2;" id="likes-link-red" class=""><i
                                                                     class="fa fa-thumbs-up"></i> <?php echo 'Likes ' . $row['photo_likes']; ?>
                                                         </a></li>
                                                     <?php
@@ -543,25 +398,32 @@ $bio = $row_picture['bio'];
         }
 
         $(".likes-form").submit(function (e) {
-
             e.preventDefault(); // avoid to execute the actual submit of the form.
 
-            var form = $(this);
-            var url = form.attr('action');
+            let likesForm = $(this);
 
             $.ajax({
                 type: "POST",
                 url: 'db/likes.php',
-                data: form.serialize(), // serializes the form's elements.
+                data: likesForm.serialize(), // serializes the form's elements.
                 success: function (data) {
-                    location.reload();
+                    $(likesForm).find("#likes-link-red").html("<i class='fa fa-thumbs-up'></i> Likes " + data);
                 }
             });
-
         });
 
+
+        function changeLikeState(x1) {
+            let x = x1.children;
+            if (x[0].textContent.includes("Unlike")) {
+                x[0].innerHTML = "<i class='far fa-heart' ></i> Like";
+            } else {
+                x[0].innerHTML = "<i class='fa fa-heart' aria-hidden='true'></i> Unlike";
+            }
+        }
+
         function savePost(num) {
-            var values = {
+            let values = {
                 'photo_id': num
             };
             $.ajax({
