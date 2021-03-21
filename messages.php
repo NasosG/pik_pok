@@ -303,7 +303,7 @@ $no_friends = mysqli_num_rows($result_users) == 0;
         // }, 10000);
 
         // do a bit more research on setInterval() and setTimeout()
-        setTimeout(function () {
+        setInterval(function () {
             let by_user_id = <?php echo $sender_id ?>;
             let to_user_id = <?php echo $receiver_id ?>;
             $.ajax({
