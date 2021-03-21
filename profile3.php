@@ -76,7 +76,7 @@ $result_save_post = mysqli_query($con, $query_save_post);
         }
 
         .modal-cancel-button {
-        / / color: #fff !important;
+        //  color: #fff !important;
             font-size: 16px !important;
             border-color: #6c757d;
         }
