@@ -18,7 +18,7 @@ for example: $dbhost = "localhost", $dbuser = "root", $dbpass = "", $db = "pik_p
 
 ## Requirements
 
-1. PHP version 7.0 or later.
+1. PHP version 7.4 or later.
 
 ## Bugs and Issues
 
