@@ -1,9 +1,6 @@
 <?php
 include('db/auth.php'); //include auth.php file on all secure pages
 require('db/db.php');
-require('db/error_functions.php');
-require('db/utility_functions.php');
-include_once('./includes/head_scrollbar.php');
 
 $sender_id = $_GET["sender_id"];
 $receiver_id = $_GET["receiver_id"];
