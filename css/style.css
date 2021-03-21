@@ -4943,6 +4943,7 @@ a:hover {
 	border-left: 1px solid #e4e4e4;
 	border-bottom: 1px solid #e4e4e4;
 	border-right: 1px solid #e4e4e4;
+	border-radius: 10px 0px 0px 10px;
 }
 .msg-title {
 	float: left;
@@ -4989,11 +4990,15 @@ a:hover {
 .messages-list ul li.active {
 	background-color: #efefef;
 }
+.messages-list ul li:hover {
+	background-color: #ebebeb;
+}
 .usr-msg-details {
 	float: left;
 	position: relative;
 	width: 100%;
 }
+
 .usr-ms-img {
 	float: left;
 	width: 50px;
@@ -5080,6 +5085,7 @@ a:hover {
 	position: relative;
 	border-right: 1px solid #e4e4e4;
 	border-bottom: 1px solid #e4e4e4;
+	border-radius: 0px 10px 10px 0px;
 }
 .message-bar-head {
 	float: left;
@@ -5091,6 +5097,7 @@ a:hover {
 	top: 0;
 	left: 0;
 	z-index: 11;
+	border-radius: 0px 10px 0px 0px;
 }
 .message-bar-head .usr-msg-details {
 	float: left;

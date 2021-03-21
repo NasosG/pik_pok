@@ -64,7 +64,7 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                         <div class="col-lg-4 col-md-12 no-pdd">
                             <div class="msgs-list">
                                 <div class="msg-title">
-                                    <h3>Messages</h3>
+                                    <h3>Messaging</h3>
                                     <ul>
                                         <li><a href="#" title=""><i class="fa fa-cog"></i></a></li>
                                         <li><a href="#" title=""><i class="fa fa-ellipsis-v"></i></a></li>
