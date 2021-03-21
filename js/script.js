@@ -8,8 +8,7 @@ $(window).on("load", function () {
             type: "POST",
             url: './db/handle_status.php',
             data: {action: 'set_status', text: 'online'},
-            success: function () {
-            }
+            success: function () {}
         });
     });
 
@@ -18,8 +17,7 @@ $(window).on("load", function () {
             type: "POST",
             url: './db/handle_status.php',
             data: {action: 'set_status', text: 'offline'},
-            success: function () {
-            }
+            success: function () {}
         });
     });
 
