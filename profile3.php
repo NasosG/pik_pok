@@ -45,6 +45,53 @@ $result_save_post = mysqli_query($con, $query_save_post);
         .like-submit-btn:hover {
             outline: none !important;
         }
+
+        .trash-button{
+            padding-top: 0.3rem;
+            background-color:white;
+        }
+
+        .modal-close-btn {
+            font-size: 28px;
+            font-weight: normal;
+            color: #454545;
+            border-radius: 90%;
+            width: 28px;
+            background-color: white;
+            border: none;
+        }
+
+        .modal-delete-button {
+            color: #fff !important;
+            background-color: #db3c2d !important;
+            font-size: 16px !important;
+            border-color: #dc3545 !important;
+        }
+
+        .modal-delete-button:hover {
+            color: #fff;
+            background-color: #c82333;
+            border-color: #bd2130;
+            box-shadow: 0 0 0 .2rem rgba(225, 83, 97, .5);
+        }
+
+        .modal-cancel-button {
+        / / color: #fff !important;
+            font-size: 16px !important;
+            border-color: #6c757d;
+        }
+
+        .modal-cancel-button:hover {
+            color: #fff !important;
+            background-color: #6c757d !important;
+            border-color: lightgrey !important;
+            box-shadow: 0 0 0 .2rem rgba(130, 138, 145, .5);
+        }
+
+        .modal-cancel-button.focus, .modal-cancel-button:focus {
+            box-shadow: 0 0 0 .2rem rgba(130, 138, 145, .5);
+        }
+
     </style>
 </head>
 
@@ -208,12 +255,19 @@ $result_save_post = mysqli_query($con, $query_save_post);
                                                 <div class="job_descp pb-1">
                                                     <img src="' . $photo . '"/>
                                                 </div>
-                                                <form name="delete-form" class="form-delete" id="delete-form" method="post" action="db/delete_photo.php">
+                                              
                                                     <input type="hidden" name="photo_id" id="photo_id" value="' . $row['photo_id'] . '" />
                                                     <ul class="bk-links pb-2">
-                                                        <li><button style="border:none" id="trash-button" class="trash-button"><a title=""><i class="fa fa-trash"></i></a></button></li>
+                                                        <li>
+                                                            <button style="border:none" id="trash-button"
+                                                                    class="trash-button btn-link"
+                                                                    data-toggle="modal"
+                                                                    data-target="#modal"
+                                                                    data-id="' . $row['photo_id'] . '"
+                                                            ><i class="fa fa-trash"></i></button>
+                                                        </li>
                                                     </ul>
-                                                </form>';
+                                                ';
                                         ?>
 
                                         <form id="likes-form" class="likes-form" name="likes-form" method="post"
@@ -382,6 +436,28 @@ $result_save_post = mysqli_query($con, $query_save_post);
     </div><!--post-project-popup end-->
 
     </div><!--theme-layout end-->
+    <div id="modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-white float-left">Confirm Delete</h3>
+                    <button type="button" class="float-right mt-0 pt-0 modal-close-btn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h2 class="m-4">Are you sure you want to permanently delete this post?</h2>
+                </div>
+                <hr>
+                <div class="modal-footer pt-0 pb-3">
+                    <form name="delete-form" class="form-delete" id="delete-form" method="post" action="db/delete_photo.php">
+                        <button id="delete-confirmed" type="submit" class="float-right text-black-50 btn modal-delete-button">Delete</button>
+                        <button type="button" class="float-right text-black-50 btn modal-cancel-button mr-2" data-dismiss="modal">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/popper.js"></script>
@@ -389,8 +465,22 @@ $result_save_post = mysqli_query($con, $query_save_post);
     <script type="text/javascript" src="js/slick.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script>
-        document.getElementsByClassName("trash-button").onclick = function () {
-            document.getElementsByClassName("form-delete").submit();
+        let photoId;
+
+        $('#modal').on('show.bs.modal', function(event) {
+            photoId = $(event.relatedTarget).data('id');
+        });
+
+        document.getElementById("delete-confirmed").onclick = function () {
+            $.ajax({
+                type: "POST",
+                url: 'db/delete_photo.php',
+                data: {photo_id: photoId}, // serializes the form's elements.
+                success: function (data) {
+                    // do nothing
+                }
+            });
+            //document.getElementsByClassName("form-delete").submit();
         }
 
         document.getElementById("file").onchange = function () {
