@@ -146,8 +146,8 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                                     <div class="usr-msg-details">
                                         <?php
                                         if ($no_friends) {
-                                            echo '<p style="font-size:24px; min-height:48px;">No friends to chat yet <i class="far fa-frown"></i></p>';
-                                            die;
+                                            echo '<p style="font-size:24px; min-height:50px;">No friends to chat yet <i class="far fa-frown"></i></p>';
+                                            exit();
                                         } ?>
                                         <div class="usr-ms-img">
                                             <?php
@@ -158,12 +158,11 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                                             <?php
                                             echo '<h3 id="chat-upper-name">' . $receiver_row['fname'] . ' ' . $receiver_row['lname'] . '</h3>';
                                             ?>
-                                            <p>Online</p>
+                                            <p id="message-user-status" class="capitalize-first-letter"><?php echo $receiver_row['status'];?></p>
                                         </div><!--usr-mg-info end-->
                                     </div>
                                     <a href="#" title=""><i class="fa fa-ellipsis-v"></i></a>
                                 </div><!--message-bar-head end-->
-
 
                                 <div class="messages-line" style="margin-top:100px;">
                                     <?php

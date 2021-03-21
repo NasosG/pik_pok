@@ -791,7 +791,9 @@ main {
 	font-size: 14px;
 }
 
-
+.capitalize-first-letter {
+	text-transform: capitalize;
+}
 
 .user-fw-status {
 	float: left;
