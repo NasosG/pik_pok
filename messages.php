@@ -164,7 +164,8 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                                     <a href="#" title=""><i class="fa fa-ellipsis-v"></i></a>
                                 </div><!--message-bar-head end-->
 
-                                <div class="messages-line" style="margin-top:100px;">
+                                <div id="messages-line" class="messages-line" style="margin-top:100px;">
+                                    <div id="messages-main-body">
                                     <?php
                                     $query_show_messages = mysqli_query($con, "SELECT * FROM chat_message WHERE (by_user_id='$sender_id' OR to_user_id='$sender_id') AND (by_user_id='$receiver_id' OR to_user_id='$receiver_id') ");
                                     $num = mysqli_num_rows($query_show_messages);
@@ -198,7 +199,7 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                                             </div><!--main-message-box end-->';
                                     }
                                     ?>
-
+                                    </div>
                                 </div><!--messages-line end-->
 
 
@@ -253,11 +254,12 @@ $no_friends = mysqli_num_rows($result_users) == 0;
     <script type="text/javascript" src="js/script.js"></script>
     <script>
         var form = $('#chat-form');
+
         form.submit(function (e) {
             e.preventDefault();
             var message = $('#message-text').val();
-            var by_user_id = <?php echo $sender_id ?>;
-            var to_user_id = <?php echo $receiver_id ?>;
+            let by_user_id = <?php echo $sender_id ?>;
+            let to_user_id = <?php echo $receiver_id ?>;
             $.ajax({
                 type: 'POST',
                 url: 'db/insert_chat_message.php',
@@ -267,7 +269,18 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                     message: message
                 },
                 success: function (data) {
-                    location.reload();
+                    $.ajax({
+                        type: 'GET',
+                        url: 'generate_messages.php',
+                        data: {
+                            sender_id: by_user_id,
+                            receiver_id: to_user_id,
+                        },
+                        success: function (data) {
+                            $("#messages-main-body").html(data);
+                        }
+                    });
+                    //location.reload();
                 }
             });
         });
@@ -285,9 +298,26 @@ $no_friends = mysqli_num_rows($result_users) == 0;
             $('#message-text').focus();
         });
 
+        // setTimeout(function () {
+        //     window.location.reload(1);
+        // }, 10000);
+
+        // do a bit more research on setInterval() and setTimeout()
         setTimeout(function () {
-            window.location.reload(1);
-        }, 10000);
+            let by_user_id = <?php echo $sender_id ?>;
+            let to_user_id = <?php echo $receiver_id ?>;
+            $.ajax({
+                type: 'GET',
+                url: 'generate_messages.php',
+                data: {
+                    sender_id: by_user_id,
+                    receiver_id: to_user_id,
+                },
+                success: function (data) {
+                    $("#messages-main-body").html(data);
+                }
+            });
+        }, 5000);
 
     </script>
 </body>
