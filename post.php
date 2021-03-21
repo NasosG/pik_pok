@@ -41,7 +41,7 @@ if (isset($_POST['imgData'])) {
                           enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-12">
-                                <input type="text" name="tags" placeholder="Insert Tags, f.e. #summer2020#i<3beach">
+                                <input type="text" name="tags" placeholder="Insert Tags, e.g. #summer2020#i<3beach">
                             </div>
                             <div class="col-lg-12 col-md-12 col-12">
 
