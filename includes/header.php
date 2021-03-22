@@ -1,4 +1,4 @@
-<header>
+<header class="sticky-top">
     <div class="container">
         <div class="header-data">
             <div class="logo">

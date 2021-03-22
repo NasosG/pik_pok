@@ -80,13 +80,13 @@ $row_save_post = mysqli_fetch_row($result_save_post);
 
 <body>
     <div id="page-container" class="wrapper">
-        <div id="content-wrap">
 
-            <?php
-            // include header for all web pages
-            include_once('./includes/header.php');
-            ?>
+        <?php
+        // include header for all web pages
+        include_once('./includes/header.php');
+        ?>
 
+        <div id="content-wrap">S
             <main class="mb-3">
                 <div class="main-section">
                     <div class="container">
@@ -318,7 +318,7 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                                                         <!-- <img src="images/bg-img4.png" alt=""> -->
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <form class='aform'>
+                                                        <form class="user-comment-form">
                                                             <div class="form-group">
                                                                 <input type='hidden' name='photo_id' id='photo_id'
                                                                        value='<?php echo $photo_id; ?> '/>
@@ -346,7 +346,7 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                                         </div>
                                         <div class="sd-title copylink">
                                             <input type="text" id="postLink"
-                                                   value=<?php echo "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?> readonly></input>
+                                                   value=<?php echo "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ?> readonly></input>
                                             <span><a onclick="CopyText()">Copy Link</a></span>
                                         </div>
                                     </div>
@@ -474,11 +474,17 @@ $row_save_post = mysqli_fetch_row($result_save_post);
         });
     </script>
     <script>
-        var form = $('.aform');
-        $('.aform').submit(function (e) {
-            if (document.getElementById("comment-text").value.trim() == '')
-                return;
+        var form = $('.user-comment-form');
+
+        function textIsEmpty() {
+            return document.getElementById("comment-text").value.trim() === '';
+        }
+
+        $('.user-comment-form').submit(function (e) {
             e.preventDefault();
+
+            if (textIsEmpty()) return;
+
             $.ajax({
                 type: "POST",
                 url: 'db/comments.php',
@@ -488,7 +494,6 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                 }
             });
         });
-
 
         function savePost() {
             var save_form = $('.spa-form');
@@ -577,15 +582,15 @@ $row_save_post = mysqli_fetch_row($result_save_post);
         var qrcode = new QRCode("qrcode");
 
         function makeCode() {
-            var elText = document.getElementById("postLink");
+            var elementText = document.getElementById("postLink");
 
-            if (!elText.value) {
+            if (!elementText.value) {
                 alert("Input a text");
-                elText.focus();
+                elementText.focus();
                 return;
             }
 
-            qrcode.makeCode(elText.value);
+            qrcode.makeCode(elementText.value);
         }
 
         makeCode();

@@ -255,8 +255,15 @@ $no_friends = mysqli_num_rows($result_users) == 0;
     <script>
         var form = $('#chat-form');
 
+        function textIsEmpty() {
+            return document.getElementById("message-text").value.trim() === '';
+        }
+
         form.submit(function (e) {
             e.preventDefault();
+
+            if (textIsEmpty()) return;
+
             var message = $('#message-text').val();
             let by_user_id = <?php echo $sender_id ?>;
             let to_user_id = <?php echo $receiver_id ?>;

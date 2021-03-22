@@ -10,7 +10,7 @@ if (isset($_POST['message'])) {
     $message_text = $_POST['message'];
     $message_text = str_replace("'","\'",$message_text);
 
-    if ((php_strip_whitespace($message_text) === '')) exit("message is empty");
+    if ((trim($message_text) === '')) exit("message is empty");
 
     $by_user_id = $_POST['by_user_id'];
     $to_user_id = $_POST['to_user_id'];
