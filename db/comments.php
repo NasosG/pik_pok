@@ -10,6 +10,8 @@ $comment_date = date("Y-m-d H:i:s");
 if (isset($_POST['comment-text'])) {
     $comment_text = $_POST['comment-text'];
 
+    if ((trim($comment_text) == '')) die("message is empty");
+
     // find user id from session name
     $query = "SELECT id FROM members WHERE username = '$uname'";
     $result = mysqli_query($con, $query);
@@ -24,12 +26,13 @@ if (isset($_POST['comment-text'])) {
     $data['success'] = true;
     $data['message'] = $comment_text;
     echo $comment_text;
-
 }
 // If the user clicked submit on reply form...
 else if (isset($_POST['reply-text'])) {
     $post_id = $_POST['post_id'];
     $comment_text = $_POST['reply-text'];
+
+    if ((trim($comment_text) == '')) die("message is empty");
 
     // find user id from session name
     $query = "SELECT id FROM members WHERE username = '$uname'";

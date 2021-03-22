@@ -476,6 +476,8 @@ $row_save_post = mysqli_fetch_row($result_save_post);
     <script>
         var form = $('.aform');
         $('.aform').submit(function (e) {
+            if (document.getElementById("comment-text").value.trim() == '')
+                return;
             e.preventDefault();
             $.ajax({
                 type: "POST",

@@ -278,6 +278,7 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                         },
                         success: function (data) {
                             $("#messages-main-body").html(data);
+                            $('#message-text').val("");
                         }
                     });
                     //location.reload();
@@ -285,14 +286,14 @@ $no_friends = mysqli_num_rows($result_users) == 0;
             });
         });
 
-        window.onbeforeunload = function () {
-            localStorage.setItem("message", $('#message-text').val());
-        }
-
-        window.onload = function () {
-            var message = localStorage.getItem("message");
-            if (message !== null) $('#message-text').val(message);
-        }
+        // window.onbeforeunload = function () {
+        //     localStorage.setItem("message", $('#message-text').val());
+        // }
+        //
+        // window.onload = function () {
+        //     var message = localStorage.getItem("message");
+        //     if (message !== null) $('#message-text').val(message);
+        // }
 
         $(document).ready(function () {
             $('#message-text').focus();
