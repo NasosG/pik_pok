@@ -285,6 +285,7 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                         },
                         success: function (data) {
                             $("#messages-main-body").html(data);
+                            $('.demo-yx').mCustomScrollbar('scrollTo',['bottom','right']);
                             $('#message-text').val("");
                         }
                     });
@@ -323,6 +324,7 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                 },
                 success: function (data) {
                     $("#messages-main-body").html(data);
+                    //$('.demo-yx').mCustomScrollbar('scrollTo',['bottom','right']);
                 }
             });
         }, 5000);
