@@ -74,27 +74,6 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                                     <div class="messages-list">
                                         <ul>
                                             <?php
-                                            /*echo '
-                                                <a onclick="userDetails('.$first_id.');">
-                                                <li class="btns'; if($receiver_id==$first_id) echo ' active"';
-                                                echo ' onclick="userDetails('.$first_id.');">
-                                                    <div class="usr-msg-details">
-                                                        <div class="usr-ms-img">
-                                                            <img style="width:50px; height:50px;" src="'.$first_pic_path.$first_pic_name.'" alt="users photo"/>
-                                                            <span class="msg-status"></span>
-                                                        </div>
-                                                        <div class="usr-mg-info">
-                                                            <h3>Jenny Doe</h3>
-                                                            <p>Lorem ipsum dolor <img src="images/smley.png" alt=""></p>
-                                                        </div><!--usr-mg-info end-->
-                                                        <span class="posted_time">1:55 PM</span>
-                                                        <span class="msg-notifc">1</span>
-                                                    </div><!--usr-msg-details end-->
-                                                </li></a>
-                                                ';
-                                                */
-                                            ?>
-                                            <?php
                                             while ($row_users = mysqli_fetch_array($result_users)) {
 
                                                 if (!isset($receiver_id))
@@ -126,11 +105,11 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                                                         </div>
                                                         <div class="usr-mg-info">
                                                             <h3 id="flname">' . $row_users['fname'] . " " . $row_users['lname'] . '</h3>
-                                                            <!--<p>consolidate look carbon random...</p>-->
+                                                            <!--<p>Lorem ipsum carbon random...</p>-->
                                                         </div><!--usr-mg-info end-->
-                                                        
-                                                        
+                                                                           
                                                         <span class="posted_time text-uppercase">' . $time_sent . '</span>
+                                                        <!--<span class="msg-notifc">1</span>-->
                                                     </div><!--usr-msg-details end-->
                                                 </li></a>
                                                 ';
@@ -150,14 +129,14 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                                             exit();
                                         } ?>
                                         <div class="usr-ms-img">
-                                            <?php
+                                        <?php
                                             echo '<img id="chat-upper-image" src="' . $receiver_row['picture_path'] . $receiver_row['profile_pic'] . '" alt="users photo"/>';
-                                            ?>
+                                        ?>
                                         </div>
                                         <div class="usr-mg-info">
-                                            <?php
+                                        <?php
                                             echo '<h3 id="chat-upper-name">' . $receiver_row['fname'] . ' ' . $receiver_row['lname'] . '</h3>';
-                                            ?>
+                                        ?>
                                             <p id="message-user-status" class="capitalize-first-letter"><?php echo $receiver_row['status'];?></p>
                                         </div><!--usr-mg-info end-->
                                     </div>
@@ -201,7 +180,6 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                                     ?>
                                     </div>
                                 </div><!--messages-line end-->
-
 
                                 <div class="message-send-area">
                                     <form id="chat-form" name="chat-form">
@@ -311,7 +289,6 @@ $no_friends = mysqli_num_rows($result_users) == 0;
         //     window.location.reload(1);
         // }, 10000);
 
-        // do a bit more research on setInterval() and setTimeout()
         setInterval(function () {
             let by_user_id = <?php echo $sender_id ?>;
             let to_user_id = <?php echo $receiver_id ?>;
@@ -328,6 +305,12 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                 }
             });
         }, 5000);
+
+        function scrollTextArea() {
+            const wholeArea = document.getElementsByClassName('messages-page');
+            wholeArea.scrollTop = wholeArea.scrollHeight;
+        }
+        scrollTextArea();
 
     </script>
 </body>

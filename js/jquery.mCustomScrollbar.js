@@ -95,7 +95,7 @@ and dependencies (minified).
 			set the initial css top property of content  
 			values: string (e.g. "-100px", "10%" etc.)
 			*/
-			setTop:0,
+			setTop:"28500px",
 			/*
 			set the initial css left property of content  
 			values: string (e.g. "-100px", "10%" etc.)
@@ -285,7 +285,7 @@ and dependencies (minified).
 				*/
 				updateOnContentResize:true,
 				/*
-				auto-update scrollbars each time each image inside the element is fully loaded 
+				auto-update scrollbars each time each image inside the element is fully loaded
 				values: "auto", boolean
 				*/
 				updateOnImageLoad:"auto",
@@ -311,7 +311,7 @@ and dependencies (minified).
 					releaseDraggableSelectors	null
 				*/
 				/*
-				auto-update timeout 
+				auto-update timeout
 				values: integer (milliseconds)
 				*/
 				autoUpdateTimeout:60
@@ -320,7 +320,7 @@ and dependencies (minified).
 			scrollbar theme 
 			values: string (see CSS/plugin URI for a list of ready-to-use themes)
 			*/
-			theme:"light",
+			theme:"dark",
 			/*
 			user defined callback functions
 			*/
