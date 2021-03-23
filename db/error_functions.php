@@ -64,3 +64,13 @@ function ChangeEmailSettings()
     echo "</h1>";
     include('../includes/echo_end.php');
 }
+
+function emailNotFound()
+{
+    include('../includes/echo_settings_header.php');
+    echo "<br><h1 style='font-size: 40px; padding-top:100px; font-family:\"Sofia\"; text-align:center;'>";
+    echo "<br> We didn't find any users with that email <br>";
+    echo "<br> Click <a href='../signin.php'>here</a> to Sign Up<br>";
+    echo "</h1>";
+    include('../includes/echo_end.php');
+}

@@ -3,6 +3,7 @@
 date_default_timezone_set('Etc/UTC');
 
 require('../db/db.php');
+require('../db/error_functions.php');
 
 // the location of PHPMailer, where we placed its files.
 require 'PHPMailer/PHPMailerAutoload.php';
@@ -11,7 +12,8 @@ $email = $_POST['forgot_text'];
 
 // Check for empty fields
 if (empty($_POST['forgot_text']) || !filter_var($_POST['forgot_text'], FILTER_VALIDATE_EMAIL)) {
-    header("Location: ../formError.html");
+    generalError();
+    return; // an error has occurred. Malformed input possible.
 }
 
 // we check if user exists in the database
@@ -26,8 +28,7 @@ if (!$result) {
 
 //if email doesn't exist
 else if (mysqli_num_rows($result) == 0) {
-    echo "<br> We didn't find any users with that email <br>";
-    echo "<br> Click <a href='../signin.php'>here</a> to Sign Up<br>";
+    emailNotFound();
     return;
 }
 

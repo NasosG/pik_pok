@@ -29,7 +29,9 @@ require('db/utility_functions.php');
                                 <div class="forgot_main">
                                     <form class="forgot_form" action="mail/send_new_password.php" method="post">
                                         <span>Please enter the email you registered with</span>
-                                        <input type="text" name="forgot_text" value="" placeholder="Your email.." required
+                                        <input type="text" name="forgot_text" value="" placeholder="Your email.."
+                                               pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+                                               required
                                                spellcheck="false" autofocus class="forget_text" id="forgot_text">
                                         <input type="submit" name="forgot_submit" value="Recover" class="f_p_submit">
                                     </form>
