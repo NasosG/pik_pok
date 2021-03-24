@@ -45,6 +45,19 @@ function removeSpecialCharacters($con, string $data): string
 }
 
 /**
+ * This method is used to sanitize password
+ *
+ * @param $con
+ * @param $password
+ * @return string
+ */
+function sanitizePassword($con, $password): string
+{
+    // possibly to-do a check for required password form with regexp also
+    return mysqli_real_escape_string($con, $password);
+}
+
+/**
  * This method is used to check if a variable is set and not empty
  *
  * @param string $parameter
@@ -52,5 +65,6 @@ function removeSpecialCharacters($con, string $data): string
  */
 function isSetAndNotEmpty(string $parameter): bool
 {
-    return isset($parameter) && (trim($parameter) != '');
+    // opposite (!isset($_POST['username']) || empty(trim($_POST['username'])));
+    return isset($parameter) && (trim($parameter) !== '');
 }

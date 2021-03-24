@@ -26,7 +26,7 @@ else {
     // else if all went ok and username and email are unique
     else {
         // filter password
-        $password = removeSpecialCharacters($con, $_REQUEST['psw']);
+        $password = sanitizePassword($con, $_REQUEST['psw']);
         // sanitize first name
         $first_name = sanitizeString($con, $_REQUEST['fname']);
         // sanitize surname
@@ -39,11 +39,11 @@ else {
         $picture_path = 'images/';
         $status = 'online';
 
-        $RegDate = date("Y-m-d H:i:s");
+        $registration_date = date("Y-m-d H:i:s");
         mysqli_set_charset($con, "utf8");
 
         $query = "INSERT INTO members(username, password, fname, lname, email, date_of_registration, sex, date_of_birth, profile_pic, picture_path, bio, status) 
-			VALUES ('$username','" . hash('sha256', $password) . "','$first_name','$surname','$email','$RegDate', '$sex', '$date_of_birth', '$profile_picture', '$picture_path', NULL, '$status')";
+			VALUES ('$username','" . hash('sha256', $password) . "','$first_name','$surname','$email','$registration_date', '$sex', '$date_of_birth', '$profile_picture', '$picture_path', NULL, '$status')";
 
         $result = mysqli_query($con, $query);
 
@@ -60,7 +60,7 @@ else {
             $is_mobile = $user_agent['is_mobile'];
 
             $query_ip_mac = "INSERT INTO ip_mac_addresses(IP_address, mac_address, user_name, login_date, mobile, OS, browser) 
-			VALUES ('$IP','$MAC','$username','$RegDate', '$is_mobile', '$user_agent_OS', '$user_agent_browser')";
+			VALUES ('$IP','$MAC','$username','$registration_date', '$is_mobile', '$user_agent_OS', '$user_agent_browser')";
             $result = mysqli_query($con, $query_ip_mac);
 
             if ($result) header("Location: ../add_avatar.php");

@@ -9,6 +9,7 @@ function generalError()
     echo " - Click <a href='../index.php'>here</a> to return to Home";
     echo "</h1>";
     include('../includes/echo_end.php');
+    exit(); // not wise to continue as an error has occurred
 }
 
 function ChangeUsername()
@@ -20,6 +21,18 @@ function ChangeUsername()
     echo " - Click <a href='../index.php'>here</a> to return to Home";
     echo "</h1>";
     include('../includes/echo_end.php');
+}
+
+function displayDatabaseError()
+{
+    include('../includes/echo_header.php');
+    echo "<br><h1 style='font-size: 40px; padding-top:100px; font-family:\"Sofia\"; text-align:center;'>";;
+    echo " <span style=\"color: red; \"> Sorry, a database error has occurred </span> <br> ";
+    echo " - Click <a href='../signin.php'>here</a> to Sign Up<br>";
+    echo " - Click <a href='../index.php'>here</a> to return to Home";
+    echo "</h1>";
+    include('../includes/echo_end.php');
+    exit();
 }
 
 function ChangeEmail()

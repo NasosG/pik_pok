@@ -1,4 +1,20 @@
 <?php
+/**
+ * returns true if user exists in the database or false if user does not exist
+ *
+ * @param string $username
+ * @param string $password
+ * @param mysqli $con
+ * @return bool
+ */
+function userAlreadyExists(string $username, string $password, $con): bool
+{
+    $query = "SELECT * FROM members WHERE BINARY username='$username' AND password='" . hash('sha256', $password) . "'";
+    $result = mysqli_query($con, $query) or die("Not able to execute the query");
+    $rows = mysqli_num_rows($result);
+    return $rows == 1;
+}
+
 // Receives a user id and returns the username
 function getUsernameById($id, $con): string
 {
