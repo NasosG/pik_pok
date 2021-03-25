@@ -539,7 +539,7 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                 }
             });
         });
-        
+
         function changeLikeState(x1) {
             let x = x1.children;
             if (x[0].textContent.includes("Unlike")) {
@@ -564,23 +564,22 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                     location.reload();
                 }
             });
-            //sendReplyForm(this);
         });
 
         function sendReplyForm(num) {
             var formsName = "#reply-form" + num;
             var replyForm = $(formsName);
-            replyForm.submit(function (e) {
-                e.preventDefault();
-                $.ajax({
-                    type: "POST",
-                    url: 'db/comments.php',
-                    data: replyForm.serialize(), // serializes the form's elements.
-                    success: function (data) {
-                        location.reload();
-                    }
-                });
-            });
+            // replyForm.submit(function (e) {
+            //     e.preventDefault();
+            //     $.ajax({
+            //         type: "POST",
+            //         url: 'db/comments.php',
+            //         data: replyForm.serialize(), // serializes the form's elements.
+            //         success: function (data) {
+            //             location.reload();
+            //         }
+            //     });
+            // });
             replyForm.submit();
         }
 
