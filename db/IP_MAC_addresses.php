@@ -101,28 +101,101 @@ function getVersion($user_browser, $user_agent): array
     return array($version, $pattern);
 }
 
-// get MAC address
-function getClientsMAC() {
-    //$MAC = shell_exec("arp -a ".escapeshellarg($IP)." | grep -o -E '(:xdigit:{1,2}:){5}:xdigit:{1,2}'");
-    //$MAC = shell_exec("arp -a ".escapeshellarg($IP));
-    //$mac_string = shell_exec("arp -a $IP");
-    //$mac_array = explode(" ",$mac_string);
-    //$MAC = $mac_array[3];
-
+/**
+ * get client's MAC address
+ *
+ * @return string
+ */
+function getClientsMAC(): string
+{
     // get the MAC address of Client by storing 'getmac' value in $MAC -> not the best method
-    // exec() only works in Windows, generally we can't get MAC with complete safety
-    // so we don't use these methods in production
+    // exec() only works in Windows, generally we can't get MAC with complete safety so don't use these methodW in production
     $MAC = exec('getmac');
-    /*
-     * Updating $MAC value using strtok function, strtok is used to split the string into tokens,
-     * space is used as split character of strtok, because getmac returns transport name after MAC address
-     * */
+
+    // space is used as split character of strtok(splits the string into tokens), because getmac returns transport name after MAC address
     $MAC = strtok($MAC, ' ');
     return $MAC;
 }
 
-// get IP address
+/**
+ * get IP address
+ *
+ * @return mixed
+ */
 function getClientsIP() {
-    // $IP stores the ip address of client
     return $_SERVER['REMOTE_ADDR'];
+}
+
+/**
+ * fetches user's IP and MAC from the database
+ *
+ * @param string $username
+ * @param $con
+ * @return array|null
+ */
+function fetchDatabaseMacAndIP(string $username, $con): ?array
+{
+    $get_mac = "SELECT mac_address, IP_address FROM ip_mac_addresses WHERE user_name='$username'";
+    $result1 = mysqli_query($con, $get_mac) or die("Not able to execute the query");
+    return mysqli_fetch_array($result1);
+}
+
+/**
+ * @param string $username
+ * @param $con
+ * @return array|null
+ */
+function fetchDatabaseIP(string $username, $con): ?array
+{
+    $get_ip = "SELECT IP_address FROM ip_mac_addresses WHERE user_name='$username'";
+    $result1 = mysqli_query($con, $get_ip) or die("Not able to execute the query");
+    return mysqli_fetch_array($result1);
+}
+
+/**
+ * save user login, login date and time, user's IP, MAC and user agent details.
+ *
+ * @param $IP
+ * @param $MAC
+ * @param $username
+ * @param $login_date
+ * @param $ua
+ * @param $con
+ * @return bool|mysqli_result
+ */
+function saveUserAgentAndLogin($IP, $MAC, $username, $login_date, $ua, $con)
+{
+    $ua_browser = $ua['name'];
+    $ua_OS = $ua['platform'];
+    $is_mobile = $ua['is_mobile'];
+
+    $query_ip_mac = "UPDATE ip_mac_addresses 
+                     SET  IP_address = '$IP', mac_address = '$MAC', user_name = '$username', login_date = '$login_date', mobile = '$is_mobile', OS = '$ua_OS', browser = '$ua_browser'
+                     WHERE user_name='$username' AND IP_address='$IP' AND MAC_address='$MAC'";
+
+    return mysqli_query($con, $query_ip_mac);
+}
+
+/**
+ * save user login and user agent. This version excludes mac address
+ * if mac address isn't needed in table's structure
+ *
+ * @param $IP
+ * @param $username
+ * @param $login_date
+ * @param $ua
+ * @param $con
+ * @return bool|mysqli_result
+ */
+function saveUserAgentIPAndLogin($IP, $username, $login_date, $ua, $con)
+{
+    $ua_browser = $ua['name'];
+    $ua_OS = $ua['platform'];
+    $is_mobile = $ua['is_mobile'];
+
+    $query_ip_mac = "UPDATE ip_mac_addresses 
+                     SET  IP_address = '$IP', user_name = '$username', login_date = '$login_date', mobile = '$is_mobile', OS = '$ua_OS', browser = '$ua_browser'
+                     WHERE user_name='$username' AND IP_address='$IP'";
+
+    return mysqli_query($con, $query_ip_mac);
 }

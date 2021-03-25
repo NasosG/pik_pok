@@ -28,32 +28,22 @@ if (userAlreadyExists($username, $password, $con)) {
 
     $_SESSION['username'] = $username;
 
-    $get_mac = "SELECT MAC_address, IP_address FROM ip_mac_addresses WHERE user_name='$username'";
-    $result1 = mysqli_query($con, $get_mac) or die("Not able to execute the query");
-    $values_db = mysqli_fetch_array($result1);
-    
+    $values_from_db = fetchDatabaseMacAndIP(/* where username equals */ $username, $con);
     $MAC = getClientsMAC();
     $IP = getClientsIP();
 
-    if ($values_db[0] != $MAC && $values_db[1] != $IP) {
+    if ($values_from_db['mac_address'] != $MAC && $values_from_db['ip_address'] != $IP) {
         send_security_alert(); // Device or network may have changed;
     }
 
-    $search_addresses = "DELETE FROM ip_mac_addresses WHERE user_name='$username' AND IP_address='$IP' AND MAC_address='$MAC'";
-    $result = mysqli_query($con, $search_addresses) or die("Not able to execute the query");
+    $user_agent = getBrowser();
+    $save_login_result = saveUserAgentAndLogin($IP, $MAC, $username, $login_date, $user_agent, $con);
 
-    $ua = getBrowser();
-    $ua_browser = $ua['name'];
-    $ua_OS = $ua['platform'];
-    $is_mobile = $ua['is_mobile'];
-
-    $query_ip_mac = "INSERT INTO ip_mac_addresses(IP_address, mac_address, user_name, login_date, mobile, OS, browser) 
-    VALUES ('$IP','$MAC','$username','$login_date', '$is_mobile', '$ua_OS', '$ua_browser')";
-    $result = mysqli_query($con, $query_ip_mac);
-
-    if ($result) {
+    if ($save_login_result) {
         mysqli_close($con);
         header("Location: ../index.php"); // Redirect user to home page
+    } else {
+        displayDatabaseError();
     }
 } else {
     invalidCredentials();
