@@ -81,6 +81,12 @@ img.emoji {
 .emoji-wysiwyg-editor:empty:before {
     content: attr(placeholder);
     cursor: text;
+    color: #787878;
+}
+
+.emoji-wysiwyg-editor:empty:focus:before {
+    content: attr(placeholder);
+    cursor: text;
     color: #9aa2ab;
 }
 

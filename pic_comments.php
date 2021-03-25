@@ -86,7 +86,7 @@ $row_save_post = mysqli_fetch_row($result_save_post);
         include_once('./includes/header.php');
         ?>
 
-        <div id="content-wrap">S
+        <div id="content-wrap">
             <main class="mb-3">
                 <div class="main-section">
                     <div class="container">
@@ -261,7 +261,7 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                                                             <div class="form-group">
                                                                 <input type='hidden' name='post_id' id='post_id'
                                                                        value='<?php echo $row["post_comments_id"]; ?> '/>
-                                                                <?php echo '<input type="text" class="form-control" id="reply-text" name="reply-text"  placeholder="Add a reply" />'
+                                                                <?php echo '<input type="text" class="form-control" id="reply-text" name="reply-text"  placeholder="Add a reply..." />'
                                                                 ?>
                                                             </div>
                                                             </form>
@@ -323,7 +323,7 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                                                                 <input type='hidden' name='photo_id' id='photo_id'
                                                                        value='<?php echo $photo_id; ?> '/>
                                                                 <input type="text" class="form-control" id="comment-text"
-                                                                       name="comment-text" placeholder="Add a comment"
+                                                                       name="comment-text" placeholder="Add a comment..."
                                                                        data-emojiable="true" data-emoji-input="unicode"/>
                                                             </div>
                                                         </form>
@@ -525,7 +525,6 @@ $row_save_post = mysqli_fetch_row($result_save_post);
             alert("Copied: " + copyText.value);
         }
 
-
         $(".likes-form").submit(function (e) {
             e.preventDefault(); // avoid to execute the actual submit of the form.
 
@@ -540,8 +539,7 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                 }
             });
         });
-
-
+        
         function changeLikeState(x1) {
             let x = x1.children;
             if (x[0].textContent.includes("Unlike")) {
@@ -551,27 +549,39 @@ $row_save_post = mysqli_fetch_row($result_save_post);
             }
         }
 
-
         function reply(num) {
             var str = "reply-" + num;
             document.getElementById(str).style.display = "block";
         }
 
+        $(".reply-form").submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: 'db/comments.php',
+                data: $(this).serialize(), // serializes the form's elements.
+                success: function (data) {
+                    location.reload();
+                }
+            });
+            //sendReplyForm(this);
+        });
+
         function sendReplyForm(num) {
             var formsName = "#reply-form" + num;
-            var form2 = $(formsName);
-            form2.submit(function (e) {
+            var replyForm = $(formsName);
+            replyForm.submit(function (e) {
                 e.preventDefault();
                 $.ajax({
                     type: "POST",
                     url: 'db/comments.php',
-                    data: form2.serialize(), // serializes the form's elements.
+                    data: replyForm.serialize(), // serializes the form's elements.
                     success: function (data) {
                         location.reload();
                     }
                 });
             });
-            form2.submit();
+            replyForm.submit();
         }
 
         function CancelReply(num) {
