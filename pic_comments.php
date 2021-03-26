@@ -22,7 +22,8 @@ $result_of_count = mysqli_query($con, $count_comments);
 $row_after_count = mysqli_fetch_row($result_of_count);
 
 $string_array = $row2['photo_tag'];
-$photo_tag = explode("#", $string_array);
+$photo_tag = explode(",", $string_array);
+$photo_tag = str_replace("#", '', $photo_tag);
 
 $query_save_post = "SELECT COUNT(*) FROM saved_posts WHERE post_id = $photo_id";
 $result_save_post = mysqli_query($con, $query_save_post);
@@ -160,7 +161,7 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                                                         */
 
                                                         if ($len > 0)
-                                                            for ($i = 1; $i < $len; $i++) { ?>
+                                                            for ($i = 0; $i < $len; $i++) { ?>
                                                                 <li><a href="#"
                                                                        title=""><?php echo '#' . $photo_tag[$i]; ?></a></li>
                                                             <?php }

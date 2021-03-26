@@ -20,6 +20,8 @@ if (isset($_POST['imgData'])) {
     <title>Post - Pik Pok</title>
     <?php include_once('./includes/head.php'); ?>
     <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="./tags_input/tags-input.css">
+    <script type="text/javascript" src="./tags_input/tags-input.js"></script>
 </head>
 
 <body>
@@ -41,7 +43,7 @@ if (isset($_POST['imgData'])) {
                           enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-12">
-                                <input type="text" name="tags" placeholder="Insert Tags, e.g. #summer2020#i<3beach">
+                                <input id="tags" type="text" name="tags" class="pb-5" placeholder="Add tag...">
                             </div>
                             <div class="col-lg-12 col-md-12 col-12">
 
@@ -124,6 +126,22 @@ if (isset($_POST['imgData'])) {
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/slick.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript">
+        for (let input of document.querySelectorAll('#tags')) {
+            tagsInput(input);
+        }
+
+        // log events as they happen:
+        let t = $('#tags')[0];
+        t.addEventListener('input', log);
+        t.addEventListener('change', log);
+        function log(e) {
+            $('#out')[0].textContent = '#'+`${this.value.replace(/,/g,'')}`;
+        }
+
+        // hook 'em up:
+        $('input[type="tags"]').forEach(tagsInput);
+    </script>
     <script type="text/javascript">
         // from
         // https://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded
