@@ -160,7 +160,7 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                                                         if ($len === 0)  echo 'No tags for this post';
                                                         */
 
-                                                        if ($len > 0)
+                                                        if ($len > 1)
                                                             for ($i = 0; $i < $len; $i++) { ?>
                                                                 <li><a href="#"
                                                                        title=""><?php echo '#' . $photo_tag[$i]; ?></a></li>
