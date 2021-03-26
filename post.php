@@ -22,6 +22,16 @@ if (isset($_POST['imgData'])) {
     <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="./tags_input/tags-input.css">
     <script type="text/javascript" src="./tags_input/tags-input.js"></script>
+    <style>
+        .tags-input .tag {
+            padding: 0.4em 0.7em;
+
+        }
+        .tags-input .tag:hover {
+            background-color: #3af;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -43,7 +53,7 @@ if (isset($_POST['imgData'])) {
                           enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-12">
-                                <input id="tags" type="text" name="tags" class="pb-5" placeholder="Add tag...">
+                                <input id="tags" type="text" name="tags" class="tags-input pb-5" placeholder="Add tag...">
                             </div>
                             <div class="col-lg-12 col-md-12 col-12">
 
