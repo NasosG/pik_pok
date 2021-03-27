@@ -376,7 +376,8 @@ header {
 	background-color: #fff;
 	height: 38px;
 	color: #b2b2b2;
-	font-size: 16px;
+	//font-size: 16px;
+	font-size: 17px;
 	border: 0;
 	padding: 0 10px;
 }
@@ -389,6 +390,7 @@ header {
 	height: 100%;
 	border: 0;
 	transition: 0.2s;
+	border-radius: 0px 3px 3px 0px;
 }
 .search-bar form button:hover {
 	background-color: #dedede;
@@ -6476,12 +6478,22 @@ a:hover {
 .copylink span{
 	padding:30px 0 20px;
 }
+
+.copylink input:hover{
+	background-color: #EEEEEE;
+}
+
 .copylink input{
-	border-width: 1px;
-	border-color: #F8F8F8;
+	/*border-width: 1px;*/
+	/*border-color: #F8F8F8;
+	background-color: #eeeeee;*/
+	border: 1px solid #b4b4b4; /*#d5d5d5 or #e5e5e5 or #a5a5a5 possible too*/
+
 	padding: 4px;
 	border-radius: 4px;
-	background-color: #eeeeee;
+	/*box-shadow: 2px 2px #888888;*/
+	/*box-shadow: 2px 2px 3px #b8b8b8;*/
+	background-color: #f5f5f5;
 }
 .copylink i{
 	float: unset;
@@ -7033,4 +7045,25 @@ ul#myTab {
 
 .image-hover-basic:hover {
 	opacity:0.8;
+}
+
+.scaled-button {
+	transition: all 0.3s ease-in-out;
+}
+
+.scaled-button:hover {
+	//transform: rotate(-20deg);
+	-webkit-transform: scale(1.2);
+	-moz-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	-o-transform: scale(1.2);
+	transform: scale(1.2);
+	transform-origin: unset;
+	cursor: pointer;
+}
+
+.comments-top-text {
+	font-size: 1.05em;
+	color: #a2a2a2;
+	cursor: default;
 }

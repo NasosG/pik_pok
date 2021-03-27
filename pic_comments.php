@@ -162,11 +162,11 @@ $row_save_post = mysqli_fetch_row($result_save_post);
 
                                                         if ($len > 1)
                                                             for ($i = 0; $i < $len; $i++) { ?>
-                                                                <li><a href="#"
-                                                                       title=""><?php echo '#' . $photo_tag[$i]; ?></a></li>
-                                                            <?php }
-
-                                                        ?>
+                                                                <li>
+                                                                    <a href="#"
+                                                                       title=""><?php echo '#' . $photo_tag[$i]; ?></a>
+                                                                </li>
+                                                            <?php } ?>
                                                     </ul>
                                                 </div>
 
@@ -175,7 +175,7 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                                                         <?php echo "<input type='hidden' name='photo_id' id='photo_id' value='" . $row['photo_id'] . "' />"; ?>
                                                         <ul class="like-com">
                                                             <li>
-                                                                <button onclick=changeLikeState(this) class="like-submit-btn"><a id="like-submit"
+                                                                <button onclick=changeLikeState(this) class="like-submit-btn scaled-button"><a id="like-submit"
                                                                                                                                  class="com-page-likes"><i
                                                                                 class=
                                                                                 <?php
@@ -204,12 +204,16 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                                                     </div>
                                                 </form>
 
-                                                <div class="comment-area">
-                                                    <div class="reply-area">
-                                                        <p><br></p>
-                                                        <span style="cursor:default;">-- Comments --<br></span>
-                                                        <br>
-                                                    </div>
+<!--                                                <div class="comment-area">-->
+<!--                                                    <div class="reply-area">-->
+<!--                                                        <p><br></p>-->
+<!--                                                        <span style="font-size:1.05em; cursor:default;">-- Comments --<br></span>-->
+<!--                                                        <br>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+
+                                                <div class="comment-area pb-4" style="margin-top:200px;">
+                                                    <span class="comments-top-text"><?php echo $row_after_count[0]; ?> Comments<br></span>
                                                 </div>
 
                                                 <?php

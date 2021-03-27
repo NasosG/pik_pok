@@ -277,7 +277,7 @@ $result_save_post = mysqli_query($con, $query_save_post);
                                                 <ul class="like-com">
                                                     <li>
                                                         <button style="background:white; border:none;" onclick=changeLikeState(this)
-                                                                class="like-submit-btn"><a id="like-submit"
+                                                                class="scaled-button like-submit-btn"><a id="like-submit"
                                                                                            style="color:#e44d3a;"
                                                                                            class="com-page-likes"><i
                                                                         class=
