@@ -102,3 +102,20 @@ function get_status($con, $username)
     $user_status = mysqli_fetch_array($result);
     return $user_status[0];
 }
+
+function rememberMeCookies(string $username, string $password, $add_cookie_time, $remove_cookie_time): int
+{
+    if (!empty($_POST["remember"])) {
+        setcookie("username", $username, $add_cookie_time, "/");
+        setcookie("password", $password, $add_cookie_time, "/");
+        //echo "Cookies set successfully";
+        return 0;
+    } else {
+        unset($_COOKIE['username']);
+        unset($_COOKIE['password']);
+        setcookie("username", "", $remove_cookie_time, '/');
+        setcookie("password", "", $remove_cookie_time, '/');
+        //echo "Cookies have been deleted successfully";
+        return 1;
+    }
+}

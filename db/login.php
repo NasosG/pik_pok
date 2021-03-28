@@ -28,6 +28,10 @@ if (userAlreadyExists($username, $password, $con)) {
 
     $_SESSION['username'] = $username;
 
+    $add_cookie_time = time() + (86400 * 30); // 1 day
+    $remove_cookie_time = time() - 3600;
+    rememberMeCookies($username, $password, $add_cookie_time, $remove_cookie_time);
+
     $values_from_db = fetchDatabaseMacAndIP(/* where username equals */ $username, $con);
     $MAC = getClientsMAC();
     $IP = getClientsIP();

@@ -78,6 +78,7 @@ $redirect_signed_in_users(); //signed in users haven't access to this page
                                             <div class="col-lg-12 no-pdd">
                                                 <div class="sn-field">
                                                     <input type="text" id="uname" name="username" placeholder="Username"
+                                                           value="<?php if (!empty($_COOKIE["username"])) echo $_COOKIE["username"];?>"
                                                            required>
                                                     <i class="fa fa-user"></i>
                                                 </div><!--sn-field end-->
@@ -85,6 +86,7 @@ $redirect_signed_in_users(); //signed in users haven't access to this page
                                             <div class="col-lg-12 no-pdd">
                                                 <div class="sn-field">
                                                     <input type="password" id="psw" name="psw" placeholder="Password"
+                                                           value="<?php if (!empty($_COOKIE["password"])) echo $_COOKIE["password"]; ?>"
                                                            required>
                                                     <span toggle="#psw" id="toggle_pass"
                                                           class="fa fa-eye fa-2x field-icon toggle-password"></span>
@@ -94,7 +96,7 @@ $redirect_signed_in_users(); //signed in users haven't access to this page
                                             <div class="col-lg-12 no-pdd">
                                                 <div class="checky-sec">
                                                     <div class="fgt-sec">
-                                                        <input type="checkbox" name="cc" id="c1">
+                                                        <input type="checkbox" name="remember" id="c1">
                                                         <label for="c1">
                                                             <span></span>
                                                         </label>
