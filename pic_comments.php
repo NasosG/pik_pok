@@ -213,7 +213,10 @@ $row_save_post = mysqli_fetch_row($result_save_post);
 <!--                                                </div>-->
 
                                                 <div class="comment-area pb-4" style="margin-top:200px;">
-                                                    <span class="comments-top-text"><?php echo $row_after_count[0]; ?> Comments<br></span>
+                                                    <span class="comments-top-text">
+                                                        <?php echo $row_after_count[0];
+                                                        echo ($row_after_count[0] > 1) ? ' Comments' : ' Comment'; ?> <br>
+                                                    </span>
                                                 </div>
 
                                                 <?php
