@@ -28,7 +28,7 @@ if (userAlreadyExists($username, $password, $con)) {
 
     $_SESSION['username'] = $username;
 
-    $add_cookie_time = time() + (86400 * 30); // 1 day
+    $add_cookie_time = time() + (86400 * 30); // 1 month
     $remove_cookie_time = time() - 3600;
     rememberMeCookies($username, $password, $add_cookie_time, $remove_cookie_time);
 
