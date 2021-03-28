@@ -331,6 +331,7 @@ require('db/utility_functions.php');
             <div class="revision">Revised: May 19, 2020</div>
             <br><br>
         </div>
+        <?php include_once('./includes/main_footer.php'); ?>
     </div><!--theme-layout end-->
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
