@@ -1,6 +1,7 @@
 # [pik-pok](https://pikpoksocial.000webhostapp.com/index.php)
 
 Pik-Pok (https://pikpoksocial.000webhostapp.com/index.php) started as an educational project. The main idea was to demonstrate how one can build from scratch a large scalable but most of all safe social network mostly with php. Pik Pok is a social media platform for creating, sharing and discovering photos, think Tik-Tok but for photos. The app can be used by people as an outlet to express themselves and their stories through their photos and albums.
+![alt text](images/pikpokall.png)
 
 ## Download and Installation
 
