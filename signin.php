@@ -78,7 +78,7 @@ $redirect_signed_in_users(); //signed in users haven't access to this page
                                             <div class="col-lg-12 no-pdd">
                                                 <div class="sn-field">
                                                     <input type="text" id="uname" name="username" placeholder="Username"
-                                                           value="<?php if (!empty($_COOKIE["username"])) echo $_COOKIE["username"];?>"
+                                                           value="<?php if (!empty($_COOKIE["username"])) echo $_COOKIE["username"]; ?>"
                                                            required>
                                                     <i class="fa fa-user"></i>
                                                 </div><!--sn-field end-->
@@ -286,7 +286,7 @@ $redirect_signed_in_users(); //signed in users haven't access to this page
                 form_signup.submit();
             }
             else {
-                // The recaptcha is not cheched
+                // The recaptcha is not checked
                 // we display an error message here
                 alert('Oops, you have to check the I\'m not a robot box !');
             }
@@ -295,12 +295,11 @@ $redirect_signed_in_users(); //signed in users haven't access to this page
     </script>
     <script>
         /* Passwords do not match functionality */
-        var check = function () { //check passwords if are the same
+        var check = function () { //check if passwords are the same
 
             if (document.getElementById('password').value ==
                 document.getElementById('repeat_password').value) {
                 document.getElementById('message').innerHTML = null;
-
             } else {
                 document.getElementById('message').style.color = 'red';
                 document.getElementById('message').innerHTML = 'Passwords do not match';
