@@ -47,6 +47,7 @@ $no_friends = mysqli_num_rows($result_users) == 0;
 <head>
     <title>Messages - Pik Pok</title>
     <?php include_once('./includes/head_scrollbar.php'); ?>
+    <link href="emojis/lib/css/emojis_button.css" rel="stylesheet">
 </head>
 
 <body>
@@ -66,8 +67,24 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                                 <div class="msg-title">
                                     <h3>Messaging</h3>
                                     <ul>
-                                        <li><a href="#" title=""><i class="fa fa-cog"></i></a></li>
-                                        <li><a href="#" title=""><i class="fa fa-ellipsis-v"></i></a></li>
+<!--                                        <li><a href="#" title=""><i class="fa fa-cog"></i></a></li>-->
+<!--                                        <li><a href="#" title=""><i class="fa fa-ellipsis-v"></i></a></li>-->
+                                        <li>
+                                            <div class="ed-opts-settings">
+                                                <a href="#" title="" class="ed-opts-open"><i class="fa fa-cog"></i></a>
+                                                <ul class="ed-options">
+                                                    <li><a href="profile_account_setting.php" title="">Settings</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ed-opts-settings">
+                                                <a href="#" title="" class="ed-opts-open"><i class="fa fa-ellipsis-v"></i></a>
+                                                <ul class="ed-options">
+                                                    <li><a href="help_center.php">Help</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div><!--msg-title end-->
                                 <form action="messages.php" action="get" id="k">
@@ -140,7 +157,12 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                                             <p id="message-user-status" class="capitalize-first-letter"><?php echo $receiver_row['status'];?></p>
                                         </div><!--usr-mg-info end-->
                                     </div>
-                                    <a href="#" title=""><i class="fa fa-ellipsis-v"></i></a>
+                                    <div class="ed-opts-messages">
+                                        <a href="#" title="" class="ed-opts-open"><i class="fa fa-ellipsis-v"></i></a>
+                                        <ul class="ed-options">
+                                            <li><a href="<?php echo 'other_users_profile.php?photo_username=' . $receiver_row['username'];?>" title=""><?php echo $receiver_row['fname'];?> profile</a></li>
+                                        </ul>
+                                    </div>
                                 </div><!--message-bar-head end-->
 
                                 <div id="messages-line" class="messages-line" style="margin-top:100px;">
@@ -184,12 +206,12 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                                 <div class="message-send-area">
                                     <form id="chat-form" name="chat-form">
                                         <div class="mf-field">
-                                            <input type="text" id="message-text" name="message"
+                                            <input type="text" id="message-text" name="message" data-id="ui"
                                                    placeholder="Type a message here">
                                             <button id="message-submit" type="submit">Send</button>
                                         </div>
                                         <ul>
-                                            <li><a href="#" title=""><i class="fa fa-smile-o"></i></a></li>
+                                            <li><a href="#" title=""><i data-emojiable="true" ></i></a></li>
                                             <li><a href="#" title=""><i class="fa fa-camera"></i></a></li>
                                             <li><a href="#" title=""><i class="fa fa-paperclip"></i></a></li>
                                         </ul>
@@ -230,6 +252,24 @@ $no_friends = mysqli_num_rows($result_users) == 0;
     <script type="text/javascript" src="js/jquery.mCustomScrollbar.js"></script>
     <script type="text/javascript" src="js/scrollbar.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+    <script src="emojis/lib/js/config.js"></script>
+    <script src="emojis/lib/js/util.js"></script>
+    <script src="emojis/lib/js/jquery.emojiarea.js"></script>
+    <script src="emojis/lib/js/emoji-picker.js"></script>
+    <script>
+        $(function () {
+            // Initializes and creates emoji set from sprite sheet
+            window.emojiPicker = new EmojiPicker({
+                emojiable_selector: '[data-emojiable=true]',
+                assetsPath: 'emojis/lib/img/',
+                popupButtonClasses: 'fa fa-smile-o'
+            });
+            // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
+            // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
+            // It can be called as many times as necessary; previously converted input fields will not be converted again
+            window.emojiPicker.discover();
+        });
+    </script>
     <script>
         var form = $('#chat-form');
 

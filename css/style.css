@@ -1137,6 +1137,24 @@ main {
     left: 10px;
     top: -10px;
 }
+.ed-opts-settings {
+	float: right;
+	position: relative;
+}
+.ed-opts-settings > a:hover {
+	color: #e26647!important;
+}
+.ed-opts-messages {
+	float: right;
+	position: relative;
+	top: 15px;
+}
+.ed-opts-messages > a {
+	color: #b2b2b2;
+	font-size: 20px;
+	float: right;
+	position: relative;
+}
 .ed-options {
 	position: absolute;
 	top: 100%;
@@ -1172,6 +1190,9 @@ main {
 	font-weight: 600;
 }
 .ed-opts > a:hover {
+	color: #e44d3a;
+}
+.ed-opts-messages > a:hover {
 	color: #e44d3a;
 }
 .bio-opts > i:hover {
@@ -4950,7 +4971,7 @@ a:hover {
 .msg-title {
 	float: left;
 	width: 100%;
-	padding: 36px 20px;
+	padding: 35px 20px; /* padding: 36px 20px; default*/
 }
 .msg-title > h3 {
 	color: #000000;
