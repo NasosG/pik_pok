@@ -13,4 +13,4 @@
     <link rel="stylesheet" type="text/css" href="css/responsive.min.css">
     <link rel="stylesheet" href="./lightbox/dist/css/lightbox.min.css">
     <!-- font awesome icons kit -->
-    <script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
+    <script src="./js/font-awesome.js" crossorigin="anonymous"></script>

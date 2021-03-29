@@ -5,4 +5,4 @@
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
     <!-- font awesome icons kit -->
-    <script src="https://kit.fontawesome.com/fac8ebb301.js" crossorigin="anonymous"></script>
+    <script src="./js/font-awesome.js" crossorigin="anonymous"></script>
