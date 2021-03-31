@@ -216,12 +216,12 @@ $no_friends = mysqli_num_rows($result_users) == 0;
 
                                 <div class="message-send-area">
                                     <form id="chat-form" name="chat-form">
-                                        <div class="mf-field col-10 mr-0 pl-0 pr-0">
+                                        <div class="mf-field col-9 col-md-10 mr-0 pl-0 pr-0">
                                             <input type="text" id="message-text" name="message" data-id="ui"
                                                    placeholder="Type a message here">
 
                                         </div>
-                                        <div class="ml-0 mf-field col-2">
+                                        <div class="ml-0 mf-field col-3 col-md-2">
                                         <button id="message-submit" type="submit">Send
                                             <i class="fa fa-paper-plane" aria-hidden="true"></i></button></div>
 
