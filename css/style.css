@@ -5254,7 +5254,7 @@ a:hover {
 }
 .mf-field input {
 	float: left;
-	width: 80%;
+	width: 100%; /*default 80%;*/
 	background-color: #fff;
 	color: #b2b2b2;
 	font-size: 16px;
@@ -5264,14 +5264,15 @@ a:hover {
 }
 .mf-field button {
 	float: left;
-	width: 17%;
+	/*width: 17%;*/
+	width:100%;
 	background-color: #e44d3a;
 	height: 45px;
 	text-align: center;
 	color: #fff;
 	font-weight: 600;
 	border: 0;
-	margin-left: 15px;
+	/*margin-left: 15px;*/
 	cursor: pointer;
 }
 .message-send-area form > ul {

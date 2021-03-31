@@ -46,8 +46,19 @@ $no_friends = mysqli_num_rows($result_users) == 0;
 <html>
 <head>
     <title>Messages - Pik Pok</title>
+
     <?php include_once('./includes/head_scrollbar.php'); ?>
-    <link href="emojis/lib/css/emojis_button.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./emojiOneArea/dist/emojionearea.min.css" media="screen">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<!--    <script>-->
+<!--      window.emojioneVersion = "3.1";-->
+<!--    </script>-->
+    <script type="text/javascript" src="./emojiOneArea/dist/emojionearea.js"></script>
+    <style>
+        img {
+            float: initial!important;
+        }
+    </style>
 </head>
 
 <body>
@@ -205,15 +216,19 @@ $no_friends = mysqli_num_rows($result_users) == 0;
 
                                 <div class="message-send-area">
                                     <form id="chat-form" name="chat-form">
-                                        <div class="mf-field">
+                                        <div class="mf-field col-10 mr-0 pl-0 pr-0">
                                             <input type="text" id="message-text" name="message" data-id="ui"
                                                    placeholder="Type a message here">
-                                            <button id="message-submit" type="submit">Send</button>
+
                                         </div>
+                                        <div class="ml-0 mf-field col-2">
+                                        <button id="message-submit" type="submit">Send
+                                            <i class="fa fa-paper-plane" aria-hidden="true"></i></button></div>
+
                                         <ul>
-                                            <li><a href="#" title=""><i data-emojiable="true" ></i></a></li>
-                                            <li><a href="#" title=""><i class="fa fa-camera"></i></a></li>
-                                            <li><a href="#" title=""><i class="fa fa-paperclip"></i></a></li>
+<!--                                            <li><a href="" title=""><i class="fa fa-smile-o" ></i></a></li>-->
+<!--                                            <li><a href="#" title=""><i class="fa fa-camera"></i></a></li>-->
+<!--                                            <li><a href="#" title=""><i class="fa fa-paperclip"></i></a></li>-->
                                         </ul>
                                     </form>
                                 </div><!--message-send-area end-->
@@ -244,7 +259,7 @@ $no_friends = mysqli_num_rows($result_users) == 0;
 
     </div><!--theme-layout end-->
 
-    <script type="text/javascript" src="js/jquery.min.js"></script>
+<!--    <script type="text/javascript" src="js/jquery.min.js"></script>-->
     <script type="text/javascript" src="js/popper.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/flatpickr.min.js"></script>
@@ -252,29 +267,31 @@ $no_friends = mysqli_num_rows($result_users) == 0;
     <script type="text/javascript" src="js/jquery.mCustomScrollbar.js"></script>
     <script type="text/javascript" src="js/scrollbar.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
-    <script src="emojis/lib/js/config.js"></script>
-    <script src="emojis/lib/js/util.js"></script>
-    <script src="emojis/lib/js/jquery.emojiarea.js"></script>
-    <script src="emojis/lib/js/emoji-picker.js"></script>
-    <script>
-        $(function () {
-            // Initializes and creates emoji set from sprite sheet
-            window.emojiPicker = new EmojiPicker({
-                emojiable_selector: '[data-emojiable=true]',
-                assetsPath: 'emojis/lib/img/',
-                popupButtonClasses: 'fa fa-smile-o'
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#message-text").emojioneArea({
+                autoHideFilters: true
             });
-            // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
-            // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
-            // It can be called as many times as necessary; previously converted input fields will not be converted again
-            window.emojiPicker.discover();
         });
+
     </script>
     <script>
         var form = $('#chat-form');
 
+        document.addEventListener("keyup", function (event) {
+            if (event.key === 'Enter') {
+                // Trigger the button element with a click
+                //alert("event");
+                //document.getElementById("message-submit").click();
+                form.submit();
+            }
+        });
+
         function textIsEmpty() {
-            return document.getElementById("message-text").value.trim() === '';
+            // return document.getElementById("message-text").value.trim() === '';
+            let val = $('.emojionearea.emojionearea-inline>.emojionearea-editor').text().trim();
+            return (val == '');
         }
 
         form.submit(function (e) {
@@ -282,7 +299,9 @@ $no_friends = mysqli_num_rows($result_users) == 0;
 
             if (textIsEmpty()) return;
 
-            var message = $('#message-text').val();
+            // var message =  $('#message-text').val();
+
+            var message = $('.emojionearea.emojionearea-inline>.emojionearea-editor').html();
             let by_user_id = <?php echo $sender_id ?>;
             let to_user_id = <?php echo $receiver_id ?>;
             $.ajax({
@@ -304,7 +323,8 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                         success: function (data) {
                             $("#messages-main-body").html(data);
                             $('.demo-yx').mCustomScrollbar('scrollTo',['bottom','right']);
-                            $('#message-text').val("");
+                            //$('#message-text').val("");
+                            $('.emojionearea.emojionearea-inline>.emojionearea-editor').html("");
                         }
                     });
                     //location.reload();
