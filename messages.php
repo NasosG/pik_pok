@@ -290,8 +290,9 @@ $no_friends = mysqli_num_rows($result_users) == 0;
 
         function textIsEmpty() {
             // return document.getElementById("message-text").value.trim() === '';
-            let val = $('.emojionearea.emojionearea-inline>.emojionearea-editor').text().trim();
-            return (val == '');
+            let element = $('.emojionearea.emojionearea-inline>.emojionearea-editor');
+            let value = element.text().trim();
+            return (value == '' && element.children().length == 0 );
         }
 
         form.submit(function (e) {
