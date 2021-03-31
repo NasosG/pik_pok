@@ -56,7 +56,7 @@ $no_friends = mysqli_num_rows($result_users) == 0;
     <script type="text/javascript" src="./emojiOneArea/dist/emojionearea.js"></script>
     <style>
         img {
-            float: initial!important;
+            float: initial;
         }
     </style>
 </head>

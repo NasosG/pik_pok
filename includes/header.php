@@ -94,7 +94,7 @@
                 echo "
             <div class='user-account'>
                 <div class='user-info'>
-                    <img style=\"width:32px; height:32px;\" src=\"" . $picture_path . $picture_name . "\" alt=\"users photo\"/>
+                    <img style=\"width:32px; height:32px; float:left;\" src=\"" . $picture_path . $picture_name . "\" alt=\"users photo\"/>
 					
                     <a href='profile3.php' title=''>"; ?>
                     <?php if (isset($_SESSION['username'])) echo $_SESSION['username'];
