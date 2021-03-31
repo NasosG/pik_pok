@@ -7,9 +7,10 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/flatpickr.min.css">
 <link rel="stylesheet" type="text/css" href="lib/slick/slick.min.css">
-<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css">
 <link rel="stylesheet" type="text/css" href="lib/slick/slick-theme.min.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/responsive.css">
 
 <!-- font awesome icons kit -->
 <script src="./js/font-awesome.js" crossorigin="anonymous"></script>
