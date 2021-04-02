@@ -320,7 +320,6 @@ $no_friends = mysqli_num_rows($result_users) == 0;
             if (textIsEmpty()) return;
 
             // var message =  $('#message-text').val();
-
             var message = $('.emojionearea.emojionearea-inline>.emojionearea-editor').html();
             let by_user_id = <?php echo $sender_id ?>;
             let to_user_id = <?php echo $receiver_id ?>;
