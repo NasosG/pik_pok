@@ -168,12 +168,18 @@ $no_friends = mysqli_num_rows($result_users) == 0;
                                             <p id="message-user-status" class="capitalize-first-letter"><?php echo $receiver_row['status'];?></p>
                                         </div><!--usr-mg-info end-->
                                     </div>
-                                    <div class="ed-opts-messages">
+                                    <div class="ed-opts-messages mr-1 ml-3">
                                         <a href="#" title="" class="ed-opts-open"><i class="fa fa-ellipsis-v"></i></a>
                                         <ul class="ed-options">
                                             <li><a href="<?php echo 'other_users_profile.php?photo_username=' . $receiver_row['username'];?>" title=""><?php echo $receiver_row['fname'];?> profile</a></li>
                                         </ul>
                                     </div>
+                                    <div class="ed-opts-messages">
+                                        <a id="meet-link" href="#" target="_blank" title="jitsi meet">
+                                            <i class="fa fa-phone"></i>
+                                        </a>
+                                    </div>
+
                                 </div><!--message-bar-head end-->
 
                                 <div id="messages-line" class="messages-line" style="margin-top:100px;">
@@ -282,11 +288,24 @@ $no_friends = mysqli_num_rows($result_users) == 0;
         document.addEventListener("keyup", function (event) {
             if (event.key === 'Enter') {
                 // Trigger the button element with a click
-                //alert("event");
-                //document.getElementById("message-submit").click();
+                // document.getElementById("message-submit").click();
                 form.submit();
             }
         });
+
+        document.getElementById("meet-link").onclick = function () {
+            let randomMeetingUrl = generateJitsiMeet();
+            document.getElementById("meet-link").href = randomMeetingUrl;
+            $('.emojionearea.emojionearea-inline>.emojionearea-editor').html('Meet Invitation Sent ' + randomMeetingUrl);
+            form.submit();
+        };
+
+        function generateJitsiMeet() {
+            const randomString = generateRandomString( /*with length*/ 12);
+            return 'https://meet.jit.si/' + randomString.toString();
+        }
+
+        const generateRandomString = (length) => Math.random().toString(36).substr(2, length);
 
         function textIsEmpty() {
             // return document.getElementById("message-text").value.trim() === '';
