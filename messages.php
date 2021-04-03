@@ -296,7 +296,7 @@ $no_friends = mysqli_num_rows($result_users) == 0;
         document.getElementById("meet-link").onclick = function () {
             let randomMeetingUrl = generateJitsiMeet();
             document.getElementById("meet-link").href = randomMeetingUrl;
-            $('.emojionearea.emojionearea-inline>.emojionearea-editor').html('Meet Invitation Sent ' + randomMeetingUrl);
+            $('.emojionearea.emojionearea-inline>.emojionearea-editor').html('Meet Invitation Sent ' + '<a href=' + randomMeetingUrl + '>' + randomMeetingUrl + '</a>');
             form.submit();
         };
 
