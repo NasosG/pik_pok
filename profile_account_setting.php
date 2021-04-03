@@ -234,7 +234,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
                                                 <div class="col-lg-3 col-md-6 col-sm-12">
                                                     <div class="profile-bx-info">
                                                         <div class="pro-bx">
-                                                            <img src="images/like_settings.png" alt="">
+                                                            <img src="images/like_Settings.png" alt="">
                                                             <div class="bx-info">
                                                                 <h3><?php echo $num[1] == null ? 0 : $num[1] . ""; ?></h3>
                                                                 <h5>Likes</h5>
