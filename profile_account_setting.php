@@ -116,7 +116,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
                                                                    placeholder="<?php echo $fname; ?>"/>
                                                         </th>
                                                         <th style="">
-                                                            <button class="btn" type="submit">Change</button>
+                                                            <button class="btn change-hover" type="submit">Change</button>
                                                         </th>
                                                     </table>
                                                     <i class="fa fa-user"></i>
@@ -132,7 +132,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
                                                                    placeholder="<?php echo $lname; ?>"/>
                                                         </th>
                                                         <th style="">
-                                                            <button class="btn penciled" type="submit">Change</button>
+                                                            <button class="btn penciled change-hover" type="submit">Change</button>
                                                         </th>
                                                     </table>
 
@@ -150,7 +150,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
                                                                    placeholder="<?php echo $email; ?>"/>
                                                         </th>
                                                         <th style="">
-                                                            <button class="btn" type="submit">Change</button>
+                                                            <button class="btn change-hover" type="submit">Change</button>
                                                         </th>
                                                     </table>
 
@@ -168,7 +168,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
                                                                    placeholder="<?php echo $username; ?>"/>
                                                         </th>
                                                         <th style="">
-                                                            <button class="btn" type="submit">Change</button>
+                                                            <button class="btn change-hover" type="submit">Change</button>
                                                         </th>
                                                     </table>
 
@@ -187,7 +187,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
                                                                    value="<?php echo $date_of_birth; ?>"/>
                                                         </th>
                                                         <th>
-                                                            <button class="btn" type="submit">Change</button>
+                                                            <button class="btn change-hover" type="submit">Change</button>
                                                         </th>
                                                     </table>
 
@@ -205,7 +205,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
                                                                    placeholder="<?php echo $bio; ?>"/>
                                                         </th>
                                                         <th>
-                                                            <button class="btn" type="submit">Change</button>
+                                                            <button class="btn change-hover" type="submit">Change</button>
                                                         </th>
                                                     </table>
 

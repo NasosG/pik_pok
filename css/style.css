@@ -7093,3 +7093,41 @@ ul#myTab {
 .cursor-pointer {
 	cursor: pointer;
 }
+
+.change-hover {
+	border-radius: 0 12px 12px 0;
+	margin-top: -5px;
+	width: 115px;
+	top: 0;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	border-top: 1px solid lightgrey;
+	border-bottom: 1px solid lightgrey;
+	border-right: 1px solid lightgrey;
+	//border: 1 px solid lightgrey;
+}
+
+.change-hover:before {
+	content: '\f040 \00a0';
+	font: normal normal normal 14px/1 FontAwesome;
+	visibility: hidden;
+}
+
+.change-hover:after {
+	content: '\f040 \00a0';
+	font: normal normal normal 14px/1 FontAwesome;
+	visibility: hidden;
+}
+
+.change-hover:hover:before {
+	visibility: visible;
+	height: 20px;
+	width: 50px;
+	justify-content: center;
+	align-items: center;
+	max-width: 50px !important;
+	content: '\f040 \00a0';
+	color: #404040;
+	font: normal normal normal 14px/1 FontAwesome;
+	//position: absolute;
+}
