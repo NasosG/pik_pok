@@ -83,16 +83,16 @@ $likes_month = mysqli_fetch_array($result_month_likes);
                                     <a class="nav-item nav-link" id="nav-password-tab" data-toggle="tab"
                                        href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false"><i
                                                 class="fa fa-lock"></i>Change Password</a>
-                                    <a class="nav-item nav-link" id="nav-notification-tab" data-toggle="tab"
-                                       href="#nav-notification" role="tab" aria-controls="nav-notification"
-                                       aria-selected="false"><i class="fa fa-flash"></i>Notifications</a>
-                                    <a class="nav-item nav-link" id="nav-privcy-tab" data-toggle="tab" href="#privcy"
-                                       role="tab" aria-controls="privacy" aria-selected="false"><i class="fa fa-group"></i>Requests</a>
-                                    <a class="nav-item nav-link" id="security" data-toggle="tab" href="#security-login"
-                                       role="tab" aria-controls="security-login" aria-selected="false"><i
-                                                class="fa fa-user-secret"></i>Security and Login</a>
-                                    <a class="nav-item nav-link" id="nav-privacy-tab" data-toggle="tab" href="#privacy"
-                                       role="tab" aria-controls="privacy" aria-selected="false"><i class="fa fa-paw"></i>Privacy</a>
+<!--                                    <a class="nav-item nav-link" id="nav-notification-tab" data-toggle="tab"-->
+<!--                                       href="#nav-notification" role="tab" aria-controls="nav-notification"-->
+<!--                                       aria-selected="false"><i class="fa fa-flash"></i>Notifications</a>-->
+<!--                                    <a class="nav-item nav-link" id="nav-privcy-tab" data-toggle="tab" href="#privcy"-->
+<!--                                       role="tab" aria-controls="privacy" aria-selected="false"><i class="fa fa-group"></i>Requests</a>-->
+<!--                                    <a class="nav-item nav-link" id="security" data-toggle="tab" href="#security-login"-->
+<!--                                       role="tab" aria-controls="security-login" aria-selected="false"><i-->
+<!--                                                class="fa fa-user-secret"></i>Security and Login</a>-->
+<!--                                    <a class="nav-item nav-link" id="nav-privacy-tab" data-toggle="tab" href="#privacy"-->
+<!--                                       role="tab" aria-controls="privacy" aria-selected="false"><i class="fa fa-paw"></i>Privacy</a>-->
                                     <a class="nav-item nav-link" id="nav-deactivate-tab" data-toggle="tab"
                                        href="#nav-deactivate" role="tab" aria-controls="nav-deactivate"
                                        aria-selected="false"><i class="fa fa-random"></i>Delete Account</a>
@@ -155,7 +155,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
                                                     </table>
 
 
-                                                    <i class="fa fa-user"></i>
+                                                    <i class="fa fa-at"></i>
                                                 </div>
                                             </div>
                                             <div class="cp-field">
@@ -171,7 +171,6 @@ $likes_month = mysqli_fetch_array($result_month_likes);
                                                             <button class="btn change-hover" type="submit">Change</button>
                                                         </th>
                                                     </table>
-
 
                                                     <i class="fa fa-user"></i>
                                                 </div>
@@ -191,7 +190,6 @@ $likes_month = mysqli_fetch_array($result_month_likes);
                                                         </th>
                                                     </table>
 
-
                                                     <i class="fa fa-birthday-cake"></i>
                                                 </div>
                                             </div>
@@ -208,7 +206,6 @@ $likes_month = mysqli_fetch_array($result_month_likes);
                                                             <button class="btn change-hover" type="submit">Change</button>
                                                         </th>
                                                     </table>
-
 
                                                     <i class="fa fa-file"></i>
                                                 </div>
@@ -536,7 +533,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
                                                         <button type="submit">Save Setting</button>
                                                     </li>
                                                     <li>
-                                                        <button type="submit">Restore Setting</button>
+                                                        <button type="submit">Restore Default</button>
                                                     </li>
                                                 </ul>
                                             </div><!--save-stngs end-->
@@ -874,31 +871,31 @@ $likes_month = mysqli_fetch_array($result_month_likes);
                                         <h3>Delete Account</h3>
                                         <form>
                                             <div class="cp-field">
-                                                <h5>Username</h5>
+                                                <h5>Username *</h5>
                                                 <div class="cpp-fiel">
                                                     <input type="text" name="username" placeholder="Username">
                                                     <i class="fa fa-user"></i>
                                                 </div>
                                             </div>
                                             <div class="cp-field">
-                                                <h5>Password</h5>
+                                                <h5>Password *</h5>
                                                 <div class="cpp-fiel">
                                                     <input type="password" name="password" placeholder="Password">
                                                     <i class="fa fa-lock"></i>
                                                 </div>
                                             </div>
                                             <div class="cp-field">
-                                                <h5>Please Explain Further</h5>
+                                                <h5>Please Explain Further (Optional)</h5>
                                                 <textarea></textarea>
                                             </div>
                                             <div class="cp-field">
-                                                <div class="fgt-sec">
-                                                    <input type="checkbox" name="cc" id="c4">
-                                                    <label for="c4">
-                                                        <span></span>
-                                                    </label>
-                                                    <small>Email option out</small>
-                                                </div>
+<!--                                                <div class="fgt-sec">-->
+<!--                                                    <input type="checkbox" name="cc" id="c4">-->
+<!--                                                    <label for="c4">-->
+<!--                                                        <span></span>-->
+<!--                                                    </label>-->
+<!--                                                    <small>Email option out</small>-->
+<!--                                                </div>-->
                                                 <p>Your profile will be permanently deleted and your name and photos may be
                                                     removed from many things you've shared or posted. You'll not be able to
                                                     continue using Pik-Pok with that account.</p>
@@ -906,11 +903,11 @@ $likes_month = mysqli_fetch_array($result_month_likes);
                                             <div class="save-stngs pd3">
                                                 <ul>
                                                     <li>
-                                                        <button type="submit">Save Setting</button>
+                                                        <button type="submit">Delete account</button>
                                                     </li>
-                                                    <li>
-                                                        <button type="submit">Restore Setting</button>
-                                                    </li>
+<!--                                                    <li>-->
+<!--                                                        <button type="submit">Restore Setting</button>-->
+<!--                                                    </li>-->
                                                 </ul>
                                             </div><!--save-stngs end-->
                                         </form>
