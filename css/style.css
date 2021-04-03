@@ -7089,3 +7089,7 @@ ul#myTab {
 	color: #a2a2a2;
 	cursor: default;
 }
+
+.cursor-pointer {
+	cursor: pointer;
+}
