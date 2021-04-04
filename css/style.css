@@ -7135,3 +7135,9 @@ ul#myTab {
 	font: normal normal normal 14px/1 FontAwesome;
 	//position: absolute;
 }
+
+.remember-me:hover {
+	border-radius: 20px;
+	height: 15px;
+	background-color: #f0f2f5; /*#eeeeee;*/
+}

@@ -97,8 +97,8 @@ $redirect_signed_in_users(); //signed in users haven't access to this page
                                                 <div class="checky-sec">
                                                     <div class="fgt-sec">
                                                         <input type="checkbox" name="remember" id="c1">
-                                                        <label for="c1">
-                                                            <span></span>
+                                                        <label style="cursor:pointer; " for="c1">
+                                                            <span class="remember-me" ></span>
                                                         </label>
                                                         <small>Remember me</small>
                                                     </div><!--fgt-sec end-->
