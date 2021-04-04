@@ -348,7 +348,7 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                             </div><!--main-ws-sec end-->
                             <div class="col-xl-3 col-lg-3 col-md-12">
                                 <div class="right-sidebar">
-                                    <div class="widget widget-jobs">
+                                    <div class="widget widget-post-comments">
                                         <div class="sd-title">
                                             <h3>Post Link</h3>
                                         </div>
@@ -358,7 +358,7 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                                             <span><a onclick="CopyText()">Copy Link</a></span>
                                         </div>
                                     </div>
-                                    <div class="widget widget-jobs">
+                                    <div class="widget widget-post-comments">
                                         <div class="sd-title mb-3">
                                             <h3>QR Code</h3>
                                         </div>
@@ -366,7 +366,7 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                                             <div class="mx-auto mb-4" id="qrcode"></div>
                                         </div>
                                     </div>
-                                    <div class="widget widget-jobs">
+                                    <div class="widget widget-post-comments">
                                         <div class="sd-title">
                                             <h3>Share</h3>
                                         </div>

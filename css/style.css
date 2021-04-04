@@ -1837,6 +1837,10 @@ main {
 	-ms-box-shadow:  0px 2px #e4e4e4;
 	-o-box-shadow:  0px 2px #e4e4e4;
 	box-shadow: 0px 2px #e4e4e4;
+
+}
+.widget-post-comments {
+	border-radius: 3px;
 }
 .widget-about {
 	text-align: center;
