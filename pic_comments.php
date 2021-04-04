@@ -325,7 +325,7 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                                                         <?php echo "<img style=\"width:40px; height:40px;border-radius: 50%;\" src=\"" . $picture_path . $picture_name . "\" alt=\"users photo\"/>"; ?>
                                                         <!-- <img src="images/bg-img4.png" alt=""> -->
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-8" style="margin-top:2px;">
                                                         <form class="user-comment-form">
                                                             <div class="form-group">
                                                                 <input type='hidden' name='photo_id' id='photo_id'
@@ -336,7 +336,7 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                                                             </div>
                                                         </form>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-2" style="margin-top:2px;">
                                                         <a style="cursor:pointer;" id="send-comment"
                                                            class="send-comment text-white">Send</a>
                                                     </div>
