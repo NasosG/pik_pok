@@ -132,17 +132,17 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                                                                 <?php echo "<input type='hidden' name='photo_id' id='photo_id' value='" . $row['photo_id'] . "' />";
 
                                                                 if ($_SESSION['username'] == $user_of_post)
-                                                                    echo '<li><a href="#" title="">Edit Post</a></li>';
-                                                                else echo '<li><a href="report.php?message=' . $photo_id . '" title="">Report</a></li>';
-
+                                                                    echo '<li><a href="#" title=""><i class="far fa-edit"></i> Edit Post</a></li>';
+                                                                else echo '<li><a href="report.php?message=' . $photo_id . '" title=""><i class="fa fa-exclamation pr-1"></i> &nbsp;Report</a></li>';
+                                                                echo '<hr class="ed-opts-menu-hr">';
                                                                 if ($row_save_post[0] > 0)
-                                                                    echo '<li><a id="save-but" href="#" title="">Saved</a></li>';
+                                                                    echo '<li><a id="save-but" href="#" title=""><i class="far fa-bookmark pr-1"></i>  Saved</a></li>';
                                                                 else
-                                                                    echo '<li><a id="save-but" href="#" title="" onclick="savePost();">Unsaved</a></li>';
+                                                                    echo '<li><a id="save-but" href="#" title="" onclick="savePost();"><i class="far fa-bookmark pr-1"></i> Unsaved</a></li>';
                                                                 ?>
-                                                                <li><a href="#" onclick="CopyText()" title="">Copy Link</a>
+                                                                <li><a href="#" onclick="CopyText()" title=""><i class="fas fa-link"></i> Copy Link</a>
                                                                 </li>
-                                                                <li><a class="close-ed-opts" href="#" title="">Close</a>
+                                                                <li><a class="close-ed-opts" href="#" title=""><i class="fa fa-times pr-1"></i> Close</a>
                                                                 </li>
                                                             </ul>
                                                         </div>

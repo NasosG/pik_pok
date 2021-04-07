@@ -177,17 +177,17 @@ $bio = $row_picture['bio'];
                                         } else {
                                             echo '
                                                             
-                                                            <li><a href="pic_comments.php?photo_id=' . $photos_ids[$i - 1] . '"' . ' 
+                                                            <li><a class="comment-ed-option" href="pic_comments.php?photo_id=' . $photos_ids[$i - 1] . '"' . ' 
                                                             title="">Comment</a></li>
                                                             
                                                             ';
                                             if (isSaved($con, $photos_ids[$i - 1])) {
-                                                echo '<li><a href="#" title="">Saved</a></li>';
+                                                echo '<li><a class="saved-ed-option" href="#" title="">Saved</a></li>';
                                             } else
-                                                echo '<li><a href="#" onclick="savePost(' . $photos_ids[$i - 1] . ')" title="">Unsaved</a></li>';
+                                                echo '<li><a href="#" class="saved-ed-option" onclick="savePost(' . $photos_ids[$i - 1] . ')" title="">Unsaved</a></li>';
                                             echo '
     
-                                                            <li><a class="close-ed-opts" href="#" onclick="funct" title="">Close</a></li>';
+                                                            <li><a class="close-ed-opts close-ed-option" href="#" onclick="funct" title="">Close</a></li>';
                                         }
                                         echo '
                                                         </ul>

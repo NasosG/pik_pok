@@ -1159,6 +1159,7 @@ main {
 	position: relative;
 }
 .ed-options {
+	border-radius: 8px;
 	position: absolute;
 	top: 100%;
 	right: 0;
@@ -7143,4 +7144,30 @@ ul#myTab {
 	border-radius: 20px;
 	height: 15px;
 	background-color: #f0f2f5; /*#eeeeee;*/
+}
+
+.saved-ed-option:before {
+	content: '\f02e \00a0 \00a0 \00a0';
+	font: normal normal normal 14px/1 FontAwesome;
+}
+
+.comment-ed-option:before {
+	content: '\f075 \00a0 \00a0';
+	font: normal normal normal 14px/1 FontAwesome;
+}
+
+.ed-opts-menu-hr {
+	margin-top: 27px;
+	margin-bottom: 12px;
+	clear: both;
+}
+
+.edit-ed-option:before {
+	content: '\f044 \00a0 \00a0';
+	font: normal normal normal 14px/1 FontAwesome;
+}
+
+.close-ed-option:before {
+	content: '\f00d \00a0 \00a0 \00a0';
+	font: normal normal normal 14px/1 FontAwesome;
 }
