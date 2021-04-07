@@ -321,24 +321,24 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                                             ?>
                                             <div class="postcomment">
                                                 <div class="row">
-                                                    <div class="col-md-2">
-                                                        <?php echo "<img style=\"width:40px; height:40px;border-radius: 50%;\" src=\"" . $picture_path . $picture_name . "\" alt=\"users photo\"/>"; ?>
+                                                    <div class="col-md-2 col-12">
+                                                        <?php echo "<img style=\"width:42px; height:42px;border-radius: 50%;\" src=\"" . $picture_path . $picture_name . "\" alt=\"users photo\"/>"; ?>
                                                         <!-- <img src="images/bg-img4.png" alt=""> -->
                                                     </div>
-                                                    <div class="col-md-8" style="margin-top:2px;">
+                                                    <div class="col-md-8 col-12" style="margin-top:2px;">
                                                         <form class="user-comment-form">
-                                                            <div class="form-group">
-                                                                <input type='hidden' name='photo_id' id='photo_id'
+                                                            <div class="form-group" >
+                                                                <input type='hidden'  name='photo_id' id='photo_id'
                                                                        value='<?php echo $photo_id; ?> '/>
-                                                                <input type="text" class="form-control" id="comment-text"
+                                                                <input type="text" style="border-radius:20px;" class="form-control" id="comment-text"
                                                                        name="comment-text" placeholder="Add a comment..."
-                                                                       data-emojiable="true" data-emoji-input="unicode"/>
+                                                                        data-emoji-input="unicode"/>
                                                             </div>
                                                         </form>
                                                     </div>
-                                                    <div class="col-md-2" style="margin-top:2px;">
-                                                        <a style="cursor:pointer;" id="send-comment"
-                                                           class="send-comment text-white">Send</a>
+                                                    <div class="col-md-2 col-12" style="margin-top:2px;">
+                                                        <a style="cursor:pointer;margin-left:0px; border-radius:18px 18px 18px 18px;" id="send-comment"
+                                                           class="send-comment text-white" >Send </a>
                                                     </div>
                                                 </div>
                                             </div>

@@ -1104,6 +1104,7 @@ main {
 	margin-bottom: 20px;
 	padding: 20px;
 	box-shadow: 0px 2px #e4e4e4;
+	border-radius: 10px;
 }
 .post_topbar {
 	float: left;
@@ -1127,7 +1128,9 @@ main {
 .ed-opts {
 	float: right;
 	position: relative;
-	top: 7px;
+	/*top: 7px;*/
+	top: 10px;
+	margin-right: 8px;
 }
 .ed-opts > a {
 	color: #b2b2b2;
@@ -1840,7 +1843,7 @@ main {
 
 }
 .widget-post-comments {
-	border-radius: 3px;
+	border-radius: 8px;
 }
 .widget-about {
 	text-align: center;
