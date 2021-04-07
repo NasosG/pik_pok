@@ -330,7 +330,7 @@ $row_save_post = mysqli_fetch_row($result_save_post);
                                                             <div class="form-group" >
                                                                 <input type='hidden'  name='photo_id' id='photo_id'
                                                                        value='<?php echo $photo_id; ?> '/>
-                                                                <input type="text" style="border-radius:20px;" class="form-control" id="comment-text"
+                                                                <input type="text" class="form-control" id="comment-text"
                                                                        name="comment-text" placeholder="Add a comment..."
                                                                        data-emojiable="true" data-emoji-input="unicode"/>
                                                             </div>

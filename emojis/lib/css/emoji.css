@@ -100,7 +100,9 @@ img.emoji {
 /*}*/
 
 .emoji-wysiwyg-editor {
+    border-radius:18px!important;
     padding: 6px;
+    padding-left: 12px;
     padding-right: 35px;
     margin-bottom: 0px;
     min-height: 35px; /* 35 */
