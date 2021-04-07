@@ -6479,6 +6479,7 @@ a:hover {
 }
 .widget-projectid{
 	padding: 15px;
+	border-radius: 8px;
 }
 .widget-projectid h3{
 	padding-bottom: 7px;
