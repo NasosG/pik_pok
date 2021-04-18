@@ -17,7 +17,7 @@ else {
     $query = "SELECT * FROM images ORDER BY photo_id DESC"; //we can order by date but order by id achieves the same goal and we don't need to keep specific time in the database but only the date [implementation may change in the future]
 }
 
-$result = mysqli_query($con, $query);
+$result = mysqli_query($con, $query) or DBorServerErrorOccurred();
 
 if (isset ($_SESSION['username'])) {
     $uname = $_SESSION['username'];

@@ -12,6 +12,23 @@ function generalError()
     exit(); // not wise to continue as an error has occurred
 }
 
+function DBorServerErrorOccurred()
+{
+    include('./includes/echo_header.php');
+
+    echo "<div style='max-width: 700px;margin: auto;'>";
+    echo "<br><h1 style='font-size: 40px; padding-top:70px; padding-bottom:20px; font-family:\"Sofia\"; text-align:center;'>";
+    echo " <span style=\"color: red; \"> Sorry, a database error occurred or server is down </span> <br> ";
+    echo " We're working on it and we'll get it fixed as soon as we can <br> ";
+    echo "</h1>";
+    echo "<div>";
+    echo "<img src='./images/serverup.jpg' height='680' width='680'>";
+    echo "</div>";
+    echo "</div>";
+    include('./includes/echo_end.php');
+    die(); // not wise to continue in such an occasion
+}
+
 function ChangeUsername()
 {
     include('../includes/echo_header.php');

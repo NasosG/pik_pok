@@ -17,7 +17,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
     $query = "SELECT * FROM images ORDER BY photo_likes DESC";
 }
 
-$result = mysqli_query($con, $query);
+$result = mysqli_query($con, $query) or DBorServerErrorOccurred();;
 
 if (isset($_SESSION['username'])) {
     $uname = $_SESSION['username'];
