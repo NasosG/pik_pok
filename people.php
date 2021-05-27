@@ -144,16 +144,16 @@ function check_friendship_status($con, $user_id, $user2_id)
                             <div class="col-lg-4 col-md-6 col-sm-6 col-12">						
                                 <div>
                                 <form id="people-form" class="people-form likes-comments-form company_profile_info" name="people-form" method="post" action="db/add_friend.php" >
-                                    <div class="company-up-info">
+                                    <div class="pt-0 company-up-info"><div class="pt-3 top">
                                         ';
                             echo '<a href="other_users_profile.php?photo_username=' . $row['username'] . '">';
 
-                            echo '<h3 class="">' . $row['fname'] . ' ' . $row['lname'] . '</h3>
-                                        <img src="' . $row['picture_path'] . $row['profile_pic'] . '" alt="user photo" />
+                            echo '
+                                        <img src="' . $row['picture_path'] . $row['profile_pic'] . '" alt="user photo" class="people-img"/>
                                         <input type="hidden" name="id" id="id" value="' . $row['id'] . '"/>
                                         
-                                        </a>
                                         
+                                        <h3 class="pt-1 pb-3">' . $row['fname'] . ' ' . $row['lname'] . '</h3></a>
                                         <ul class="pl-2">
                                         ';
                             if ((mysqli_num_rows(check_friendship_status($con, $user_id, $row['id'])) == 0))
@@ -165,6 +165,7 @@ function check_friendship_status($con, $user_id, $user2_id)
                                         ';
                             echo '
                                         </ul>
+                                        </div>
                                     </div>
                                 </form>
                                 </div>
