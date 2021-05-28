@@ -3822,6 +3822,12 @@ a:hover {
 	/* round edges just a bit */
 	border-radius: 6px; /*8px!important;*/
 }
+
+.friends-card {
+	/* round edges a bit more*/
+	border-radius: 18px; /*8px!important;*/
+}
+
 .company-up-info {
 	float: left;
 	width: 100%;
@@ -3840,7 +3846,8 @@ a:hover {
 	border:4px solid white;
 }
 .top {
-	border-radius: 25px 25px 0 0;
+	/*border-radius: 25px 25px 0 0;*/
+	border-radius: 24px 24px 0 0;
 	height: 70px;
 	width: 100%;
 	background-color: #2f3646;

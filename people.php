@@ -143,8 +143,9 @@ function check_friendship_status($con, $user_id, $user2_id)
                             echo '	
                             <div class="col-lg-4 col-md-6 col-sm-6 col-12">						
                                 <div>
-                                <form id="people-form" class="people-form likes-comments-form company_profile_info" name="people-form" method="post" action="db/add_friend.php" >
-                                    <div class="pt-0 company-up-info"><div class="pt-3 top">
+                                <form id="people-form" class="people-form likes-comments-form company_profile_info friends-card" name="people-form" method="post" action="db/add_friend.php" >
+                                    <div class="pt-0 company-up-info" style="border:none;">
+                                        <div class="pt-3 top">
                                         ';
                             echo '<a href="other_users_profile.php?photo_username=' . $row['username'] . '">';
 

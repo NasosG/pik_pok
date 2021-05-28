@@ -56,6 +56,49 @@ $likes_month = mysqli_fetch_array($result_month_likes);
     <title>Settings - Pik Pok</title>
     <?php include_once('./includes/head.php'); ?>
 </head>
+<style>
+
+    .modal-close-btn {
+        font-size: 28px;
+        font-weight: normal;
+        color: #454545;
+        border-radius: 90%;
+        width: 28px;
+        background-color: white;
+        border: none;
+    }
+
+    .modal-delete-button {
+        color: #fff !important;
+        background-color: #db3c2d !important;
+        font-size: 16px !important;
+        border-color: #dc3545 !important;
+    }
+
+    .modal-delete-button:hover {
+        color: #fff;
+        background-color: #c82333;
+        border-color: #bd2130;
+        box-shadow: 0 0 0 .2rem rgba(225, 83, 97, .5);
+    }
+
+    .modal-cancel-button {
+    //  color: #fff !important;
+        font-size: 16px !important;
+        border-color: #6c757d;
+    }
+
+    .modal-cancel-button:hover {
+        color: #fff !important;
+        background-color: #6c757d !important;
+        border-color: lightgrey !important;
+        box-shadow: 0 0 0 .2rem rgba(130, 138, 145, .5);
+    }
+
+    .modal-cancel-button.focus, .modal-cancel-button:focus {
+        box-shadow: 0 0 0 .2rem rgba(130, 138, 145, .5);
+    }
+</style>
 
 <body>
     <div class="wrapper">
@@ -869,7 +912,7 @@ $likes_month = mysqli_fetch_array($result_month_likes);
                                      aria-labelledby="nav-deactivate-tab">
                                     <div class="acc-setting">
                                         <h3>Delete Account</h3>
-                                        <form>
+                                        <form name="delete-acc-form" id="delete-acc-form">
                                             <div class="cp-field">
                                                 <h5>Username *</h5>
                                                 <div class="cpp-fiel">
@@ -903,7 +946,11 @@ $likes_month = mysqli_fetch_array($result_month_likes);
                                             <div class="save-stngs pd3">
                                                 <ul>
                                                     <li>
-                                                        <button type="submit">Delete account</button>
+                                                        <button type="button"
+                                                                data-toggle="modal"
+                                                                data-target="#modal"
+                                                                data-id="1"
+                                                        >Delete account</button>
                                                     </li>
 <!--                                                    <li>-->
 <!--                                                        <button type="submit">Restore Setting</button>-->
@@ -942,6 +989,28 @@ $likes_month = mysqli_fetch_array($result_month_likes);
 
     </div><!--theme-layout end-->
 
+    <div id="modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-white float-left">Confirm Delete</h3>
+                    <button type="button" class="float-right mt-0 pt-0 modal-close-btn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h2 class="m-4">Are you sure you want to permanently delete your account?</h2>
+                </div>
+                <hr>
+                <div class="modal-footer pt-0 pb-3">
+                    <form name="delete-form" class="form-delete" id="delete-form" method="post" >
+                        <button id="delete-confirmed" type="submit" class="float-right text-black-50 btn modal-delete-button">Delete</button>
+                        <button type="button" class="float-right text-black-50 btn modal-cancel-button mr-2" data-dismiss="modal">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/popper.js"></script>
@@ -957,6 +1026,24 @@ $likes_month = mysqli_fetch_array($result_month_likes);
     </script>
 
     <script>
+        let userId;
+
+        $('#modal').on('show.bs.modal', function(event) {
+            userId = $(event.relatedTarget).data('id');
+        });
+
+        document.getElementById("delete-confirmed").onclick = function () {
+            let form = document.getElementById('delete-acc-form');
+            $.ajax({
+                type: "POST",
+                url: 'db/delete_account.php',
+                data: form.serialize(), // serializes the form's elements.
+                success: function () {
+                    // do nothing
+                }
+            });
+        }
+
         /* Passwords do not match functionality */
         var check = function () { //check passwords if are the same
             if (document.getElementById('new_password').value ==
