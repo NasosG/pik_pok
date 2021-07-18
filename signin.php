@@ -10,7 +10,64 @@ $redirect_signed_in_users(); //signed in users haven't access to this page
 <head>
     <title>Pik Pok - Login or sign up</title>
     <?php include_once('./includes/head.php'); ?>
+    <meta name="google-signin-client_id" content="384750484156-dtnfro1536d097j25sq8q48fn5hh7f8a.apps.googleusercontent.com">
+    <!--<script src="https://apis.google.com/js/platform.js" async defer></script>-->
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <script>
+        function onSuccess(googleUser) {
+            alert("ooook");
+            console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+            const profile = googleUser.getBasicProfile();
+            //console.log('ID: ' + profile.getId());
+            //console.log('Full Name: ' + profile.getName());
+            // console.log('Given Name: ' + profile.getGivenName());
+            // console.log('Family Name: ' + profile.getFamilyName());
+            // console.log('Image URL: ' + profile.getImageUrl());
+            // console.log('Email: ' + profile.getEmail());
+            const fname = profile.getGivenName();
+            const lname = profile.getFamilyName();
+            const imageUrl = profile.getImageUrl();
+            const email = profile.getEmail();
+            const date_of_birth = '01/01/1975';
+            const psw = '123';
+
+            let values = {
+                'username' : email,
+                'psw' : psw,
+                'fname' : fname,
+                'lname' : lname,
+                'sex' : 0,
+                'email' : email,
+                'date_of_birth' : date_of_birth
+            };
+            $.ajax({
+                type: "POST",
+                url: 'db/sign_up.php',
+                data: values,
+                success: function (data) {
+                    location.reload();
+                    //alert("saved");
+                }
+            });
+        }
+        function onFailure(error) {
+            //alert("failed!!!!");
+            console.log(error);
+        }
+        function renderButton() {
+            gapi.signin2.render('my-signin2', {
+                'scope': 'profile email',
+                'width': 270,
+                'height': 40,
+                'longtitle': true,
+                'theme': 'dark',
+                'onsuccess': onSuccess,
+                'onfailure': onFailure
+            });
+        }
+    </script>
     <style>
+
         .field-icon {
             float: right;
             position: relative;
@@ -114,10 +171,12 @@ $redirect_signed_in_users(); //signed in users haven't access to this page
                                     <div class="login-resources">
                                         <h4>Login Via Social Account</h4>
                                         <ul>
-                                            <li><a href="https://www.facebook.com" title="" class="fb"><i
-                                                            class="fa fa-facebook"></i>Login Via Facebook</a></li>
-                                            <li><a href="https://twitter.com" title="" class="tw"><i
-                                                            class="fa fa-twitter"></i>Login Via Twitter</a></li>
+                                            <li><div id="my-signin2" <!--data-width="270" data-height="35"--> data-onsuccess="onSignIn"></div>
+                                            </li>
+                                            <!--<li><a href="https://www.facebook.com" title="" class="fb"><i
+                                                            class="fa fa-facebook"></i>Login Via Facebook</a></li>-->
+                                            <!--<li><a href="https://twitter.com" title="" class="tw"><i
+                                                            class="fa fa-twitter"></i>Login Via Twitter</a></li>-->
                                         </ul>
                                     </div><!--login-resources end-->
                                 </div><!--sign_in_sec end-->
@@ -324,6 +383,8 @@ $redirect_signed_in_users(); //signed in users haven't access to this page
                 input.attr("type", "password");
             }
         });
+
+
     </script>
 </body>
 
